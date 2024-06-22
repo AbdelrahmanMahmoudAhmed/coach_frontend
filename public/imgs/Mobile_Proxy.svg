@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 15 15">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_205" data-name="Rectangle 205" width="15" height="15" transform="translate(531.611 119.5)" fill="#2fa3f7"/>
+    </clipPath>
+  </defs>
+  <g id="Mobile_Proxy" data-name="Mobile Proxy" transform="translate(-531.611 -119.5)" clip-path="url(#clip-path)">
+    <path id="mobile" d="M12,1.5H6A2.25,2.25,0,0,0,3.75,3.75v10.5A2.25,2.25,0,0,0,6,16.5h6a2.25,2.25,0,0,0,2.25-2.25V3.75A2.25,2.25,0,0,0,12,1.5Zm.75,12.75A.75.75,0,0,1,12,15H6a.75.75,0,0,1-.75-.75V13.5h7.5Zm0-2.25H5.25V3.75A.75.75,0,0,1,6,3h6a.75.75,0,0,1,.75.75Z" transform="translate(530.111 118)" fill="#2fa3f7"/>
+  </g>
+</svg>

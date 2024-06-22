@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .app-container {
+        @apply px-10 lg:px-[100px] xl:px-[150px] 2xl:px-[200px] 3xl:px-[325px] mx-auto;
+    }
+    .panel-container {
+        @apply px-2 md:px-6 mx-auto;
+    }
+    .page-container {
+        @apply px-2 xs:px-6 sm:px-10 lg:px-[30px] xl:px-[50px] 2xl:px-[76px] 3xl:px-[100px] mx-auto;
+    }
+    .active-nav {
+        @apply bg-[--main-color] h-[30px] text-[#fff] rounded-[4px] px-[10px]
+    }
+    .active-nav-responsive{
+        @apply bg-first pb-1 rounded-md cursor-default
+
+    }
+    /* body{
+        @apply bg-white dark:bg-slate-600
+    } */
+}
+
+@layer base {
+    html {
+      font-family: "Lato", Helvetica, sans-serif;
+    }
+  }

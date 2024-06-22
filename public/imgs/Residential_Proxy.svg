@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 15 15">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_206" data-name="Rectangle 206" width="15" height="15" transform="translate(531.611 119.5)" fill="#2fa3f7"/>
+    </clipPath>
+  </defs>
+  <g id="Residential_Proxy" data-name="Residential Proxy" transform="translate(-531.611 -119.5)" clip-path="url(#clip-path)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(531.611 120.87)">
+      <g id="residential">
+        <path id="Path_1061" data-name="Path 1061" d="M12.663,2.768h0L9.691.69a3.831,3.831,0,0,0-4.382,0L2.337,2.768h0L.291,4.2a.682.682,0,1,0,.782,1.117l.973-.68V9.531a2.73,2.73,0,0,0,2.728,2.727h5.454a2.73,2.73,0,0,0,2.728-2.727V4.636l.973.68A.682.682,0,1,0,14.709,4.2ZM11.591,9.532A1.366,1.366,0,0,1,10.227,10.9H4.773A1.366,1.366,0,0,1,3.409,9.532V3.681L6.091,1.8a2.461,2.461,0,0,1,2.817,0l2.682,1.877Z" fill="#2fa3f7"/>
+      </g>
+      <g id="location">
+        <path id="Path_1062" data-name="Path 1062" d="M7.421,2.815A2.853,2.853,0,0,0,4.569,5.668c0,1.159.842,2.122,1.734,3.142.282.322.574.657.835.994a.355.355,0,0,0,.564,0c.26-.338.552-.671.835-.994.892-1.02,1.734-1.983,1.734-3.142A2.853,2.853,0,0,0,7.421,2.815Zm0,3.919A1.069,1.069,0,1,1,8.49,5.666,1.069,1.069,0,0,1,7.421,6.735Z" fill="#2fa3f7"/>
+      </g>
+    </g>
+  </g>
+</svg>

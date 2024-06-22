@@ -1,0 +1,19 @@
+
+<template>
+    <div class="relative">
+
+        <slot />
+
+  
+    </div>
+  </template>
+  
+  
+  
+  
+  <script setup>
+
+  </script>
+  
+  <style>
+  </style>

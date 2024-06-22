@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="17" viewBox="0 0 17 17">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_193" data-name="Rectangle 193" width="17" height="17" transform="translate(0.03 0.029)" fill="#2fa3f7"/>
+    </clipPath>
+  </defs>
+  <g id="darkmode" transform="translate(-0.03 -0.029)" clip-path="url(#clip-path)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(0.017 -0.246)">
+      <g id="Layer_1" data-name="Layer 1" transform="translate(0 0)">
+        <path id="Path_1011" data-name="Path 1011" d="M0,9.029V8c.044-.318.075-.637.133-.953a8.169,8.169,0,0,1,2.82-4.985A8.63,8.63,0,0,1,6.72.184C7.092.1,7.472.06,7.848,0h.366a1.517,1.517,0,0,1,.325.349c.124.266-.054.455-.231.637A5.475,5.475,0,0,0,6.829,6.419,4.869,4.869,0,0,0,9.672,9.895a5.717,5.717,0,0,0,4.9-.153,5.753,5.753,0,0,0,1.57-1.1.5.5,0,0,1,.869.229.91.91,0,0,1,.005.248,8.214,8.214,0,0,1-.663,2.768,8.312,8.312,0,0,1-6.344,5.042c-.319.062-.644.089-.966.133H8.014c-.048-.01-.1-.023-.144-.029-.311-.041-.629-.064-.938-.123A8.3,8.3,0,0,1,2.839,14.9,8.337,8.337,0,0,1,.129,9.983C.076,9.667.044,9.347,0,9.029Z" transform="translate(0 0)" fill="#2fa3f7"/>
+      </g>
+    </g>
+  </g>
+</svg>
