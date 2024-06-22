@@ -97,7 +97,10 @@
     "success_forget":"تم! تحقق من بريدك الالكتروني"
   },
 
-
+  "popups":{
+    "logout_confirmation":" هل أنت متأكد من تسجيل الخروج؟ , {name}",
+    "cancel":"الغاء"
+  },
 
 
   "global": {

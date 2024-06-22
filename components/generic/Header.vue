@@ -283,7 +283,7 @@ const isDark = useCookie("isDark");
 const global = useGlobalStore();
 const router = useRouter();
 const route = useRoute();
-// const { logout } = useRequest();
+
 const displayPopup = ref(false)
 
 const currentPage = ref(route.fullPath.replace("/", "").toLowerCase())
@@ -291,12 +291,7 @@ const currentPage = ref(route.fullPath.replace("/", "").toLowerCase())
 const currentRole = computed(()=> role.value)
 
 
-const openPopup = ( ) => {
-  displayPopup.value = true
-}
-const closePopup = ( ) => {
-  displayPopup.value = false
-}
+
 
 
 
@@ -320,15 +315,7 @@ const openLoader = ( link ) => {
 }
 
 
-const logoutFun = ( ) => {
-  // logout().then((res)=>{
 
-  //   role.value="",
-  //   global.updateAuth({user:{} , isAuth:false})
-  //   localStorage.setItem('auth',"")
-  //   userInfo.value = ""
-  // })
-}
 
 const navToSection = (type, id) => {
   if (route.fullPath != "/"){
@@ -431,7 +418,13 @@ const openSidebar = () => {
 const closeSidebar = () => {
   toggleSidebar.value = false;
 };
-
+const openPopup = ( ) => {
+  displayPopup.value = true
+  closeSidebar()
+}
+const closePopup = ( ) => {
+  displayPopup.value = false
+}
 
 function changeMode() {
   const body = document.body;

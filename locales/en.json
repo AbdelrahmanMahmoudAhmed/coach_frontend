@@ -102,7 +102,10 @@
     "success_forget":"success! check your Email"
   },
 
-
+"popups":{
+  "logout_confirmation":" {name} are you sure to logout ? ",
+  "cancel":"Cancel"
+},
 
 
 

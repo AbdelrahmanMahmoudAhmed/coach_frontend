@@ -16,8 +16,8 @@
       <div
         class="text-center text-[#747474] text-[12px] xs:text-[14px] dark:text-[#FFFFFFAD]"
       >
-        {{ $t("proxy.popups.logout_confirmation") }}
-        <span class="font-bold">{{ currentPackage?.name }}</span>
+        {{ $t("popups.logout_confirmation" , {name :  global.user?.name }) }}
+        <!-- <span class="font-bold">{{ global.user?.name }}</span> -->
       </div>
 
       <div
@@ -28,7 +28,7 @@
           type="button"
           class="bg-[#062946] rounded-[21px] h-[40px] px-[23px]"
         >
-          {{ $t("proxy.popups.cancel") }}
+          {{ $t("popups.cancel") }}
         </button>
         <button
           type="submit"
