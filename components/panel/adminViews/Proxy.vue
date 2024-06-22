@@ -76,7 +76,7 @@
     
     <script setup>
 import RegularDataTable from "~/components/panel/RegularDataTable.vue";
-import useRequest from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
 
@@ -190,4 +190,4 @@ watch(()=> global.currentProxy  , ()=>{
   color: #fff !important;
   background: #7ac1f4 !important;
 }
-</style>
+</style>~/composables/useRequest

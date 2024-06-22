@@ -74,13 +74,13 @@
 </template>
 
 <script setup>
-// definePageMeta({
-//   middleware: "auth-pages-guard",
-// });
+definePageMeta({
+  middleware: "auth-pages-guard",
+});
 import { useGlobalStore } from "../stores/global";
 import useVuelidate from "@vuelidate/core";
 import { required, email, maxLength, minLength } from "@vuelidate/validators";
-import useRequist from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import showToast from "~/composables/useToast";
 import { saveUserData } from "~/composables/useAuth";
 import { storeToRefs } from 'pinia'
@@ -90,7 +90,7 @@ const router = useRouter();
 const global = useGlobalStore();
 const globalRef = storeToRefs(global)
 const { locale, locales, setLocale, t } = useI18n();
-const { login } = useRequist();
+const { login } = useRequest();
 const { token } = useGlobalStore()
 
 
@@ -146,8 +146,6 @@ const loginFun = async () => {
 
       saveUserData(userData); // saving data on the cookies and state management
       showToast({ message: t('toast.login') });
-      console.log("globalRef.token" , globalRef.token.value)
-
       router.push("/");
     } catch (err) {
       console.error("err", err);
@@ -170,3 +168,4 @@ const disabledIconFun = (name) => {
 </script>
 
 <style></style>
+~/composables/useRequest

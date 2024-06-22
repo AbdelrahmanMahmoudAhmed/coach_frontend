@@ -58,7 +58,7 @@
     
     <script setup>
 import RegularDataTable from "~/components/panel/RegularDataTable.vue";
-import useRequest from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
 
@@ -191,4 +191,4 @@ onBeforeMount(() => {
 </script>
     
     <style>
-</style>
+</style>~/composables/useRequest

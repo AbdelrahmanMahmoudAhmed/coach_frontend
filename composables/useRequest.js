@@ -28,8 +28,8 @@ const useRequest = () => {
   const sendForgetPassword = async (data) => {
     return await REQUEST.patch("/auth/forget-password", data);
   };
-  const forgetPassword = async (data) => {
-    return await REQUEST.post("/api/auth/forget-password", data);
+  const resetPassword = async (data) => {
+    return await REQUEST.patch("/auth/reset-password", data);
   };
 
 
@@ -335,7 +335,7 @@ const useRequest = () => {
     register,
     login,
     sendForgetPassword,
-    forgetPassword,
+    resetPassword,
     adminLogin,
     getAllSettings,
     adminData,

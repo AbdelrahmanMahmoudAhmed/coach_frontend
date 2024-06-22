@@ -203,23 +203,25 @@
 </template>
 
 <script setup>
-// definePageMeta({
-//   middleware: "auth-pages-guard",
-// });
+definePageMeta({
+  middleware: "auth-pages-guard",
+});
 import useVuelidate from "@vuelidate/core";
 import { required, email, maxLength, minLength, sameAs, numeric, requiredIf } from "@vuelidate/validators";
 import useServerRequest from "~/composables/useServerRequist";
-import useRequist from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "../stores/global";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
+import showToast from "~/composables/useToast";
 
 const { locale, locales, setLocale, t } = useI18n();
-const { register } = useRequist();
+const { register } = useRequest();
 const router = useRouter();
 const role = useCookie("role");
 const userInfo = useCookie("userInfo");
 const global = useGlobalStore();
-const imageDisplaying = ref('')
+const imageDisplaying = ref('');
+
 
 'loseFat','loseWeight', 'gainMuscle' , 'gainWeight' , 'maintain' 
 
@@ -300,21 +302,14 @@ const rules = computed(() => {
           return true
         }
        else if (allowedMimeTypes.includes(nestedModel.type)) {
-          console.log("accepted")
           errors.image.state = false
           errors.realImage.state =false;
-
-
           // Accept the file
           return false
-
         } else {
           // Reject the file
-          console.log("rejected")
           errors.realImage.state =true;
-
           errors.image.state = false
-
           return true
         }
       })
@@ -341,7 +336,7 @@ const createAccount = async () => {
 
   const result = await v$.value.$validate();
   console.log("v$.value >>> ", v$.value)
-  // if (result) {
+  if (result) {
     const payload = new FormData();
     payload.append('name' , state.name)
     payload.append('email' , state.email)
@@ -352,30 +347,14 @@ const createAccount = async () => {
     payload.append('goal' , state.goal)
     payload.append('password' , state.password)
     payload.append('passwordConfirmation' , state.passwordConfirmation)
-    // const payload = {
-    //   name: state.name,
-    //   email: state.email,
-    //   weight: state.weight,
-    //   tall: state.tall,
-    //   phone: state.phone,
-    //   image: state.image,
-    //   goal: state.goal,
-    //   password: state.password,
-    //   passwordConfirmation: state.passwordConfirmation,
-    // };
-    console.log("name>>>>", "dsfafdfdsa")
-    console.log("payload >>> ", payload)
+
+
     register(payload)
       .then((res) => {
 
+        showToast({ message: t('toast.success_regester') });
+        router.push("/login");
 
-        const user = res.data?.data;
-        user.type = "user";
-        localStorage.setItem("auth", JSON.stringify(user));
-        global.updateAuth({ user: user, isAuth: true });
-        role.value = "user";
-        userInfo.value = user;
-        router.push("/");
       })
       .catch((err) => { })
       .finally(() => {
@@ -384,18 +363,18 @@ const createAccount = async () => {
         // state.password = "";
         // state.passwordConfirmation = "";
       });
-  // } else {
-  //   console.log("else")
-  //   errors.name.state = v$.value.name.$error;
-  //   errors.email.state = v$.value.email.$error;
-  //   errors.tall.state = v$.value.tall.$error;
-  //   errors.weight.state = v$.value.weight.$error;
-  //   errors.phone.state = v$.value.phone.$error;
-  //   errors.goal.state = v$.value.goal.$error;
-  //   // errors.image.state = v$.value.image.$error;
-  //   errors.password.state = v$.value.password.$error;
-  //   errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
-  // }
+  } else {
+    console.log("else")
+    errors.name.state = v$.value.name.$error;
+    errors.email.state = v$.value.email.$error;
+    errors.tall.state = v$.value.tall.$error;
+    errors.weight.state = v$.value.weight.$error;
+    errors.phone.state = v$.value.phone.$error;
+    errors.goal.state = v$.value.goal.$error;
+    // errors.image.state = v$.value.image.$error;
+    errors.password.state = v$.value.password.$error;
+    errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
+  }
 };
 const changeVal = (val, name) => {
     state.goal = val;
@@ -410,3 +389,4 @@ const onChangeIamge = (e) => {
 </script>
 
 <style></style>
+~/composables/useRequest

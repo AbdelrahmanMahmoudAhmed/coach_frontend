@@ -89,7 +89,17 @@
     "wrong_email":"This email is incorrect",
     "wrong_password":"incorrect password",
     "wrong_type":"incorrect type",
-    "something_wrong":"Something wrong happened"
+    "something_wrong":"Something wrong happened",
+    "not_available_phone":"This phone is not available for use",
+    "invalid_send_email":"the email already has been sent, check your email",
+    "not_subscribed":"This email address is not subscribed",
+    "expired_token":"The validity period for retrieving the password from this link has expired. Send us again.",
+    "wrong_token":"invalid URL",
+
+
+    "success_regester":"Your regester has been successeed",
+    "success_reset":"Your password has been reset successfully",
+    "success_forget":"success! check your Email"
   },
 
 

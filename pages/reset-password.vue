@@ -12,27 +12,36 @@
         <p
           class="pb-[20px] text-[#677A8A] text-center text-[12px] max-w-[480px] xs:text-[15px] dark:text-[#FFFFFFC2]"
         >
-        {{ $t('global.reset_password_p') }}
+          {{ $t("global.reset_password_p") }}
         </p>
         <form
-        :autocomplete="'off'"
+          :autocomplete="'off'"
           @submit.prevent="sendForgetPasswordFun"
           class="flex flex-col justify-center"
         >
           <div class="w-full flex flex-col justify-center max-w-[440px] m-auto mb-[8px]">
             <div class="relative">
-              <div @click="()=>changeInputType('password')" :class="` ${locale == 'ar' ? ' left-5' : ' right-5'} cursor-pointer absolute top-[15px] `">
-    <img v-if="errors.password.isVisible" src="../assets/imgs/hide.svg" alt="">
-    <img v-else src="../assets/imgs/unhide.svg" alt="">
-
-  </div>
+              <div
+                @click="() => changeInputType('password')"
+                :class="` ${
+                  locale == 'ar' ? ' left-5' : ' right-5'
+                } cursor-pointer absolute top-[15px] `"
+              >
+                <img
+                  v-if="errors.password.isVisible"
+                  src="../assets/imgs/hide.svg"
+                  alt=""
+                />
+                <img v-else src="../assets/imgs/unhide.svg" alt="" />
+              </div>
               <input
-              autocomplete="off" 
+                autocomplete="off"
                 v-model="state.password"
                 :placeholder="$t('auth.password')"
-                :class="` ${ locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'} text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
-                :type="errors.password.isVisible ? 'text':'password'"
-                
+                :class="` ${
+                  locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
+                } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+                :type="errors.password.isVisible ? 'text' : 'password'"
               />
             </div>
             <p
@@ -44,19 +53,27 @@
           </div>
           <div class="w-full flex flex-col justify-center max-w-[440px] m-auto">
             <div class="relative">
-              <div @click="()=>changeInputType('passwordConfirmation')" :class="` ${locale == 'ar' ? ' left-5' : ' right-5'} cursor-pointer absolute top-[15px] `">
-    <img v-if="errors.passwordConfirmation.isVisible" src="../assets/imgs/hide.svg" alt="">
-    <img v-else src="../assets/imgs/unhide.svg" alt="">
-
-  </div>
+              <div
+                @click="() => changeInputType('passwordConfirmation')"
+                :class="` ${
+                  locale == 'ar' ? ' left-5' : ' right-5'
+                } cursor-pointer absolute top-[15px] `"
+              >
+                <img
+                  v-if="errors.passwordConfirmation.isVisible"
+                  src="../assets/imgs/hide.svg"
+                  alt=""
+                />
+                <img v-else src="../assets/imgs/unhide.svg" alt="" />
+              </div>
               <input
-          
                 v-model="state.passwordConfirmation"
                 :placeholder="$t('auth.confirm_password')"
-                :class="` ${ locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'} text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
-                :type="errors.passwordConfirmation.isVisible ? 'text':'password'"
-                autocomplete="off" 
-                
+                :class="` ${
+                  locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
+                } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+                :type="errors.passwordConfirmation.isVisible ? 'text' : 'password'"
+                autocomplete="off"
               />
             </div>
             <p
@@ -83,15 +100,18 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: "auth-pages-guard",
+});
 import useVuelidate from "@vuelidate/core";
-import { required, maxLength, minLength } from "@vuelidate/validators";
-import useRequist from "~/composables/useRequist";
-
+import { required, maxLength, minLength, sameAs } from "@vuelidate/validators";
+import useRequest from "~/composables/useRequest";
+import showToast from '~/composables/useToast'
 
 const route = useRoute();
 const router = useRouter();
-const  { forgetPassword } = useRequist()
-const { locale, locales, setLocale , t } = useI18n();
+const { resetPassword } = useRequest();
+const { locale, locales, setLocale, t } = useI18n();
 const state = reactive({
   password: "",
   passwordConfirmation: "",
@@ -99,70 +119,58 @@ const state = reactive({
 const errors = reactive({
   password: {
     state: false,
-    isVisible:false
-
+    isVisible: false,
   },
   passwordConfirmation: {
     state: false,
-    isVisible:false
-
+    isVisible: false,
   },
 });
 const rules = computed(() => {
   return {
     password: { required, maxLength: maxLength(50), minLength: minLength(6) },
     passwordConfirmation: {
-      required,
-      maxLength: maxLength(50),
-      minLength: minLength(6),
+      sameAs: sameAs(state.password),
     },
   };
 });
 
-
-const changeInputType =(type)=>{
-  errors[type].isVisible = ! errors[type].isVisible 
-}
-
+const changeInputType = (type) => {
+  errors[type].isVisible = !errors[type].isVisible;
+};
 
 const v$ = useVuelidate(rules, state);
 
 const sendForgetPasswordFun = async () => {
-
   errors.password.state = false;
   errors.passwordConfirmation.state = false;
 
   const result = await v$.value.$validate();
   if (result) {
     const payload = {
-      password: state.password,
+      newPassword: state.password,
+      passwordConfirmation:state.passwordConfirmation,
       token: route.query?.token,
     };
-    forgetPassword(payload)
+    resetPassword(payload)
       .then((res) => {
-        router.push("/");
+        showToast({ message: t('toast.success_reset') });
+
+        router.push("/login");
       })
       .catch((err) => {})
       .finally(() => {
         state.password = "";
         state.passwordConfirmation = "";
       });
-
-
-
   } else {
     errors.password.state = v$.value.password.$error;
     errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
   }
-
-
 };
 
-
-onMounted(()=>{
-
-})
+onMounted(() => {});
 </script>
 
-<style>
-</style>
+<style></style>
+~/composables/useRequest

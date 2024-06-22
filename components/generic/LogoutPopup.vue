@@ -42,7 +42,7 @@
 </template>
     
     <script setup>
-import useRequest from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 const emit = defineEmits(["closePopup", "openSuccessPopup"]);
 
@@ -80,4 +80,4 @@ const logoutFun = () => {
 </script>
     
     <style >
-</style>
+</style>~/composables/useRequest

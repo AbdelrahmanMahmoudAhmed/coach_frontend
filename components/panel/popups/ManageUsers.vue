@@ -257,9 +257,9 @@ import {
   numeric,
   sameAs,
 } from "@vuelidate/validators";
-import useRequist from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 
-const { createUser, editUser, deleteUser, changeUserCredit } = useRequist();
+const { createUser, editUser, deleteUser, changeUserCredit } = useRequest();
 // const editedCredit = ref();
 const changedCredit = ref();
 
@@ -471,4 +471,4 @@ onBeforeMount(() => {
 </script>
     
     <style >
-</style>
+</style>~/composables/useRequest

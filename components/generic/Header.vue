@@ -273,7 +273,7 @@
 </template>
   
   <script setup>
-import useRequist from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import LogoutPopup from "./LogoutPopup.vue";
 const { locale, locales, setLocale } = useI18n();
@@ -283,7 +283,7 @@ const isDark = useCookie("isDark");
 const global = useGlobalStore();
 const router = useRouter();
 const route = useRoute();
-// const { logout } = useRequist();
+// const { logout } = useRequest();
 const displayPopup = ref(false)
 
 const currentPage = ref(route.fullPath.replace("/", "").toLowerCase())
@@ -489,4 +489,4 @@ watch(
   border: 1px solid var(--secondary-card-color);
   color: #fff;
 }
-</style>
+</style>~/composables/useRequest

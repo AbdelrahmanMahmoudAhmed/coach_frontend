@@ -47,7 +47,7 @@ const props = defineProps({
   currentPackage: Object,
 });
 const emit = defineEmits(["closePopup", "openSuccessPopup"]);
-import useRequest from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 
 const router = useRouter();
 const closePopup = () => {
@@ -62,4 +62,4 @@ const submitVps = () => {
 </script>
   
   <style >
-</style>
+</style>~/composables/useRequest

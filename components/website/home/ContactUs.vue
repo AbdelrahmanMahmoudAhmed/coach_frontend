@@ -90,7 +90,7 @@
 import SectionTitle from "../home/SectionTitle.vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email, maxLength, minLength } from "@vuelidate/validators";
-import useRequest from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 const { locale, locales, setLocale , t } = useI18n();
 
 const { contact } = useRequest();
@@ -161,4 +161,4 @@ const sendMessageFun = async () => {
 </script>
 
 <style>
-</style>
+</style>~/composables/useRequest

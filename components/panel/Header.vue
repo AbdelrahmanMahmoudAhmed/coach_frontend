@@ -172,7 +172,7 @@
     
   <script setup>
 import { useGlobalStore } from "~/stores/global";
-import useRequist from "~/composables/useRequist";
+import useRequest from "~/composables/useRequest";
 import LogoutPopup from "../generic/LogoutPopup.vue";
 
 const displayPopup = ref(false);
@@ -381,4 +381,4 @@ const changeLang = () => {
     
     <style>
 
-</style>
+</style>~/composables/useRequest

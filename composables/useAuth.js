@@ -24,4 +24,26 @@ global.updateAuth(savedData);
   tokenCookie.value = token;
 };
 
+export const removeUserData = () => {
+  const global = useGlobalStore();
+  
+    const roleCookie = useCookie("role");
+    const typeCookie = useCookie("type");
+    const userInfoCookie = useCookie("userInfo");
+    const tokenCookie = useCookie("token");
+  
+    const savedData = {
+      user : "",
+      token:"",
+      isAuth:false
+    }
+  
+  global.updateAuth(savedData);
+  
+    typeCookie.value = "";
+    roleCookie.value = "";
+    userInfoCookie.value = "";
+    tokenCookie.value = "";
+  };
+
 // export default login
