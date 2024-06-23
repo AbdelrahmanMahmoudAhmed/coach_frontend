@@ -19,8 +19,6 @@ import { useGlobalStore } from "~/stores/global";
 
 const global = useGlobalStore();
 const currentLang = useCookie("i18n_redirected");
-console.log('currentLang' , currentLang.value)
-
 const roleCookie = useCookie("role");
 const typeCookie = useCookie("type");
 const userInfoCookie = useCookie("userInfo");
