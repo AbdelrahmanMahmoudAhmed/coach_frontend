@@ -1,6 +1,6 @@
 import { useFetch } from "#app"
 
-const useRequest = () => {
+const useServerRequest = () => {
     const config = useRuntimeConfig()
     const baseURL = process.env.NODE_ENV === "production" ? config.public.prod_base : config.public.dev_base
 
@@ -46,4 +46,4 @@ const useRequest = () => {
         layout, aboutUs, terms, policy, home
     };
 };
-export default useRequest;
+export default useServerRequest;

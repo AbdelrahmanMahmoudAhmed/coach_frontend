@@ -16,6 +16,7 @@
 
 import Loader from "./components/generic/Loader.vue";
 import { useGlobalStore } from "~/stores/global";
+import useServerRequist from "../../composables/useServerRequist";
 
 const global = useGlobalStore();
 const currentLang = useCookie("i18n_redirected");
@@ -23,6 +24,25 @@ const roleCookie = useCookie("role");
 const typeCookie = useCookie("type");
 const userInfoCookie = useCookie("userInfo");
 const tokenCookie = useCookie("token");
+const { layout } = useServerRequist()
+
+
+
+  const { data , error} = await layout();
+  const payload = {
+    socialMedia: data.value?.data?.socialMedia,
+    mainDescription:{ar:data.value?.data?.data?.mainDescAr , en: data.value?.data?.data?.mainDescEn},
+    footerDescription:{ar:data.value?.data?.data?.footerDescAr , en: data.value?.data?.data?.footerDescEn},
+  }
+global.setMainData(payload)
+
+
+
+const seo = data?.value?.data?.seo
+
+
+
+
 
 const isDark = useCookie("isDark", {
   default: () => "light",
@@ -56,25 +76,26 @@ useHead({
   },
   link: [{ rel: "icon", type: "image/png", href: "/logo.svg" }],
   meta: [
-    // { name: 'description', content: 'Description of your content' },
-    { name: 'title', content: 'Fox Proxy' },
+    { name: 'description', content: seo.description },
+    { name: 'title', content: seo.title },
+    { name: 'keywords', content: seo.keywords },
     // Open Graph tags
-    { property: 'og:title', content: 'Fox Proxy' },
-    // { property: 'og:description', content: 'Description of your content' },
+    { property: 'og:title', content: seo.title },
+    { property: 'og:description', content: seo.description },
     { property: 'og:image', content: '/logo.png' },
     { property: 'og:url', content: '/logo.png' },
     { property: 'og:type', content: 'website' },
     // Twitter Card tags
-    { name: 'twitter:card', content: 'Fox Proxy' },
-    { name: 'twitter:title', content: 'Fox Proxy' },
-    // { name: 'twitter:description', content: 'Description of your content' },
+    { name: 'twitter:card', content: seo.title },
+    { name: 'twitter:title', content: seo.title },
+    { name: 'twitter:description', content: seo.description },
     { name: 'twitter:image', content: '/logo.png' },
     // Google / Schema.org tags
-    { itemprop: 'name', content: 'Fox Proxy' },
-    // { itemprop: 'description', content: 'Description of your content' },
+    { itemprop: 'name', content: seo.title },
+    { itemprop: 'description', content: seo.description },
     { itemprop: 'image', content: '/logo.png' },
     // Pinterest Rich Pins
-    { name: 'Fox Proxy', content: 'true' }
+    { name: seo.title, content: 'true' }
   ]
 });
 

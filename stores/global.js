@@ -12,8 +12,11 @@ export const useGlobalStore = defineStore('global', {
       isAuth: false,
       user: {},
       token:"",
+      socialMedia:{},
+      footerDescription:{},
+      mainDescription:{},
+
       isPopup: false,
-      currentProxy: 'ipv4',
       currentSection: true,
       afterConfirmationPopup:false,
       checker:true
@@ -21,6 +24,13 @@ export const useGlobalStore = defineStore('global', {
   },
 
   actions: {
+
+    setMainData(payload){
+      this.socialMedia = payload.socialMedia;
+      this.footerDescription = payload.footerDescription;
+      this.mainDescription = payload.mainDescription;
+    },
+
     toggleChecker(payload){
       this.checker = payload;
     },
@@ -30,9 +40,7 @@ export const useGlobalStore = defineStore('global', {
     closeAfterConfirmationPopup(){
       this.afterConfirmationPopup = false
     },
-    toggleProxyType(payload) {
-      this.currentProxy = payload
-    },
+
     toggleCurrentSection(payload){
       this.currentSection = payload
     },
