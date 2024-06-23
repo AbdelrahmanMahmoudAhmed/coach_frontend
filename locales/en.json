@@ -145,7 +145,7 @@
         "invalid_credential":"Wrong email or password"
       }
   },
-  "sidbar": {
+  "sidebar": {
     "admin": {
       "dashboard": "Dashboard",
       "packages_management": "Packages management",
@@ -164,7 +164,7 @@
       "website_settings": "Website settings",
       "service":"Services management "
     },
-    "user": {
+    "client": {
       "billing": "billing",
       "invoices": "Invoices",
       "packages_management": "Packages management",

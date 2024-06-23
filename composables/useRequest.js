@@ -106,7 +106,7 @@ const useRequest = () => {
 
 
   const adminLogin = async (data) => {
-    return await REQUEST.post("/api/panel/login", data);
+    return await REQUEST.post("/admin/auth", data);
   };
 
 

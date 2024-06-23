@@ -9,10 +9,7 @@
       <div class="h-[86px] flex items-center lg:h-[108px]">
         <div class="h-full w-full flex justify-between items-center">
           <div class="flex items-center gap-[50px]">
-            <div
-              @click="() => navToSection('home', 'home-page')"
-              class="cursor-pointer"
-            >
+            <div @click="() => navToSection('home', 'home-page')" class="cursor-pointer">
               <img src="../../assets/imgs/logo.svg" alt="" />
             </div>
             <ul
@@ -20,41 +17,31 @@
             >
               <li
                 @click="() => navToSection('home', 'home-page')"
-                :class="`${
-                  activeState.home ? 'active-nav' : ''
-                } cursor-pointer`"
+                :class="`${activeState.home ? 'active-nav' : ''} cursor-pointer`"
               >
                 {{ $t("header.home") }}
               </li>
               <li
                 @click="() => navToSection('about', 'about-section')"
-                :class="`${
-                  activeState.about ? 'active-nav' : ''
-                } cursor-pointer`"
+                :class="`${activeState.about ? 'active-nav' : ''} cursor-pointer`"
               >
                 {{ $t("header.about") }}
               </li>
               <li
                 @click="() => navToSection('feature', 'feature-section')"
-                :class="`${
-                  activeState.feature ? 'active-nav' : ''
-                } cursor-pointer`"
+                :class="`${activeState.feature ? 'active-nav' : ''} cursor-pointer`"
               >
                 {{ $t("header.feature") }}
               </li>
               <li
                 @click="() => navToSection('feedback', 'feedback-section')"
-                :class="`${
-                  activeState.feedback ? 'active-nav' : ''
-                } cursor-pointer`"
+                :class="`${activeState.feedback ? 'active-nav' : ''} cursor-pointer`"
               >
                 {{ $t("header.feedback") }}
               </li>
               <li
                 @click="() => navToSection('contactUs', 'contact-us-section')"
-                :class="`${
-                  activeState.contactUs ? 'active-nav' : ''
-                } cursor-pointer`"
+                :class="`${activeState.contactUs ? 'active-nav' : ''} cursor-pointer`"
               >
                 {{ $t("header.contact_us") }}
               </li>
@@ -63,7 +50,7 @@
           <div class="flex h-full items-center lg:self-start">
             <button
               @click="openPopup"
-              v-if=" role == 'admin' || role == 'user'"
+              v-if="type == 'admin' || type == 'client'"
               class="hidden font-bold text-[12px] uppercase xs:text-[18px] mx-[10px] lg:block xl:mx-[10px]"
             >
               {{ $t("header.logout") }}
@@ -77,7 +64,7 @@
               </NuxtLink>
             </button>
             <NuxtLink
-              v-if="role == 'admin' || global.user.type == 'admin'"
+              v-if="type == 'admin'"
               :to="`/admin`"
               :class="`${
                 locale == 'en' ? 'mr-[10px]' : 'ml-[10px]'
@@ -86,7 +73,7 @@
               {{ $t("header.my_account") }}
             </NuxtLink>
             <NuxtLink
-              v-else-if="role == 'user' || global.user.type == 'user'"
+              v-else-if="type == 'client'"
               :to="`/user`"
               :class="`${
                 locale == 'en' ? 'mr-[10px]' : 'ml-[10px]'
@@ -105,9 +92,7 @@
             </NuxtLink>
             <button
               :class="` ${
-                locale == 'en'
-                  ? 'mr-[10px] 2xl:mr-[30px]'
-                  : 'ml-[10px] 2xl:ml-[30px]'
+                locale == 'en' ? 'mr-[10px] 2xl:mr-[30px]' : 'ml-[10px] 2xl:ml-[30px]'
               } bg-[#fff] w-[30px] h-[30px] flex items-center justify-center rounded-[4px] lg:hidden`"
               @click="openSidebar"
             >
@@ -115,17 +100,11 @@
             </button>
             <button
               :class="` ${
-                locale == 'en'
-                  ? 'mr-[10px] 2xl:mr-[30px]'
-                  : 'ml-[10px] 2xl:ml-[30px]'
+                locale == 'en' ? 'mr-[10px] 2xl:mr-[30px]' : 'ml-[10px] 2xl:ml-[30px]'
               } bg-[#fff] w-[30px] h-[30px] flex items-center justify-center rounded-[4px]`"
               @click="changeMode"
             >
-              <img
-                v-if="isDark == 'light'"
-                src="../../assets/imgs/darkmode.svg"
-                alt=""
-              />
+              <img v-if="isDark == 'light'" src="../../assets/imgs/darkmode.svg" alt="" />
               <img v-else src="../../assets/imgs/lightmode.png" alt="" />
             </button>
 
@@ -169,9 +148,7 @@
           <img src="../../assets/imgs/logo.svg" alt="" />
         </div>
 
-        <ul
-          class="mb-[60px] text-[16px] text-[#FFFFFF66] xl:text-[17px] 2xl:text-[20px]"
-        >
+        <ul class="mb-[60px] text-[16px] text-[#FFFFFF66] xl:text-[17px] 2xl:text-[20px]">
           <li
             @click="() => navToSection('home', 'home-page')"
             :class="`${
@@ -217,17 +194,17 @@
 
       <div class="self-end w-full left-0 bottom-0 mb-8 px-[8px]">
         <NuxtLink
-          v-if="role == 'user' || global.user.type == 'user'"
+          v-if="type == 'client'"
           :to="`/user`"
-          :class="`bg-[--main-color] text-center font-bold text-[18px] block rounded-xl w-full mb-2 py-[2px]`"
+          :class="`bg-[--main-color] text-center font-bold text-[18px] block rounded-md w-full mb-2 py-[2px] transition-all duration-300 hover:bg-[#618aa8]`"
         >
           {{ $t("header.my_account") }}
         </NuxtLink>
 
         <NuxtLink
-          v-else-if="role == 'admin' || global.user.type == 'admin'"
+          v-else-if="type == 'admin'"
           :to="`/admin`"
-          :class="`bg-[--main-color] text-center font-bold text-[18px] block rounded-xl w-full mb-2 py-[2px]`"
+          :class="`bg-[--main-color] text-center font-bold text-[18px] block rounded-md w-full mb-2 py-[2px] transition-all duration-300 hover:bg-[#618aa8]`"
         >
           {{ $t("header.my_account") }}
         </NuxtLink>
@@ -235,52 +212,51 @@
         <NuxtLink
           v-else
           to="/create-account"
-          :class="`bg-[--main-color] text-center font-bold text-[18px] block rounded-xl w-full mb-2 py-[2px]`"
+          :class="`bg-[--main-color] text-center font-bold text-[18px] block rounded-md w-full mb-2 py-[2px] transition-all duration-300 hover:bg-[#618aa8]`"
         >
           {{ $t("header.create") }}
         </NuxtLink>
 
         <span
-          v-if="global.isAuth || role == 'admin' || role == 'user'"
+          v-if="type == 'admin' || type == 'client'"
           class="bg-[--main-color] font-bold text-[18px] block rounded-xl w-full"
         >
           <button
             @click="openPopup"
-            class="bg-[--main-color] font-bold text-[18px] block rounded-xl w-full"
+            class="bg-[--main-color] font-bold text-[18px] block rounded-md w-full transition-all duration-300 hover:bg-[#618aa8]"
           >
             {{ $t("header.logout") }}
           </button>
         </span>
         <span
           v-else
-          class="bg-[--main-color] font-bold text-[18px] block rounded-xl w-full"
+          class="bg-[--main-color] font-bold text-[18px] block rounded-md w-full transition-all duration-300 hover:bg-[#618aa8]"
         >
-          <button to="/login" class="w-full block text-center py-[2px]"
-            >{{ $t("header.login") }}
+          <button to="/login" class="w-full block text-center py-[2px]">
+            {{ $t("header.login") }}
           </button>
         </span>
       </div>
     </div>
   </header>
 </template>
-  
-  <script setup>
+
+<script setup>
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import LogoutPopup from "./LogoutPopup.vue";
 const { locale, locales, setLocale } = useI18n();
-const role = useCookie("role");
-const userInfo = useCookie("userInfo");
+const currentType = useCookie("type");
 const isDark = useCookie("isDark");
-const global = useGlobalStore();
+// const global = useGlobalStore();
 const router = useRouter();
 const route = useRoute();
 
 const displayPopup = ref(false);
 
-const currentPage = ref(route.fullPath.replace("/", "").toLowerCase());
+// const currentPage = ref(route.fullPath.replace("/", "").toLowerCase());
 
-const currentRole = computed(() => role.value);
+const type = computed(() => currentType.value);
 
 const toggleSidebar = ref(false);
 const activeState = reactive({
@@ -291,13 +267,13 @@ const activeState = reactive({
   contactUs: false,
 });
 
-const openLoader = (link) => {
-  // open loader before navigate to server side pages
-  if (currentPage.value?.toLowerCase() != link?.title?.toLowerCase()) {
-    currentPage.value = link?.title;
-    global.turnLoaderOn();
-  }
-};
+// const openLoader = (link) => {
+//   // open loader before navigate to server side pages
+//   if (currentPage.value?.toLowerCase() != link?.title?.toLowerCase()) {
+//     currentPage.value = link?.title;
+//     global.turnLoaderOn();
+//   }
+// };
 
 const navToSection = (type, id) => {
   if (route.fullPath != "/") {
@@ -444,8 +420,8 @@ watch(
   { immediate: true }
 );
 </script>
-  
-  <style>
+
+<style>
 .p-accordion-content,
 .p-accordion-header-link,
 .p-accordion-header-link:hover {
@@ -453,4 +429,5 @@ watch(
   border: 1px solid var(--secondary-card-color);
   color: #fff;
 }
-</style>~/composables/useRequest
+</style>
+~/composables/useRequest

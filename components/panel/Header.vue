@@ -118,7 +118,7 @@
                 :class="`${
                   !toggleSidebar && 'lg:hidden'
                 } text-[16px] text-nowrap  flex items-center lg:text-[18px]`"
-                >{{ $t(`sidbar.${role}.${link.title}`) }}</span
+                >{{ $t(`sidebar.${type}.${link.title}`) }}</span
               >
             </NuxtLink>
 
@@ -132,7 +132,7 @@
       <div class="self-end w-full left-0 bottom-0 mb-8 px-[8px]">
         <NuxtLink
           to="/"
-          class="mb-3 bg-[--main-color] font-bold text-[18px] block rounded-md w-full"
+          class="mb-3 bg-[--main-color] font-bold text-[18px] block rounded-md w-full transition-all duration-300 hover:bg-[#618aa8]"
         >
           <button
             class="w-full py-2 flex items-center justify-center gap-2 text-center h-[40px]"
@@ -149,7 +149,7 @@
         </NuxtLink>
 
         <span
-          class="bg-[--main-color] font-bold text-[18px] block rounded-md w-full"
+          class="bg-[--main-color] font-bold text-[18px] block rounded-md w-full transition-all duration-300 hover:bg-[#618aa8]"
         >
           <button
             @click="openPopup"
@@ -173,13 +173,13 @@
     
   <script setup>
 import { useGlobalStore } from "~/stores/global";
-import useRequest from "~/composables/useRequest";
+// import useRequest from "~/composables/useRequest";
 import LogoutPopup from "../generic/LogoutPopup.vue";
 
 const displayPopup = ref(false);
 const isDark = useCookie("isDark");
 const { locale, locales, setLocale } = useI18n();
-const role = useCookie("role");
+const type = useCookie("type");
 const userInfo = useCookie("userInfo");
 
 const toggleSidebar = ref(false);
@@ -201,12 +201,13 @@ const closeSidebar = () => {
 
 const openPopup = () => {
   displayPopup.value = true;
+  closeSidebar();
 };
 const closePopup = () => {
   displayPopup.value = false;
 };
 const links = computed(() => {
-  if (role.value == "admin") {
+  if (type.value == "admin") {
     return [
       {
         img: "dashboard.svg",
@@ -309,7 +310,7 @@ const links = computed(() => {
         isMulti: false,
       },
     ];
-  } else if (role.value == "user") {
+  } else if (type.value == "client") {
     return [
       {
         img: "invoice.svg",

@@ -1,10 +1,10 @@
 
 export default defineNuxtRouteMiddleware(async (to, from ) => {
-    const role = useCookie('role' );
+    const type = useCookie('type' );
 
 
   if(process.server || process.client ){
-    if( role.value && role.value !== ''){
+    if( type.value && type.value !== ''){
         return navigateTo('/');
     }
   }

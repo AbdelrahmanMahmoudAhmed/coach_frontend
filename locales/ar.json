@@ -98,7 +98,7 @@
   },
 
   "popups":{
-    "logout_confirmation":" هل أنت متأكد من تسجيل الخروج؟ , {name}",
+    "logout_confirmation":" {name}, هل أنت متأكد من تسجيل الخروج؟",
     "cancel":"الغاء"
   },
 
@@ -139,7 +139,7 @@
       "invalid_credential": "البريد الإلكتروني أو كلمة المرور خاطئة"
     }
   },
-  "sidbar": {
+  "sidebar": {
     "admin": {
       "dashboard": "لوحة المعلومات",
       "packages_management": "إدارة الباقات",
@@ -158,7 +158,7 @@
       "website_settings": "ادارة الموقع",
       "service": "ادارة الخدمات"
     },
-    "user": {
+    "client": {
       "billing": "الدفع",
       "invoices": "الفواتير",
       "packages_management": "إدارة الباقات",

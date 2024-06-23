@@ -26,13 +26,13 @@
         <button
           @click="closePopup"
           type="button"
-          class="bg-[#062946] rounded-[21px] h-[40px] px-[23px]"
+          class="bg-[#062946] rounded-[21px] h-[40px] px-[23px] transition-all hover:bg-[#2FA3F7]"
         >
           {{ $t("popups.cancel") }}
         </button>
         <button
           type="submit"
-          class="bg-[#2FA3F7] rounded-[21px] h-[40px] px-[23px]"
+          class="bg-[#2FA3F7] rounded-[21px] h-[40px] px-[23px] transition-all	hover:bg-[#062946]"
         >
           {{ $t("header.logout") }}
         </button>
