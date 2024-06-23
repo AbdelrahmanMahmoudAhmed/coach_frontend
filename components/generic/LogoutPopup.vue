@@ -1,7 +1,7 @@
 <template>
   <div
     @click.self="closePopup"
-    class="popup fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto flex justify-center items-center"
+    class="popup fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-50 overflow-auto flex justify-center items-center"
   >
     <form
       @submit.prevent="logoutFun"
@@ -16,7 +16,7 @@
       <div
         class="text-center text-[#747474] text-[12px] xs:text-[14px] dark:text-[#FFFFFFAD]"
       >
-        {{ $t("popups.logout_confirmation" , {name :  global.user?.name }) }}
+        {{ $t("popups.logout_confirmation", { name: global.user?.name }) }}
         <!-- <span class="font-bold">{{ global.user?.name }}</span> -->
       </div>
 
@@ -42,42 +42,27 @@
 </template>
     
     <script setup>
-import useRequest from "~/composables/useRequest";
+import { removeUserData } from "~/composables/useAuth";
 import { useGlobalStore } from "~/stores/global";
+
 const emit = defineEmits(["closePopup", "openSuccessPopup"]);
-
 const { locale, locales, setLocale } = useI18n();
-
-const role = useCookie("role");
-const userInfo = useCookie("userInfo");
-const router = useRouter();
 const global = useGlobalStore();
-
-const { logout } = useRequest();
+const route = useRoute();
+const router = useRouter();
 
 const closePopup = () => {
   emit("closePopup");
 };
 
 const logoutFun = () => {
-  logout()
-    .then((res) => {
-      (role.value = ""), global.updateAuth({ user: {}, isAuth: false });
-      localStorage.setItem("auth", "");
-      userInfo.value = "";
-      router.push("/");
-      closePopup()
-    })
-    .catch((err) => {
-      console.error(err);
-      (role.value = ""), global.updateAuth({ user: {}, isAuth: false });
-      localStorage.setItem("auth", "");
-      userInfo.value = "";
-      router.push("/");
-      closePopup()
-    });
+  let isRedirect = route.fullPath.includes("/panel");
+
+  removeUserData();
+  if (isRedirect) router.push("/");
+  closePopup();
 };
 </script>
     
     <style >
-</style>~/composables/useRequest
+</style>

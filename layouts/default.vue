@@ -4,7 +4,7 @@
 
 <div :class="``	"> 
 
-  <div class="min-h-[50vh] mt-[86px] lg:mt-[178px]">
+  <div class="min-h-[50vh] mt-[86px] lg:mt-[108px]">
     <slot />
   </div>
   <Footer />

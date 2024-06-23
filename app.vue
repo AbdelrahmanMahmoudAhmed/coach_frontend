@@ -19,6 +19,7 @@ import { useGlobalStore } from "~/stores/global";
 
 const global = useGlobalStore();
 const currentLang = useCookie("i18n_redirected");
+console.log('currentLang' , currentLang.value)
 
 const roleCookie = useCookie("role");
 const typeCookie = useCookie("type");
@@ -52,7 +53,8 @@ onBeforeMount(() => {
 useHead({
   bodyAttrs: {
     class: computed(() => (isDark.value == "dark" && global.isPopup) ? "dark freeze" : isDark.value == "dark" && !global.isPopup ? "dark" : isDark.value == "light" && global.isPopup ? "light freeze" : "light",),
-    dir: "ltr"
+    dir: computed(() => currentLang.value == 'ar' ? 'rtl' : 'ltr' ),
+
   },
   link: [{ rel: "icon", type: "image/png", href: "/logo.svg" }],
   meta: [

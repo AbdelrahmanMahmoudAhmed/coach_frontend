@@ -46,4 +46,3 @@ export const removeUserData = () => {
     tokenCookie.value = "";
   };
 
-// export default login

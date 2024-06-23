@@ -79,8 +79,9 @@
     <div
       @click="closeSidebar"
       v-if="toggleSidebar"
-      class="fixed top-0 left-0 blur-sm z-10 w-[100vw] h-[100vh] backdrop-blur-[1px]"
+      class="fixed top-0 left-0 blur-sm z-10 w-[100vw] h-[100vh] backdrop-blur-[4px]"
     ></div>
+    
     <div
       :class="`${
         toggleSidebar
