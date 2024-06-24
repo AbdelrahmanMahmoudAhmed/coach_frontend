@@ -1,17 +1,17 @@
 import useAxios from "./useAxios";
+import { useGlobalStore } from "~/stores/global";
 
 const useRequest = () => {
   const REQUEST = useAxios();
+const global = useGlobalStore()
+
 
   const headers = {
     'Content-Type': 'multipart/form-data',
+    'Authorization': `bearer ${global.token}`
   };
 
-  ////////////////////////////////////////////
-  const contact = async (data) => {
-    return await REQUEST.post("/api/contact-us", data);
-  };
-
+ 
 
 
 
@@ -35,6 +35,24 @@ const useRequest = () => {
 
   // end auth
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ////////////////////////////////////////////
+   const contact = async (data) => {
+    return await REQUEST.post("/api/contact-us", data);
+  };
 
   //user REQUESTs section >>>>
 
@@ -111,7 +129,7 @@ const useRequest = () => {
 
 
   const adminData  = async () => {
-    return await REQUEST.get("/api/panel/admins/me");
+    return await REQUEST.get("/admin/admins/me" , {headers});
   };
   const getAllSettings = async () => {
     return await REQUEST.get("/api/panel/settings");

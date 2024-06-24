@@ -95,6 +95,7 @@
     "not_subscribed":"This email address is not subscribed",
     "expired_token":"The validity period for retrieving the password from this link has expired. Send us again.",
     "wrong_token":"invalid URL",
+    "not_auth":"You are not authorized to use this link. Please log in",
 
 
     "success_regester":"Your regester has been successeed",

@@ -30,7 +30,9 @@ export default function useCustomErr(customCode, t) {
     case 8:
       showMessage(t("toast.wrong_token"));
       break;
-
+    case 9:
+      showMessage(t("toast.not_auth"));
+      break;
     default:
       showMessage(t("toast.something_wrong"));
       break;
