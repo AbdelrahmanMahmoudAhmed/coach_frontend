@@ -33,6 +33,9 @@ export default function useCustomErr(customCode, t) {
     case 9:
       showMessage(t("toast.not_auth"));
       break;
+      case 10:
+        showMessage(t("toast.image_not_allowed"));
+        break;
     default:
       showMessage(t("toast.something_wrong"));
       break;

@@ -20,7 +20,7 @@
           <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
             <div class="relative">
               <label class="px-[30px] mb-1" for="">{{ $t('auth.image') }}</label>
-              <input @change="onChangeIamge"
+              <input @change="onChangeImage"
                 class=" py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
                 type="file" />
             </div>
@@ -380,7 +380,7 @@ const changeVal = (val, name) => {
     state.goal = val;
 
 };
-const onChangeIamge = (e) => {
+const onChangeImage = (e) => {
   console.log("e", e.target.files)
   const file = e.target.files[0]
   state.image = file

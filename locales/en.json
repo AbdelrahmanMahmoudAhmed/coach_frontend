@@ -96,7 +96,7 @@
     "expired_token":"The validity period for retrieving the password from this link has expired. Send us again.",
     "wrong_token":"invalid URL",
     "not_auth":"You are not authorized to use this link. Please log in",
-
+    "image_not_allowed":"The type of this image is not allowed",
 
     "success_regester":"Your regester has been successeed",
     "success_reset":"Your password has been reset successfully",

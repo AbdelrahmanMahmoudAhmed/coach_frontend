@@ -127,10 +127,15 @@ const global = useGlobalStore()
     return await REQUEST.post("/admin/auth", data);
   };
 
-
   const adminData  = async () => {
     return await REQUEST.get("/admin/admins/me" , {headers});
   };
+
+
+
+
+
+
   const getAllSettings = async () => {
     return await REQUEST.get("/api/panel/settings");
   };
@@ -144,6 +149,9 @@ const global = useGlobalStore()
   };
 
   // Start Manage Admins
+  const editCurrentAdmin =  async ( data) => {
+    return await REQUEST.patch(`/admin/admins/me`, data ,{headers});
+  };
   const getAllAdmins = async (page, search) => {
     return await REQUEST.get(`/api/panel/admins?search=${search}&page=${page}`);
   };
@@ -157,9 +165,7 @@ const global = useGlobalStore()
     return await REQUEST.delete(`/api/panel/admins/${id}`);
   };
   
-  const editCurrentAdmin =  async ( data) => {
-    return await REQUEST.patch(`/api/panel/admins/me`, data);
-  };
+
   // End Manage Admins
 
 
