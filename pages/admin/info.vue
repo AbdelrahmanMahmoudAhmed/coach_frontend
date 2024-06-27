@@ -247,8 +247,7 @@ const getAdminData = async () => {
     state.email = res.data.data.email;
     state.image = res.data.data.image;
     state.phone = res.data.data.phone;
-    // state.name = res.data.data.name;
-    // state.name = res.data.data.name;
+    imageDisplaying.value = `http://localhost:8080${res.data.data.image}`;
   } catch (err) {
     console.error(err);
   } finally {
@@ -299,26 +298,26 @@ const rules = computed(() => {
     name: {required},
     email: {required, email },
     phone: { required ,numeric },
-    image: {
-      required: requiredIf(function (nestedModel) {
-        const allowedMimeTypes = ["image/jpeg", "image/jpg" , "image/png"]; // Add more MIME types as needed
-        if (!state.image) {
-          errors.image.state = true;
-          errors.realImage.state = false;
-          return true;
-        } else if (allowedMimeTypes.includes(nestedModel.type)) {
-          errors.image.state = false;
-          errors.realImage.state = false;
-          // Accept the file
-          return false;
-        } else {
-          // Reject the file
-          errors.realImage.state = true;
-          errors.image.state = false;
-          return true;
-        }
-      }),
-    },
+    // image: {
+    //   required: requiredIf(function (nestedModel) {
+    //     const allowedMimeTypes = ["image/jpeg", "image/jpg" , "image/png"]; // Add more MIME types as needed
+    //     if (!state.image) {
+    //       errors.image.state = true;
+    //       errors.realImage.state = false;
+    //       return true;
+    //     } else if (allowedMimeTypes.includes(nestedModel.type)) {
+    //       errors.image.state = false;
+    //       errors.realImage.state = false;
+    //       // Accept the file
+    //       return false;
+    //     } else {
+    //       // Reject the file
+    //       errors.realImage.state = true;
+    //       errors.image.state = false;
+    //       return true;
+    //     }
+    //   }),
+    // },
     password: {
       required: (state.password || state.passwordConfirmation) && required,
       maxLength: maxLength(50),

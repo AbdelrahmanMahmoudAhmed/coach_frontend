@@ -335,7 +335,6 @@ const createAccount = async () => {
   errors.passwordConfirmation.state = false;
 
   const result = await v$.value.$validate();
-  console.log("v$.value >>> ", v$.value)
   if (result) {
     const payload = new FormData();
     payload.append('name' , state.name)
@@ -389,4 +388,3 @@ const onChangeImage = (e) => {
 </script>
 
 <style></style>
-~/composables/useRequest
