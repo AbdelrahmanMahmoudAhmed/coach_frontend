@@ -13,7 +13,7 @@
     >
       <!-- <button
         @click="() => openPopup('add')"
-        class="rounded-md px-6 py-2 text-white bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 py-2 text-white bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`admin.actions.add_user_packages_vps`) }}
       </button> -->
@@ -29,7 +29,7 @@
           type="text"
         />
         <button
-          class="rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
+          class="rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -42,7 +42,7 @@
         :rows="rows"
         page="manage-user-vps-packages"
         @openPopup="openPopup"
-        :loadingData="loadingData"
+        :dataFetched="dataFetched"
       />
     </div>
     <div     v-if="totalRecords > 10" dir="ltr" class="">
@@ -57,7 +57,7 @@
 </template>
     
     <script setup>
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
@@ -78,7 +78,7 @@ const headers = ref([
   "actions",
 ]);
 const rows = ref([]);
-const loadingData = ref(false)
+const dataFetched = ref(false)
 const currentPage = ref(2);
 const totalRecords = ref(1);
 const searchInput = ref("");
@@ -175,7 +175,7 @@ const getUserVpsPackagesData = (page = 1) => {
 
     }
   ).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

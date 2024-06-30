@@ -3,7 +3,7 @@
 
     <button
       @click="() => toggleDropdown(item?.id)"
-      class="bg-[--main-card-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87]"
+      class="bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87]"
     >
       {{ $t(`table.headers.actions`) }}
       <img src="" alt="" />
@@ -11,7 +11,7 @@
     <div
       v-if="dropDownMenu"
       :id="`drop-${item?.id}`"
-      class="drop-down-menu p-2 border border-[--main-color] absolute w-full min-w-[fit] h-[165px] bg-[--main-card-color] bottom-[-170px] z-10 rounded-md left-0"
+      class="drop-down-menu p-2 border border-[--main-color] absolute w-full min-w-[fit] h-[165px] bg-[--third-color] bottom-[-170px] z-10 rounded-md left-0"
     >
       <div class="flex justify-center mb-1">
         <span

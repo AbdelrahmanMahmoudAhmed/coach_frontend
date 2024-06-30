@@ -4,7 +4,7 @@
 
     </div>
     <div class=" mb-[30px] dark:text-[#fff] 2xl:px-[299px]">
-        <div id="continents-holder" class="  overflow-hidden h-[41px] rounded-[50px] flex items-center border border-[#8ACBFA] dark:border-none dark:bg-[#0F426B]">
+        <div id="continents-holder" class="  overflow-hidden h-[41px] rounded-[50px] flex items-center border border-[#8ACBFA] dark:border-none dark:bg-[--rows-color]">
             <span   @click="()=>toggleProxyType('ipv4')" :class="`${global.currentProxy == 'ipv4' && 'active'} continent transition-all text-center h-full flex items-center justify-center flex-1 cursor-pointer text-[8px] xs:text-[12px] sm:text-[14px] md:text-[18px]`">
                 IPv4
             </span>
@@ -30,7 +30,7 @@
     >
       <!-- <button
         @click="() => openPopup('add')"
-        class="rounded-md px-6 py-2 text-white bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 py-2 text-white bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`admin.actions.add_package`) }}
       </button> -->
@@ -46,7 +46,7 @@
           type="text"
         />
         <button
-          class="rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
+          class="rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -59,7 +59,7 @@
         :rows="rows"
         page="manage-user-proxy-packages"
         @openPopup="openPopup"
-        :loadingData="loadingData"
+        :dataFetched="dataFetched"
       />
     </div>
 
@@ -75,7 +75,7 @@
 </template>
     
     <script setup>
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
@@ -91,7 +91,7 @@ const headers = ref([
   "actions",
 ]);
 const rows = ref([]);
-const loadingData = ref(false)
+const dataFetched = ref(false)
 const currentPage = ref(2);
 const totalRecords = ref(1);
 const searchInput = ref("");
@@ -162,7 +162,7 @@ const getUserProxyPackagesData = (page = 1) => {
     }
   )
   .catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

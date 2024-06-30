@@ -4,7 +4,7 @@
   </div>
   <header id="app-header" :class="`border-b-[#16334A] border-b-2`">
     <div
-      class="panel-container bg-[--main-card-color] h-[80px] text-[#fff] shadow-3xl relative flex items-center justify-between lg:justify-end"
+      class="panel-container bg-[--third-color] h-[80px] text-[#fff] shadow-3xl relative flex items-center justify-between lg:justify-end"
     >
       <div>
         <div class="flex justify-center lg:hidden">
@@ -51,7 +51,7 @@
               />
               <img v-else src="../../assets/imgs/lightmode.png" alt="" />
             </button>
-            <!-- 
+            
             <div
               @click="changeLang"
               class="flex items-center gap-[5px] text-[20px] font-[400] cursor-pointer"
@@ -59,18 +59,18 @@
 
               <img
                 v-if="locale == 'en'"
-                class="hidden w-[48px] h-[30px] sm:inline-block"
+                class="w-[48px] h-[30px]"
                 src="../../assets/imgs/arabic.png"
                 alt=""
               />
               <img
                 v-else
-                class="hidden w-[48px] h-[30px] sm:inline-block"
+                class="w-[48px] h-[30px]"
                 src="../../assets/imgs/english.png"
                 alt=""
               />
-              <span class="flex items-center"> {{ $t("header.lang") }}</span>
-            </div> -->
+              <span class="hidden items-center sm:inline-block"> {{ $t("header.lang") }}</span>
+            </div> 
           </div>
         </div>
       </div>

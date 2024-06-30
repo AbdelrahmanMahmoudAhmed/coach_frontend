@@ -61,14 +61,14 @@
     </div>
     <div class="relative">
       <div
-        class="absolute h-[65px] w-full left-0 top-[-32px] skew-x-0 skew-y-[2.5deg] bg-[--main-card-color]"
+        class="absolute h-[65px] w-full left-0 top-[-32px] skew-x-0 skew-y-[2.5deg] bg-[--third-color]"
       ></div>
       <div
         :class="` ${
           locale == 'ar'
             ? '2xl:pr-[54px] 2xl:pl-[30px]'
             : '2xl:pl-[54px] 2xl:pr-[30px]'
-        } relative z-10 bg-[--main-card-color] px-3 pb-[20px] lg:px-10 lg:pb-[40px] `"
+        } relative z-10 bg-[--third-color] px-3 pb-[20px] lg:px-10 lg:pb-[40px] `"
       >
         <h2
           class="text-[#2FA3F7] font-[800] text-[20px] mb-[10px] xs:text-[26px] md:text-[35px]"

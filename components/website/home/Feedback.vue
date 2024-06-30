@@ -67,7 +67,7 @@
                         />
                       </div>
                       <h5
-                        class="text-center font-[500] text-[--main-card-color] text-[16px] xs:text-[18px] sm:text-[20px]"
+                        class="text-center font-[500] text-[--third-color] text-[16px] xs:text-[18px] sm:text-[20px]"
                       >
                         {{ item?.name }}
                       </h5>
@@ -81,7 +81,7 @@
                       :dir="locale == 'ar' ? 'rtl' : 'ltr'"
                       class="border-t-[3px] border-[#0000001A]"
                     >
-                      <!-- <h5 class=" text-[--main-card-color] mb-[6px] mt-3 font-bold text-center text-[16px] xs:text-[18px] sm:text-[20px] lg-mt-2 lg:text-start lg:mt-[10px] "> {{ item.data.title }}</h5> -->
+                      <!-- <h5 class=" text-[--third-color] mb-[6px] mt-3 font-bold text-center text-[16px] xs:text-[18px] sm:text-[20px] lg-mt-2 lg:text-start lg:mt-[10px] "> {{ item.data.title }}</h5> -->
                       <p
                         v-html="
                           locale == 'ar'

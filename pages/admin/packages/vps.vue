@@ -13,7 +13,7 @@
     >
       <button
         @click="() => openPopup('add')"
-        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`admin.actions.add_vps`) }}
       </button>
@@ -30,7 +30,7 @@
           type="text"
         />
         <button
-          class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
+          class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -43,7 +43,7 @@
         :rows="rows"
         page="manage-vps"
         @openPopup="openPopup"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -60,7 +60,7 @@ definePageMeta({
   middleware: "admin-guard",
 });
 
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import ManageVps from "~/components/panel/popups/ManageVps.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
@@ -79,7 +79,7 @@ const allData = ref();
 const currentPage = ref(2);
 const totalRecords = ref(1);
 const searchInput = ref("");
-const loadingData = ref(false)
+const dataFetched = ref(false)
 
 
 const closePopup = () => {
@@ -144,7 +144,7 @@ const getVpsData = (page = 1) => {
     });
     rows.value = handelVps;
   }).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

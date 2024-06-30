@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[--main-card-color] pb-16">
+  <div class="bg-[--third-color] pb-16">
     <div>
       <SectionTitle :title="$t('header.contact_us')" :isColord="false" />
     </div>
@@ -13,7 +13,7 @@
               <div class="w-full mb-2 xl:mb-3">
                 <input
                   v-model="state.name"
-                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-card-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
                   type="text"
                   :placeholder="$t('auth.name')"
                 />
@@ -27,7 +27,7 @@
               <div class="w-full mb-2 xl:mb-3">
                 <input
                   v-model="state.email"
-                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-card-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
                   type="email"
                   :placeholder="$t('auth.email')"
                   autocomplete="off" 
@@ -43,7 +43,7 @@
             <div class="mb-2 xl:mb-3">
               <input
                 v-model="state.title"
-                class="placeholder:text-[#ffffff82] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-card-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                class="placeholder:text-[#ffffff82] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
                 type="text"
                 :placeholder="$t('auth.title')"
               />
@@ -57,7 +57,7 @@
             <div class="mb-2 xl:mb-3">
               <textarea
                 v-model="state.message"
-                class="placeholder:text-[#ffffff82] min-h-[240px] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-card-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                class="placeholder:text-[#ffffff82] min-h-[240px] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
                 type="text"
                 :placeholder="$t('auth.message')"
               ></textarea>

@@ -18,23 +18,7 @@
     "get_in_touch": "Get in Touch",
     "quick_links": "Quick Links"
   },
-  "dashboard":{
-    "ipv4":"IPv4",
-    "ipv6":"ipv6",
-    "vps":"VPS",
-    "mobile":"Mobile",
-    "isp":"ISP",
-    "residential":"Residential",
-    "orderCount":"Orders Count",
-    "userCount":"Users Count",
-    "mix":"MIX",
-    "digiproxyAvailableTraffic":"The available Traffic of digiproxy as GB",
-    "digiproxyBalance":" The Balance of the digiproxy",
-    "proxyResellerBalance":"The balance of the proxy-reseller",
-    "digiproxyUsedTraffic":"Used digiproxy Traffic",
-    "credit":"Credit",
-    "spent_credit":"Spent Credit"
-  },
+
   "auth": {
     "login_now": "Login Now",
     "my_account": "My account",
@@ -60,8 +44,8 @@
     "goal":"Goal",
     "phone":"Phone",
     "image":"Your image",
-
-   
+    "admin_image":"Admin Image",   
+    "role":"Role",
       "errors": {
       "add_name": "Please add your name",
       "add_email": "Please add your email",
@@ -72,6 +56,7 @@
       "add_image": "Please add your image",
       "add_real_image": "The image extension must be jpg or jpeg",
       "add_username":"Add the User Name",
+      "choose_role":"Please Choose role",
 
 
       "add_tall":"Please add your tall",

@@ -17,7 +17,7 @@
         :rows="rows"
         page="show-details"
         @openPopup="openPopup"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -37,13 +37,13 @@
   layout: "panel",
   middleware: "admin-guard",
 });
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
 
 const global = useGlobalStore();
-const loadingData = ref(false)
+const dataFetched = ref(false)
 
 const { locale, locales, setLocale, t } = useI18n();
 const type = ref("");
@@ -146,7 +146,7 @@ const getUserProxyPackagesData = (page = 1) => {
 
     }
   ).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

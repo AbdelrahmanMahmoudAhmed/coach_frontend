@@ -47,7 +47,7 @@
     >
       <button
         @click="() => openPopup('add')"
-        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`user.actions.add_billing`) }}
       </button>
@@ -58,7 +58,7 @@
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-md px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
                 type="text"
               />
-              <button class=" rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8" type="submit">
+              <button class=" rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8" type="submit">
                 {{ $t(`admin.actions.search`) }}
               </button>
       </form> -->
@@ -69,7 +69,7 @@
         :rows="rows"
         page="manage-billing"
         @openPopup="openPopup"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -89,7 +89,7 @@ definePageMeta({
   layout: "panel",
   middleware: "user-guard",
 });
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
@@ -108,7 +108,7 @@ const rows = ref([]);
 const currentPage = ref(2);
 const totalRecords = ref(1);
 const searchInput = ref("");
-const loadingData = ref(false)
+const dataFetched = ref(false)
 
 const closePopup = () => {
   popup.value = false;
@@ -169,7 +169,7 @@ const getBillingData = (page = 1) => {
       rows.value = handelBillings;
     })
     .catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

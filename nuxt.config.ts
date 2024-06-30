@@ -31,7 +31,9 @@ export default defineNuxtConfig({
     '~/assets/css/fonts.css'
   ],
   plugins: [
-    { src: '@/plugins/toast.js', mode: 'client' }
+    { src: '@/plugins/toast.js', mode: 'client' },
+    { src: '@/plugins/paginator.js', mode: 'client' }
+
   ],
 
 
@@ -39,7 +41,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       dev_base: process.env.API_BASE,
-      prod_base: process.env.API_BASE_PRODUCTION
+      prod_base: process.env.API_BASE_PRODUCTION,
+      base_url: process.env.BASE_URL
     }
   },
 

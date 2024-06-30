@@ -4,7 +4,7 @@
         <!-- <ManageServices :type="type" :currentService="currentService" @getServiceData="getServiceData" @closePopup="closePopup" /> -->
       </div>
       <div class="px-0  flex justify-between flex-col-reverse gap-3 md:flex-row md:px-2 lg:px-4">
-        <button  @click="()=>openPopup('add')"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+        <button  @click="()=>openPopup('add')"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
 >{{ t(`admin.actions.add_service`) }}</button>
         <!-- <form @submit.prevent="getServiceData" class="flex gap-2 flex-row-reverse" action="">
           <input
@@ -13,13 +13,13 @@
                   class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-md px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
                   type="text"
                 />
-                <button class=" rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8" type="submit">
+                <button class=" rounded-md px-6 py-2 text-white h-[50px] bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8" type="submit">
                   {{ $t(`admin.actions.search`) }}
                 </button>
         </form> -->
       </div>
       <div class="min-h-[60vh] overflow-x-auto ">
-        <RegularDataTable         :loadingData="loadingData"
+        <RegularDataTable         :dataFetched="dataFetched"
      :headers="headers" :rows="rows" page="manage-services" @openPopup="openPopup" />
       </div>
     
@@ -36,7 +36,7 @@
       middleware: "admin-guard",
     });
     
-    import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+    import RegularDataTable from "~/components/panel/DataTable.vue";
     import useRequest from "~/composables/useRequest";
     import { useGlobalStore } from "~/stores/global";
     
@@ -49,7 +49,7 @@
     const { getServices } = useRequest();
     const headers = ref(["service_name", "host", "keyword" , "actions"]);
     const rows = ref([]);
-    const loadingData = ref(false)
+    const dataFetched = ref(false)
     
     const currentPage =ref(2);
     const totalRecords = ref(1);
@@ -110,7 +110,7 @@
         });
         rows.value = handledServices
       }).catch(console.error).finally(()=>{
-        loadingData.value = true
+        dataFetched.value = true
       });
     
     

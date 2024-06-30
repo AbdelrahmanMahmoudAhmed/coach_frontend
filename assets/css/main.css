@@ -1,71 +1,59 @@
-@import './tailwind.css';
+@import "./tailwind.css";
 
 :root {
+  /* drop doen style */
+  --ms-border-color-active: #2fa3f7;
+  --ms-dropdown-border-color: #2fa3f7;
+  --ms-ring-color: none;
+  --ms-tag-font-weight: 400;
+  --ms-px: 30px;
+  --ms-option-bg-selected: #82c3eb;
+  --ms-option-bg-selected-pointed: #2fa3f7;
+  --ms-radius: 46px;
 
-  
-    /* --primary-clr: #A70000;
-    --admin-header-height: 64px;
-   */
-    /* multiselect select style   */
-    /* --ms-tag-bg: #A70000;
-    --ms-tag-color: #fff; */
-    --ms-border-color-active: #2FA3F7;
-    --ms-dropdown-border-color: #2FA3F7;
+  /* variables */
+  --main-color: #3498db;
+  /* --main-color: #2fa3f7; */
+  --footer-color: #05131e;
+  --third-color: #001d34;
+  --secondary-color: #153853;
+  --trans-color: #d6f5fe;
+  --rows-color:#0F426B;
 
-    --ms-ring-color: none;
-  
-    /* --ms-tag-radius: 9999px; */
-    --ms-tag-font-weight: 400;
-    --ms-px: 30px;
-    --ms-option-bg-selected: #82c3eb;
-    --ms-option-bg-selected-pointed: #2FA3F7;
-  
-    --ms-radius: 46px;
-
-  --main-color: #2FA3F7;
-
-
-
-
-  --footer-color: #05131E;
-  --main-card-color: #001D34;
-  --secondary-card-color: #153853;
-  --trans-color:#D6F5FE;
-
-  caret-color:var(--main-color)
-  
+  caret-color: var(--main-color);
 }
-.multiselect-wrapper{
+.multiselect-wrapper {
   height: 50px;
 }
-body{
-
+body {
+  scroll-behavior: smooth;
 }
 
 body.light {
   color: #062946;
   background-color: #e7f2f8;
-  scroll-behavior: smooth;
+
+  /* drop doen style */
   --ms-dropdown-bg: #ffffff;
-  --ms-bg: #FFFFFF61;
-  --ms-border-color: #B5C4C9;
-
-
+  --ms-bg: #ffffff61;
+  --ms-border-color: #b5c4c9;
 }
 body.dark {
   color: #fff;
   background-color: #062946;
-  scroll-behavior: smooth;
-  --ms-dropdown-bg: #011F37;
-  --ms-bg: #011F37;
-  --ms-border-color: none;
 
+  /* drop doen style */
+
+  --ms-dropdown-bg: #011f37;
+  --ms-bg: #011f37;
+  --ms-border-color: none;
 }
-input{
+input {
   outline: none !important;
 }
 
-::-moz-selection { /* Code for Firefox */
+::-moz-selection {
+  /* Code for Firefox */
   color: white;
   background: var(--main-color);
 }
@@ -88,7 +76,6 @@ input::-webkit-inner-spin-button {
   margin: 0; */
 }
 
-
 /* @media only screen and (max-width: 760px){
 
 	.logo img{
@@ -100,9 +87,6 @@ input::-webkit-inner-spin-button {
     word-break: break-word; */
 }
 
-
-
-
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -110,7 +94,7 @@ input::-webkit-inner-spin-button {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--main-card-color);
+  background: var(--third-color);
 }
 
 /* Handle */
@@ -120,6 +104,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* classes */
-.freeze{
+.freeze {
   overflow: hidden;
 }

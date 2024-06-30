@@ -11,7 +11,7 @@
       />
     </div>
     <div class=" mb-[30px] dark:text-[#fff] 2xl:px-[299px]">
-      <div class="  overflow-hidden h-[41px] rounded-[50px] flex items-center border border-[#8ACBFA] dark:border-none dark:bg-[#0F426B]">
+      <div class="  overflow-hidden h-[41px] rounded-[50px] flex items-center border border-[#8ACBFA] dark:border-none dark:bg-[--rows-color]">
           <span   @click="()=>toggleProxyType('all')" :class="`${filteredType == 'all' && 'active'} transition-all text-center h-full flex items-center justify-center flex-1 cursor-pointer text-[8px] xs:text-[12px] sm:text-[14px] md:text-[18px]`">
                 {{ $t('global.all') }}
             </span>
@@ -39,7 +39,7 @@
     >
       <button
         @click="() => openPopup('add')"
-        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`admin.actions.add_proxy`) }}
       </button>
@@ -55,7 +55,7 @@
           type="text"
         />
         <button
-        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -68,7 +68,7 @@
         :rows="rows"
         page="manage-proxy"
         @openPopup="openPopup"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -85,7 +85,7 @@ definePageMeta({
   middleware: "admin-guard",
 });
 
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import ManageProxy from "~/components/panel/popups/ManageProxy.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
@@ -105,7 +105,7 @@ const totalRecords = ref(1);
 const searchInput = ref("");
 const proxyType = ref('');
 const filteredType = ref('all')
-const loadingData = ref(false);
+const dataFetched = ref(false);
 const resetPaginator =ref(true);
 
 const toggleProxyType = ( type ) => {
@@ -185,7 +185,7 @@ const getProxyData = (page =1 ) => {
 
     rows.value = handelProxies;
   }).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

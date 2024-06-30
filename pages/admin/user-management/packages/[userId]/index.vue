@@ -4,7 +4,7 @@
       <div
         id="continents-holder"
         
-        class="  overflow-hidden h-[41px] rounded-[50px] flex items-center border border-[#8ACBFA] dark:border-none dark:bg-[#0F426B]"
+        class="  overflow-hidden h-[41px] rounded-[50px] flex items-center border border-[#8ACBFA] dark:border-none dark:bg-[--rows-color]"
       >
         <span
           @click="vpsSection"

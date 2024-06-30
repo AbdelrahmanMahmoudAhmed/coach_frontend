@@ -6,7 +6,7 @@
     <div
       class="px-0 flex justify-end flex-col-reverse gap-3 md:flex-row md:px-2 lg:px-4"
     >
-      <!-- <button  @click="()=>openPopup('add')" class=" rounded-md px-6 py-2 text-white bg-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8">{{ t(`admin.actions.add_admin`) }}</button> -->
+      <!-- <button  @click="()=>openPopup('add')" class=" rounded-md px-6 py-2 text-white bg-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#8ACBFA] hover:dark:bg-[#3b74a3] lg:px-8">{{ t(`admin.actions.add_admin`) }}</button> -->
       <form
         @submit.prevent="getPaypalRequestsData"
         class="flex gap-2 flex-row-reverse"
@@ -19,7 +19,7 @@
           type="text"
         />
         <button
-        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -32,7 +32,7 @@
         :rows="rows"
         page="manage-paypal"
         @openPopup="openPopup"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -53,7 +53,7 @@ definePageMeta({
   middleware: "admin-guard",
 });
 
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
@@ -69,7 +69,7 @@ const rows = ref([]);
 const currentPage = ref(2);
 const totalRecords = ref(1);
 const searchInput = ref("");
-const loadingData = ref(false)
+const dataFetched = ref(false)
 
 const closePopup = () => {
   popup.value = false;
@@ -145,7 +145,7 @@ const getPaypalRequestsData = (page = 1) => {
     });
     rows.value = handelrequests;
   }).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 

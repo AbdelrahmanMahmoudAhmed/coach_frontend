@@ -1,5 +1,6 @@
 import useAxios from "./useAxios";
 import { useGlobalStore } from "~/stores/global";
+import getQuery from "~/utils/getQuery"
 
 const useRequest = () => {
   const REQUEST = useAxios();
@@ -131,10 +132,49 @@ const global = useGlobalStore()
     return await REQUEST.get("/admin/admins/me" , {headers});
   };
 
+  const getAllAdmins = async (query) => {
+    return await REQUEST.get(`/admin/admins${getQuery(query)}`, {headers});
+  };
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   const getAllSettings = async () => {
     return await REQUEST.get("/api/panel/settings");
@@ -152,9 +192,7 @@ const global = useGlobalStore()
   const editCurrentAdmin =  async ( data) => {
     return await REQUEST.patch(`/admin/admins/me`, data ,{headers});
   };
-  const getAllAdmins = async (page, search) => {
-    return await REQUEST.get(`/api/panel/admins?search=${search}&page=${page}`);
-  };
+
   const createAdmin = async (data) => {
     return await REQUEST.post(`/api/panel/admins`, data);
   };

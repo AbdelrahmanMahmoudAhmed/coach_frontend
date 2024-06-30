@@ -4,12 +4,12 @@
       <!-- <ManageFeatures :type="type" :currentFeature="currentFeature" @getFeaturesData="getFeaturesData" @closePopup="closePopup" /> -->
     </div>
     <div class="px-0  flex justify-between flex-col-reverse gap-3 md:flex-row md:px-2 lg:px-4">
-      <button  @click="()=>openPopup('add')"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+      <button  @click="()=>openPopup('add')"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
 >{{ t(`admin.actions.add_feature`) }}</button>
 
     </div>
     <div class="min-h-[60vh] overflow-x-auto ">
-      <RegularDataTable :loadingData="loadingData" :headers="headers" :rows="rows" page="manage-features" @openPopup="openPopup" />
+      <RegularDataTable :dataFetched="dataFetched" :headers="headers" :rows="rows" page="manage-features" @openPopup="openPopup" />
     </div>
 
   
@@ -22,7 +22,7 @@
     middleware: "admin-guard",
   });
   
-  import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+  import RegularDataTable from "~/components/panel/DataTable.vue";
   import useRequest from "~/composables/useRequest";
   import { useGlobalStore } from "~/stores/global";
 
@@ -31,7 +31,7 @@ const global = useGlobalStore();
   const { locale, locales, setLocale, t } = useI18n();
   const type = ref('');
   const currentFeature = ref('');
-  const loadingData = ref(false)
+  const dataFetched = ref(false)
 
   const popup = ref(false)
   const { getAllFeatures } = useRequest();
@@ -98,7 +98,7 @@ const global = useGlobalStore();
       });
       rows.value = handeldFeatures
     }).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
   
   

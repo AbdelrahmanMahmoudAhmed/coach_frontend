@@ -4,7 +4,7 @@
   </div>
   <header id="app-header" :class="`fixed top-0 left-0 w-full z-30  `">
     <div
-      class="app-container h-full bg-[--main-card-color] text-[#fff] shadow-3xl relative"
+      class="app-container h-full bg-[--third-color] text-[#fff] shadow-3xl relative"
     >
       <div class="h-[86px] flex items-center lg:h-[108px]">
         <div class="h-full w-full flex justify-between items-center">
@@ -425,8 +425,8 @@ watch(
 .p-accordion-content,
 .p-accordion-header-link,
 .p-accordion-header-link:hover {
-  background-color: var(--main-card-color);
-  border: 1px solid var(--secondary-card-color);
+  background-color: var(--third-color);
+  border: 1px solid var(--secondary-color);
   color: #fff;
 }
 </style>

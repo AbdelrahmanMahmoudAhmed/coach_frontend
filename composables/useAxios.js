@@ -20,7 +20,7 @@ const useAxios = () => {
   mainInstance.interceptors.request.use(
     function (config) {
       global.turnLoaderOn();
-
+        console.log('req intereptor config' , config)
       return config;
     },
     (error) => {
@@ -31,13 +31,19 @@ const useAxios = () => {
 
   mainInstance.interceptors.response.use(
     async (res) => {
+      console.log('res intereptor config' , res)
+
       global.turnLoaderOff();
       return Promise.resolve(res);
     },
     async (err) => {
+      console.log('res err intereptor config' , err)
+
+      console.log("errrrrrr")
       global.turnLoaderOff();
 
       if (err.response) {
+        console.log("err from intercebtor")
   // const { t } = useI18n()
 
         console.log('err.response.data.customCode' , err.response.data)

@@ -6,16 +6,16 @@
       {{ $t("admin.manage_website.title") }}
     </h1>
     <div
-      class="p-6 mb-8 rounded-lg bg-[#2FA3F726] flex justify-between gap-2 items-center dark:bg-[--main-card-color] "
+      class="p-6 mb-8 rounded-lg bg-[#2FA3F726] flex justify-between gap-2 items-center dark:bg-[--third-color] "
     >
 <p class=" pt-2 font-bold text-[14px] mb-3 sm:text-[20px] lg:text-[22px]">{{ $t("admin.manage_website.clear_cashed_data") }}</p>
 
-    <button  @click="()=>clearCacheFun()"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+    <button  @click="()=>clearCacheFun()"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
 >{{ $t("admin.manage_website.clear") }}</button>
   </div>
     <form class="" @submit.prevent="updateWebsiteSettings">
       <div
-        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--main-card-color]"
+        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--third-color]"
       >
         <h3 class="font-bold text-[14px] mb-3 sm:text-[20px] lg:text-[26px]">
           {{ $t("admin.manage_website.main_content") }}
@@ -192,7 +192,7 @@
       </div>
 
       <div
-        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--main-card-color]"
+        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--third-color]"
       >
         <h3 class="font-bold text-[14px] mb-3 sm:text-[20px] lg:text-[26px]">
           {{ $t("admin.manage_website.social_media") }}
@@ -258,7 +258,7 @@
       </div>
 
       <div
-        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--main-card-color]"
+        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--third-color]"
       >
         <h3 class="font-bold text-[14px] mb-3 sm:text-[20px] lg:text-[26px]">
           {{ $t("admin.manage_website.static_pages") }}
@@ -357,7 +357,7 @@
       </div>
 
       <div
-        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--main-card-color]"
+        class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--third-color]"
       >
         <h3 class="font-bold text-[14px] mb-3 sm:text-[20px] lg:text-[26px]">
           {{ $t("admin.manage_website.settings") }}

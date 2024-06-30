@@ -15,13 +15,13 @@
 <div class="flex gap-2"> 
   <button
         @click="() => openPopup('add')"
-        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`admin.actions.add_user`) }}
       </button>
       <button
         @click="downloadAllUsersData"
-        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[#0F426B]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
       >
         {{ t(`admin.actions.download_users`) }}
       </button>
@@ -38,7 +38,7 @@
           type="text"
         />
         <button
-        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -52,7 +52,7 @@
         page="manage-users"
         @openPopup="openPopup"
         :toggleActions="actions"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -73,7 +73,7 @@ definePageMeta({
   middleware: "admin-guard",
 });
 
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import ManageUsers from "~/components/panel/popups/ManageUsers.vue";
 import useRequest from "~/composables/useRequest";
 import useServerRequest from "~/composables/useServerRequist";
@@ -85,7 +85,7 @@ const { locale, locales, setLocale, t } = useI18n();
 const type = ref("");
 const currentUser = ref("");
 const actions = ref(false);
-const loadingData = ref(false)
+const dataFetched = ref(false)
 const popup = ref(false);
 const { getAllUsers, downloadAllUsers } = useRequest();
 const headers = ref([
@@ -164,7 +164,7 @@ const getUsersData = (page = 1) => {
     });
     rows.value = handeldUsers;
   }).catch(console.error).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 };
 const downloadAllUsersData = () => {

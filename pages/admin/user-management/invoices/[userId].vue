@@ -24,7 +24,7 @@
           type="number"
         />
         <button
-        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[#0F426B] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
+        class="rounded-md px-6 py-2 font-[700] h-[50px] border border-[#6fb7eb] dark:bg-[--rows-color] hover:bg-[#c6e3f7] hover:dark:bg-[#3b74a3] lg:px-8"
           type="submit"
         >
           {{ $t(`admin.actions.search`) }}
@@ -37,7 +37,7 @@
         :rows="rows"
         page="manage-user-invoices"
         @openPopup="openPopup"
-        :loadingData="loadingData" 
+        :dataFetched="dataFetched" 
       />
     </div>
 
@@ -58,7 +58,7 @@ definePageMeta({
   middleware: "admin-guard",
 });
 
-import RegularDataTable from "~/components/panel/RegularDataTable.vue";
+import RegularDataTable from "~/components/panel/DataTable.vue";
 import ManageInvoices from "~/components/panel/popups/ManageInvoices.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
@@ -69,7 +69,7 @@ const { locale, locales, setLocale, t } = useI18n();
 const type = ref("");
 const currentUserInvoicesData = ref("");
 const popup = ref(false);
-const loadingData = ref(false)
+const dataFetched = ref(false)
 
 const { getUserInvoices , searchInvoice } = useRequest();
 const headers = ref([
@@ -254,7 +254,7 @@ if( searchInput.value){
   }).catch(()=>{
     rows.value = [];
   }).finally(()=>{
-    loadingData.value = true
+    dataFetched.value = true
   });
 }else{
   getUserInvoicesData()

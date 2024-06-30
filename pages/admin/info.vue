@@ -231,13 +231,14 @@ import {
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 
+const config = useRuntimeConfig();
 const global = useGlobalStore();
 const { locale, locales, setLocale, t } = useI18n();
 const { editCurrentAdmin, adminData } = useRequest();
 const imageDisplaying = ref("");
 
 const userInfo = useCookie("userInfo");
-
+const BASE_URL =  config.public.base_url;
 
 const getAdminData = async () => {
   global.turnLoaderOn();
@@ -247,7 +248,7 @@ const getAdminData = async () => {
     state.email = res.data.data.email;
     state.image = res.data.data.image;
     state.phone = res.data.data.phone;
-    imageDisplaying.value = `http://localhost:8080${res.data.data.image}`;
+    imageDisplaying.value = `${BASE_URL}${res.data.data.image}`;
   } catch (err) {
     console.error(err);
   } finally {
@@ -260,7 +261,6 @@ const state = reactive({
   email: "",
   image: "",
   phone: "",
-  // old_password:"",
   password: "",
   passwordConfirmation: "",
 });
@@ -298,26 +298,28 @@ const rules = computed(() => {
     name: {required},
     email: {required, email },
     phone: { required ,numeric },
-    // image: {
-    //   required: requiredIf(function (nestedModel) {
-    //     const allowedMimeTypes = ["image/jpeg", "image/jpg" , "image/png"]; // Add more MIME types as needed
-    //     if (!state.image) {
-    //       errors.image.state = true;
-    //       errors.realImage.state = false;
-    //       return true;
-    //     } else if (allowedMimeTypes.includes(nestedModel.type)) {
-    //       errors.image.state = false;
-    //       errors.realImage.state = false;
-    //       // Accept the file
-    //       return false;
-    //     } else {
-    //       // Reject the file
-    //       errors.realImage.state = true;
-    //       errors.image.state = false;
-    //       return true;
-    //     }
-    //   }),
-    // },
+    image: {
+      required: requiredIf(function (nestedModel) {
+        const allowedMimeTypes = ['image/jpeg', 'image/jpg']; // Add more MIME types as needed
+        // if(!state.image){
+        //   errors.image.state = true
+        //   errors.realImage.state =false;
+        //   return true
+        // }
+      //  else
+        if (allowedMimeTypes.includes(nestedModel.type)) {
+          errors.image.state = false
+          errors.realImage.state =false;
+          // Accept the file
+          return false
+        } else {
+          // Reject the file
+          errors.realImage.state =true;
+          errors.image.state = false
+          return true
+        }
+      })
+    },
     password: {
       required: (state.password || state.passwordConfirmation) && required,
       maxLength: maxLength(50),
@@ -332,51 +334,86 @@ const rules = computed(() => {
 });
 const v$ = useVuelidate(rules, state);
 
-const updateAdminData = async () => {
-  errors.name.state = false;
-  errors.email.state = false;
-  errors.phone.state = false;
-  errors.password.state = false;
-  errors.passwordConfirmation.state = false;
+// const updateAdminData = async () => {
+//   errors.name.state = false;
+//   errors.email.state = false;
+//   errors.phone.state = false;
+//   errors.image.state = false;
+//   errors.password.state = false;
+//   errors.passwordConfirmation.state = false;
 
-  const result = await v$.value.$validate();
+//   const result = await v$.value.$validate();
 
-  if (result) {
+//   if (result) {
+//     const payload = new FormData();
+//     payload.append('name' , state.name)
+//     payload.append('email' , state.email)
+//     payload.append('phone' , state.phone)
+//     payload.append('image' , state.image)
+//     state.password && payload.append('password' , state.password)
+//     state.passwordConfirmation && payload.append('passwordConfirmation' , state.passwordConfirmation)
+
+//     // change the new data on the local storage , cookies and memory
 
 
-    const payload = new FormData();
+//     // global.updateUserSpecificData({
+//     //   name: state.name,
+//     //   email: state.email,
+//     //   country: state.country?.alpha3,
+//     // });
+
+//     // userInfo.value = global.user;
+//     try{
+//       await editCurrentAdmin(payload)
+
+//     } catch (err) {
+//       console.log("this is the err")
+//     console.error(err);
+//   } finally {
+//     // global.turnLoaderOff();
+//   }
+//   } else {
+//     errors.name.state = v$.value.name.$error;
+//     errors.email.state = v$.value.email.$error;
+//     errors.phone.state = v$.value.phone.$error;
+//     errors.image.state = v$.value.image.$error;
+//     // errors.old_password.state = v$.value.old_password.$error;
+//     errors.password.state = v$.value.password.$error;
+//     errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
+//   }
+// };
+
+const updateAdminData =async()=>{
+  console.log("hello")
+  const payload = new FormData();
     payload.append('name' , state.name)
     payload.append('email' , state.email)
     payload.append('phone' , state.phone)
     payload.append('image' , state.image)
     state.password && payload.append('password' , state.password)
     state.passwordConfirmation && payload.append('passwordConfirmation' , state.passwordConfirmation)
-
-    // change the new data on the local storage , cookies and memory
-
-
-    global.updateUserSpecificData({
-      name: state.name,
-      email: state.email,
-      country: state.country?.alpha3,
+    console.log("state.image" , state.image)
+  try {
+    const response = await fetch('http://localhost:8080/api/admin/admins/me', {
+      method: 'PATCH',
+      body: payload,
+      credentials: 'include', // This is to include cookies if needed
+      headers: {
+        // 'Content-Type': 'multipart/form-data', // Do not set this header for FormData
+        'Authorization': `bearer ${global.token}`
+      }
     });
 
-    userInfo.value = global.user;
-    editCurrentAdmin(payload)
-      .then((res) => {})
-      .then(() => {})
-      .catch((err) => {});
-  } else {
-    errors.name.state = v$.value.name.$error;
-    errors.email.state = v$.value.email.$error;
-    errors.phone.state = v$.value.phone.$error;
-    // errors.old_password.state = v$.value.old_password.$error;
-    errors.password.state = v$.value.password.$error;
-    errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
+    const result = await response.json();
+
+      console.log('result' , result)
+  } catch (error) {
+   console.log(error)
   }
-};
+}
+
+
 const onChangeImage = (e) => {
-  console.log("e", e.target.files)
   const file = e.target.files[0]
   state.image = file
   imageDisplaying.value = URL.createObjectURL(file);
