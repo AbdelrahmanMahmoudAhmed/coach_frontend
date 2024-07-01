@@ -1,11 +1,12 @@
 <template>
   <div
     @click.self="closePopup"
-    class="popup fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto flex justify-center items-center"
+    class="popup fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] p-[40px] z-30 overflow-auto "
   >
+  <!-- <div class=" flex justify-center items-center"> -->
     <form
       @submit.prevent="ManageUsers"
-      class="px-[45px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[95%] sm:w-[60%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
+      class=" m-auto px-[45px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[95%] sm:w-[60%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
     >
       <h3
         class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold"
@@ -13,39 +14,37 @@
         {{ $t(`admin.actions.${type}_admin`) }}
       </h3>
 
-      <div
-        v-if="type != 'delete' "
-        class="flex flex-col justify-center"
-      >
-      <div class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
-            v-if="imageDisplaying">
-            <div class=" max-w-[200px] rounded-lg overflow-hidden ">
-              <img :src="imageDisplaying" alt="personal image">
-            </div>
+      <div v-if="type != 'delete'" class="flex flex-col justify-center">
+        <div
+          class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+          v-if="imageDisplaying"
+        >
+          <div class="max-w-[200px] rounded-lg overflow-hidden">
+            <img :src="imageDisplaying" alt="personal image" />
           </div>
-      <div class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto">
-        <div class="relative">
-     
-          <label class="px-[30px] mb-1" for="">{{ $t("auth.admin_image") }}</label>
-          <input
-            @change="onChangeImage"
-            class="py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
-            type="file"
-          />
         </div>
-        <p
-          v-if="errors.image.state"
-          class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px]"
-        >
-          {{ $t("auth.errors.add_image") }}
-        </p>
-        <p
-          v-if="errors.realImage.state"
-          class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px]"
-        >
-          {{ $t("auth.errors.add_real_image") }}
-        </p>
-      </div>
+        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto">
+          <div class="relative">
+            <label class="px-[30px] mb-1" for="">{{ $t("auth.admin_image") }}</label>
+            <input
+              @change="onChangeImage"
+              class="py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              type="file"
+            />
+          </div>
+          <p
+            v-if="errors.image.state"
+            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+          >
+            {{ $t("auth.errors.add_image") }}
+          </p>
+          <p
+            v-if="errors.realImage.state"
+            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+          >
+            {{ $t("auth.errors.add_real_image") }}
+          </p>
+        </div>
         <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
           <div class="relative">
             <input
@@ -81,24 +80,41 @@
           </p>
         </div>
         <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
-            <div class="relative">
-              <!-- <input v-model="state.goal" :placeholder="$t('auth.goal')"
-                class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
-                type="text" /> -->
-                <DropDownCompVue 
-                :placeholder="$t('auth.role')" 
+          <div class="relative">
+            <input
+              v-model="state.phone"
+              :placeholder="$t('auth.phone')"
+              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              type="text"
+              autocomplete="off"
+            />
+          </div>
+          <p
+            v-if="errors.phone.state"
+            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+          >
+            {{ $t("auth.errors.add_phone") }}
+          </p>
+        </div>
+        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="relative">
+            <DropDownCompVue
+              :currentVal="state.role"
+              :placeholder="$t('auth.role')"
               :options="roleOptions"
               @changeVal="changeVal"
               mode="single"
               :locale="locale"
               :close="true"
             />
-            </div>
-            <p v-if="errors.role.state"
-              class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px]">
-              {{ $t("auth.errors.choose_role") }}
-            </p>
           </div>
+          <p
+            v-if="errors.role.state"
+            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+          >
+            {{ $t("auth.errors.choose_role") }}
+          </p>
+        </div>
         <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
           <div class="relative">
             <div
@@ -164,7 +180,50 @@
             {{ $t("auth.errors.add_password_confirmation") }}
           </p>
         </div>
+        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class=" flex justify-start gap-6 items-center">
+            <label class="switch">
+                  <input
+                    type="checkbox"
+                    @click="()=>state.allowEdit = ! state.allowEdit"
+                    :checked="state.allowEdit"
+                  />
+                  <span class="slider round"></span>
+                </label>
+
+                <span>{{ t('auth.allow_edit') }}</span>
+          </div>
+        </div>
+        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class=" flex justify-start gap-6 items-center">
+            <label class="switch">
+                  <input
+                    type="checkbox"
+                    @click="()=>state.allowDelete = ! state.allowDelete"
+                    :checked="state.allowDelete"
+                  />
+                  <span class="slider round"></span>
+                </label>
+
+                <span>{{ t('auth.allow_delete') }}</span>
+          </div>
+        </div>
+        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class=" flex justify-start gap-6 items-center">
+            <label class="switch">
+                  <input
+                    type="checkbox"
+                    @click="()=>state.websiteManagement = ! state.websiteManagement"
+                    :checked="state.websiteManagement"
+                  />
+                  <span class="slider round"></span>
+                </label>
+ 
+                <span>{{ t('auth.manage_website') }}</span>
+          </div>
+        </div>
   
+
       </div>
 
       <div v-else-if="type == 'delete'">
@@ -195,10 +254,11 @@
       </div>
     </form>
   </div>
+  <!-- </div> -->
 </template>
 
 <script setup>
-const emit = defineEmits(["closePopup", "getUsersData"]);
+const emit = defineEmits(["closePopup", "getAdminsData"]);
 const props = defineProps({
   type: String,
   currentAdmin: Object,
@@ -212,25 +272,32 @@ import {
   minLength,
   numeric,
   sameAs,
+  requiredIf
 } from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
+import showToast from "~/composables/useToast";
 
-const { createUser, editUser, deleteUser } = useRequest();
+const { createAdmin, editAdmin, deleteAdmin } = useRequest();
+const { locale, t } = useI18n();
 const imageDisplaying = ref("");
 const roleOptions = ref([
-  {value:'admin' , name_ar:"مشرف" , name_en:"Admin"},
-  {value:'superAdmin' , name_ar:"مدير" , name_en:"Super Admin"},
+  { value: 'admin', name_ar: "مشرف", name_en: "Admin" },
+  { value: 'superAdmin', name_ar: "مدير", name_en: "Super Admin" },
 
 ])
 
 const state = reactive({
   name: "",
   email: "",
+  phone: "",
   image: "",
   role: "",
   password: "",
   passwordConfirmation: "",
+  allowEdit: true,
+  allowDelete: true,
+  websiteManagement: true,
 });
 const errors = reactive({
   image: {
@@ -243,6 +310,9 @@ const errors = reactive({
     state: false,
   },
   email: {
+    state: false,
+  },
+  phone: {
     state: false,
   },
   role: {
@@ -267,75 +337,116 @@ const rules = computed(() => {
   return {
     name: { required },
     email: { required, email },
+    phone: { required, numeric },
     role: { required },
-    password: { required, maxLength: maxLength(50), minLength: minLength(6) },
+    required: requiredIf(function (nestedModel) {
+        const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Add more MIME types as needed
+        if(!state.image){
+          errors.image.state = true
+          errors.realImage.state =false;
+          return true
+        }
+       else if (allowedMimeTypes.includes(nestedModel.image.type)) {
+        console.log('nestedModel' , nestedModel)
+          errors.image.state = false
+          errors.realImage.state =false;
+          // Accept the file
+          return false
+        } else {
+          // Reject the file
+          console.log('nestedModel.type' ,nestedModel.image.type)
+          errors.realImage.state =true;
+          errors.image.state = false
+          return true
+        }
+      }),
+    password: {
+      required: requiredIf(function () {
+        return props.type == 'add'
+      }), maxLength: maxLength(50), minLength: minLength(6)
+    },
     passwordConfirmation: {
-      required,
+      required: requiredIf(function () {
+        return props.type == 'add'
+      }),
       maxLength: maxLength(50),
       minLength: minLength(6),
+      sameAs : sameAs(state.password)
     },
   };
 });
-const editRules = computed(() => {
-  return {
-    password: { maxLength: maxLength(50), minLength: minLength(6) },
 
-    passwordConfirmation: {
-      sameAs: sameAs(state.password),
-    },
-  };
-});
 const v$ = useVuelidate(rules, state);
 
-const { locale, locales, setLocale, t } = useI18n();
 
 const closePopup = () => {
   emit("closePopup");
 };
 
-const getUsersData = () => {
-  emit("getUsersData");
+const getAdminsData = () => {
+  emit("getAdminsData");
 };
 
 const ManageUsers = async () => {
   if (props.type != "delete") {
     errors.name.state = false;
     errors.email.state = false;
+    errors.phone.state = false;
     errors.role.state = false;
     errors.password.state = false;
     errors.passwordConfirmation.state = false;
 
-    const payload = {};
+    const payload = new FormData();
 
     const result = await v$.value.$validate();
 
     if (result) {
-      state.name && (payload.name = state.name);
-      state.email && (payload.email = state.email);
-      state.role && (payload.role = state.role);
-      state.password && (payload.password = state.password);
+      state.image && (payload.append("image", state.image));
+      state.name && (payload.append("name", state.name));
+      state.email && (payload.append("email", state.email));
+      state.role && (payload.append("role", state.role));
+      state.phone && (payload.append("phone", state.phone));
+      state.password && (payload.append("password", state.password));
+      state.passwordConfirmation && (payload.append("passwordConfirmation", state.passwordConfirmation));
+      payload.append('allowDelete' , state.allowDelete );
+      payload.append('allowEdit' , state.allowEdit  );
+      payload.append('websiteManagement' , state.websiteManagement  );
 
-      await createUser(payload)
-        .then((res) => {
-          getUsersData();
-        })
-        .catch((err) => {})
-        .finally(() => {
-          closePopup();
-        });
+      try {
+        let res;
+        if (props.type == 'add') res = await createAdmin(payload)
+        if (props.type == 'edit') res = await editAdmin( props.currentAdmin?.id ,payload)
+
+        console.log("res" , res)
+      
+        if(res.data.success){
+          props.type == 'add' && showToast({  message: t('toast.success_add_admin')});
+          props.type == 'edit' && showToast({  message: t('toast.success_edit_admin')});
+        getAdminsData();
+        closePopup();
+
+        } 
+        else showToast({ type: "error", message:"err" });
+      } catch (err) {
+        console.error(err)
+      } finally {
+      }
+
     } else {
+      // errors.image.state = v$.value.image.$error;
       errors.name.state = v$.value.name.$error;
       errors.email.state = v$.value.email.$error;
+      errors.phone.state = v$.value.phone.$error;
       errors.role.state = v$.value.role.$error;
       errors.password.state = v$.value.password.$error;
       errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
     }
   } else {
-    await deleteUser(props.currentAdmin?.id)
+    await deleteAdmin(props.currentAdmin?.id)
       .then((res) => {
-        getUsersData();
+        getAdminsData();
       })
-      .catch((err) => {})
+      .catch((err) => { })
       .finally(() => {
         closePopup();
       });
@@ -346,19 +457,93 @@ const onChangeImage = (e) => {
   state.image = file
   imageDisplaying.value = URL.createObjectURL(file);
 }
-const changeVal = (val, name) => {
-    state.role = val;
+const changeVal = (val) => {
+  state.role = val;
 
 };
 // hooks
 onBeforeMount(() => {
   if (props.type == "edit") {
-    // state.name = props.currentAdmin?.name;
-    // state.email = props.currentAdmin?.email;
-    console.log("currentAdmin" , props.currentAdmin)
+    console.log('props.currentAdmin', props.currentAdmin)
+    state.name = props.currentAdmin?.name;
+    state.email = props.currentAdmin?.email;
+    state.phone = props.currentAdmin?.phone;
+    state.role = props.currentAdmin?.role;
+    state.allowDelete = props.currentAdmin?.allowDelete;
+    state.allowEdit = props.currentAdmin?.allowEdit;
+    state.websiteManagement = props.currentAdmin?.websiteManagement;
+
+    imageDisplaying.value = props.currentAdmin?.image;
+    imageDisplaying.value = props.currentAdmin?.image;
+    // changeVal(props.currentAdmin?.role)
+    // state.role = props.currentAdmin?.role;
+    // console.log("currentAdmin" , props.currentAdmin)
   }
 
 });
 </script>
 
-<style></style>
+<style>
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--third-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--third-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>

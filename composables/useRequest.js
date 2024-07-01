@@ -135,7 +135,16 @@ const global = useGlobalStore()
   const getAllAdmins = async (query) => {
     return await REQUEST.get(`/admin/admins${getQuery(query)}`, {headers});
   };
-
+  const createAdmin = async (data) => {
+    return await REQUEST.post(`/admin/admins`, data ,{headers});
+  };
+  const editAdmin = async (id, data) => {
+    return await REQUEST.patch(`/admin/admins/${id}`, data , {headers});
+  };
+  const deleteAdmin = async (id) => {
+    return await REQUEST.delete(`/admin/admins/${id}`, {headers});
+  };
+  
 
 
 
@@ -193,16 +202,7 @@ const global = useGlobalStore()
     return await REQUEST.patch(`/admin/admins/me`, data ,{headers});
   };
 
-  const createAdmin = async (data) => {
-    return await REQUEST.post(`/api/panel/admins`, data);
-  };
-  const editAdmin = async (id, data) => {
-    return await REQUEST.patch(`/api/panel/admins/${id}`, data);
-  };
-  const deleteAdmin = async (id) => {
-    return await REQUEST.delete(`/api/panel/admins/${id}`);
-  };
-  
+
 
   // End Manage Admins
 

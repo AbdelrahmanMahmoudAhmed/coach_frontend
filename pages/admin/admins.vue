@@ -1,7 +1,7 @@
 <template>
   <div class="pb-10">
     <div v-if="popup">
-<ManageAdmins :currentAdmin="currentAdmin" :type="type" @closePopup="closePopup" />
+<ManageAdmins :currentAdmin="currentAdmin" :type="type" @closePopup="closePopup" @getAdminsData="getAdminsData" />
     </div>
 
     <div class="min-h-[60vh] overflow-x-auto">
@@ -148,8 +148,14 @@ const getAdminsData = async () => {
             id: item?.id,
             name: item?.name,
             email: item?.email,
+            phone: item?.phone,
+            image:item.image,
+            role: item?.role,
+            allowEdit:item.allowEdit,
+            allowDelete:item.allowDelete,
+            websiteManagement:item.websiteManagement,
+
           },
-          role: item?.role,
         },
       ];
     });

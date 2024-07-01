@@ -46,6 +46,10 @@
     "image":"صورتك الشخصية",
     "admin_image":"صورة المدير",
     "role":"الدور",
+    "allow_delete":"السماح بالحذف",
+    "allow_edit":"السماح بالتعديل",
+    "manage_website":"السماح بادارة الموقع",
+  
     "errors": {
       "add_name": "من فضلك أضف اسم",
       "add_email": "من فضلك أضف ايميل ",
@@ -67,6 +71,11 @@
 
   "toast":{
     "login":"لقد تم تسجيل الدخول",
+    "success_delete_admin": "تم حذف المدير بنجاح",
+    "success_add_admin": "تمت إضافة المدير بنجاح",
+    "success_edit_admin": "تم تعديل بيانات المدير بنجاح",
+
+
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
     "wrong_password":"كلمة سر غير صحيحة",
     "wrong_type":"تحديد النوع غير صحيح",
@@ -204,9 +213,7 @@
       "cancel": "الغاء",
       "delete_msg": "هل أنت متأكد من حذف  ",
       "delete_package_msg": "هل أنت متأكد من حذف هذه الباقة   ",
-      "success_delete_admin": "تم حذف المدير بنجاح",
-      "success_add_admin": "تمت إضافة المدير بنجاح",
-      "success_edit_admin": "تم تعديل بيانات المدير بنجاح",
+
       "search_admin": "ابحث عن مدير ",
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",

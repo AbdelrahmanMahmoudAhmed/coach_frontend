@@ -295,7 +295,7 @@ const rules = computed(() => {
     phone: { required, numeric, minLength: minLength(11) },
     image: {
       required: requiredIf(function (nestedModel) {
-        const allowedMimeTypes = ['image/jpeg', 'image/jpg']; // Add more MIME types as needed
+        const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Add more MIME types as needed
         if(!state.image){
           errors.image.state = true
           errors.realImage.state =false;

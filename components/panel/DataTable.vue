@@ -78,7 +78,7 @@
                 class="font-bold flex gap-2 justify-center items-center"
               >
                 <img
-                  class="w-[70px] lg:w-[150px]"
+                  class="w-[70px] lg:w-[150px] rounded-md"
                   v-if="td?.isImg"
                   :src="`${baseURL}${td?.item}`"
                   alt=""

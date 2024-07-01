@@ -45,7 +45,12 @@
     "phone":"Phone",
     "image":"Your image",
     "admin_image":"Admin Image",   
+
     "role":"Role",
+
+    "allow_delete":"Allow deletion",
+    "allow_edit":"Allow editing",
+    "manage_website":"Manage website",
       "errors": {
       "add_name": "Please add your name",
       "add_email": "Please add your email",
@@ -71,6 +76,15 @@
   },
   "toast":{
     "login":"You have been logged in",
+    "success_delete_admin": "the admin has been deleted successfully",
+    "success_add_admin": "the admin has been added successfully",
+    "success_edit_admin": "the admin's data has been edited successfully",
+
+
+
+
+
+    
     "wrong_email":"This email is incorrect",
     "wrong_password":"incorrect password",
     "wrong_type":"incorrect type",
@@ -230,9 +244,7 @@
       "cancel": "Cancel",
       "delete_msg": "Are you sure to delete ",
       "delete_package_msg": "Are you sure to delete this package  ",
-      "success_delete_admin": "the admin has been deleted successfully",
-      "success_add_admin": "the admin has been added successfully",
-      "success_edit_admin": "the admin's data has been edited successfully",
+
       "search_admin": "Search an admin",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
