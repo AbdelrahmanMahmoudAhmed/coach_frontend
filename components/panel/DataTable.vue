@@ -78,17 +78,12 @@
                 class="font-bold flex gap-2 justify-center items-center"
               >
                 <img
-                  class="w-[70px]"
+                  class="w-[70px] lg:w-[150px]"
                   v-if="td?.isImg"
                   :src="`${baseURL}${td?.item}`"
                   alt=""
                 />
-                <img
-                  :class="`${td?.item == '/imgs/ubuntu.svg' ? 'w-[100px]' : 'w-[70px]'}`"
-                  v-else-if="td?.withImg"
-                  :src="`${td?.item}`"
-                  alt=""
-                />
+
                 <span v-else-if="td?.isBoolean" class="relative flex h-3 w-3">
                   <span
                     :class="`animate-ping absolute inline-flex h-full w-full rounded-full ${
@@ -102,7 +97,7 @@
                   ></span>
                 </span>
                 <span class="whitespace-nowrap" v-else-if="td.withTranslate">
-                  {{ $t(td?.item) }}</span
+                  {{ t(`table.${td?.item == "admin" ? 'admin' : "super_admin"}`)}}</span
                 >
                 <span class="whitespace-nowrap" v-else>
                   {{ td?.item ? td?.item : "_" }}

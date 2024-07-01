@@ -21,14 +21,14 @@
         <template #actions="{rowData}">
           
           <button
-            @click="() => openPopup('edit', rowData)"
+            @click="() => openPopup('edit', rowData.currentItem)"
             class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87]"
           >
             {{ t(`table.headers.edit`) }}
           </button>
 
           <button
-            @click="() => openPopup('delete', rowData)"
+            @click="() => openPopup('delete', rowData.currentItem)"
             class="text-white bg-red-800 rounded-md px-4 py-2 hover:bg-red-600 disabled:bg-[#cc6c6c] lg:px-6"
           >
             {{ $t(`table.headers.delete`) }}
@@ -65,7 +65,7 @@ const { locale, locales, setLocale, t } = useI18n();
 const currentAdmin = ref("");
 const popup = ref(false);
 const { getAllAdmins } = useRequest();
-const headers = ref(["name", "email", "img", "actions"]);
+const headers = ref(["name", "email", "img", "role", "allow_edit", "allow_delete", "manage_website","actions"]);
 const rows = ref([]);
 const dataFetched = ref(false);
 
@@ -119,6 +119,26 @@ const getAdminsData = async () => {
           id: item?.id,
           item: item.image,
           isImg: true,
+        },
+        {
+          id: item?.id,
+          item: item.role ,
+          withTranslate:true
+        },
+        {
+          id: item?.id,
+          item: item.allowEdit,
+          isBoolean: true,
+        },
+        {
+          id: item?.id,
+          item: item.allowDelete,
+          isBoolean: true,
+        },
+        {
+          id: item?.id,
+          item: item.websiteManagement,
+          isBoolean: true,
         },
         {
           id: item?.id,

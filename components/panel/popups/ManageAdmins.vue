@@ -12,6 +12,11 @@
       >
         {{ $t(`admin.actions.${type}_admin`) }}
       </h3>
+
+      <div
+        v-if="type != 'delete' "
+        class="flex flex-col justify-center"
+      >
       <div class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
             v-if="imageDisplaying">
             <div class=" max-w-[200px] rounded-lg overflow-hidden ">
@@ -41,10 +46,6 @@
           {{ $t("auth.errors.add_real_image") }}
         </p>
       </div>
-      <div
-        v-if="type != 'delete' && type != 'credit'"
-        class="flex flex-col justify-center"
-      >
         <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
           <div class="relative">
             <input
@@ -163,22 +164,7 @@
             {{ $t("auth.errors.add_password_confirmation") }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
-          <div class="relative">
-            <input
-              v-model="state.credit"
-              :placeholder="$t('auth.credit')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
-              type="number"
-            />
-          </div>
-          <p
-            v-if="errors.credit.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
-          >
-            {{ $t("auth.errors.add_credit") }}
-          </p>
-        </div>
+  
       </div>
 
       <div v-else-if="type == 'delete'">
@@ -230,7 +216,7 @@ import {
 import useRequest from "~/composables/useRequest";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
 
-const { createUser, editUser, deleteUser, changeUserCredit } = useRequest();
+const { createUser, editUser, deleteUser } = useRequest();
 const imageDisplaying = ref("");
 const roleOptions = ref([
   {value:'admin' , name_ar:"مشرف" , name_en:"Admin"},
@@ -243,7 +229,6 @@ const state = reactive({
   email: "",
   image: "",
   role: "",
-  credit: "",
   password: "",
   passwordConfirmation: "",
 });
@@ -263,9 +248,7 @@ const errors = reactive({
   role: {
     state: false,
   },
-  credit: {
-    state: false,
-  },
+
 
   password: {
     state: false,
@@ -285,7 +268,6 @@ const rules = computed(() => {
     name: { required },
     email: { required, email },
     role: { required },
-    credit: { required, numeric },
     password: { required, maxLength: maxLength(50), minLength: minLength(6) },
     passwordConfirmation: {
       required,
@@ -320,7 +302,6 @@ const ManageUsers = async () => {
     errors.name.state = false;
     errors.email.state = false;
     errors.role.state = false;
-    errors.credit.state = false;
     errors.password.state = false;
     errors.passwordConfirmation.state = false;
 
@@ -333,7 +314,6 @@ const ManageUsers = async () => {
       state.email && (payload.email = state.email);
       state.role && (payload.role = state.role);
       state.password && (payload.password = state.password);
-      state.credit && (payload.credit = state.credit);
 
       await createUser(payload)
         .then((res) => {
@@ -347,7 +327,6 @@ const ManageUsers = async () => {
       errors.name.state = v$.value.name.$error;
       errors.email.state = v$.value.email.$error;
       errors.role.state = v$.value.role.$error;
-      errors.credit.state = v$.value.credit.$error;
       errors.password.state = v$.value.password.$error;
       errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
     }
@@ -373,11 +352,11 @@ const changeVal = (val, name) => {
 };
 // hooks
 onBeforeMount(() => {
-  // if (props.type == "edit") {
-  //   state.name = props.currentAdmin?.name;
-  //   state.email = props.currentAdmin?.email;
-  //   state.credit = props.currentAdmin?.credit;
-  // }
+  if (props.type == "edit") {
+    // state.name = props.currentAdmin?.name;
+    // state.email = props.currentAdmin?.email;
+    console.log("currentAdmin" , props.currentAdmin)
+  }
 
 });
 </script>

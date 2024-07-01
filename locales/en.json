@@ -378,9 +378,16 @@
       "service_name":"Service name",
       "host":"host",
       "check":"Check",
-      "stop":"Stop"
-      
+      "stop":"Stop",
+      "allow_delete":"Allow deletion",
+      "allow_edit":"Allow editing",
+      "manage_website":"Manage website",
+      "role":"Role"
 
-    }
+
+    },
+    "super_admin":"Super Admin",
+    "admin":"Admin"
+    
   }
 }
