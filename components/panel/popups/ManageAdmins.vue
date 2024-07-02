@@ -1,11 +1,11 @@
 <template>
   <div
     @click.self="closePopup"
-    class="popup fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] p-[40px] z-30 overflow-auto "
+    class="popup flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] p-[40px] z-30 overflow-auto "
   >
   <!-- <div class=" flex justify-center items-center"> -->
     <form
-      @submit.prevent="ManageUsers"
+      @submit.prevent="manageAdminFun"
       class=" m-auto px-[45px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[95%] sm:w-[60%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
     >
       <h3
@@ -278,6 +278,9 @@ import useRequest from "~/composables/useRequest";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
 import showToast from "~/composables/useToast";
 
+const config = useRuntimeConfig();
+const BASE_URL =  config.public.base_url;
+
 const { createAdmin, editAdmin, deleteAdmin } = useRequest();
 const { locale, t } = useI18n();
 const imageDisplaying = ref("");
@@ -387,7 +390,7 @@ const getAdminsData = () => {
   emit("getAdminsData");
 };
 
-const ManageUsers = async () => {
+const manageAdminFun = async () => {
   if (props.type != "delete") {
     errors.name.state = false;
     errors.email.state = false;
@@ -473,8 +476,7 @@ onBeforeMount(() => {
     state.allowEdit = props.currentAdmin?.allowEdit;
     state.websiteManagement = props.currentAdmin?.websiteManagement;
 
-    imageDisplaying.value = props.currentAdmin?.image;
-    imageDisplaying.value = props.currentAdmin?.image;
+    imageDisplaying.value = `${BASE_URL}${props.currentAdmin?.image}`;
     // changeVal(props.currentAdmin?.role)
     // state.role = props.currentAdmin?.role;
     // console.log("currentAdmin" , props.currentAdmin)
