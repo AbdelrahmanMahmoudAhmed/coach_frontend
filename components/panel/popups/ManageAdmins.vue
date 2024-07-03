@@ -1,12 +1,12 @@
 <template>
   <div
     @click.self="closePopup"
-    class="popup flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] p-[40px] z-30 overflow-auto "
+    class="popup flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto p-[10px] sm:p-[40px] "
   >
   <!-- <div class=" flex justify-center items-center"> -->
     <form
       @submit.prevent="manageAdminFun"
-      class=" m-auto px-[45px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[95%] sm:w-[60%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
+      class=" m-auto px-[10px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[98%] sm:px-[45px] sm:w-[70%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
     >
       <h3
         class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold"
@@ -180,7 +180,7 @@
             {{ $t("auth.errors.add_password_confirmation") }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div :class="`mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
           <div class=" flex justify-start gap-6 items-center">
             <label class="switch">
                   <input
@@ -194,7 +194,7 @@
                 <span>{{ t('auth.allow_edit') }}</span>
           </div>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div :class="`mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
           <div class=" flex justify-start gap-6 items-center">
             <label class="switch">
                   <input
@@ -208,7 +208,7 @@
                 <span>{{ t('auth.allow_delete') }}</span>
           </div>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div :class="`mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
           <div class=" flex justify-start gap-6 items-center">
             <label class="switch">
                   <input
@@ -239,7 +239,7 @@
         <button
           @click="closePopup"
           type="button"
-          class="bg-[#062946] rounded-[21px] h-[40px] px-[23px]"
+          class="bg-[#062946] rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit"
         >
           {{ $t(`admin.actions.cancel`) }}
         </button>
@@ -247,7 +247,7 @@
           type="submit"
           :class="`${
             type == 'delete' ? ' bg-red-800' : 'bg-[#2FA3F7]'
-          }  rounded-[21px] h-[40px] px-[23px]`"
+          }  rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit`"
         >
           {{ $t(`admin.actions.${type}`) }}
         </button>
