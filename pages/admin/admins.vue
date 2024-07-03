@@ -11,24 +11,26 @@
         :headers="headers"
         :rows="rows"
         page="manage-admins"
-        :withSearch="true"
-        :withAdd="true"
+        :withSearch=" true"
+        :withAdd=" global.user?.role == 'superAdmin'"
         :searchPlaceholder="$t(`admin.actions.search_admin`)"
         :addButtonTitle="t(`admin.actions.add_admin`)"
         @changeQuery="changeQuery"
         @openPopup="openPopup"
       >
-        <template #actions="{rowData}">
+        <template v-if=" global.user?.role == 'superAdmin'" #actions="{rowData}">
           
           <button
-            @click="() => openPopup('edit', rowData.currentItem)"
-            class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87]"
+            @click="() => openPopup('edit', rowData?.currentItem)"
+            class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87] disabled:bg-[#419de9]"
+            :disabled="rowData?.currentItem.id == 1 || rowData?.currentItem.id == global.user?.id"
           >
             {{ t(`table.headers.edit`) }}
           </button>
 
           <button
-            @click="() => openPopup('delete', rowData.currentItem)"
+          :disabled="rowData?.currentItem.id == 1 || rowData?.currentItem.id == global.user?.id"
+            @click="() => openPopup('delete', rowData?.currentItem)"
             class="text-white bg-red-800 rounded-md px-4 py-2 hover:bg-red-600 disabled:bg-[#cc6c6c] lg:px-6"
           >
             {{ $t(`table.headers.delete`) }}
@@ -65,7 +67,8 @@ const { locale, locales, setLocale, t } = useI18n();
 const currentAdmin = ref("");
 const popup = ref(false);
 const { getAllAdmins } = useRequest();
-const headers = ref(["name", "email", "img", "role", "allow_edit", "allow_delete", "manage_website","actions"]);
+const headers = ref(["name", "email", "img", "role", "allow_edit", "allow_delete", "manage_website"]);
+global.user.role == 'superAdmin' && (headers.value = ([...headers.value , "actions"  ]))
 const rows = ref([]);
 const dataFetched = ref(false);
 
@@ -108,12 +111,10 @@ const getAdminsData = async () => {
         {
           id: item?.id,
           item: item?.name,
-          actions: true,
         },
         {
           id: item?.id,
           item: item?.email,
-          actions: true,
         },
         {
           id: item?.id,
@@ -144,6 +145,7 @@ const getAdminsData = async () => {
           id: item?.id,
           item: "action",
           actions: true,
+          hideTd:global.user?.role == 'admin',
           currentItem: {
             id: item?.id,
             name: item?.name,
@@ -155,8 +157,10 @@ const getAdminsData = async () => {
             allowDelete:item.allowDelete,
             websiteManagement:item.websiteManagement,
 
-          },
+          }
         },
+        
+    
       ];
     });
     rows.value = handeldAdmins;

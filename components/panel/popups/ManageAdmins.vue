@@ -277,6 +277,7 @@ import {
 import useRequest from "~/composables/useRequest";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
 import showToast from "~/composables/useToast";
+import { useGlobalStore } from "~/stores/global";
 
 const config = useRuntimeConfig();
 const BASE_URL =  config.public.base_url;
@@ -344,7 +345,12 @@ const rules = computed(() => {
     role: { required },
     required: requiredIf(function (nestedModel) {
         const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Add more MIME types as needed
-        if(!state.image){
+        if(!state.image && props.type == 'edit'){
+          errors.image.state = false
+          errors.realImage.state =false;
+          return false
+        }
+        if(!state.image ){
           errors.image.state = true
           errors.realImage.state =false;
           return true
@@ -403,7 +409,7 @@ const manageAdminFun = async () => {
 
     const result = await v$.value.$validate();
 
-    if (result) {
+    if (result && !errors.image.state) {
       state.image && (payload.append("image", state.image));
       state.name && (payload.append("name", state.name));
       state.email && (payload.append("email", state.email));
@@ -432,7 +438,6 @@ const manageAdminFun = async () => {
         else showToast({ type: "error", message:"err" });
       } catch (err) {
         console.error(err)
-      } finally {
       }
 
     } else {
@@ -445,14 +450,20 @@ const manageAdminFun = async () => {
       errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
     }
   } else {
-    await deleteAdmin(props.currentAdmin?.id)
-      .then((res) => {
+    
+    try {
+      const res = await deleteAdmin(props.currentAdmin?.id)
+      
+        if(res.data.success){
+         showToast({  message: t('toast.success_delete_admin')});
         getAdminsData();
-      })
-      .catch((err) => { })
-      .finally(() => {
+        } 
+        else showToast({ type: "error", message:"err" });
+      } catch (err) {
+        console.error(err)
+      } finally {
         closePopup();
-      });
+      }
   }
 };
 const onChangeImage = (e) => {

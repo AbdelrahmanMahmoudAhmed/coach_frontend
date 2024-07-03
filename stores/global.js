@@ -58,6 +58,10 @@ export const useGlobalStore = defineStore('global', {
       this.isAuth = payload.isAuth
       this.token = payload.token
     },
+    updateUserInfo(payload){
+      this.user = payload;
+
+    },
     updateUserSpecificData(payload) {
       if (payload.name) {
         this.user.name = payload.name

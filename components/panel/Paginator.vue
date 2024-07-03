@@ -1,4 +1,5 @@
 <script setup>
+
 const emit = defineEmits(['changePage']);
 const props = defineProps({
   pagination:Object
@@ -16,7 +17,7 @@ const currentPage = ref(1);
 </script>
 
 <template>
-  <div class="flex justify-center">
+  <div :dir="locale == 'ar' ? 'ltr' : 'rtl'" class="flex justify-center">
     <vue-awesome-paginate
       :total-items="pagination.totalCount"
       :items-per-page="pagination.perPage"
@@ -28,13 +29,13 @@ const currentPage = ref(1);
     >
     <template #prev-button>
     <span class=" p-2 block">
-      <img src=" /imgs/to-left.svg" height="25" />
+      <img :src=" locale == 'ar'  ? '/imgs/to-left.svg' : '/imgs/to-right.svg'"  height="25" />
     </span>
   </template>
 
   <template #next-button>
     <span class=" p-2 block">
-      <img src="/imgs/to-right.svg" height="25" />
+      <img :src=" locale == 'ar' ? '/imgs/to-right.svg' :'/imgs/to-left.svg'"  height="25" />
     </span>
   </template>
 </vue-awesome-paginate>

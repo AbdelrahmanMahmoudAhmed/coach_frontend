@@ -59,7 +59,7 @@
       "add_password": "Please add a valid password",
       "add_password_confirmation": "The password confirmation must be identical to the password",
       "add_image": "Please add your image",
-      "add_real_image": "The image extension must be jpg or jpeg",
+      "add_real_image": "The image extension must be jpg, png or jpeg",
       "add_username":"Add the User Name",
       "choose_role":"Please Choose role",
 
@@ -96,10 +96,28 @@
     "wrong_token":"invalid URL",
     "not_auth":"You are not authorized to use this link. Please log in",
     "image_not_allowed":"The type of this image is not allowed",
+    "not_allowTo_delete":"Your account has no authority to delete",
+    "not_allowTo_edit":"Your account has no authority to edit",
+    "not_allow_manage_website":"Your account has no authority to manage the website",
+    "not_super_admin":"This account is not a super admin account",
+    "cant_update_self":"You can't update your account",
+    "not_found_person":"Wrong query, no account was found",
+    "required_img":"The image is required",
+    "not_matched_password":"The confirmation password does not match the password",
+    "not_allowed_email":"This email is not available",
+    "not_allowed_phone":"This phone is not available",
+    "validation_err":"Some inputs is not allowed",
+    "file_too_large":"This file is too large",
+
+
+
+
 
     "success_regester":"Your regester has been successeed",
     "success_reset":"Your password has been reset successfully",
-    "success_forget":"success! check your Email"
+    "success_forget":"success! check your Email",
+    "info_updated":"The data has been updated successfully"
+
   },
 
 "popups":{

@@ -1,6 +1,5 @@
 <template>
   <div class="pb-16">
-
     <div class="">
       <div
         class="flex flex-col justify-center items-center gap-8 lg:mt-[50px] lg:gap-16"
@@ -13,29 +12,31 @@
           </h1>
 
           <form @submit.prevent="updateAdminData" class="w-full">
-
-            <div class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
-            v-if="imageDisplaying">
-            <div class=" max-w-[200px] rounded-lg overflow-hidden ">
-              <img :src="imageDisplaying" alt="personal image">
+            <div
+              class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+              v-if="imageDisplaying"
+            >
+              <div class="max-w-[200px] rounded-lg overflow-hidden">
+                <img :src="imageDisplaying" alt="personal image" />
+              </div>
             </div>
-          </div>
 
-          <div
+            <div
               class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto"
             >
               <div class="relative">
-                       <span
+                <span
                   :class="` ${
                     locale == 'ar' ? ' left-6' : ' right-6'
                   } cursor-pointer absolute top-[37px] text-red-600 text-lg`"
-                >*</span>
+                  >*</span
+                >
                 <label class="px-[30px] mb-1" for="">{{
                   $t("auth.image")
                 }}</label>
                 <input
                   @change="onChangeImage"
-                  class=" py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+                  class="py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
                   type="file"
                 />
               </div>
@@ -53,19 +54,16 @@
               </p>
             </div>
 
-
-
-
             <div
               class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto"
             >
-            
               <div class="relative">
                 <span
                   :class="` ${
                     locale == 'ar' ? ' left-6' : ' right-6'
                   } cursor-pointer absolute top-[15px] text-red-600 text-lg`"
-                >*</span>
+                  >*</span
+                >
                 <input
                   v-model="state.name"
                   :placeholder="$t('auth.name')"
@@ -88,7 +86,8 @@
                   :class="` ${
                     locale == 'ar' ? ' left-6' : ' right-6'
                   } cursor-pointer absolute top-[15px] text-red-600 text-lg`"
-                >*</span>
+                  >*</span
+                >
                 <input
                   v-model="state.email"
                   :placeholder="$t('auth.email')"
@@ -112,7 +111,8 @@
                   :class="` ${
                     locale == 'ar' ? ' left-6' : ' right-6'
                   } cursor-pointer absolute top-[15px] text-red-600 text-lg`"
-                >*</span>
+                  >*</span
+                >
                 <input
                   v-model="state.phone"
                   :placeholder="$t('auth.phone')"
@@ -129,7 +129,6 @@
               </p>
             </div>
 
-       
             <div
               class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto"
             >
@@ -230,6 +229,9 @@ import {
 } from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
+import showToast from "~/composables/useToast";
+import { updateUserData } from "~/composables/useAuth";
+
 
 const config = useRuntimeConfig();
 const global = useGlobalStore();
@@ -238,23 +240,7 @@ const { editCurrentAdmin, adminData } = useRequest();
 const imageDisplaying = ref("");
 
 const userInfo = useCookie("userInfo");
-const BASE_URL =  config.public.base_url;
-
-const getAdminData = async () => {
-  global.turnLoaderOn();
-  try {
-    const res = await adminData();
-    state.name = res.data.data.name;
-    state.email = res.data.data.email;
-    state.image = res.data.data.image;
-    state.phone = res.data.data.phone;
-    imageDisplaying.value = `${BASE_URL}${res.data.data.image}`;
-  } catch (err) {
-    console.error(err);
-  } finally {
-    global.turnLoaderOff();
-  }
-};
+const BASE_URL = config.public.base_url;
 
 const state = reactive({
   name: "",
@@ -293,32 +279,45 @@ const errors = reactive({
 const changeInputType = (type) => {
   errors[type].isVisible = !errors[type].isVisible;
 };
+const getAdminData = async () => {
+  global.turnLoaderOn();
+  try {
+    const res = await adminData();
+    state.name = res.data.data.name;
+    state.email = res.data.data.email;
+    state.phone = res.data.data.phone;
+    imageDisplaying.value = `${BASE_URL}${res.data.data.image}`;
+  } catch (err) {
+    console.error(err);
+  } finally {
+    global.turnLoaderOff();
+  }
+};
 const rules = computed(() => {
   return {
-    name: {required},
-    email: {required, email },
-    phone: { required ,numeric },
+    name: { required },
+    email: { required, email },
+    phone: { required, numeric },
     image: {
       required: requiredIf(function (nestedModel) {
-        const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Add more MIME types as needed
-        // if(!state.image){
-        //   errors.image.state = true
-        //   errors.realImage.state =false;
-        //   return true
-        // }
-      //  else
-        if (allowedMimeTypes.includes(nestedModel.type)) {
-          errors.image.state = false
-          errors.realImage.state =false;
+        const allowedMimeTypes = ["image/jpeg", "image/jpg", "image/png"]; // Add more MIME types as needed
+
+        if (!state.image) {
+          errors.image.state = false;
+          errors.realImage.state = false;
+          return false;
+        } else if (allowedMimeTypes.includes(nestedModel.type)) {
+          errors.image.state = false;
+          errors.realImage.state = false;
           // Accept the file
-          return false
+          return false;
         } else {
           // Reject the file
-          errors.realImage.state =true;
-          errors.image.state = false
-          return true
+          errors.realImage.state = true;
+          errors.image.state = false;
+          return true;
         }
-      })
+      }),
     },
     password: {
       required: (state.password || state.passwordConfirmation) && required,
@@ -344,40 +343,31 @@ const updateAdminData = async () => {
 
   const result = await v$.value.$validate();
 
-  if (result) {
+  if (result &&  !errors.image.state) {
     const payload = new FormData();
-    payload.append('name' , state.name)
-    payload.append('email' , state.email)
-    payload.append('phone' , state.phone)
-    payload.append('image' , state.image)
-    state.password && payload.append('password' , state.password)
-    state.passwordConfirmation && payload.append('passwordConfirmation' , state.passwordConfirmation)
+    payload.append("name", state.name);
+    payload.append("email", state.email);
+    payload.append("phone", state.phone);
+    payload.append("image", state.image);
+    state.password && payload.append("password", state.password);
+    state.passwordConfirmation &&
+      payload.append("passwordConfirmation", state.passwordConfirmation);
 
     // change the new data on the local storage , cookies and memory
 
-
-    // global.updateUserSpecificData({
-    //   name: state.name,
-    //   email: state.email,
-    //   country: state.country?.alpha3,
-    // });
-
-    // userInfo.value = global.user;
-    try{
-      await editCurrentAdmin(payload)
-
+    try {
+      const res = await editCurrentAdmin(payload);
+      if (res.data.success) {
+        showToast({ message: t("toast.info_updated") });
+        updateUserData(res.data.data)
+      } else showToast({ type: "error", message: "err" });
     } catch (err) {
-      console.log("this is the err")
-    console.error(err);
-  } finally {
-    // global.turnLoaderOff();
-  }
+      console.error(err);
+    }
   } else {
     errors.name.state = v$.value.name.$error;
     errors.email.state = v$.value.email.$error;
     errors.phone.state = v$.value.phone.$error;
-    errors.image.state = v$.value.image.$error;
-    // errors.old_password.state = v$.value.old_password.$error;
     errors.password.state = v$.value.password.$error;
     errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
   }
@@ -412,12 +402,11 @@ const updateAdminData = async () => {
 //   }
 // }
 
-
 const onChangeImage = (e) => {
-  const file = e.target.files[0]
-  state.image = file
+  const file = e.target.files[0];
+  state.image = file;
   imageDisplaying.value = URL.createObjectURL(file);
-}
+};
 //hooks
 onBeforeMount(() => {
   getAdminData();

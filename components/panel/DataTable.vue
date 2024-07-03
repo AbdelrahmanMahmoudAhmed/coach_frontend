@@ -54,35 +54,40 @@
                 : ''
             }`"
           >
-            <div class="w-full flex h-[50px] items-center justify-center px-6">
+            <div class="w-full flex min-h-[50px] items-center justify-center px-6">
               {{ t(`table.headers.${header}`) }}
             </div>
           </th>
         </thead>
         <tbody>
-          <tr v-for="(row, idx) in props.rows" :key="idx" class="my-4">
+          <tr v-for="(row, idx) in props.rows" :key="idx"  class="my-4">
             <td
               v-for="(td, i) in row"
               :key="i"
-              :class="`px-6 py-6 border-b border-[--main-color]  dark:bg-[--rows-color] dark:border-none ${
+              :class="` px-6 py-6 border-b border-[--main-color] dark:bg-[--rows-color] dark:border-none ${
                 (locale == 'ar' && i == 0) || (locale == 'en' && i == headers.length - 1)
                   ? 'first-child'
                   : (locale == 'en' && i == 0) ||
                     (locale == 'ar' && i == headers.length - 1)
                   ? 'last-child'
                   : ''
-              }`"
+              } ${td?.hideTd ? 'hidden ' : ''}`"
+             
             >
               <div
                 v-if="td?.item != 'action'"
                 class="font-bold flex gap-2 justify-center items-center"
               >
-                <img
-                  class="w-[70px] lg:w-[150px] rounded-md"
-                  v-if="td?.isImg"
-                  :src="`${baseURL}${td?.item}`"
+          <div  class="w-[100px] lg:w-[150px] " v-if="td?.isImg">
+            <img
+                  class="w-[100px] lg:w-[150px] block rounded-md"
+                 
+                  :src=" td?.item ? ` ${baseURL}${td?.item}` : '/imgs/nope-not-here.webp'"
+                  @error="handleImageError"
+
                   alt=""
                 />
+          </div>
 
                 <span v-else-if="td?.isBoolean" class="relative flex h-3 w-3">
                   <span
@@ -103,7 +108,7 @@
                   {{ td?.item ? td?.item : "_" }}
                 </span>
               </div>
-              <div v-if="td?.item == 'action' && td?.actions" class="">
+              <div v-else-if="td?.item == 'action' && td?.actions" class="">
                 <div class="font-bold flex gap-2 justify-center items-center">
                   <slot name="actions" :rowData="td" />
                 </div>
@@ -123,14 +128,8 @@
           {{ $t("global.no_data_available") }}
         </p>
       </div>
-      <!-- <div
-        v-if="!rows.length && dataFetched"
-        class="min-h-[50vh] flex justify-center items-center text-[25px] md:[32px]"
-      >
-        {{ $t("global.no_data_available") }}
-      </div> -->
     </div>
-    <div v-if="pagination.totalCount > pagination.perPage">
+    <div  v-if="pagination.totalCount > pagination.perPage">
       <Paginator :pagination="pagination" @changePage="changePage" />
     </div>
   </div>
@@ -167,6 +166,10 @@ const chnageSearch = () => {
 const openPopup = (type, currentItem) => {
   emit("openPopup", type, currentItem);
 };
+
+const handleImageError = (e) =>{
+  e.target.src = '/imgs/nope-not-here.webp';
+}
 
 // function copyText(text) {
 //   navigator.clipboard.writeText(text);

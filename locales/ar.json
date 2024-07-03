@@ -58,7 +58,7 @@
       "add_password": "الرجاء إضافة كلمة مرور صالحة",
       "add_password_confirmation": "يجب أن يكون تأكيد كلمة المرور مطابقًا لكلمة المرور",
       "add_image": " برجاء اضافة صورتك",
-      "add_real_image":" jpg  أو jpeg لابد و ان يكون امتداد الصورة  ",
+      "add_real_image":" jpg أو png أو jpeg لابد و ان يكون امتداد الصورة  ",
       "add_username": "أضف اسم المستخدم",
       "choose_role":"من فضلك أختر دور",
       "add_tall":"من فضلك اضف الطول",
@@ -87,10 +87,25 @@
     "wrong_token":"هذا الرابط غير صالح",
     "not_auth":"غير مصرح لك بزيارة هذاالرابط , من فضلك قم بتسجيل الدخول",
     "image_not_allowed":"نوع هذه الملف غير مصرح به",
+    "not_allowTo_delete":"حسابك ليس لديه صلاحية الحذف",
+    "not_allowTo_edit":"حسابك ليس له صلاحية التعديل",
+    "not_allow_manage_website":"حسابك ليس له صلاحية إدارة الموقع",
+    "not_super_admin":"هذا ليس حساب المدير الفائق",
+    "cant_update_self":"لا يمكنك تحديث حسابك",
+    "not_found_person":"استعلام خاطئ، لم يتم العثور على حساب",
+    "required_img":"الصورة مطلوبة",
+    "not_matched_password":"كلمة المرور التأكيدية لا تتطابق مع كلمة المرور",
+    "not_allowed_email":"هذا البريد الإلكتروني غير متوفر",
+    "not_allowed_phone":"هذا الهاتف غير متوفر",
+    "validation_err":"بعض المدخلات غير مسموح بها",
+    "file_too_large":"هذا الملف كبير جدًا",
+
+
 
     "success_regester":"لقد تم تسجيلك بنجاح",
     "success_reset":"تم تغيير كلمة المرور بنجاح",
-    "success_forget":"تم! تحقق من بريدك الالكتروني"
+    "success_forget":"تم! تحقق من بريدك الالكتروني",
+    "info_updated":"تم تحديث البيانات بنجاح"
   },
 
   "popups":{

@@ -56,10 +56,11 @@ const closePopup = () => {
 };
 
 const logoutFun = () => {
-  let isRedirect = route.fullPath.includes("/panel");
+  // let isRedirect = route.fullPath.includes("/panel");
 
   removeUserData();
-  if (isRedirect) router.push("/");
+  // if (isRedirect) 
+  router.push("/");
   closePopup();
 };
 </script>
