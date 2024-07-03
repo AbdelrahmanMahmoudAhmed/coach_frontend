@@ -217,23 +217,22 @@ const links = computed(() => {
       },
       {
         img: "packages.svg",
-        title: "packages_management",
-        link: null,
-        isMulti: true,
-        subLinks: [
-          {
-            img: "VPS.svg",
-            title: "vps",
-            link: "/admin/packages/vps",
-            isMulti: false,
-          },
-          {
-            img: "IPv4.svg",
-            title: "proxy",
-            link: "/admin/packages/proxy",
-            isMulti: false,
-          },
-        ],
+        title: "products",
+        link: "/admin/products",
+        isMulti: false,
+      },
+      // {
+      //   img: "packages.svg",
+      //   title: "packages_management",
+      //   link: null,
+      //   isMulti: false,
+       
+      // },
+      {
+        img: "service.svg",
+        title: "service",
+        link: "/admin/programs",
+        isMulti: false,
       },
       {
         img: "manage_orders.svg",
@@ -241,16 +240,11 @@ const links = computed(() => {
         link: "/admin/orders",
         isMulti: false,
       },
-      {
-        img: "paypal.svg",
-        title: "paypal_requests",
-        link: "/admin/paypal",
-        isMulti: false,
-      },
+
       {
         img: "manage_users.svg",
         title: "users_management",
-        link: "/admin/user-management/users",
+        link: "/admin/users",
         isMulti: false,
         // subLinks: [
         //   {
@@ -279,24 +273,19 @@ const links = computed(() => {
         link: "/admin/admins",
         isMulti: false,
       },
-      {
-        img: "features.svg",
-        title: "features_management",
-        link: "/admin/features",
-        isMulti: false,
-      },
-      {
-        img: "feedback.svg",
-        title: "feedback_management",
-        link: "/admin/feedback",
-        isMulti: false,
-      },
-      {
-        img: "service.svg",
-        title: "service",
-        link: "/admin/services",
-        isMulti: false,
-      },
+      // {
+      //   img: "features.svg",
+      //   title: "features_management",
+      //   link: "/admin/features",
+      //   isMulti: false,
+      // },
+      // {
+      //   img: "feedback.svg",
+      //   title: "feedback_management",
+      //   link: "/admin/feedback",
+      //   isMulti: false,
+      // },
+  
       {
         img: "manage_website.svg",
         title: "website_settings",

@@ -180,7 +180,9 @@
       "feedback_management": "Feedback management",
       "manage_info": "Manage info",
       "website_settings": "Website settings",
-      "service":"Services management "
+      "service":"Programs management ",
+      "products":"Products management"
+
     },
     "client": {
       "billing": "billing",

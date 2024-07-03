@@ -1,5 +1,5 @@
 <template>
-  orders
+  users
 </template>
 
 <script setup>

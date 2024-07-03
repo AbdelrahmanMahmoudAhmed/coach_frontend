@@ -164,7 +164,8 @@
       "feedback_management": "ادارة آراء العملاء ",
       "manage_info": "ادارة البيانات",
       "website_settings": "ادارة الموقع",
-      "service": "ادارة الخدمات"
+      "service": "ادارة البرامج",
+      "products":"ادارة المنتجات"
     },
     "client": {
       "billing": "الدفع",
