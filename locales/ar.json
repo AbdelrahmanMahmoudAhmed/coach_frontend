@@ -11,62 +11,6 @@
     "logout": "خروج",
     "lang": "EN"
   },
-  "footer": {
-    "terms": "شروط المستخدم",
-    "privacy": "سياسة الخصوصية",
-    "foot": "جميع الحقوق محفوظة",
-    "get_in_touch": "ابقى على تواصل",
-    "quick_links": "روابط سريعة"
-  },
-
-  "auth": {
-    "login_now": "سجل الآن",
-    "my_account": "حسابى",
-    "login": "تسجيل الدخول ",
-    "email": "البريد الالكترونى",
-    "title": "عنوان",
-    "message": "الرسالة",
-    "password": "كلمة المرور",
-    "confirm_password": "تأكيد كلمة المرور",
-    "forget_password": "نسيت كلمة المرور",
-    "new_password": "كلمة مرور جديدة",
-    "old_password": "كلمة المرور القديمة",
-    "reset_password": "إعادة تعيين كلمة المرور",
-    "name": "الاسم بالكامل",
-    "sign_up": "اشتراك",
-    "new_account": " حساب جديد",
-    "has_account": " هل لديك حساب ؟ ",
-    "send": "ارسال",
-    "more": "المزيد",
-    "change_info": "تغيير البيانات ",
-    "tall":"الطول",
-    "weight":"الوزن",
-    "goal":"الهدف",
-    "phone":"رقم الهاتف",
-    "image":"صورتك الشخصية",
-    "admin_image":"صورة المدير",
-    "role":"الدور",
-    "allow_delete":"السماح بالحذف",
-    "allow_edit":"السماح بالتعديل",
-    "manage_website":"السماح بادارة الموقع",
-  
-    "errors": {
-      "add_name": "من فضلك أضف اسم",
-      "add_email": "من فضلك أضف ايميل ",
-      "add_title": "من فضلك أضف عنوان",
-      "add_message": "برجاء إضافة رسالتك",
-      "add_password": "الرجاء إضافة كلمة مرور صالحة",
-      "add_password_confirmation": "يجب أن يكون تأكيد كلمة المرور مطابقًا لكلمة المرور",
-      "add_image": " برجاء اضافة صورتك",
-      "add_real_image":" jpg أو png أو jpeg لابد و ان يكون امتداد الصورة  ",
-      "add_username": "أضف اسم المستخدم",
-      "choose_role":"من فضلك أختر دور",
-      "add_tall":"من فضلك اضف الطول",
-      "add_weight":"من فضلك اضف الوزن",
-      "add_goal":"من فضلك اختر الهدف",
-      "add_phone":"من فضلك اضف رقم الهاتف"
-    }
-  },
 
 
   "toast":{
@@ -74,6 +18,10 @@
     "success_delete_admin": "تم حذف المدير بنجاح",
     "success_add_admin": "تمت إضافة المدير بنجاح",
     "success_edit_admin": "تم تعديل بيانات المدير بنجاح",
+
+    "success_delete_package": "تم حذف الباقة بنجاح",
+    "success_add_package": "تمت إضافة الباقة بنجاح",
+    "success_edit_package": "تم تعديل بيانات الباقة بنجاح",
 
 
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
@@ -112,6 +60,88 @@
     "logout_confirmation":" {name}, هل أنت متأكد من تسجيل الخروج؟",
     "cancel":"الغاء"
   },
+  
+  "footer": {
+    "terms": "شروط المستخدم",
+    "privacy": "سياسة الخصوصية",
+    "foot": "جميع الحقوق محفوظة",
+    "get_in_touch": "ابقى على تواصل",
+    "quick_links": "روابط سريعة"
+  },
+
+  "auth": {
+    "login_now": "سجل الآن",
+    "my_account": "حسابى",
+    "login": "تسجيل الدخول ",
+    "email": "البريد الالكترونى",
+    "title": "عنوان",
+    "message": "الرسالة",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "forget_password": "نسيت كلمة المرور",
+    "new_password": "كلمة مرور جديدة",
+    "old_password": "كلمة المرور القديمة",
+    "reset_password": "إعادة تعيين كلمة المرور",
+    "name": "الاسم بالكامل",
+    "sign_up": "اشتراك",
+    "new_account": " حساب جديد",
+    "has_account": " هل لديك حساب ؟ ",
+    "send": "ارسال",
+    "more": "المزيد",
+    "change_info": "تغيير البيانات ",
+    "tall":"الطول",
+    "weight":"الوزن",
+    "goal":"الهدف",
+    "phone":"رقم الهاتف",
+    "image":"صورتك الشخصية",
+    "admin_image":"صورة المدير",
+    "package_image":"ايقونة الباقة",
+    "role":"الدور",
+    "allow_delete":"السماح بالحذف",
+    "allow_edit":"السماح بالتعديل",
+    "manage_website":"السماح بادارة الموقع",
+
+    "title_ar":" العنوان بالعربية",
+    "title_en":"العنوان بالانجليزية",
+    "description_ar":"الوصف بالعربية",
+    "description_en":"الوصف بالانجليزية",
+    "price":"السعر",
+    "period":"مدة الباقة ( بالاسبوع )",
+    "discount_percentage":"نسبة الخصم",
+    "package_features":"مميزات الباقة",
+    "package_feature_ar":"الميزة بالعربية",
+    "package_feature_en":"الميزة باالانجليزية",
+  
+    "errors": {
+      "add_name": "من فضلك أضف اسم",
+      "add_email": "من فضلك أضف ايميل ",
+      "add_title": "من فضلك أضف عنوان",
+      "add_message": "برجاء إضافة رسالتك",
+      "add_password": "الرجاء إضافة كلمة مرور صالحة",
+      "add_password_confirmation": "يجب أن يكون تأكيد كلمة المرور مطابقًا لكلمة المرور",
+      "add_image": " برجاء اضافة صورتك",
+      "add_real_image":" jpg أو png أو jpeg لابد و ان يكون امتداد الصورة  ",
+      "add_username": "أضف اسم المستخدم",
+      "choose_role":"من فضلك أختر دور",
+      "add_tall":"من فضلك اضف الطول",
+      "add_weight":"من فضلك اضف الوزن",
+      "add_goal":"من فضلك اختر الهدف",
+      "add_phone":"من فضلك اضف رقم الهاتف",
+
+    "add_title_ar":"اضف العنوان بالعربية",
+    "add_title_en":"اضف العنوان بالانجليزية",
+    "add_description_ar":"اضف الوصف بالعربية",
+    "add_description_en":"اضف الوصف بالانجليزية",
+    "add_price":"اضف السعر",
+    "add_period":"اضف مدة الباقة (بالاسبوع)",
+    "add_discount_percentage":"اضف نسبة الخصم",
+    "at_least_three":"على الاقل ثلاثة أحرف",
+    "at_least_seven":"على الاقل سبعة أحرف",
+    "add_complete_feature":"أضف على الاقل ميزة واحدة باللغة العربية و الانجليزية"
+    }
+  },
+
+
 
 
   "global": {
@@ -174,15 +204,10 @@
       "manage_info": "ادارة البيانات"
     }
   },
-  "user": {
-    "user_info": "بياناتى",
-    "change_info": "تغيير البيانات ",
-    "actions": {
 
-      "choose":"اختر"
 
-    }
-  },
+
+
   "admin": {
     "manage_website": {
       "title": "إعدادات الموقع",
@@ -223,6 +248,13 @@
       "add_admin": "إضافة مدير",
       "edit_admin": "تعديل بيانات المدير",
       "delete_admin": "حذف بيانات المدير",
+      "search_admin": "ابحث عن مدير ",
+
+      "add_package": "إضافة باقة",
+      "edit_package": "تعديل الباقة",
+      "delete_package": "حذف الباقة",
+      "search_package": "ابحث عن باقة ",
+
       "edit": "تعديل",
       "add": "اضافة",
       "delete": "مسح",
@@ -230,7 +262,6 @@
       "delete_msg": "هل أنت متأكد من حذف  ",
       "delete_package_msg": "هل أنت متأكد من حذف هذه الباقة   ",
 
-      "search_admin": "ابحث عن مدير ",
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",
       "success_edit_user": "تم تعديل بيانات المستخدم بنجاح",
@@ -251,37 +282,13 @@
       "add_user": "إضافة مستخدم",
       "download_users": "تحميل بيانات المستخدمين",
       "edit_user": "تعديل بيانات المستخدم",
-      "delete_user": "حذف بيانات المستخدم",
-
-      "accept": "قبول",
-      "reject": "رفض",
-      "accept_request": "قبول الطلب",
-      "reject_request": "رفض الطلب",
-      "sure_accept": "هل انت متأكد من قبول الطلب ؟",
-      "sure_reject": "هل انت متأكد من رفض الطلب ؟",
-      "request": "طلب",
-      "search_invoice": "ابحث عن فاتورة",
-      "edit_invoice": "تعديل حالة الفاتورة",
-      "delete_invoice": "حذف الفاتورة",
-      "paid": "مدفوع",
-      "not_paid": "غير مدفوع",
-      "search_package": "ابحث عن باقة",
-
-      "search_order": "ابحث باسم المستخدم",
-      "edit_order": "تعديل حالة الطلب",
-      "delete_order": "حذف الطلب ",
-      "success_delete_order": "تم حذف الطلب بنجاح",
-      "success_edit_order": "تم تحديث حالة الطلب بنجاح",
-      "add_service": "أضف خدمة",
-      "edit_service": "تعديل الخدمة",
-      "delete_service": "حذف الخدمة"
+      "delete_user": "حذف بيانات المستخدم"
     }
   },
   "table": {
     "headers": {
       "name": "الاسم",
       "email": "البريد الالكترونى",
-      "paypal_email": " البريد الالكترونى ل باى بال",
       "actions": "الاجراءات",
       "edit": "تعديل",
       "delete": "مسح",
@@ -289,53 +296,14 @@
       "title_ar": " العنوان بالعربية",
       "content_en": "المحتوى بالانجليزية",
       "content_ar": "المحتوى بالعربية",
-      "icon": "الصورة",
       "img": " الصورة",
-      "job": "المسمى الوظيفى",
-      "to_packages": "  الباقات",
-      "to_invoices": " الفواتير",
-      "download": "تحميل",
-      "package_name": " اسم الباقة",
-      "package_id": " معرف الباقة",
-      "ram": "رام",
-      "processor_core": "بروسيسور كور",
-      "number_ips": "عدد Ips",
-      "bandwidth": "باندويدز",
-      "type": "النوع",
-      "keyword":"الكلمة المفتاحية",
-      "amount": "القيمة",
-      "payment_method": "طريقة الدفع",
-      "status": "الحالة",
-      "date": "التاريخ",
-      "reject": "رفض",
-      "accept": "قبول",
-      "invoice_number": "رقم الفاتورة",
-      "invoice_date": "تاريخ الفاتورة",
-      "ip": "Ip",
-      "available_traffic": "المساحة المتاحه",
-      "used_traffic": "المساحة المسخدمة",
-      "operating_system": "نظام التشغيل",
-      "port": "Port",
-      "user_name": "اسم المستخدم ",
-      "password": "كلمة المرور",
-      "expiration_date": "تاريخ انتهاء الصلاحية",
-      "price": "السعر",
-      "username": "اسم المستخدم",
-      "renew": "تجديد",
-      "details": "تفاصيل",
-      "protocol": "البروتوكول",
-      "ips": "Ips",
-      "generate": "انشاء",
-      "country": "البلد",
-      "rotation": "دوران",
-      "service_name": "اسم الخدمة",
-      "host": "الاستضافة",
-      "check":"فحص",
-      "stop":"ايقاف",
       "allow_delete":"السماح بالحذف",
       "allow_edit":"السماح بالتعديل",
       "manage_website":"السماح بادارة الموقع",
-      "role":"الدور"
+      "role":"الدور",
+      "details":"تفاصيل",
+      "price":"السعر",
+      "discountPercentage":"نسبة الخصم"
     
     },
     "super_admin":"المدير الفائق",

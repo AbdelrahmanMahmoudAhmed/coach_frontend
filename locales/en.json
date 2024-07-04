@@ -11,75 +11,15 @@
     "logout": "logout",
     "lang": "ع"
   },
-  "footer": {
-    "terms": "Terms of the user",
-    "privacy": "Privacy policy",
-    "foot": "All rights reserved",
-    "get_in_touch": "Get in Touch",
-    "quick_links": "Quick Links"
-  },
-
-  "auth": {
-    "login_now": "Login Now",
-    "my_account": "My account",
-    "login": "Login",
-    "email": "Email",
-    "password": "Password",
-    "title": "Title",
-    "message": "Message",
-    "confirm_password": "Confirm Password",
-    "forget_password": "Forget password",
-    "old_password": "Old password",
-    "new_password": "New Password",
-    "reset_password": "Reset password",
-    "name": "Full name",
-    "sign_up": "Sign up",
-    "new_account": "New Account",
-    "has_account": "Already have an account ?",
-    "send": "SEND",
-    "more": "More",
-    "change_info": "Change info",
-    "tall":"Tall",
-    "weight":"Weight",
-    "goal":"Goal",
-    "phone":"Phone",
-    "image":"Your image",
-    "admin_image":"Admin Image",   
-
-    "role":"Role",
-
-    "allow_delete":"Allow deletion",
-    "allow_edit":"Allow editing",
-    "manage_website":"Manage website",
-      "errors": {
-      "add_name": "Please add your name",
-      "add_email": "Please add your email",
-      "add_title": "Please add a title",
-      "add_message": "Please add your message",
-      "add_password": "Please add a valid password",
-      "add_password_confirmation": "The password confirmation must be identical to the password",
-      "add_image": "Please add your image",
-      "add_real_image": "The image extension must be jpg, png or jpeg",
-      "add_username":"Add the User Name",
-      "choose_role":"Please Choose role",
-
-
-      "add_tall":"Please add your tall",
-      "add_weight":"Please add your weight",
-      "add_goal":"Please choose your goal",
-      "add_phone":"Please add your phone"
-
-
-
-
-    }
-  },
   "toast":{
     "login":"You have been logged in",
     "success_delete_admin": "the admin has been deleted successfully",
     "success_add_admin": "the admin has been added successfully",
     "success_edit_admin": "the admin's data has been edited successfully",
 
+    "success_delete_package": "the package has been deleted successfully",
+    "success_add_package": "the package has been added successfully",
+    "success_edit_package": "the package's data has been edited successfully",
 
 
 
@@ -124,6 +64,94 @@
   "logout_confirmation":" {name} are you sure to logout ? ",
   "cancel":"Cancel"
 },
+  "footer": {
+    "terms": "Terms of the user",
+    "privacy": "Privacy policy",
+    "foot": "All rights reserved",
+    "get_in_touch": "Get in Touch",
+    "quick_links": "Quick Links"
+  },
+
+  "auth": {
+    "login_now": "Login Now",
+    "my_account": "My account",
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "title": "Title",
+    "message": "Message",
+    "confirm_password": "Confirm Password",
+    "forget_password": "Forget password",
+    "old_password": "Old password",
+    "new_password": "New Password",
+    "reset_password": "Reset password",
+    "name": "Full name",
+    "sign_up": "Sign up",
+    "new_account": "New Account",
+    "has_account": "Already have an account ?",
+    "send": "SEND",
+    "more": "More",
+    "change_info": "Change info",
+    "tall":"Tall",
+    "weight":"Weight",
+    "goal":"Goal",
+    "phone":"Phone",
+    "image":"Your image",
+    "admin_image":"Admin Image",   
+    "package_image":"Package Icon",
+    "role":"Role",
+
+    "allow_delete":"Allow deletion",
+    "allow_edit":"Allow editing",
+    "manage_website":"Manage website",
+
+
+    "title_ar":"Title in Arabic",
+    "title_en":"Title in English",
+    "description_ar":"Description in Arabic",
+    "description_en":"Description in English",
+    "price":"Price",
+    "period":"Package duration ( in weeks )",
+    "discount_percentage":"Discount percentage",
+    "package_features":"Package features",
+    "package_feature_ar":"The feature in Arabic",
+    "package_feature_en":"The feature in English",
+
+      "errors": {
+      "add_name": "Please add your name",
+      "add_email": "Please add your email",
+      "add_title": "Please add a title",
+      "add_message": "Please add your message",
+      "add_password": "Please add a valid password",
+      "add_password_confirmation": "The password confirmation must be identical to the password",
+      "add_image": "Please add your image",
+      "add_real_image": "The image extension must be jpg, png or jpeg",
+      "add_username":"Add the User Name",
+      "choose_role":"Please Choose role",
+
+
+      "add_tall":"Please add your tall",
+      "add_weight":"Please add your weight",
+      "add_goal":"Please choose your goal",
+      "add_phone":"Please add your phone",
+
+      "add_title_ar":"Add the title in Arabic",
+      "add_title_en":"Add the title in English",
+      "add_description_ar":"Add the description in Arabic",
+      "add_description_en":"Add the description in English",
+      "add_price":"Add the price",
+      "add_period":"Add the package duration ( in weeks )",
+      "add_discount_percentage":"Add the discount percentage",
+      "at_least_three":"At least three characters",
+      "at_least_seven":"At least seven characters",
+     "add_complete_feature":"Add at least one feature in Arabic and English "
+
+
+
+
+    }
+  },
+
 
 
 
@@ -194,30 +222,7 @@
       "manage_info": "Manage info"
     }
   },
-  "user": {
-    "user_info": "My info ",
-    "change_info": "Change my info",
-    "actions":{
-      "add_billing":"Add Billing",
-      "alfacoin":"Alfacoin",
-      "paypal":"Paypal",
-      "paypal_success":"Will send your invoice within the 12 hours",
-      "renew":"Renew Vps Package" ,
-      "renew_proxy":"Renew Proxy Package" ,
-      "cancel":"Cancel",
-      "renew_vps":"Renew this package for",
-      "success_renew_vps":"The package has been renewed successfully ",
-      "generate":"Generate",
-      "generate_ip":"Generate IP",
-      "package_name": " Package name",
-      "checker":"Check IP",
-      "check":"Check",
-      "choose":"choose option"
 
-
-
-    }
-  },
   "admin": {
     "manage_website": {
       "title": "website settings",
@@ -258,14 +263,20 @@
       "add_admin": "Add Admin",
       "edit_admin": "Edit Admin",
       "delete_admin": "Delete Admin",
+      "search_admin": "Search an admin",
+
+      "add_package": "Add package",
+      "edit_package": "Edit package",
+      "delete_package": "Delete package",
+      "search_package": "Search a package",
+
+
       "edit": "Edit",
       "add": "Add",
       "delete": "Delete",
       "cancel": "Cancel",
       "delete_msg": "Are you sure to delete ",
       "delete_package_msg": "Are you sure to delete this package  ",
-
-      "search_admin": "Search an admin",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",
@@ -287,66 +298,9 @@
       "add_user": "Add User",
       "download_users": "Download Users Data",
       "edit_user": "Edit User",
-      "delete_user": "Delete User",
-      "credit_user": "Edit User's Credit",
-      "current_credit": "Current Credit",
-      "will_be": "Credit after change ",
-      "credit_to": "Credit is",
-      "credit": "Change Credit ",
-      "add_vps": "Add Vps",
-      "edit_vps": "Edit Vps",
-      "delete_vps": "Delete Vps",
-      "search_vps": " Search by Vps name",
-      "success_add_vps": "the VPS has been added successfully",
-      "success_edit_vps": "the VPS's data has been edited successfully",
-      "success_delete_vps": "the VPS has been deleted successfully",
-
-      "add_proxy": "Add Proxy",
-      "edit_proxy": "Edit Proxy",
-      "delete_proxy": "Delete Proxy",
-      "search_proxy": " Search by Proxy name",
-      "success_add_proxy": "the Proxy has been added successfully",
-      "success_edit_proxy": "the Proxy's data has been edited successfully",
-      "success_delete_proxy": "the Proxy has been deleted successfully",
-      "search_paypal":" search by email",
-      "accept":"Accept",
-      "reject":"Reject",
-      "accept_request":" Accepting request",
-      "reject_request":" Rejecting request",
-      "sure_accept":"Are you sure to accept the request?",
-      "sure_reject":"Are you sure you want to reject the request?",
-      "request":"Request",
-
-      "search_invoice": "Search an invoice",
-      "edit_invoice": "Edit the invoice's state",
-      "delete_invoice": "Delete invoice",
-      "paid":"paid",
-      "not_paid":"not paid",
+      "delete_user": "Delete User"
 
 
-      "search_package": " Search a Package",
-
-
-
-      "add_user_packages_vps": "Add VPS Package " ,
-      "add_package":"Add package",
-      "download_generated_ips":"Download generated ips",
-      "edit_user_packages_vps": "Edit VPS Package ",
-      "delete_user_packages_vps": "Delete VPS Package ",
-
-      "add_user_packages_proxy": "Add Proxy Package " ,
-      "edit_user_packages_proxy": "Edit Proxy Package ",
-      "delete_user_packages_proxy": "Delete Proxy Package ",
-
-      "search_order": "Search using user name",
-      "edit_order": "Edit order status",
-      "delete_order": "Delete order",
-
-      "success_delete_order": "the order has been deleted successfully",
-      "success_edit_order": "the order's status has been updated successfully",
-      "add_service":"Add service",
-      "edit_service": "Edit service",
-      "delete_service": "Delete service"
 
 
     }
@@ -355,7 +309,6 @@
     "headers": {
       "name": "Name",
       "email": "Email",
-      "paypal_email":"Email of PayPal",
       "actions": "Actions",
       "edit": "Edit",
       "delete": "Delete",
@@ -363,58 +316,14 @@
       "title_ar": "Title in Arabic",
       "content_en": "Content in English",
       "content_ar": "Content in Arabic",
-      "icon": "Icon",
       "img": " Image",
-      "job": "Job title",
-      "current_credit": "Current Credit",
-      "spent_credit": "Spent Credit",
-      "edit_the_credit": "Edit credit",
-      "to_packages": "Packages",
-      "to_invoices": "Invoices ",
-      "download": "Download",
-      "package_name": "Package name",
-      "package_id":"Package Id",
-      "ram": "Ram",
-      "processor_core": "Processor core",
-      "number_ips":"Number of the Ips",
-      "bandwidth":"Bandwidth",
-      "type":"Type",
-"keyword":"keyword",
-      "amount":"Amount",
-      "payment_method":"Payment method",
-      "status":"Status",
-      "date":"Date",
-      "reject":"Reject",
-      "accept":"Accept",
-"operating_system":"Operating System",
-      "invoice_number":"Invoice Number",
-      "invoice_date":"Invoice Date",
-      "ip":"Ip",
-      "port":"Port",
-      "user_name":"User Name",
-      "password":"Password",
-      "expiration_date":"Expiration date",
-      "price":"Price",
-      "username":"User Name",
-      "renew":"Renew",
-      "details":"details",
-      "available_traffic":"Available Traffic",
-      "used_traffic":"Used Traffic",
-
-
-      "protocol": "Protocol",
-      "ips":"Ips",
-      "generate":"Generate",
-      "country":"Country",
-      "rotation":"Rotation",
-      "service_name":"Service name",
-      "host":"host",
-      "check":"Check",
-      "stop":"Stop",
       "allow_delete":"Allow deletion",
       "allow_edit":"Allow editing",
       "manage_website":"Manage website",
-      "role":"Role"
+      "role":"Role",
+      "details":"Details",
+      "price":"Price",
+      "discountPercentage":"Discount percentage"
 
 
     },
