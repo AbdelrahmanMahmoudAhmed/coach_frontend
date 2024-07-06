@@ -1,7 +1,10 @@
 <template>
   <div class="pb-10">
-    <div v-if="popup">
+    <di v-if="popup">
 <ManagePackages :currentPackage="currentPackage" :type="type" @closePopup="closePopup" @getPackagesData="getPackagesData" />
+    </di>
+    <div v-if="detailsPopup">
+      <DisplayPackageDetails :currentPackage="currentPackage" @closePopup="closeDetailsPopup" />
     </div>
 
     <div class="min-h-[60vh] overflow-x-auto">
@@ -41,7 +44,7 @@
           
           <button
           v-if="global.user"
-            @click="() => openPopup('edit', rowData?.currentItem)"
+            @click="() => openDetailsPopup(rowData?.currentItem)"
             class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87] disabled:bg-[#419de9]"
           >
             {{ t(`table.headers.details`) }}
@@ -63,7 +66,8 @@ definePageMeta({
 import DataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
-import ManagePackages from "~/components/panel/popups/ManagePackages"
+import ManagePackages from "~/components/panel/popups/ManagePackages";
+import DisplayPackageDetails from "../../components/panel/popups/DisplayPackageDetails.vue";
 
 const query = reactive({
   page: 1,
@@ -79,8 +83,9 @@ const global = useGlobalStore();
 const { locale, locales, setLocale, t } = useI18n();
 const currentPackage = ref("");
 const popup = ref(false);
+const detailsPopup = ref(false);
 const { getAllPackages } = useRequest();
-const headers = ref(["title_ar", "title_en","discountPercentage" , "price", "img","details"]);
+const headers = ref(["title_ar", "title_en","img" , "price", "discountPercentage","details"]);
 (global.user.allowDelete || global.user.allowEdit ) && (headers.value = ([...headers.value , "actions"  ]))
 const rows = ref([]);
 const dataFetched = ref(false);
@@ -93,11 +98,19 @@ const closePopup = () => {
   popup.value = false;
   global.changePopupState(false);
 };
-const openPopup = (operationType, admin) => {
-  currentPackage.value = admin;
+const openPopup = (operationType, progPackage) => {
+  currentPackage.value = progPackage;
   type.value = operationType;
-  // global.changePopupState(true);
   popup.value = true;
+};
+
+const openDetailsPopup = ( progPackage) => {
+  console.log('progPackage' , progPackage)
+  currentPackage.value = progPackage;
+  detailsPopup.value = true;
+};
+const closeDetailsPopup = ( ) => {
+  detailsPopup.value = false;
 };
 
 const changeQuery = (type, val) => {
@@ -128,24 +141,38 @@ const getPackagesData = async () => {
           id: item?.id,
           item: item?.titleEn,
         },
+ 
+        {
+          id: item?.id,
+          item: item?.image,
+          isImg: true,
+        },
+ 
+        {
+          id: item?.id,
+          item: item.price,
+        },
         {
           id: item?.id,
           item: `${item?.discountPercentage}%`,
         },
         {
           id: item?.id,
-          item: item?.price,
-        },
-        {
-          id: item?.id,
-          item: item.image,
-          isImg: true,
-        },
-        {
-          id: item?.id,
           item: null,
           isSlot: true,
-          slotName:"details"
+          slotName:"details",
+          currentItem: {
+            id: item?.id,
+            titleAr: item?.titleAr,
+            titleEn: item?.titleEn,
+            descriptionAr: item?.descriptionAr,
+            descriptionEn: item?.descriptionEn,
+            period: item?.period,
+            discountPercentage: item?.discountPercentage,
+            image:item.image,
+            price: item?.price,
+            PackageFeatures:item.PackageFeatures
+          }
         },
         {
           id: item?.id,
@@ -159,7 +186,11 @@ const getPackagesData = async () => {
             discountPercentage: item?.discountPercentage,
             image:item.image,
             price: item?.price,
+            period: item?.period,
+            descriptionAr: item?.descriptionAr,
+            descriptionEn: item?.descriptionEn,
             PackageFeatures:item.PackageFeatures
+
           }
         },
         

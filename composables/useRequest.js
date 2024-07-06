@@ -77,6 +77,12 @@ const getAllPackages = async (query) => {
 const createPackage = async (data) => {
   return await REQUEST.post(`/admin/website-management/packages`, data, { headers });
 };
+const editPackage = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/packages/${id}`, data, { headers });
+};
+const deletePackage = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/packages/${id}`, { headers });
+};
 
 /*--------------------  END PROGRAMS SECTION  --------------------*/
 
@@ -100,8 +106,9 @@ const createPackage = async (data) => {
     
 
     getAllPackages,
-    createPackage
-
+    createPackage,
+    editPackage,
+    deletePackage,
   };
 };
 export default useRequest;

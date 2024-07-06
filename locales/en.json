@@ -269,6 +269,18 @@
       "edit_package": "Edit package",
       "delete_package": "Delete package",
       "search_package": "Search a package",
+      "details_package": "Package details",
+      "title_ar":"Title in Arabic",
+      "title_en":"Title in English",
+      "description_ar":"Description in Arabic",
+      "description_en":"Description in English",
+      "period":"Package duration ( in weeks )",
+      "discount_percentage":"Discount percentage",
+      "price":"Price",
+      "package_features":"Package features",
+      "package_feature_ar":"The feature in Arabic",
+      "package_feature_en":"The feature in English",
+
 
 
       "edit": "Edit",
@@ -276,7 +288,7 @@
       "delete": "Delete",
       "cancel": "Cancel",
       "delete_msg": "Are you sure to delete ",
-      "delete_package_msg": "Are you sure to delete this package  ",
+      "delete_package_msg": "Are you sure to delete {package} package ?  ",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",
