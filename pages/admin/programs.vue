@@ -126,8 +126,8 @@ const getPackagesData = async () => {
     pagination.totalCount = res.data.pagination?.totalCount;
     pagination.perPage = res.data.pagination?.perPage;
 
-    const allAdmins = res.data?.data;
-    const handeldAdmins = allAdmins.map((item) => {
+    const allPrograms = res.data?.data;
+    const handeldAdmins = allPrograms.map((item) => {
       return [
         {
           id: item?.id,

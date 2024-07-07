@@ -261,12 +261,18 @@
       "delete_admin": "حذف بيانات المدير",
       "search_admin": "ابحث عن مدير ",
 
+      "add_client": "إضافة عميل",
+      "edit_client": "تعديل بيانات العميل",
+      "delete_client": "حذف بيانات العميل",
+      "search_client": "ابحث عن عميل ",
+
       "add_package": "إضافة باقة",
       "edit_package": "تعديل الباقة",
       "delete_package": "حذف الباقة",
       "search_package": "ابحث عن باقة ",
       "details_package": " تفاصيل الباقة ",
       "details_product": " تفاصيل المنتج ",
+      "details_client": " تفاصيل العميل ",
 
       "add_product": "إضافة منتج",
       "edit_product": "تعديل المنتج",
@@ -320,6 +326,7 @@
     "headers": {
       "name": "الاسم",
       "email": "البريد الالكترونى",
+      "phone":"رقم الهاتف",
       "actions": "الاجراءات",
       "edit": "تعديل",
       "delete": "مسح",
@@ -330,6 +337,8 @@
       "img": " الصورة",
       "allow_delete":"السماح بالحذف",
       "allow_edit":"السماح بالتعديل",
+      "client_product":"المنتجات",
+      "client_package":"البرامج",
       "manage_website":"السماح بادارة الموقع",
       "role":"الدور",
       "details":"تفاصيل",

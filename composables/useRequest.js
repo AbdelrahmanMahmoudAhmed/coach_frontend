@@ -66,6 +66,21 @@ const useRequest = () => {
   };
 
 
+/*--------------------  START CLIENTS SECTION  --------------------*/
+
+  const getAllClients = async (query) => {
+    return await REQUEST.get(`/admin/clients-management${getQuery(query)}`, { headers });
+  };
+  const createClient = async (data) => {
+    return await REQUEST.post(`/admin/clients-management`, data, { headers });
+  };
+  const editClient = async (id, data) => {
+    return await REQUEST.patch(`/admin/clients-management/${id}`, data, { headers });
+  };
+  const deleteClient = async (id) => {
+    return await REQUEST.delete(`/admin/clients-management/${id}`, { headers });
+  };
+/*--------------------  END CLIENTS SECTION  --------------------*/
 
 
 /*--------------------  START PROGRAMS SECTION  --------------------*/
@@ -133,6 +148,13 @@ const deleteProduct = async (id) => {
     createProduct,
     editProduct,
     deleteProduct,
+
+    
+getAllClients,
+createClient,
+editClient,
+deleteClient
+
 
   };
 };

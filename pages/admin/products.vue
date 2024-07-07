@@ -124,8 +124,8 @@ const getProductData = async () => {
     pagination.totalCount = res.data.pagination?.totalCount;
     pagination.perPage = res.data.pagination?.perPage;
 
-    const allAdmins = res.data?.data;
-    const handeldAdmins = allAdmins.map((item) => {
+    const allProducts = res.data?.data;
+    const handeldAdmins = allProducts.map((item) => {
       return [
         {
           id: item?.id,

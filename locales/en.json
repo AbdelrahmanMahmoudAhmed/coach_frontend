@@ -275,12 +275,18 @@
       "delete_admin": "Delete Admin",
       "search_admin": "Search an admin",
 
+      "add_client": "Add Client",
+      "edit_client": "Edit Client",
+      "delete_client": "Delete Client",
+      "search_client": "Search an Client",
+
       "add_package": "Add package",
       "edit_package": "Edit package",
       "delete_package": "Delete package",
       "search_package": "Search a package",
       "details_package": "Package details",
       "details_product": "Product details",
+      "details_client":"Client details",
 
       "add_product":"Add product",
       "edit_product": "Edit product",
@@ -340,6 +346,7 @@
     "headers": {
       "name": "Name",
       "email": "Email",
+      "phone":"Phone",
       "actions": "Actions",
       "edit": "Edit",
       "delete": "Delete",
@@ -350,6 +357,8 @@
       "img": " Image",
       "allow_delete":"Allow deletion",
       "allow_edit":"Allow editing",
+      "client_product":"Products",
+      "client_package":"Programs",
       "manage_website":"Manage website",
       "role":"Role",
       "details":"Details",
