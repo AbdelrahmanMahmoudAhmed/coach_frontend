@@ -12,7 +12,7 @@
       <h3
         class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold"
       >
-        {{ $t(`admin.actions.details_package`) }}
+        {{ $t(`admin.actions.details_${page}`) }}
       </h3>
 
       <div class="flex flex-col justify-center">
@@ -54,12 +54,13 @@
               <span class="text-[14px]">{{ currentPackage.descriptionEn }}</span>
             </div>
             <div class="w-fit mx-auto my-8">
-              <div class="flex gap-8 justify-between">
+              <div v-if="page == 'package'" class="flex gap-8 justify-between">
                 <span class="font-bold text-[--main-color] dark:text-[--third-color]">
                   {{ $t("auth.period") }}
                 </span>
                 <span class="font-bold">{{ currentPackage.period }}</span>
               </div>
+              
               <div class="flex gap-8 justify-between">
                 <span class="font-bold text-[--main-color] dark:text-[--third-color]">
                   {{ $t("auth.price") }}
@@ -72,9 +73,15 @@
                 </span>
                 <span class="font-bold">{{ currentPackage.discountPercentage }} %</span>
               </div>
+              <div v-if="page == 'product'" class="flex gap-8 justify-between">
+                <span class="font-bold text-[--main-color] dark:text-[--third-color]">
+                  {{ $t("auth.shipping_price") }}
+                </span>
+                <span class="font-bold">{{ currentPackage.shippingPrice }}</span>
+              </div>
             </div>
 
-            <div class="my-6">
+            <div v-if="page == 'package'" class="my-6">
               <h5 class="text-center font-bold text-[20px] mb-3 sm:text-[22px]">{{ $t("auth.package_features") }}</h5>
               <div class=" mx-auto my-2" v-if="currentPackage.PackageFeatures">
                 <div class=" border rounded-lg mb-2 w-full px-2 py-1"
@@ -107,6 +114,7 @@
 const emit = defineEmits(["closePopup"]);
 const props = defineProps({
   currentPackage: Object,
+  page:String
 });
  const theme = useCookie("isDark", {
   watch: "shallow",

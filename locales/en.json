@@ -22,6 +22,9 @@
     "success_edit_package": "the package's data has been edited successfully",
 
 
+    "success_delete_product": "the product has been deleted successfully",
+    "success_add_product": "the product has been added successfully",
+    "success_edit_product": "the product's data has been edited successfully",
 
 
     
@@ -99,6 +102,7 @@
     "image":"Your image",
     "admin_image":"Admin Image",   
     "package_image":"Package Icon",
+    "product_image":"Product Icon",
     "role":"Role",
 
     "allow_delete":"Allow deletion",
@@ -112,6 +116,7 @@
     "description_en":"Description in English",
     "price":"Price",
     "period":"Package duration ( in weeks )",
+    "shipping_price":"Shipping cost",
     "discount_percentage":"Discount percentage",
     "package_features":"Package features",
     "package_feature_ar":"The feature in Arabic",
@@ -142,6 +147,7 @@
       "add_description_en":"Add the description in English",
       "add_price":"Add the price",
       "add_period":"Add the package duration ( in weeks )",
+      "add_shipping_price":"Add the shipping cost",
       "add_discount_percentage":"Add the discount percentage",
       "at_least_three":"At least three characters",
       "at_least_seven":"At least seven characters",
@@ -274,6 +280,14 @@
       "delete_package": "Delete package",
       "search_package": "Search a package",
       "details_package": "Package details",
+      "details_product": "Product details",
+
+      "add_product":"Add product",
+      "edit_product": "Edit product",
+      "delete_product": "Delete product",
+      "search_product": "Search a product",
+
+
       "title_ar":"Title in Arabic",
       "title_en":"Title in English",
       "description_ar":"Description in Arabic",
@@ -293,6 +307,7 @@
       "cancel": "Cancel",
       "delete_msg": "Are you sure to delete ",
       "delete_package_msg": "Are you sure to delete {package} package ?  ",
+      "delete_product_msg": "Are you sure to delete {product} ?  ",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",
@@ -339,8 +354,8 @@
       "role":"Role",
       "details":"Details",
       "price":"Price",
-      "discountPercentage":"Discount percentage"
-
+      "discountPercentage":"Discount percentage",
+      "shipping_price":"Shipping cost"
 
     },
     "super_admin":"Super Admin",

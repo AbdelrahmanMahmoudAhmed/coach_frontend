@@ -23,6 +23,10 @@
     "success_add_package": "تمت إضافة الباقة بنجاح",
     "success_edit_package": "تم تعديل بيانات الباقة بنجاح",
 
+    "success_delete_product": "تم حذف المنتج بنجاح",
+    "success_add_product": "تمت إضافة المنتج بنجاح",
+    "success_edit_product": "تم تعديل بيانات المنتج بنجاح",
+
 
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
     "wrong_password":"كلمة سر غير صحيحة",
@@ -96,6 +100,7 @@
     "image":"صورتك الشخصية",
     "admin_image":"صورة المدير",
     "package_image":"ايقونة الباقة",
+    "product_image":"ايقونة المنتج",
     "role":"الدور",
     "allow_delete":"السماح بالحذف",
     "allow_edit":"السماح بالتعديل",
@@ -107,6 +112,7 @@
     "description_en":"الوصف بالانجليزية",
     "price":"السعر",
     "period":"مدة الباقة ( بالاسبوع )",
+    "shipping_price":"تكلفة الشحن",
     "discount_percentage":"نسبة الخصم",
     "package_features":"مميزات الباقة",
     "package_feature_ar":"الميزة بالعربية",
@@ -135,6 +141,7 @@
     "add_description_en":"اضف الوصف بالانجليزية",
     "add_price":"اضف السعر",
     "add_period":"اضف مدة الباقة (بالاسبوع)",
+    "add_shipping_price":"أضف تكلفة الشحن",
     "add_discount_percentage":"اضف نسبة الخصم",
     "at_least_three":"على الاقل ثلاثة أحرف",
     "at_least_seven":"على الاقل سبعة أحرف",
@@ -259,6 +266,14 @@
       "delete_package": "حذف الباقة",
       "search_package": "ابحث عن باقة ",
       "details_package": " تفاصيل الباقة ",
+      "details_product": " تفاصيل المنتج ",
+
+      "add_product": "إضافة منتج",
+      "edit_product": "تعديل المنتج",
+      "delete_product": "حذف المنتج", 
+      "search_product": "ابحث عن منتج ",
+
+
       "title_ar":" العنوان بالعربية",
       "title_en":"العنوان بالانجليزية",
       "description_ar":"الوصف بالعربية",
@@ -269,7 +284,6 @@
       "package_features":"مميزات الباقة",
       "package_feature_ar":"الميزة بالعربية",
       "package_feature_en":"الميزة باالانجليزية",
-      
 
       "edit": "تعديل",
       "add": "اضافة",
@@ -277,6 +291,7 @@
       "cancel": "الغاء",
       "delete_msg": "هل أنت متأكد من حذف  ",
       "delete_package_msg": "هل أنت متأكد من حذف باقة {package} ؟  ",
+      "delete_product_msg": "هل أنت متأكد من حذف المنتج {product} ؟  ",
 
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",
@@ -319,8 +334,9 @@
       "role":"الدور",
       "details":"تفاصيل",
       "price":"السعر",
-      "discountPercentage":"نسبة الخصم"
-    
+      "discountPercentage":"نسبة الخصم",
+      "shipping_price":"تكلفة الشحن"
+
     },
     "super_admin":"المدير الفائق",
     "admin":"مدير"

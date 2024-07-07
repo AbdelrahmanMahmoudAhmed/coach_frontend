@@ -87,6 +87,25 @@ const deletePackage = async (id) => {
 /*--------------------  END PROGRAMS SECTION  --------------------*/
 
 
+/*--------------------  START PRODUCTS SECTION  --------------------*/
+
+
+const getAllProducts = async (query) => {
+  return await REQUEST.get(`/admin/website-management/products${getQuery(query)}`, { headers });
+};
+const createProduct = async (data) => {
+  return await REQUEST.post(`/admin/website-management/products`, data, { headers });
+};
+const editProduct = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/products/${id}`, data, { headers });
+};
+const deleteProduct = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/products/${id}`, { headers });
+};
+
+/*--------------------  END PRODUCTS SECTION  --------------------*/
+
+
 
 
 
@@ -109,6 +128,12 @@ const deletePackage = async (id) => {
     createPackage,
     editPackage,
     deletePackage,
+
+    getAllProducts,
+    createProduct,
+    editProduct,
+    deleteProduct,
+
   };
 };
 export default useRequest;

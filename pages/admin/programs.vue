@@ -4,7 +4,7 @@
 <ManagePackages :currentPackage="currentPackage" :type="type" @closePopup="closePopup" @getPackagesData="getPackagesData" />
     </di>
     <div v-if="detailsPopup">
-      <DisplayPackageDetails :currentPackage="currentPackage" @closePopup="closeDetailsPopup" />
+      <DisplayPackageDetails page="package" :currentPackage="currentPackage" @closePopup="closeDetailsPopup" />
     </div>
 
     <div class="min-h-[60vh] overflow-x-auto">
@@ -67,7 +67,7 @@ import DataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManagePackages from "~/components/panel/popups/ManagePackages";
-import DisplayPackageDetails from "../../components/panel/popups/DisplayPackageDetails.vue";
+import DisplayPackageDetails from "~/components/panel/popups/DisplayDetails.vue";
 
 const query = reactive({
   page: 1,
