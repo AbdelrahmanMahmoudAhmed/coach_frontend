@@ -120,6 +120,7 @@
       "errors": {
       "add_name": "Please add your name",
       "add_email": "Please add your email",
+      "add_right_email":"Please add a valid email",
       "add_title": "Please add a title",
       "add_message": "Please add your message",
       "add_password": "Please add a valid password",
@@ -144,7 +145,10 @@
       "add_discount_percentage":"Add the discount percentage",
       "at_least_three":"At least three characters",
       "at_least_seven":"At least seven characters",
-     "add_complete_feature":"Add at least one feature in Arabic and English "
+      "at_least_eight":"At least eight characters",
+      "must_be_number":"The field must contain numbers only.",
+     "add_complete_feature":"Add at least one feature in Arabic and English ",
+     "max_hundred":"Maximum number is 100"
 
 
 

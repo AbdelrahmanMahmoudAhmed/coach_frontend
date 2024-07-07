@@ -11,7 +11,6 @@ const getQuery = (obj) => {
       key != objKeys[objKeys.length - 1] ? "&" : ""
     }`;
   }
-  console.log("queryString", queryString);
   return queryString;
 };
 

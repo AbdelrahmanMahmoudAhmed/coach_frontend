@@ -11,7 +11,7 @@
         </h1>
 
         <form @submit.prevent="login" class="flex flex-col justify-center">
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <img
                 v-if="errors.email.icon"
@@ -50,7 +50,7 @@
               {{ $t("auth.errors.add_email") }}
             </p>
           </div>
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <img
                 v-if="errors.password.icon"

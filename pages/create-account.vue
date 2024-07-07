@@ -11,13 +11,13 @@
         <form @submit.prevent="createAccount" class="flex flex-col justify-center">
 
 
-          <div class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+          <div class="add-edit-holder"
             v-if="imageDisplaying">
             <div class=" max-w-[200px] rounded-lg overflow-hidden ">
               <img :src="imageDisplaying" alt="personal image">
             </div>
           </div>
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <label class="px-[30px] mb-1" for="">{{ $t('auth.image') }}</label>
               <input @change="onChangeImage"
@@ -34,7 +34,7 @@
             </p>
             
           </div>
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.name" :placeholder="$t('auth.name')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -45,7 +45,7 @@
               {{ $t("auth.errors.add_name") }}
             </p>
           </div>
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.email" :placeholder="$t('auth.email')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -62,7 +62,7 @@
 
 
 
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.phone" :placeholder="$t('auth.phone')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -75,7 +75,7 @@
           </div>
 
 
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.tall" :placeholder="$t('auth.tall')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -87,7 +87,7 @@
             </p>
           </div>
 
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.weight" :placeholder="$t('auth.weight')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -99,7 +99,7 @@
             </p>
           </div>
 
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <!-- <input v-model="state.goal" :placeholder="$t('auth.goal')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -119,7 +119,7 @@
             </p>
           </div>
 
-          <!-- <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <!-- <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.name" :placeholder="$t('auth.name')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -133,7 +133,7 @@
 
 
           <!-- 
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <input v-model="state.name" :placeholder="$t('auth.name')"
                 class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
@@ -146,7 +146,7 @@
           </div> -->
 
 
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <div class="relative">
                 <div @click="() => changeInputType('password')" :class="` ${locale == 'ar' ? ' left-5' : ' right-5'
@@ -165,7 +165,7 @@
               {{ $t("auth.errors.add_password") }}
             </p>
           </div>
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <div @click="() => changeInputType('passwordConfirmation')" :class="` ${locale == 'ar' ? ' left-5' : ' right-5'
             } cursor-pointer absolute top-[15px] `">
@@ -356,14 +356,8 @@ const createAccount = async () => {
 
       })
       .catch((err) => { })
-      .finally(() => {
-        // state.name = "";
-        // state.email = "";
-        // state.password = "";
-        // state.passwordConfirmation = "";
-      });
+     
   } else {
-    console.log("else")
     errors.name.state = v$.value.name.$error;
     errors.email.state = v$.value.email.$error;
     errors.tall.state = v$.value.tall.$error;
@@ -380,7 +374,6 @@ const changeVal = (val, name) => {
 
 };
 const onChangeImage = (e) => {
-  console.log("e", e.target.files)
   const file = e.target.files[0]
   state.image = file
   imageDisplaying.value = URL.createObjectURL(file);

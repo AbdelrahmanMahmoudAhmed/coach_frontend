@@ -22,7 +22,7 @@
           
           <button
             @click="() => openPopup('edit', rowData?.currentItem)"
-            class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87] disabled:bg-[#419de9]"
+            class="panel-table-action"
             :disabled="rowData?.currentItem.id == 1 || rowData?.currentItem.id == global.user?.id"
           >
             {{ t(`table.headers.edit`) }}
@@ -31,7 +31,7 @@
           <button
           :disabled="rowData?.currentItem.id == 1 || rowData?.currentItem.id == global.user?.id"
             @click="() => openPopup('delete', rowData?.currentItem)"
-            class="text-white bg-red-800 rounded-md px-4 py-2 hover:bg-red-600 disabled:bg-[#cc6c6c] lg:px-6"
+            class="panel-table-delete"
           >
             {{ $t(`table.headers.delete`) }}
           </button>
@@ -71,20 +71,15 @@ const headers = ref(["name", "email", "img", "role", "allow_edit", "allow_delete
 global.user.role == 'superAdmin' && (headers.value = ([...headers.value , "actions"  ]))
 const rows = ref([]);
 const dataFetched = ref(false);
-
-const currentPage = ref(2);
 const totalRecords = ref(100);
-const searchInput = ref("");
 
 const closePopup = () => {
   popup.value = false;
   global.changePopupState(false);
 };
 const openPopup = (operationType, admin) => {
-  console.log("admin %%% " , admin)
   currentAdmin.value = admin;
   type.value = operationType;
-  // global.changePopupState(true);
   popup.value = true;
 };
 

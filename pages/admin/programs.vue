@@ -26,7 +26,7 @@
           <button
           v-if="global.user.allowEdit"
             @click="() => openPopup('edit', rowData?.currentItem)"
-            class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87] disabled:bg-[#419de9]"
+            class="panel-table-action"
           >
             {{ t(`table.headers.edit`) }}
           </button>
@@ -34,7 +34,7 @@
           <button
           v-if="global.user.allowDelete"
             @click="() => openPopup('delete', rowData?.currentItem)"
-            class="text-white bg-red-800 rounded-md px-4 py-2 hover:bg-red-600 disabled:bg-[#cc6c6c] lg:px-6"
+            class="panel-table-delete"
           >
             {{ $t(`table.headers.delete`) }}
           </button>
@@ -45,7 +45,7 @@
           <button
           v-if="global.user"
             @click="() => openDetailsPopup(rowData?.currentItem)"
-            class="text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87] disabled:bg-[#419de9]"
+            class="panel-table-action"
           >
             {{ t(`table.headers.details`) }}
           </button>
@@ -89,10 +89,7 @@ const headers = ref(["title_ar", "title_en","img" , "price", "discountPercentage
 (global.user.allowDelete || global.user.allowEdit ) && (headers.value = ([...headers.value , "actions"  ]))
 const rows = ref([]);
 const dataFetched = ref(false);
-console.log("global.user" , global.user)
-const currentPage = ref(2);
 const totalRecords = ref(100);
-const searchInput = ref("");
 
 const closePopup = () => {
   popup.value = false;
@@ -105,7 +102,6 @@ const openPopup = (operationType, progPackage) => {
 };
 
 const openDetailsPopup = ( progPackage) => {
-  console.log('progPackage' , progPackage)
   currentPackage.value = progPackage;
   detailsPopup.value = true;
 };

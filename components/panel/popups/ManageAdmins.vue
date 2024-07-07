@@ -1,12 +1,12 @@
 <template>
   <div
     @click.self="closePopup"
-    class="popup flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto p-[10px] sm:p-[40px] "
+    class="popup-holder popup"
   >
   <!-- <div class=" flex justify-center items-center"> -->
     <form
       @submit.prevent="manageAdminFun"
-      class=" m-auto px-[10px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[98%] sm:px-[45px] sm:w-[70%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
+      class="panel-form "
     >
       <h3
         class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold"
@@ -16,7 +16,7 @@
 
       <div v-if="type != 'delete'" class="flex flex-col justify-center">
         <div
-          class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+          class="add-edit-holder"
           v-if="imageDisplaying"
         >
           <div class="max-w-[200px] rounded-lg overflow-hidden">
@@ -34,69 +34,69 @@
           </div>
           <p
             v-if="errors.image.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.add_image") }}
           </p>
           <p
             v-if="errors.realImage.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.add_real_image") }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input
               v-model="state.name"
               :placeholder="$t('auth.name')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text"
             />
           </div>
           <p
             v-if="errors.name.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.add_name") }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input
               v-model="state.email"
               :placeholder="$t('auth.email')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="email"
               autocomplete="off"
             />
           </div>
           <p
             v-if="errors.email.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
-            {{ $t("auth.errors.add_email") }}
+          {{ $t(`auth.errors.${errors.email.message}`) }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input
               v-model="state.phone"
               :placeholder="$t('auth.phone')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text"
               autocomplete="off"
             />
           </div>
           <p
             v-if="errors.phone.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.add_phone") }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <DropDownCompVue
               :currentVal="state.role"
@@ -110,12 +110,12 @@
           </div>
           <p
             v-if="errors.role.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.choose_role") }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <div
               @click="() => changeInputType('password')"
@@ -135,20 +135,20 @@
               :placeholder="$t('auth.password')"
               :class="`${
                 locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
-              } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+              } panel-input`"
               :type="errors.password.isVisible ? 'text' : 'password'"
               autocomplete="off"
             />
           </div>
           <p
             v-if="errors.password.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.add_password") }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <div
               @click="() => changeInputType('passwordConfirmation')"
@@ -168,19 +168,19 @@
               :placeholder="$t('auth.confirm_password')"
               :class="`  ${
                 locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
-              } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+              } panel-input`"
               :type="errors.passwordConfirmation.isVisible ? 'text' : 'password'"
               autocomplete="off"
             />
           </div>
           <p
             v-if="errors.passwordConfirmation.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900"
+            class="panel-input-err "
           >
             {{ $t("auth.errors.add_password_confirmation") }}
           </p>
         </div>
-        <div :class="`mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
+        <div :class="`panel-input-holder  ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
           <div class=" flex justify-start gap-6 items-center">
             <label class="switch">
                   <input
@@ -194,7 +194,7 @@
                 <span>{{ t('auth.allow_edit') }}</span>
           </div>
         </div>
-        <div :class="`mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
+        <div :class="`panel-input-holder  ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
           <div class=" flex justify-start gap-6 items-center">
             <label class="switch">
                   <input
@@ -208,7 +208,7 @@
                 <span>{{ t('auth.allow_delete') }}</span>
           </div>
         </div>
-        <div :class="`mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
+        <div :class="`panel-input-holder  ${state.role == 'superAdmin' && 'blur-sm backdrop-blur-[2px]'}`">
           <div class=" flex justify-start gap-6 items-center">
             <label class="switch">
                   <input
@@ -234,19 +234,19 @@
       </div>
 
       <div
-        class="text-[#fff] pt-[22px] flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-[20px]"
+        class="popup-actions-holder"
       >
         <button
           @click="closePopup"
           type="button"
-          class="bg-[#062946] rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit"
+          class="panel-cancel-btn"
         >
           {{ $t(`admin.actions.cancel`) }}
         </button>
         <button
           type="submit"
           :class="`${
-            type == 'delete' ? ' bg-red-800' : 'bg-[#2FA3F7]'
+            type == 'delete' ? ' bg-red-800 hover:bg-red-600' : 'bg-[#2FA3F7] hover:bg-[#62b4ef]'
           }  rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit`"
         >
           {{ $t(`admin.actions.${type}`) }}
@@ -272,7 +272,8 @@ import {
   minLength,
   numeric,
   sameAs,
-  requiredIf
+  requiredIf,
+  helpers
 } from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
@@ -306,31 +307,39 @@ const state = reactive({
 const errors = reactive({
   image: {
     state: false,
+    message:"",
   },
   realImage: {
     state: false,
+    message:"",
   },
   name: {
     state: false,
+    message:"",
   },
   email: {
     state: false,
+    message:"",
   },
   phone: {
     state: false,
+    message:"",
   },
   role: {
     state: false,
+    message:"",
   },
 
 
   password: {
     state: false,
     isVisible: false,
+    message:"",
   },
   passwordConfirmation: {
     state: false,
     isVisible: false,
+    message:"",
   },
 });
 const changeInputType = (type) => {
@@ -340,7 +349,7 @@ const changeInputType = (type) => {
 const rules = computed(() => {
   return {
     name: { required },
-    email: { required, email },
+    email:{ required: helpers.withMessage('add_email', required), email:  helpers.withMessage('add_right_email', email)  },
     phone: { required, numeric },
     role: { required },
     required: requiredIf(function (nestedModel) {
@@ -356,14 +365,12 @@ const rules = computed(() => {
           return true
         }
        else if (allowedMimeTypes.includes(nestedModel.image.type)) {
-        console.log('nestedModel' , nestedModel)
           errors.image.state = false
           errors.realImage.state =false;
           // Accept the file
           return false
         } else {
           // Reject the file
-          console.log('nestedModel.type' ,nestedModel.image.type)
           errors.realImage.state =true;
           errors.image.state = false
           return true
@@ -424,10 +431,7 @@ const manageAdminFun = async () => {
       try {
         let res;
         if (props.type == 'add') res = await createAdmin(payload)
-        if (props.type == 'edit') res = await editAdmin( props.currentAdmin?.id ,payload)
-
-        console.log("res" , res)
-      
+        if (props.type == 'edit') res = await editAdmin( props.currentAdmin?.id ,payload)      
         if(res.data.success){
           props.type == 'add' && showToast({  message: t('toast.success_add_admin')});
           props.type == 'edit' && showToast({  message: t('toast.success_edit_admin')});
@@ -441,13 +445,10 @@ const manageAdminFun = async () => {
       }
 
     } else {
-      // errors.image.state = v$.value.image.$error;
-      errors.name.state = v$.value.name.$error;
-      errors.email.state = v$.value.email.$error;
-      errors.phone.state = v$.value.phone.$error;
-      errors.role.state = v$.value.role.$error;
-      errors.password.state = v$.value.password.$error;
-      errors.passwordConfirmation.state = v$.value.passwordConfirmation.$error;
+      v$.value.$errors.forEach((err)=>{
+        errors[err.$property].state = true
+        errors[err.$property].message =  err.$message
+      })
     }
   } else {
     
@@ -478,7 +479,6 @@ const changeVal = (val) => {
 // hooks
 onBeforeMount(() => {
   if (props.type == "edit") {
-    console.log('props.currentAdmin', props.currentAdmin)
     state.name = props.currentAdmin?.name;
     state.email = props.currentAdmin?.email;
     state.phone = props.currentAdmin?.phone;
@@ -486,11 +486,7 @@ onBeforeMount(() => {
     state.allowDelete = props.currentAdmin?.allowDelete;
     state.allowEdit = props.currentAdmin?.allowEdit;
     state.websiteManagement = props.currentAdmin?.websiteManagement;
-
     imageDisplaying.value = `${BASE_URL}${props.currentAdmin?.image}`;
-    // changeVal(props.currentAdmin?.role)
-    // state.role = props.currentAdmin?.role;
-    // console.log("currentAdmin" , props.currentAdmin)
   }
 
 });

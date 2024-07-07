@@ -469,7 +469,6 @@ const removeNonNumricValue = () => {
 
 const clearCacheFun = ( ) => {
   clearCache().then((res)=>{
-    console.log("res" , res);
 
   })
 }

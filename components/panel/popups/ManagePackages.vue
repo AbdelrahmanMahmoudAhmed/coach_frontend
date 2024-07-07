@@ -1,12 +1,12 @@
 <template>
   <div @click.self="closePopup"
-    class="popup flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto p-[10px] sm:p-[40px]">
+    class="popup-holder popup">
     <!-- <div class=" flex justify-center items-center"> -->
     <form @submit.prevent="managePackageFun"
-      class="relative m-auto px-[10px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[98%] sm:px-[45px] sm:w-[70%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]">
+      class="panel-form ">
      
    <div @click="closePopup" :class="`${locale == 'ar' ? 'left-4' : 'right-4'} absolute top-4 cursor-pointer`">
-    <img class="w-[40px] cursor-pointer" :src="isDark == 'dark' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
+    <img class="w-[40px] cursor-pointer" :src="isDark == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
    </div>
      
       <h3 class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold">
@@ -14,7 +14,7 @@
       </h3>
 
       <div v-if="type != 'delete'" class="flex flex-col justify-center">
-        <div class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+        <div class="add-edit-holder"
           v-if="imageDisplaying">
           <div class="max-w-[200px] rounded-lg overflow-hidden">
             <img :src="imageDisplaying" alt="personal image" />
@@ -28,119 +28,119 @@
               type="file" />
           </div>
           <p v-if="errors.image.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
+            class="panel-input-err ">
             {{ $t("auth.errors.add_image") }}
           </p>
           <p v-if="errors.realImage.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
+            class="panel-input-err ">
             {{ $t("auth.errors.add_real_image") }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.titleAr" :placeholder="$t('auth.title_ar')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text" />
           </div>
           <p v-if="errors.titleAr.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_title_ar") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.titleAr.message}`) }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.titleEn" :placeholder="$t('auth.title_en')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text" />
           </div>
           <p v-if="errors.titleEn.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_title_en") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.titleEn.message}`) }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.descriptionAr" :placeholder="$t('auth.description_ar')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text" autocomplete="off" />
           </div>
           <p v-if="errors.descriptionAr.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_description_ar") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.descriptionAr.message}`) }}
           </p>
         </div>
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.descriptionEn" :placeholder="$t('auth.description_en')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text" autocomplete="off" />
           </div>
           <p v-if="errors.descriptionEn.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_description_en") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.descriptionEn.message}`) }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.period" :placeholder="$t('auth.period')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="number" autocomplete="off" />
           </div>
           <p v-if="errors.period.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_period") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.period.message}`) }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.price" :placeholder="$t('auth.price')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="number" autocomplete="off" />
           </div>
           <p v-if="errors.price.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_price") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.price.message}`) }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="relative">
             <input v-model="state.discountPercentage" :placeholder="$t('auth.discount_percentage')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="number" autocomplete="off" />
           </div>
           <p v-if="errors.discountPercentage.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
-            {{ $t("auth.errors.add_discount_percentage") }}
+            class="panel-input-err ">
+            {{ $t(`auth.errors.${errors.discountPercentage.message}`) }}
           </p>
         </div>
 
-        <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+        <div class="panel-input-holder ">
           <div class="flex justify-between mb-2">
             <span class="px-[30px] mb-1">{{ $t("auth.package_features") }}</span>
             <span class="px-[30px] mb-1" @click="addFeature">
-              <img class="w-[25px] cursor-pointer" :src="isDark == 'dark' ? '/imgs/add_dark.svg' : '/imgs/add_light.svg'" alt="">
+              <img class="w-[25px] cursor-pointer" :src="isDark == 'light' ? '/imgs/add_dark.svg' : '/imgs/add_light.svg'" alt="">
             </span>
           </div>
           <div v-for="(feature, idx) in state.packageFeatures" :key="idx" :id="feature.id"
             class="relative px-3 pt-8 pb-3 rounded-lg border mb-2">
             <span @click="() => removeFeature(feature.id)" :class="` absolute top-1 cursor-pointer ${locale == 'ar' ? 'left-3' : 'right-3'
     } `">
-    <img class="w-[25px] cursor-pointer" :src="isDark == 'dark' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
+    <img class="w-[25px] cursor-pointer" :src="isDark == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
 </span>
 
             <input v-model="feature.featureAr" :placeholder="$t('auth.package_feature_ar')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text" autocomplete="off" />
             <input v-model="feature.featureEn" :placeholder="$t('auth.package_feature_en')"
-              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              class="panel-input"
               type="text" autocomplete="off" />
           </div>
           <p v-if="errors.packageFeatures.state"
-            class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900">
+            class="panel-input-err ">
             {{ $t("auth.errors.add_complete_feature") }}
           </p>
         </div>
@@ -153,12 +153,12 @@
         </div>
       </div>
 
-      <div class="text-[#fff] pt-[22px] flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-[20px]">
+      <div class="popup-actions-holder">
         <button @click="closePopup" type="button"
-          class="bg-[#062946] rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit">
+          class="panel-cancel-btn ">
           {{ $t(`admin.actions.cancel`) }}
         </button>
-        <button type="submit" :class="`${type == 'delete' ? ' bg-red-800' : 'bg-[#2FA3F7]'
+        <button type="submit" :class="`${type == 'delete' ? ' bg-red-800 hover:bg-red-600' : 'bg-[#2FA3F7] hover:bg-[#62b4ef]'
     }  rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit`">
           {{ $t(`admin.actions.${type}`) }}
         </button>
@@ -179,12 +179,11 @@ const isDark = useCookie("isDark");
 import useVuelidate from "@vuelidate/core";
 import {
   required,
-  email,
   maxValue,
   minLength,
   numeric,
-  sameAs,
   requiredIf,
+  helpers
 } from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
@@ -212,48 +211,60 @@ const state = reactive({
 const errors = reactive({
   image: {
     state: false,
+    message:"",
   },
   realImage: {
     state: false,
+    message:"",
   },
   titleAr: {
     state: false,
+    message:"",
   },
   titleEn: {
     state: false,
+    message:"",
   },
   descriptionAr: {
     state: false,
+    message:"",
   },
   descriptionEn: {
     state: false,
+    message:"",
   },
   period: {
     state: false,
+    message:"",
   },
   price: {
     state: false,
+    message:"",
   },
   discountPercentage: {
     state: false,
+    message:"",
   },
   packageFeatures: {
     state: false,
+    message:"",
   },
 });
 
 const rules = computed(() => {
   return {
-    titleAr: { required, minLength: minLength(3) },
-    titleEn: { required, minLength: minLength(3) },
-    descriptionAr: { required, minLength: minLength(7) },
-    descriptionEn: { required, minLength: minLength(7) },
-    period: { required, numeric },
-    price: { required, numeric },
-    discountPercentage: { required, numeric, maxValue: maxValue(100) },
+    titleAr: { required: helpers.withMessage('add_title_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(3))  },
+    titleEn: { required: helpers.withMessage('add_title_en', required), minLength:  helpers.withMessage('at_least_three', minLength(3))  },
+   
+    descriptionAr: { required: helpers.withMessage('add_description_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(7))  },
+    descriptionEn: { required: helpers.withMessage('add_description_en', required), minLength:  helpers.withMessage('at_least_seven', minLength(7))  },
+
+    period: { required: helpers.withMessage('add_period', required), numeric: helpers.withMessage('must_be_number', numeric) },
+    price: { required: helpers.withMessage('add_price', required), numeric: helpers.withMessage('must_be_number', numeric) },
+    discountPercentage: { required: helpers.withMessage('add_discount_percentage', required), numeric: helpers.withMessage('must_be_number', numeric) , maxValue: helpers.withMessage('max_hundred', maxValue(100)) },
+    
     packageFeatures: {
       required: requiredIf(function (nestedModel) {
-        console.log("nestedModel", nestedModel);
 
         const completedFeatures = [];
 
@@ -261,10 +272,6 @@ const rules = computed(() => {
           if (item.featureAr && item.featureEn) completedFeatures.push(item);
         });
 
-        console.log("completedFeatures", completedFeatures);
-
-        // if(completedFeatures.length) return false;
-        // else return true;
         completedFeatures.length && (state.packageFeatures = completedFeatures);
         errors.packageFeatures.state = completedFeatures.length === 0;
         return completedFeatures.length === 0;
@@ -280,22 +287,16 @@ const rules = computed(() => {
           return false;
         }
         if (!state.image) {
-          console.log("case 1");
           errors.image.state = true;
           errors.realImage.state = false;
           return true;
         } else if (allowedMimeTypes.includes(nestedModel.type)) {
-          console.log("case 2");
-
           errors.image.state = false;
           errors.realImage.state = false;
           // Accept the file
           return false;
         } else {
           // Reject the file
-          console.log("case 3");
-
-          console.log("nestedModel.type", nestedModel.image.type);
           errors.realImage.state = true;
           errors.image.state = false;
           return true;
@@ -334,8 +335,6 @@ const managePackageFun = async () => {
       return '';
     });
 
-    console.log("emailErrorMessage" , emailErrorMessage)
-
   if (props.type != "delete") {
     errors.titleAr.state = false;
     errors.titleEn.state = false;
@@ -345,11 +344,10 @@ const managePackageFun = async () => {
     errors.price.state = false;
     errors.discountPercentage.state = false;
     errors.packageFeatures.state = false;
+
     const payload = new FormData();
 
     const result = await v$.value.$validate();
-
-    console.log("result", v$.value);
 
     if (result && !errors.image.state && !errors.packageFeatures.state) {
       state.image && payload.append("image", state.image);
@@ -364,7 +362,6 @@ const managePackageFun = async () => {
 
       state.packageFeatures.forEach((item, idx) => {
         // packageFeatures[0][featureEn]
-        console.log("idx", idx);
         payload.append(`packageFeatures[${idx}][featureEn]`, item.featureEn);
         payload.append(`packageFeatures[${idx}][featureAr]`, item.featureAr);
       });
@@ -385,13 +382,10 @@ const managePackageFun = async () => {
         console.error(err);
       }
     } else {
-      errors.titleAr.state = v$.value.titleAr.$error;
-      errors.titleEn.state = v$.value.titleEn.$error;
-      errors.descriptionAr.state = v$.value.descriptionAr.$error;
-      errors.descriptionEn.state = v$.value.descriptionEn.$error;
-      errors.period.state = v$.value.period.$error;
-      errors.price.state = v$.value.price.$error;
-      errors.discountPercentage.state = v$.value.discountPercentage.$error;
+      v$.value.$errors.forEach((err)=>{
+        errors[err.$property].state = true
+        errors[err.$property].message =  err.$message
+      })
     }
   } else {
     try {
@@ -410,10 +404,8 @@ const managePackageFun = async () => {
 };
 const onChangeImage = (e) => {
   const file = e.target.files[0];
-  console.log("file______________", file);
   state.image = file;
   imageDisplaying.value = URL.createObjectURL(file);
-  console.log("state.image", state.image);
 };
 
 const addFeature = () => {

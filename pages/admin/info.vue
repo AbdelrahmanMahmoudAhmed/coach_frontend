@@ -13,7 +13,7 @@
 
           <form @submit.prevent="updateAdminData" class="w-full">
             <div
-              class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+              class="add-edit-holder"
               v-if="imageDisplaying"
             >
               <div class="max-w-[200px] rounded-lg overflow-hidden">
@@ -151,7 +151,7 @@
                   :placeholder="$t('auth.new_password')"
                   :class="`${
                     locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
-                  } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+                  } panel-input`"
                   :type="errors.password.isVisible ? 'text' : 'password'"
                   autocomplete="off"
                 />
@@ -185,7 +185,7 @@
                   :placeholder="$t('auth.confirm_password')"
                   :class="`  ${
                     locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
-                  } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+                  } panel-input`"
                   :type="
                     errors.passwordConfirmation.isVisible ? 'text' : 'password'
                   "
@@ -373,34 +373,6 @@ const updateAdminData = async () => {
   }
 };
 
-// const updateAdminData =async()=>{
-//   console.log("hello")
-//   const payload = new FormData();
-//     payload.append('name' , state.name)
-//     payload.append('email' , state.email)
-//     payload.append('phone' , state.phone)
-//     payload.append('image' , state.image)
-//     state.password && payload.append('password' , state.password)
-//     state.passwordConfirmation && payload.append('passwordConfirmation' , state.passwordConfirmation)
-//     console.log("state.image" , state.image)
-//   try {
-//     // const response = await fetch('http://localhost:8080/api/admin/admins/me', {
-//     //   method: 'PATCH',
-//     //   body: payload,
-//     //   credentials: 'include', // This is to include cookies if needed
-//     //   headers: {
-//     //     // 'Content-Type': 'multipart/form-data', // Do not set this header for FormData
-//     //     'Authorization': `bearer ${global.token}`
-//     //   }
-//     // });
-
-//     // const result = await response.json();
-
-//     //   console.log('result' , result)
-//   } catch (error) {
-//    console.log(error)
-//   }
-// }
 
 const onChangeImage = (e) => {
   const file = e.target.files[0];

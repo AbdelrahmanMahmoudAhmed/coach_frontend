@@ -124,7 +124,6 @@ const openPopup = (operationType) => {
 
 const userData = ( ) => {
   getUserData().then((res)=>{
-    console.log("res" , res.data?.data)
 
     currentCredit.value = res.data?.data?.credit
 spendCredit.value = res.data?.data?.spendCredit

@@ -24,22 +24,7 @@ definePageMeta({
 });
 // const { dashboard } = useRequest();
 const pageData = ref([]);
-onBeforeMount(() => {
-  // dashboard().then((res) => {
-  //   const pageObj = res.data?.data;
-  //   console.log("res.data" , res.data?.data)
-  //    for (const property in pageObj) {
-  //     if(property == 'mobile') continue;
-  //     console.log("property" ,property)
-  //     pageData.value.push({
-  //       title: property,
-  //       content: pageObj[property],
-  //     });
-  //   }
-  // }).catch((err)=>{
-  //   console.error( err)
-  // });
-});
+
 </script>
 
 <style>

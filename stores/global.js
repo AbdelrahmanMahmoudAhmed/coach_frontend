@@ -51,8 +51,6 @@ export const useGlobalStore = defineStore('global', {
       this.loader = false;
     },
     updateAuth(payload) {
-      console.log("payload>>>>>>>" , payload.token)
-      console.log('this.token' , this.token)
 
       this.user = payload.user;
       this.isAuth = payload.isAuth

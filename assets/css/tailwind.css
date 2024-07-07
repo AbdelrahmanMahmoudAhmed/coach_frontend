@@ -10,19 +10,49 @@
     .panel-container {
         @apply px-2 md:px-6 mx-auto;
     }
-    .page-container {
+    /* .page-container {
         @apply px-2 xs:px-6 sm:px-10 lg:px-[30px] xl:px-[50px] 2xl:px-[76px] 3xl:px-[100px] mx-auto;
-    }
+    } */
     .active-nav {
         @apply bg-[--main-color] h-[30px] text-[#fff] rounded-[4px] px-[10px]
     }
-    .active-nav-responsive{
+    /* .active-nav-responsive{
         @apply bg-first pb-1 rounded-md cursor-default
-
-    }
+    } */
+    
     /* body{
         @apply bg-white dark:bg-slate-600
     } */
+    .popup-holder{
+        @apply  flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto p-[10px] sm:p-[40px]
+    }
+    .panel-input{
+        @apply text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]
+    }
+    .panel-input-err {
+        @apply mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px] dark:text-red-900
+    }
+    .panel-input-holder {
+        @apply mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto
+    }
+    .popup-actions-holder {
+        @apply text-[#fff] pt-[22px] flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-[20px]
+    }
+    .panel-form { 
+        @apply relative m-auto px-[10px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[98%] sm:px-[45px] sm:w-[70%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]
+    }
+    .add-edit-holder {
+        @apply mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto
+    }
+    .panel-cancel-btn {
+        @apply bg-[--third-color] rounded-[21px] h-[40px] px-[23px] w-full sm:w-fit hover:bg-[#265b87]
+    }
+    .panel-table-action {
+        @apply text-white bg-[--third-color] rounded-md px-4 py-2 lg:px-6 hover:bg-[#265b87] disabled:bg-[#419de9]
+    }
+    .panel-table-delete {
+        @apply text-white bg-red-800 rounded-md px-4 py-2 hover:bg-red-600 disabled:bg-[#cc6c6c] lg:px-6
+    }
 }
 
 @layer base {

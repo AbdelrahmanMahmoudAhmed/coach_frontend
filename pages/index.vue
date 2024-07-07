@@ -128,7 +128,6 @@ const { locale, locales, setLocale } = useI18n();
 const isDark = useCookie("isDark");
 const global = useGlobalStore();
 const role = useCookie("role");
-console.log(global.token)
 
 const { home } = useServerRequist()
 const { data , error , pending} = await home();

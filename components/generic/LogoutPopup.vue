@@ -21,7 +21,7 @@
       </div>
 
       <div
-        class="text-[#fff] pt-[22px] flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-[20px]"
+        class="popup-actions-holder"
       >
         <button
           @click="closePopup"

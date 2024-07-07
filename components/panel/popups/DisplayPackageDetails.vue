@@ -1,13 +1,13 @@
 <template>
   <div
     @click.self="closePopup"
-    class="popup flex items-center fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#00000099] z-30 overflow-auto p-[10px] sm:p-[40px]"
+    class="popup-holder popup"
   >
     <div
-      class="relative m-auto px-[10px] py-[30px] bg-[#fff] border-[5px] border-[#fff] rounded-[20px] w-[98%] sm:px-[45px] sm:w-[70%] md:w-[488px] dark:bg-[#1E78B9] dark:border-[#3C97D8]"
+      class="panel-form "
     >
     <div @click="closePopup" :class="`${locale == 'ar' ? 'left-4' : 'right-4'} absolute top-4 cursor-pointer`">
-    <img class="w-[40px] cursor-pointer" :src="isDark == 'dark' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
+      <img class="w-[40px] cursor-pointer" :src="theme == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
    </div>
       <h3
         class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold"
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div
-          class="mb-[10px] w-full flex flex-col justify-center items-center max-w-[440px] m-auto"
+          class="add-edit-holder"
         >
           <div class="max-w-[200px] rounded-lg overflow-hidden">
             <img :src="`${BASE_URL}${currentPackage.image}`" alt="package image" />
@@ -109,12 +109,10 @@ const props = defineProps({
   currentPackage: Object,
 });
  const theme = useCookie("isDark", {
-  default: () => "dark",
   watch: "shallow",
 });
 
-const isDark = computed(()=> theme.value)
-console.log("isDark" , isDark)
+
 
 
 const closePopup = () => {

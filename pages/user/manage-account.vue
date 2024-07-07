@@ -174,7 +174,7 @@
                   :placeholder="$t('auth.new_password')"
                   :class="`${
                     locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
-                  } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+                  } panel-input`"
                   :type="errors.password.isVisible ? 'text' : 'password'"
                   autocomplete="off"
                 />
@@ -209,7 +209,7 @@
                   :placeholder="$t('auth.confirm_password')"
                   :class="`  ${
                     locale == 'ar' ? 'pl-[50px]' : 'pr-[50px]'
-                  } text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[20px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]`"
+                  } panel-input`"
                   :type="
                     errors.passwordConfirmation.isVisible ? 'text' : 'password'
                   "
@@ -269,7 +269,6 @@ const getUserCountry = (alfa) => {
   const userCountry = allCountries.value.filter((item) => {
     return item?.alpha3 == alfa;
   });
-  console.log("userCountry", userCountry);
   flag.value = userCountry[0]?.flag;
   userCountryName.value = userCountry[0]?.name;
 };
@@ -331,16 +330,12 @@ const getUserInfo = () => {
   global.turnLoaderOn()
   getUserData()
     .then((res) => {
-      console.log("res {}{}", res.data);
       userEmail.value = res.data?.data?.email;
       userName.value = res.data?.data?.name;
-      // userCountry.value = res.data?.data?.country;
       getUserCountry(res.data?.data?.country);
-      // console.log("userEmail" , userEmail.value)
-      console.log("hi");
+
     })
     .catch((err) => {
-      console.log("errrr", err);
     }).finally(()=>{
       global.turnLoaderOff()
     });

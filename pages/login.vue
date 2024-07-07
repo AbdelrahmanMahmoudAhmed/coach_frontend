@@ -8,7 +8,7 @@
         </h1>
 
         <form @submit.prevent="loginFun" class="flex flex-col justify-center">
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <img v-if="errors.email.icon" :class="`${locale == 'ar'
             ? 'right-[18px] sm:right-[32px]'
@@ -28,7 +28,7 @@
               {{ $t("auth.errors.add_email") }}
             </p>
           </div>
-          <div class="mb-[10px] w-full flex flex-col justify-center max-w-[440px] m-auto">
+          <div class="panel-input-holder ">
             <div class="relative">
               <img v-if="errors.password.icon" :class="`${locale == 'ar'
             ? 'right-[18px] sm:right-[32px]'
@@ -149,8 +149,6 @@ const loginFun = async () => {
       router.push("/");
     } catch (err) {
       console.error("err", err);
-    }finally{
-      console.log('token' , token)
     }
 
   } else {

@@ -10,7 +10,6 @@ const { locale, locales, setLocale, t } = useI18n();
 
 const onClickHandler = (page) => {
   emit('changePage' ,page)
-  console.log(page);
 };
 
 const currentPage = ref(1);
