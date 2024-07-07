@@ -223,7 +223,6 @@ const global = useGlobalStore();
 const imageDisplaying = ref('');
 
 
-'loseFat','loseWeight', 'gainMuscle' , 'gainWeight' , 'maintain' 
 
 const goalOptions = reactive([
   {name_ar:"خسارة الدهون" , name_en:"lose fat" , value:"loseFat"},

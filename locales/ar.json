@@ -19,6 +19,10 @@
     "success_add_admin": "تمت إضافة المدير بنجاح",
     "success_edit_admin": "تم تعديل بيانات المدير بنجاح",
 
+    "success_delete_client": "تم حذف العميل بنجاح",
+    "success_add_client": "تمت إضافة العميل بنجاح",
+    "success_edit_client": "تم تعديل بيانات العميل بنجاح",
+
     "success_delete_package": "تم حذف الباقة بنجاح",
     "success_add_package": "تمت إضافة الباقة بنجاح",
     "success_edit_package": "تم تعديل بيانات الباقة بنجاح",
@@ -99,6 +103,7 @@
     "phone":"رقم الهاتف",
     "image":"صورتك الشخصية",
     "admin_image":"صورة المدير",
+    "client_image":"صورة العميل",
     "package_image":"ايقونة الباقة",
     "product_image":"ايقونة المنتج",
     "role":"الدور",
@@ -145,10 +150,12 @@
     "add_discount_percentage":"اضف نسبة الخصم",
     "at_least_three":"على الاقل ثلاثة أحرف",
     "at_least_seven":"على الاقل سبعة أحرف",
+    "at_least_seven_num":"على الاقل سبعة أرقام",
     "at_least_eight":"على الاقل ثمانية أحرف",
     "must_be_number":"لابد و أن يحتوى الحقل على ارقام فقط",
     "add_complete_feature":"أضف على الاقل ميزة واحدة باللغة العربية و الانجليزية",
-    "max_hundred":"اقصى رقم 100"
+    "max_hundred":"اقصى رقم 100",
+    "add_valid_password":"على الاقل قمانية ارقام أو حروف"
     }
   },
 

@@ -144,7 +144,7 @@
             v-if="errors.password.state"
             class="panel-input-err "
           >
-            {{ $t("auth.errors.add_password") }}
+          {{ $t(`auth.errors.${errors.password.message}`) }}
           </p>
         </div>
 
@@ -376,10 +376,10 @@ const rules = computed(() => {
           return true
         }
       }),
-    password: {
-      required: requiredIf(function () {
+      password: {
+      required: helpers.withMessage('add_password', requiredIf(function () {
         return props.type == 'add'
-      }), maxLength: maxLength(50), minLength: minLength(6)
+      })) , maxLength:helpers.withMessage('add_valid_password', maxLength(50)), minLength: helpers.withMessage('add_valid_password', minLength(8))
     },
     passwordConfirmation: {
       required: requiredIf(function () {
@@ -479,6 +479,7 @@ const changeVal = (val) => {
 // hooks
 onBeforeMount(() => {
   if (props.type == "edit") {
+    console.log("props.currentAdmin?.role" , props.currentAdmin?.role)
     state.name = props.currentAdmin?.name;
     state.email = props.currentAdmin?.email;
     state.phone = props.currentAdmin?.phone;
@@ -488,7 +489,6 @@ onBeforeMount(() => {
     state.websiteManagement = props.currentAdmin?.websiteManagement;
     imageDisplaying.value = `${BASE_URL}${props.currentAdmin?.image}`;
   }
-
 });
 </script>
 

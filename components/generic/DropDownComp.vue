@@ -49,6 +49,7 @@ const changeVal = (e) => {
   emit("changeVal", e, props.inputType);
 };
 onBeforeMount(() => {
+  console.log("props.currentVal" , props.currentVal)
   value.value = props.currentVal;
 });
 

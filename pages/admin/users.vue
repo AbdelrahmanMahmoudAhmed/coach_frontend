@@ -1,7 +1,7 @@
 <template>
   <div class="pb-10">
     <div v-if="popup">
-<ManageClients :currentClient="currentClient" :type="type" @closePopup="closePopup" @getAdminsData="getAdminsData" />
+<ManageClients :currentClient="currentClient" :type="type" @closePopup="closePopup" @getClientData="getClientData" />
     </div>
     <div v-if="detailsPopup">
       <UsersDetails  :currentClient="currentClient" @closePopup="closeDetailsPopup" />
@@ -138,7 +138,7 @@ const changeQuery = (type, val) => {
 
   if (typeof type == "string" && types.includes(type)) query[type] = val;
 };
-const getAdminsData = async () => {
+const getClientData = async () => {
   dataFetched.value = false;
 
   try {
@@ -232,19 +232,19 @@ const getAdminsData = async () => {
 
 // hooks
 onBeforeMount(() => {
-  getAdminsData();
+  getClientData();
 });
 
 watch(
   () => query.page,
   () => {
-    getAdminsData(query);
+    getClientData(query);
   }
 );
 watch(
   () => query.search,
   () => {
-    getAdminsData(query);
+    getClientData(query);
   }
 );
 </script>

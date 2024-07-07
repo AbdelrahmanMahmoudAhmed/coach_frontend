@@ -17,6 +17,10 @@
     "success_add_admin": "the admin has been added successfully",
     "success_edit_admin": "the admin's data has been edited successfully",
 
+        "success_delete_client": "the client has been deleted successfully",
+    "success_add_client": "the client has been added successfully",
+    "success_edit_client": "the client's data has been edited successfully",
+
     "success_delete_package": "the package has been deleted successfully",
     "success_add_package": "the package has been added successfully",
     "success_edit_package": "the package's data has been edited successfully",
@@ -101,6 +105,7 @@
     "phone":"Phone",
     "image":"Your image",
     "admin_image":"Admin Image",   
+    "client_image":"Client Image",   
     "package_image":"Package Icon",
     "product_image":"Product Icon",
     "role":"Role",
@@ -151,10 +156,12 @@
       "add_discount_percentage":"Add the discount percentage",
       "at_least_three":"At least three characters",
       "at_least_seven":"At least seven characters",
+      "at_least_seven_num":"At least seven Numbers",
       "at_least_eight":"At least eight characters",
       "must_be_number":"The field must contain numbers only.",
      "add_complete_feature":"Add at least one feature in Arabic and English ",
-     "max_hundred":"Maximum number is 100"
+     "max_hundred":"Maximum number is 100",
+     "add_valid_password":"Add at least eight numbers or characters"
 
 
 

@@ -51,7 +51,6 @@ const useRequest = () => {
   const adminData = async () => {
     return await REQUEST.get("/admin/admins/me", { headers });
   };
-
   const getAllAdmins = async (query) => {
     return await REQUEST.get(`/admin/admins${getQuery(query)}`, { headers });
   };
