@@ -317,23 +317,6 @@ const getPackagesData = () => {
 };
 
 const managePackageFun = async () => {
-  const emailErrorMessage = computed(() => {
-      const emailValidation = v$.value.titleAr;
-
-      if (emailValidation.$pending) {
-        return '';
-      }
-
-      if (!emailValidation.required) {
-        return 'title is required.';
-      }
-
-      if (!emailValidation.minLength) {
-        return 'Please enter a valid email address.';
-      }
-
-      return '';
-    });
 
   if (props.type != "delete") {
     errors.titleAr.state = false;

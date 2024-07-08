@@ -31,6 +31,10 @@
     "success_add_product": "تمت إضافة المنتج بنجاح",
     "success_edit_product": "تم تعديل بيانات المنتج بنجاح",
 
+    "success_delete_video": "تم حذف الفيديو بنجاح",
+    "success_add_video": "تمت إضافة الفيديو بنجاح",
+    "success_edit_video": "تم تعديل بيانات الفيديو بنجاح",
+
 
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
     "wrong_password":"كلمة سر غير صحيحة",
@@ -106,6 +110,7 @@
     "client_image":"صورة العميل",
     "package_image":"ايقونة الباقة",
     "product_image":"ايقونة المنتج",
+    "video_link":"رابط الفيديو",
     "role":"الدور",
     "allow_delete":"السماح بالحذف",
     "allow_edit":"السماح بالتعديل",
@@ -145,6 +150,7 @@
     "add_description_ar":"اضف الوصف بالعربية",
     "add_description_en":"اضف الوصف بالانجليزية",
     "add_price":"اضف السعر",
+    "add_video_link":"أضف رابط الفيديو ",
     "add_period":"اضف مدة الباقة (بالاسبوع)",
     "add_shipping_price":"أضف تكلفة الشحن",
     "add_discount_percentage":"اضف نسبة الخصم",
@@ -155,7 +161,8 @@
     "must_be_number":"لابد و أن يحتوى الحقل على ارقام فقط",
     "add_complete_feature":"أضف على الاقل ميزة واحدة باللغة العربية و الانجليزية",
     "max_hundred":"اقصى رقم 100",
-    "add_valid_password":"على الاقل قمانية ارقام أو حروف"
+    "add_valid_password":"على الاقل قمانية ارقام أو حروف",
+    "must_url":"لابد و ان يكون رابط صحيح"
     }
   },
 
@@ -202,18 +209,25 @@
       "dashboard": "لوحة المعلومات",
       "packages_management": "إدارة الباقات",
       "orders_management": "إدارة الطلبات",
-      "paypal_requests": "طلبات Paypal",
       "users_management": "إدارة المستخدمين",
       "admins_management": "إدارة المدراء",
-      "users": "المستخدمون",
-      "invoices": "الفواتير",
-      "packages": "الباقات",
-      "features_management": "إدارة الميزات",
-      "feedback_management": "ادارة آراء العملاء ",
+      "service": "ادارة البرامج",
+      "products":"ادارة المنتجات",
+
+      "videos":"إدارة مقاطع الفيديو",
+      "transformation":"إدارة التحول",
+      "certification":"إدارة الشهادات",
+      "blogs":"إدارة المدونات",
+      "contact":"اتصل بنا",
+
+
       "manage_info": "ادارة البيانات",
       "website_settings": "ادارة الموقع",
-      "service": "ادارة البرامج",
-      "products":"ادارة المنتجات"
+      "website_info": "بيانات الموقع",
+      "sections":"إدارة الاقسام",
+      "quick_answer":"الأسئلة و الاجابات"
+    
+
     },
     "client": {
       "billing": "الدفع",
@@ -280,11 +294,17 @@
       "details_package": " تفاصيل الباقة ",
       "details_product": " تفاصيل المنتج ",
       "details_client": " تفاصيل العميل ",
-
+      "details_video":"تفاصيل الفيديو",
       "add_product": "إضافة منتج",
       "edit_product": "تعديل المنتج",
       "delete_product": "حذف المنتج", 
       "search_product": "ابحث عن منتج ",
+
+
+      "add_video": "إضافة فيديو",
+      "edit_video": "تعديل الفيديو",
+      "delete_video": "حذف الفيديو", 
+      "search_video": "ابحث عن فيديو ",
 
 
       "title_ar":" العنوان بالعربية",
@@ -305,6 +325,7 @@
       "delete_msg": "هل أنت متأكد من حذف  ",
       "delete_package_msg": "هل أنت متأكد من حذف باقة {package} ؟  ",
       "delete_product_msg": "هل أنت متأكد من حذف المنتج {product} ؟  ",
+      "delete_video_msg": "هل أنت متأكد من حذف الفيديو {video} ؟  ",
 
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",
@@ -351,7 +372,8 @@
       "details":"تفاصيل",
       "price":"السعر",
       "discountPercentage":"نسبة الخصم",
-      "shipping_price":"تكلفة الشحن"
+      "shipping_price":"تكلفة الشحن",
+      "link":"الرابط"
 
     },
     "super_admin":"المدير الفائق",

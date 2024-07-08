@@ -13,6 +13,9 @@ module.exports = {
   ],
     theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height',
+      },
       boxShadow: {
         '3xl': '0px 3px 6px rgb(0 0 0 / 16%)',
         '4xl': '0px -6px 6px rgb(0 0 0 / 16%)',

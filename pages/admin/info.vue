@@ -8,7 +8,7 @@
           <h1
             class="text-center font-bold text-[18px] mb-6 sm:text-[26px] lg:text-[32px]"
           >
-            {{ $t("user.change_info") }}
+            {{ $t("auth.change_info") }}
           </h1>
 
           <form @submit.prevent="updateAdminData" class="w-full">

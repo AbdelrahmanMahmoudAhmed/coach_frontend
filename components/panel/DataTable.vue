@@ -12,7 +12,7 @@
       </button>
       <form
         v-if="withSearch"
-        @submit.prevent="chnageSearch"
+        @submit.prevent="chanageSearch"
         class="flex gap-2 flex-row-reverse"
         action=""
       >
@@ -163,7 +163,9 @@ const baseURL = config.public.base_url;
 const changePage = (page) => {
   emit("changeQuery", "page", page);
 };
-const chnageSearch = () => {
+const chanageSearch = () => {
+  emit("changeQuery", "page", 1);
+
   emit("changeQuery", "search", searchInput.value);
 };
 const openPopup = (type, currentItem) => {

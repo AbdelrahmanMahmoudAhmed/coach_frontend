@@ -5,14 +5,7 @@
     >
       {{ $t("admin.manage_website.title") }}
     </h1>
-    <div
-      class="p-6 mb-8 rounded-lg bg-[#2FA3F726] flex justify-between gap-2 items-center dark:bg-[--third-color] "
-    >
-<p class=" pt-2 font-bold text-[14px] mb-3 sm:text-[20px] lg:text-[22px]">{{ $t("admin.manage_website.clear_cashed_data") }}</p>
 
-    <button  @click="()=>clearCacheFun()"         class="rounded-md px-6 font-[700] py-2 border border-[#6fb7eb] dark:bg-[--rows-color]  hover:bg-[#c6e3f7]  hover:dark:bg-[#3b74a3] lg:px-8"
->{{ $t("admin.manage_website.clear") }}</button>
-  </div>
     <form class="" @submit.prevent="updateWebsiteSettings">
       <div
         class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--third-color]"
@@ -458,7 +451,7 @@ definePageMeta({
 });
 
 import useRequest from "~/composables/useRequest";
-const { getAllSettings, setAllSettings ,clearCache} = useRequest();
+// const { getAllSettings, setAllSettings ,clearCache} = useRequest();
 const { locale, locales, setLocale, t } = useI18n();
 
 const removeNonNumricValue = () => {
@@ -467,11 +460,7 @@ const removeNonNumricValue = () => {
 };
 
 
-const clearCacheFun = ( ) => {
-  clearCache().then((res)=>{
 
-  })
-}
 const state = reactive({
   aboutUs: {
     en: "",
@@ -549,49 +538,45 @@ const updateWebsiteSettings = () => {
     }
     data.push(obj);
   });
-  setAllSettings(data)
-    .then((res) => {
 
-    })
-    .catch(console.error);
 };
 
 //hooks
-onBeforeMount(() => {
-  getAllSettings()
-    .then((res) => {
-      state.aboutUs.en = res?.data?.data?.aboutUs?.en;
-      state.aboutUs.ar = res?.data?.data?.aboutUs?.ar;
-      // state.contactContent.en = res?.data?.data?.contactContent?.en;
-      // state.contactContent.ar = res?.data?.data?.contactContent?.ar;
+// onBeforeMount(() => {
+//   getAllSettings()
+//     .then((res) => {
+//       state.aboutUs.en = res?.data?.data?.aboutUs?.en;
+//       state.aboutUs.ar = res?.data?.data?.aboutUs?.ar;
+//       // state.contactContent.en = res?.data?.data?.contactContent?.en;
+//       // state.contactContent.ar = res?.data?.data?.contactContent?.ar;
 
-      state.contactEmail = res?.data?.data?.contactEmail;
-      state.contactPhone = res?.data?.data?.contactPhone;
+//       state.contactEmail = res?.data?.data?.contactEmail;
+//       state.contactPhone = res?.data?.data?.contactPhone;
 
-      state.description.en = res?.data?.data?.description?.en;
-      state.description.ar = res?.data?.data?.description?.ar;
+//       state.description.en = res?.data?.data?.description?.en;
+//       state.description.ar = res?.data?.data?.description?.ar;
 
-      state.footer.en = res?.data?.data?.footer?.en;
-      state.footer.ar = res?.data?.data?.footer?.ar;
+//       state.footer.en = res?.data?.data?.footer?.en;
+//       state.footer.ar = res?.data?.data?.footer?.ar;
 
-      state.privacyPolicy.en = res?.data?.data?.privacyPolicy?.en;
-      state.privacyPolicy.ar = res?.data?.data?.privacyPolicy?.ar;
+//       state.privacyPolicy.en = res?.data?.data?.privacyPolicy?.en;
+//       state.privacyPolicy.ar = res?.data?.data?.privacyPolicy?.ar;
 
-      state.profits = res?.data?.data?.profits;
+//       state.profits = res?.data?.data?.profits;
 
-      state.socialMedia.facebook = res?.data?.data?.socialMedia?.facebook;
-      state.socialMedia.twitter = res?.data?.data?.socialMedia?.twitter;
-      state.socialMedia.instagram = res?.data?.data?.socialMedia?.instagram;
-      state.socialMedia.discord = res?.data?.data?.socialMedia?.discord;
+//       state.socialMedia.facebook = res?.data?.data?.socialMedia?.facebook;
+//       state.socialMedia.twitter = res?.data?.data?.socialMedia?.twitter;
+//       state.socialMedia.instagram = res?.data?.data?.socialMedia?.instagram;
+//       state.socialMedia.discord = res?.data?.data?.socialMedia?.discord;
 
-      state.terms.en = res?.data?.data?.terms?.en;
-      state.terms.ar = res?.data?.data?.terms?.ar;
+//       state.terms.en = res?.data?.data?.terms?.en;
+//       state.terms.ar = res?.data?.data?.terms?.ar;
 
-      state.title.en = res?.data?.data?.title?.en;
-      state.title.ar = res?.data?.data?.title?.ar;
-    })
-    .catch(console.error);
-});
+//       state.title.en = res?.data?.data?.title?.en;
+//       state.title.ar = res?.data?.data?.title?.ar;
+//     })
+//     .catch(console.error);
+// });
 </script>
 
 <style>

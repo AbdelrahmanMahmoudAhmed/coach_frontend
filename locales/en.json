@@ -31,6 +31,10 @@
     "success_edit_product": "the product's data has been edited successfully",
 
 
+    "success_delete_video": "the video has been deleted successfully",
+    "success_add_video": "the video has been added successfully",
+    "success_edit_video": "the video's data has been edited successfully",
+
     
     "wrong_email":"This email is incorrect",
     "wrong_password":"incorrect password",
@@ -108,6 +112,7 @@
     "client_image":"Client Image",   
     "package_image":"Package Icon",
     "product_image":"Product Icon",
+    "video_link":"Video link",
     "role":"Role",
 
     "allow_delete":"Allow deletion",
@@ -151,6 +156,7 @@
       "add_description_ar":"Add the description in Arabic",
       "add_description_en":"Add the description in English",
       "add_price":"Add the price",
+      "add_video_link":"Add video link",
       "add_period":"Add the package duration ( in weeks )",
       "add_shipping_price":"Add the shipping cost",
       "add_discount_percentage":"Add the discount percentage",
@@ -161,7 +167,8 @@
       "must_be_number":"The field must contain numbers only.",
      "add_complete_feature":"Add at least one feature in Arabic and English ",
      "max_hundred":"Maximum number is 100",
-     "add_valid_password":"Add at least eight numbers or characters"
+     "add_valid_password":"Add at least eight numbers or characters",
+     "must_url":"The URL must be correct"
 
 
 
@@ -212,21 +219,28 @@
     "admin": {
       "dashboard": "Dashboard",
       "packages_management": "Packages management",
-      "vps": "VPS management",
-      "proxy": "Proxy Management",
       "orders_management": "Orders management",
-      "paypal_requests": "Paypal requests",
       "users_management": "Users management",
       "admins_management": "Admins management",
-      "users": "Users",
-      "invoices": "Invoices",
-      "packages": "Packages",
-      "features_management": "Features management",
-      "feedback_management": "Feedback management",
+      "service":"Programs management ",
+      "products":"Products management",
+
+      "videos":"Videos management",
+      "transformation":"Transformation",
+      "certification":"Certification management",
+      "blogs":"Blogs management",
+      "contact":"Contact us",
+
+
+
+
+
       "manage_info": "Manage info",
       "website_settings": "Website settings",
-      "service":"Programs management ",
-      "products":"Products management"
+      "website_info": "website data",
+      "sections":"Manage sections",
+      "quick_answer":"Questions and answers"
+
 
     },
     "client": {
@@ -294,11 +308,16 @@
       "details_package": "Package details",
       "details_product": "Product details",
       "details_client":"Client details",
-
+      "details_video":"Video details",
       "add_product":"Add product",
       "edit_product": "Edit product",
       "delete_product": "Delete product",
       "search_product": "Search a product",
+
+      "add_video":"Add video",
+      "edit_video": "Edit video",
+      "delete_video": "Delete video",
+      "search_video": "Search a video",
 
 
       "title_ar":"Title in Arabic",
@@ -321,6 +340,7 @@
       "delete_msg": "Are you sure to delete ",
       "delete_package_msg": "Are you sure to delete {package} package ?  ",
       "delete_product_msg": "Are you sure to delete {product} ?  ",
+      "delete_video_msg": "Are you sure to delete {video} ?  ",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",
@@ -371,7 +391,8 @@
       "details":"Details",
       "price":"Price",
       "discountPercentage":"Discount percentage",
-      "shipping_price":"Shipping cost"
+      "shipping_price":"Shipping cost",
+      "link":"Link"
 
     },
     "super_admin":"Super Admin",

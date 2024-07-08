@@ -2,39 +2,33 @@
     <div @click.self="closePopup"
       class="popup-holder popup">
       <!-- <div class=" flex justify-center items-center"> -->
-      <form @submit.prevent="manageProductFun"
+      <form @submit.prevent="manageVideoFun"
         class="panel-form ">
-       
      <div @click="closePopup" :class="`${locale == 'ar' ? 'left-4' : 'right-4'} absolute top-4 cursor-pointer`">
       <img class="w-[40px] cursor-pointer" :src="isDark == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
      </div>
-       
         <h3 class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold">
-          {{ $t(`admin.actions.${type}_product`) }}
+          {{ $t(`admin.actions.${type}_video`) }}
         </h3>
-  
         <div v-if="type != 'delete'" class="flex flex-col justify-center">
           <div class="add-edit-holder"
-            v-if="imageDisplaying">
-            <div class="max-w-[200px] rounded-lg overflow-hidden">
-              <img :src="imageDisplaying" alt="personal image" />
+            v-if="state.link">
+            <div class=" rounded-lg overflow-hidden">
+                <video
+            class="rounded-xl mt-2"
+            width="420"
+            height="315"
+            controls
+            :src="state.link"
+            :title="state.titleEn"
+          >
+            Your browser does not support the video tag.
+          </video>
             </div>
           </div>
           <div class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto">
-            <div class="relative">
-              <label class="px-[30px] mb-1" for="">{{ $t("auth.product_image") }}</label>
-              <input @change="onChangeImage"
-                class="py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
-                type="file" />
-            </div>
-            <p v-if="errors.image.state"
-              class="panel-input-err ">
-              {{ $t("auth.errors.add_image") }}
-            </p>
-            <p v-if="errors.realImage.state"
-              class="panel-input-err ">
-              {{ $t("auth.errors.add_real_image") }}
-            </p>
+      
+
           </div>
           <div class="panel-input-holder ">
             <div class="relative">
@@ -83,46 +77,20 @@
           </div>  
           <div class="panel-input-holder ">
             <div class="relative">
-              <input v-model="state.price" :placeholder="$t('auth.price')"
+              <input v-model="state.link" :placeholder="$t('auth.video_link')"
                 class="panel-input"
-                type="number" autocomplete="off" />
+                type="text" autocomplete="off" />
             </div>
-            <p v-if="errors.price.state"
+            <p v-if="errors.link.state"
               class="panel-input-err ">
-              {{ $t(`auth.errors.${errors.price.message}`) }}
+              {{ $t(`auth.errors.${errors.link.message}`) }}
             </p>
           </div>
-  
-          <div class="panel-input-holder ">
-            <div class="relative">
-              <input v-model="state.discountPercentage" :placeholder="$t('auth.discount_percentage')"
-                class="panel-input"
-                type="number" autocomplete="off" />
-            </div>
-            <p v-if="errors.discountPercentage.state"
-              class="panel-input-err ">
-              {{ $t(`auth.errors.${errors.discountPercentage.message}`) }}
-            </p>
-          </div>
-
-          <div class="panel-input-holder ">
-            <div class="relative">
-              <input v-model="state.shippingPrice" :placeholder="$t('auth.shipping_price')"
-                class="panel-input"
-                type="number" autocomplete="off" />
-            </div>
-            <p v-if="errors.shippingPrice.state"
-              class="panel-input-err ">
-              {{ $t(`auth.errors.${errors.shippingPrice.message}`) }}
-            </p>
-          </div>
-  
- 
         </div>
   
         <div v-else-if="type == 'delete'">
           <div class="text-center font-[900]">
-            {{ $t(`admin.actions.delete_product_msg` , {product : locale == "ar" ? currentProduct?.titleAr : currentProduct?.titleEn }) }}
+            {{ $t(`admin.actions.delete_video_msg` , {video : locale == "ar" ? currentVideos?.titleAr : currentVideos?.titleEn }) }}
   
           </div>
         </div>
@@ -143,54 +111,38 @@
   </template>
   
   <script setup>
-  const emit = defineEmits(["closePopup", "getProductData"]);
+  const emit = defineEmits(["closePopup", "getVideoData"]);
   const props = defineProps({
     type: String,
-    currentProduct: Object,
+    currentVideos: Object,
   });
   const isDark = useCookie("isDark");
   
   import useVuelidate from "@vuelidate/core";
   import {
     required,
-    maxValue,
     minLength,
-    numeric,
-    requiredIf,
+    url,
     helpers
   } from "@vuelidate/validators";
   import useRequest from "~/composables/useRequest";
   import DropDownCompVue from "~/components/generic/DropDownComp.vue";
   import showToast from "~/composables/useToast";
   import { useGlobalStore } from "~/stores/global";
-  
-  const config = useRuntimeConfig();
-  const BASE_URL = config.public.base_url;
-  
-  const { createProduct, editProduct, deleteProduct } = useRequest();
+    
+  const { createVideo, editVideo, deleteVideo } = useRequest();
   const { locale, t } = useI18n();
   const imageDisplaying = ref("");
   
   const state = reactive({
-    image: "",
     titleAr:  "",
     titleEn: "",
     descriptionAr: "",
     descriptionEn: "",
-    price: "",
-    discountPercentage: "",
-    shippingPrice:"",
-
+    link:""
   });
+
   const errors = reactive({
-    image: {
-      state: false,
-      message:"",
-    },
-    realImage: {
-      state: false,
-      message:"",
-    },
     titleAr: {
       state: false,
       message:"",
@@ -207,15 +159,7 @@
       state: false,
       message:"",
     },
-    price: {
-      state: false,
-      message:"",
-    },
-    discountPercentage: {
-      state: false,
-      message:"",
-    },
-    shippingPrice: {
+    link: {
       state: false,
       message:"",
     },
@@ -229,37 +173,7 @@
       descriptionAr: { required: helpers.withMessage('add_description_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(7))  },
       descriptionEn: { required: helpers.withMessage('add_description_en', required), minLength:  helpers.withMessage('at_least_seven', minLength(7))  },
   
-      price: { required: helpers.withMessage('add_price', required), numeric: helpers.withMessage('must_be_number', numeric) },
-      discountPercentage: { required: helpers.withMessage('add_discount_percentage', required), numeric: helpers.withMessage('must_be_number', numeric) , maxValue: helpers.withMessage('max_hundred', maxValue(100)) },
-      shippingPrice: { required: helpers.withMessage('add_shipping_price', required), numeric: helpers.withMessage('must_be_number', numeric) , maxValue: helpers.withMessage('max_hundred', maxValue(100)) },
-      
-   
-  
-      image: {
-        required: requiredIf(function (nestedModel) {
-          const allowedMimeTypes = ["image/jpeg", "image/jpg", "image/png"]; // Add more MIME types as needed
-          if (!state.image && props.type == "edit") {
-            errors.image.state = false;
-            errors.realImage.state = false;
-            return false;
-          }
-          if (!state.image) {
-            errors.image.state = true;
-            errors.realImage.state = false;
-            return true;
-          } else if (allowedMimeTypes.includes(nestedModel.type)) {
-            errors.image.state = false;
-            errors.realImage.state = false;
-            // Accept the file
-            return false;
-          } else {
-            // Reject the file
-            errors.realImage.state = true;
-            errors.image.state = false;
-            return true;
-          }
-        }),
-      },
+      link: { required: helpers.withMessage('add_video_link', required), url: helpers.withMessage('must_url', url) },
     };
   });
   
@@ -269,47 +183,39 @@
     emit("closePopup");
   };
   
-  const getProductData = () => {
-    emit("getProductData");
+  const getVideoData = () => {
+    emit("getVideoData");
   };
   
-  const manageProductFun = async () => {
+  const manageVideoFun = async () => {
   
     if (props.type != "delete") {
       errors.titleAr.state = false;
       errors.titleEn.state = false;
       errors.descriptionAr.state = false;
       errors.descriptionEn.state = false;
-      errors.price.state = false;
-      errors.discountPercentage.state = false;
+      errors.link.state = false;
   
       const payload = new FormData();
   
       const result = await v$.value.$validate();
   
-      if (result && !errors.image.state ) {
-        state.image && payload.append("image", state.image);
+      if (result  ) {
         state.titleAr && payload.append("titleAr", state.titleAr);
         state.titleEn && payload.append("titleEn", state.titleEn);
         state.descriptionAr && payload.append("descriptionAr", state.descriptionAr);
         state.descriptionEn && payload.append("descriptionEn", state.descriptionEn);
-        state.price && payload.append("price", state.price);
-        state.shippingPrice && payload.append("shippingPrice", state.shippingPrice);
-        state.discountPercentage &&
-          payload.append("discountPercentage", state.discountPercentage);
-  
-
-  
+        state.link && payload.append("link", state.link);
         try {
           let res;
-          if (props.type == "add") res = await createProduct(payload);
+          if (props.type == "add") res = await createVideo(payload);
           if (props.type == "edit")
-            res = await editProduct(props.currentProduct?.id, payload);
+            res = await editVideo(props.currentVideos?.id, payload);
   
           if (res.data.success) {
-            props.type == "add" && showToast({ message: t("toast.success_add_product") });
-            props.type == "edit" && showToast({ message: t("toast.success_edit_product") });
-            getProductData();
+            props.type == "add" && showToast({ message: t("toast.success_add_video") });
+            props.type == "edit" && showToast({ message: t("toast.success_edit_video") });
+            getVideoData();
             closePopup();
           } else showToast({ type: "error", message: "err" });
         } catch (err) {
@@ -323,11 +229,11 @@
       }
     } else {
       try {
-        const res = await deleteProduct(props.currentProduct?.id);
+        const res = await deleteVideo(props.currentVideos?.id);
   
         if (res.data.success) {
-          showToast({ message: t("toast.success_delete_product") });
-          getProductData();
+          showToast({ message: t("toast.success_delete_video") });
+          getVideoData();
         } else showToast({ type: "error", message: "err" });
       } catch (err) {
         console.error(err);
@@ -347,19 +253,13 @@
   
   // hooks
   onBeforeMount(() => {
-    if (props.type == "edit" &&  props.currentProduct) {
-  
-  
-    imageDisplaying.value = `${BASE_URL}${props.currentProduct?.image}`
-    state.titleAr = props.currentProduct?.titleAr;
-    state.titleEn = props.currentProduct?.titleEn;
-    state.descriptionAr = props.currentProduct?.descriptionAr;
-    state.descriptionEn = props.currentProduct?.descriptionEn;
-    state.price = props.currentProduct?.price;
-    state.discountPercentage = props.currentProduct?.discountPercentage;
-    state.shippingPrice = props.currentProduct?.shippingPrice;
- 
-  
+    if (props.type == "edit" &&  props.currentVideos) {
+
+    state.titleAr = props.currentVideos?.titleAr;
+    state.titleEn = props.currentVideos?.titleEn;
+    state.descriptionAr = props.currentVideos?.descriptionAr;
+    state.descriptionEn = props.currentVideos?.descriptionEn;
+    state.link = props.currentVideos?.link;
     }
   });
   </script>

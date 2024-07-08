@@ -120,7 +120,24 @@ const deleteProduct = async (id) => {
 /*--------------------  END PRODUCTS SECTION  --------------------*/
 
 
+/*--------------------  START WEBSITE MANAGEMENT SECTION  --------------------*/
 
+// VIDEOS
+
+const getAllVideos = async (query) => {
+  return await REQUEST.get(`/admin/website-management/videos${getQuery(query)}`, { headers });
+};
+const createVideo = async (data) => {
+  return await REQUEST.post(`/admin/website-management/videos`, data, { headers });
+};
+const editVideo = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/videos/${id}`, data, { headers });
+};
+const deleteVideo = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/videos/${id}`, { headers });
+};
+
+/*--------------------  END WEBSITE MANAGEMENT SECTION  --------------------*/
 
 
 
@@ -152,7 +169,11 @@ const deleteProduct = async (id) => {
 getAllClients,
 createClient,
 editClient,
-deleteClient
+deleteClient,
+
+
+getAllVideos,createVideo,editVideo,deleteVideo
+
 
 
   };

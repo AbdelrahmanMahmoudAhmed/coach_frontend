@@ -122,8 +122,45 @@
               >
             </NuxtLink>
 
-            <div v-else>
-    
+            <div v-else >
+              <button
+              @click="toggleShowWebsiteButton"
+              :class="` ${showWebsiteButton ? 'my-4' : 'mt-4'} relative z-10 items-center flex gap-[5px] bg-[#16334A] h-[50px] p-2 rounded-md transition-all duration-300 w-full hover:px-5 hover:bg-[#285e89] `"
+            >
+              <img
+                :class="`${!toggleSidebar && 'lg:mx-auto'} w-[30px]`"
+                :src="`/imgs/${link.img}`"
+                alt=""
+              />
+              <div
+                :class="`${
+                  !toggleSidebar && 'lg:hidden'
+                } text-[16px] text-nowrap  flex items-center justify-between w-full lg:text-[18px]`"
+                ><span>{{ $t(`sidebar.${type}.${link.title}`) }}</span> <img class="w-[20px]" src="/imgs/down-2.svg" alt="">
+              </div>
+            </button>
+            
+            <ul :class="`${showWebsiteButton ? 'h-[500px] opacity-100 p-2 ' : 'h-0 opacity-0 p-0 '} bg-[#294a64aa] relative top-[-16px] overflow-hidden transition-[height] duration-700 `">
+              <li v-for="(sub , index) in link.subLinks" :key="index">
+                <NuxtLink
+           
+              :to="sub.link"
+              :class="` flex gap-[5px] bg-[#16334A] h-[50px] my-4 p-2 rounded-md transition-all duration-300 w-full hover:px-5 hover:bg-[#285e89] `"
+            >
+              <img
+                :class="`${!toggleSidebar && 'lg:mx-auto'} w-[30px]`"
+                :src="`/imgs/${sub.img}`"
+                alt=""
+              />
+              <span
+                :class="`${
+                  !toggleSidebar && 'lg:hidden'
+                } text-[16px] text-nowrap  flex items-center lg:text-[18px]`"
+                >{{ $t(`sidebar.${type}.${sub.title}`) }}</span
+              >
+            </NuxtLink>
+              </li>
+            </ul>
             </div>
           </li>
         </ul>
@@ -183,10 +220,14 @@ const type = useCookie("type");
 const userInfo = useCookie("userInfo");
 
 const toggleSidebar = ref(false);
-
+const showWebsiteButton = ref(false)
 const global = useGlobalStore();
 const router = useRouter();
 // const route = useRoute();
+
+const toggleShowWebsiteButton = ( ) => {
+  showWebsiteButton.value = !showWebsiteButton.value
+}
 
 const openSidebar = () => {
   toggleSidebar.value = true;
@@ -221,13 +262,6 @@ const links = computed(() => {
         link: "/admin/products",
         isMulti: false,
       },
-      // {
-      //   img: "packages.svg",
-      //   title: "packages_management",
-      //   link: null,
-      //   isMulti: false,
-       
-      // },
       {
         img: "service.svg",
         title: "service",
@@ -246,26 +280,6 @@ const links = computed(() => {
         title: "users_management",
         link: "/admin/users",
         isMulti: false,
-        // subLinks: [
-        //   {
-        //     img: "packages.svg",
-        //     title: "packages_management",
-        //     link: "/admin/user-management/packages",
-        //     isMulti: false,
-        //   },
-        //   {
-        //     img: "user.svg",
-        //     title: "users",
-        //     link: "/admin/user-management/users",
-        //     isMulti: false,
-        //   },
-        //   {
-        //     img: "invoice.svg",
-        //     title: "invoices",
-        //     link: "/admin/user-management/invoices",
-        //     isMulti: false,
-        //   },
-        // ],
       },
       {
         img: "manage_admins.svg",
@@ -273,24 +287,62 @@ const links = computed(() => {
         link: "/admin/admins",
         isMulti: false,
       },
-      // {
-      //   img: "features.svg",
-      //   title: "features_management",
-      //   link: "/admin/features",
-      //   isMulti: false,
-      // },
-      // {
-      //   img: "feedback.svg",
-      //   title: "feedback_management",
-      //   link: "/admin/feedback",
-      //   isMulti: false,
-      // },
-  
       {
-        img: "manage_website.svg",
-        title: "website_settings",
-        link: "/admin/website-settings",
+        img: "contact.svg",
+        title: "contact",
+        link: "/admin/contact",
         isMulti: false,
+      },
+      {
+        img: "settings.svg",
+        title: "website_settings",
+        link: null,
+        isMulti: true,
+                subLinks: [
+          {
+            img: "manage_website.svg",
+            title: "website_settings",
+            link: "/admin/website-settings",
+            isMulti: false,
+          },
+          {
+        img: "section.svg",
+        title: "sections",
+        link: "/admin/website-settings/sections",
+        isMulti: false,
+      },
+          {
+        img: "certificate.svg",
+        title: "certification",
+        link: "/admin/website-settings/certification",
+        isMulti: false,
+      },
+      {
+        img: "video.svg",
+        title: "videos",
+        link: "/admin/website-settings/videos",
+        isMulti: false,
+      },
+      {
+        img: "transformation.svg",
+        title: "transformation",
+        link: "/admin/website-settings/transformation",
+        isMulti: false,
+      },
+      {
+        img: "blogs.svg",
+        title: "blogs",
+        link: "/admin/website-settings/blogs",
+        isMulti: false,
+      },
+      {
+        img: "answers.svg",
+        title: "quick_answer",
+        link: "/admin/website-settings/answers",
+        isMulti: false,
+      },
+      
+        ],
       },
       {
         img: "info.svg",
@@ -299,49 +351,51 @@ const links = computed(() => {
         isMulti: false,
       },
     ];
-  } else if (type.value == "client") {
-    return [
-      {
-        img: "invoice.svg",
-        title: "billing",
-        link: "/user/",
-        isMulti: false,
-      },
+  } 
+  
+  // else if (type.value == "client") {
+  //   return [
+  //     {
+  //       img: "invoice.svg",
+  //       title: "billing",
+  //       link: "/user/",
+  //       isMulti: false,
+  //     },
 
-      {
-        img: "packages.svg",
-        title: "packages_management",
-        link: null,
-        isMulti: true,
-        subLinks: [
-          {
-            img: "IPv4.svg",
-            title: "proxy",
-            link: "/user/packages/proxy",
-            isMulti: false,
-          },
-          {
-            img: "Residential_Proxy.svg",
-            title: "residential",
-            link: "/user/packages/residential",
-            isMulti: false,
-          },
-          {
-            img: "VPS.svg",
-            title: "vps",
-            link: "/user/packages/vps",
-            isMulti: false,
-          },
-        ],
-      },
-      {
-        img: "manage_admins.svg",
-        title: "manage_info",
-        link: "/user/manage-account",
-        isMulti: false,
-      },
-    ];
-  }
+  //     {
+  //       img: "packages.svg",
+  //       title: "packages_management",
+  //       link: null,
+  //       isMulti: true,
+  //       subLinks: [
+  //         {
+  //           img: "IPv4.svg",
+  //           title: "proxy",
+  //           link: "/user/packages/proxy",
+  //           isMulti: false,
+  //         },
+  //         {
+  //           img: "Residential_Proxy.svg",
+  //           title: "residential",
+  //           link: "/user/packages/residential",
+  //           isMulti: false,
+  //         },
+  //         {
+  //           img: "VPS.svg",
+  //           title: "vps",
+  //           link: "/user/packages/vps",
+  //           isMulti: false,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       img: "manage_admins.svg",
+  //       title: "manage_info",
+  //       link: "/user/manage-account",
+  //       isMulti: false,
+  //     },
+  //   ];
+  // }
 });
 
 function changeMode() {
