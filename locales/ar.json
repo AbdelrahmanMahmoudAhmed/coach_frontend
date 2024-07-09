@@ -35,6 +35,10 @@
     "success_add_video": "تمت إضافة الفيديو بنجاح",
     "success_edit_video": "تم تعديل بيانات الفيديو بنجاح",
 
+    "success_delete_certification": "تم حذف الشهادة بنجاح",
+    "success_add_certification": "تمت إضافة الشهادة بنجاح",
+    "success_edit_certification": "تم تعديل بيانات الشهادة بنجاح",
+
 
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
     "wrong_password":"كلمة سر غير صحيحة",
@@ -111,6 +115,7 @@
     "package_image":"ايقونة الباقة",
     "product_image":"ايقونة المنتج",
     "video_link":"رابط الفيديو",
+    "certification_img":"صورة الشهادة",
     "role":"الدور",
     "allow_delete":"السماح بالحذف",
     "allow_edit":"السماح بالتعديل",
@@ -120,6 +125,8 @@
     "title_en":"العنوان بالانجليزية",
     "description_ar":"الوصف بالعربية",
     "description_en":"الوصف بالانجليزية",
+    "content_ar":"المحتوى بالعربية",
+    "content_en":"المحتوى بالانجليزية",
     "price":"السعر",
     "period":"مدة الباقة ( بالاسبوع )",
     "shipping_price":"تكلفة الشحن",
@@ -149,6 +156,8 @@
     "add_title_en":"اضف العنوان بالانجليزية",
     "add_description_ar":"اضف الوصف بالعربية",
     "add_description_en":"اضف الوصف بالانجليزية",
+    "add_content_ar":"اضف المحتوى بالعربية",
+    "add_content_en":"اضف المحتوى بالانجليزية",
     "add_price":"اضف السعر",
     "add_video_link":"أضف رابط الفيديو ",
     "add_period":"اضف مدة الباقة (بالاسبوع)",
@@ -295,6 +304,7 @@
       "details_product": " تفاصيل المنتج ",
       "details_client": " تفاصيل العميل ",
       "details_video":"تفاصيل الفيديو",
+      "details_certification":"تفاصيل الشهادة",
       "add_product": "إضافة منتج",
       "edit_product": "تعديل المنتج",
       "delete_product": "حذف المنتج", 
@@ -304,13 +314,19 @@
       "add_video": "إضافة فيديو",
       "edit_video": "تعديل الفيديو",
       "delete_video": "حذف الفيديو", 
-      "search_video": "ابحث عن فيديو ",
+
+
+      "add_certification": "إضافة شهادة",
+      "edit_certification": "تعديل الشهادة",
+      "delete_certification": "حذف الشهادة", 
 
 
       "title_ar":" العنوان بالعربية",
       "title_en":"العنوان بالانجليزية",
       "description_ar":"الوصف بالعربية",
       "description_en":"الوصف بالانجليزية",
+      "content_ar":"المحتوى بالعربية",
+      "content_en":"المحتوى بالانجليزية",
       "period":"مدة الباقة ( بالاسبوع )",
       "discount_percentage":"نسبة الخصم",
       "price":"السعر",
@@ -326,6 +342,7 @@
       "delete_package_msg": "هل أنت متأكد من حذف باقة {package} ؟  ",
       "delete_product_msg": "هل أنت متأكد من حذف المنتج {product} ؟  ",
       "delete_video_msg": "هل أنت متأكد من حذف الفيديو {video} ؟  ",
+      "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
 
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",

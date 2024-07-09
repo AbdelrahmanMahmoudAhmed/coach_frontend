@@ -35,6 +35,10 @@
     "success_add_video": "the video has been added successfully",
     "success_edit_video": "the video's data has been edited successfully",
 
+    "success_delete_certification": "the certification has been deleted successfully",
+    "success_add_certification": "the certification has been added successfully",
+    "success_edit_certification": "the certification's data has been edited successfully",
+
     
     "wrong_email":"This email is incorrect",
     "wrong_password":"incorrect password",
@@ -113,6 +117,7 @@
     "package_image":"Package Icon",
     "product_image":"Product Icon",
     "video_link":"Video link",
+    "certification_img":"Certification Image",
     "role":"Role",
 
     "allow_delete":"Allow deletion",
@@ -124,6 +129,8 @@
     "title_en":"Title in English",
     "description_ar":"Description in Arabic",
     "description_en":"Description in English",
+    "content_ar":"Content in Arabic",
+    "content_en":"Content in English",
     "price":"Price",
     "period":"Package duration ( in weeks )",
     "shipping_price":"Shipping cost",
@@ -155,6 +162,8 @@
       "add_title_en":"Add the title in English",
       "add_description_ar":"Add the description in Arabic",
       "add_description_en":"Add the description in English",
+      "add_content_ar":"Add the content in Arabic",
+      "add_content_en":"Add the content in English",
       "add_price":"Add the price",
       "add_video_link":"Add video link",
       "add_period":"Add the package duration ( in weeks )",
@@ -309,6 +318,7 @@
       "details_product": "Product details",
       "details_client":"Client details",
       "details_video":"Video details",
+      "details_certification":"Certification details",
       "add_product":"Add product",
       "edit_product": "Edit product",
       "delete_product": "Delete product",
@@ -319,11 +329,17 @@
       "delete_video": "Delete video",
       "search_video": "Search a video",
 
+      "add_certification":"Add certification",
+      "edit_certification": "Edit certification",
+      "delete_certification": "Delete certification",
+
 
       "title_ar":"Title in Arabic",
       "title_en":"Title in English",
       "description_ar":"Description in Arabic",
       "description_en":"Description in English",
+      "content_ar":"Content in Arabic",
+      "content_en":"Content in English",
       "period":"Package duration ( in weeks )",
       "discount_percentage":"Discount percentage",
       "price":"Price",
@@ -341,6 +357,7 @@
       "delete_package_msg": "Are you sure to delete {package} package ?  ",
       "delete_product_msg": "Are you sure to delete {product} ?  ",
       "delete_video_msg": "Are you sure to delete {video} ?  ",
+      "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",

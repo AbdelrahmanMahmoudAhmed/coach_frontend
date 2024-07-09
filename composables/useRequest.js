@@ -124,8 +124,8 @@ const deleteProduct = async (id) => {
 
 // VIDEOS
 
-const getAllVideos = async (query) => {
-  return await REQUEST.get(`/admin/website-management/videos${getQuery(query)}`, { headers });
+const getAllVideos = async () => {
+  return await REQUEST.get(`/admin/website-management/videos`, { headers });
 };
 const createVideo = async (data) => {
   return await REQUEST.post(`/admin/website-management/videos`, data, { headers });
@@ -135,6 +135,19 @@ const editVideo = async (id, data) => {
 };
 const deleteVideo = async (id) => {
   return await REQUEST.delete(`/admin/website-management/videos/${id}`, { headers });
+};
+// certifications
+const getAllCertifications  = async () => {
+  return await REQUEST.get(`/admin/website-management/certifications`, { headers });
+};
+const createCertification = async (data) => {
+  return await REQUEST.post(`/admin/website-management/certifications`, data, { headers });
+};
+const editCertification = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/certifications/${id}`, data, { headers });
+};
+const deleteCertification = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/certifications/${id}`, { headers });
 };
 
 /*--------------------  END WEBSITE MANAGEMENT SECTION  --------------------*/
@@ -172,7 +185,8 @@ editClient,
 deleteClient,
 
 
-getAllVideos,createVideo,editVideo,deleteVideo
+getAllVideos,createVideo,editVideo,deleteVideo,
+getAllCertifications,createCertification,editCertification,deleteCertification,
 
 
 

@@ -52,12 +52,11 @@
               {{ $t(`auth.errors.${errors.titleEn.message}`) }}
             </p>
           </div>
-  
           <div class="panel-input-holder ">
             <div class="relative">
-              <input v-model="state.descriptionAr" :placeholder="$t('auth.description_ar')"
-                class="panel-input"
-                type="text" autocomplete="off" />
+              <textarea v-model="state.descriptionAr" :placeholder="$t('auth.description_ar')"
+                class="panel-input h-[100px] px-6 py-2"
+                type="text" autocomplete="off" ></textarea>
             </div>
             <p v-if="errors.descriptionAr.state"
               class="panel-input-err ">
@@ -66,9 +65,9 @@
           </div>
           <div class="panel-input-holder ">
             <div class="relative">
-              <input v-model="state.descriptionEn" :placeholder="$t('auth.description_en')"
-                class="panel-input"
-                type="text" autocomplete="off" />
+              <textarea v-model="state.descriptionEn" :placeholder="$t('auth.description_en')"
+                class="panel-input h-[100px] px-6 py-2"
+                type="text" autocomplete="off" ></textarea>
             </div>
             <p v-if="errors.descriptionEn.state"
               class="panel-input-err ">
@@ -126,13 +125,10 @@
     helpers
   } from "@vuelidate/validators";
   import useRequest from "~/composables/useRequest";
-  import DropDownCompVue from "~/components/generic/DropDownComp.vue";
   import showToast from "~/composables/useToast";
-  import { useGlobalStore } from "~/stores/global";
     
   const { createVideo, editVideo, deleteVideo } = useRequest();
   const { locale, t } = useI18n();
-  const imageDisplaying = ref("");
   
   const state = reactive({
     titleAr:  "",
@@ -170,7 +166,7 @@
       titleAr: { required: helpers.withMessage('add_title_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(3))  },
       titleEn: { required: helpers.withMessage('add_title_en', required), minLength:  helpers.withMessage('at_least_three', minLength(3))  },
      
-      descriptionAr: { required: helpers.withMessage('add_description_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(7))  },
+      descriptionAr: { required: helpers.withMessage('add_description_ar', required), minLength:  helpers.withMessage('at_least_seven', minLength(7))  },
       descriptionEn: { required: helpers.withMessage('add_description_en', required), minLength:  helpers.withMessage('at_least_seven', minLength(7))  },
   
       link: { required: helpers.withMessage('add_video_link', required), url: helpers.withMessage('must_url', url) },
@@ -242,11 +238,7 @@
       }
     }
   };
-  const onChangeImage = (e) => {
-    const file = e.target.files[0];
-    state.image = file;
-    imageDisplaying.value = URL.createObjectURL(file);
-  };
+
   
 
 

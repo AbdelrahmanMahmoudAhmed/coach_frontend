@@ -45,10 +45,11 @@
           </div>
         </div>
         <div class="add-edit-holder mb-4">
-          <!-- <div class="max-w-[200px] rounded-lg overflow-hidden">
+          <div    v-if="page == 'certification'" class="max-w-[200px] rounded-lg overflow-hidden mb-2">
               <img :src="`${BASE_URL}${currentDetails.image}`" alt="package image" />
-            </div> -->
+          </div>
           <video
+          v-if="page == 'video'"
             class="rounded-xl mt-2"
             width="420"
             height="315"
@@ -63,7 +64,7 @@
             <span
               class="font-bold text-[--main-color] dark:text-[--third-color]"
             >
-              {{ $t("auth.video_link") }}
+              {{page == 'video' ? $t("auth.video_link") : page == 'certification' && $t("auth.certification_img") }}
             </span>
             <span class="text-[14px]">{{ currentDetails.link }}</span>
           </div>
@@ -71,26 +72,37 @@
 
         <div class="mb-[10px] w-full flex flex-col justify-center m-auto">
           <div class="relative">
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center" v-if="currentDetails.descriptionAr">
               <span
                 class="font-bold text-[--main-color] dark:text-[--third-color]"
               >
                 {{ $t("auth.description_ar") }}
               </span>
-              <span class="text-[14px]">{{
-                currentDetails.descriptionAr
-              }}</span>
+              <span  class="text-[14px] text-center" v-html="currentDetails.descriptionAr?.replace(/\n/g, '<br />')" ></span>
             </div>
-
-            <div class="flex flex-col mt-2 items-center mb-4">
+            <div class="flex flex-col mt-2 items-center mb-4" v-if="currentDetails.descriptionEn">
               <span
                 class="font-bold text-[--main-color] dark:text-[--third-color]"
               >
                 {{ $t("auth.description_en") }}
               </span>
-              <span class="text-[14px]">{{
-                currentDetails.descriptionEn
-              }}</span>
+              <span v-html=" currentDetails.descriptionEn?.replace(/\n/g, '<br />')" class="text-[14px] text-center"></span>
+            </div>
+            <div class="flex flex-col mt-2 items-center mb-4" v-if="currentDetails.contentAr">
+              <span
+                class="font-bold text-[--main-color] dark:text-[--third-color]"
+              >
+                {{ $t("auth.description_en") }}
+              </span>
+              <span v-html=" currentDetails.contentAr?.replace(/\n/g, '<br />')" class="text-[14px] text-center"></span>
+            </div>
+            <div class="flex flex-col mt-2 items-center mb-4" v-if="currentDetails.contentEn">
+              <span
+                class="font-bold text-[--main-color] dark:text-[--third-color]"
+              >
+                {{ $t("auth.description_en") }}
+              </span>
+              <span v-html=" currentDetails.contentEn?.replace(/\n/g, '<br />')" class="text-[14px] text-center"></span>
             </div>
           </div>
         </div>

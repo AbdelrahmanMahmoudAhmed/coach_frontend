@@ -14,11 +14,10 @@
         :headers="headers"
         :rows="rows"
         page="manage-admins"
-        :withSearch=" true"
+        :withSearch=" false"
         :withAdd="global.user.websiteManagement"
         :searchPlaceholder="$t(`admin.actions.search_video`)"
         :addButtonTitle="t(`admin.actions.add_video`)"
-        @changeQuery="changeQuery"
         @openPopup="openPopup"
       >
         <template v-if=" global.user.websiteManagement" #actions="{rowData}">
@@ -68,10 +67,7 @@ import { useGlobalStore } from "~/stores/global";
 import ManageVideos from "~/components/panel/popups/ManageVideos";
 import WebsiteDetails from "~/components/panel/popups/WebsiteDetails.vue";
 
-const query = reactive({
-  page: 1,
-  search: "",
-});
+
 const pagination = reactive({
   perPage: "",
   totalCount: "",
@@ -108,19 +104,14 @@ const closeDetailsPopup = ( ) => {
 
 
 
-const changeQuery = (type, val) => {
-  const types = ["page", "search"];
-
-  if (typeof type == "string" && types.includes(type)) query[type] = val;
-};
 const getVideoData = async () => {
   dataFetched.value = false;
 
   try {
-    const res = await getAllVideos(query);
+    const res = await getAllVideos();
     totalRecords.value = res.data?.data?.count;
 
-    query.page = res.data.pagination?.currentPage;
+
 
     pagination.totalCount = res.data.pagination?.totalCount;
     pagination.perPage = res.data.pagination?.perPage;
@@ -184,18 +175,8 @@ onBeforeMount(() => {
   getVideoData();
 });
 
-watch(
-  () => query.page,
-  () => {
-    getVideoData(query);
-  }
-);
-watch(
-  () => query.search,
-  () => {
-    getVideoData(query);
-  }
-);
+
+
 </script>
 
 <style></style>
