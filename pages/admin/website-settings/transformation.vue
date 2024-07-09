@@ -1,10 +1,10 @@
 <template>
   <div class="pb-10">
     <di v-if="popup">
-<ManageTransformations :withImg="true" :currentTransformation="currentTransformation" :type="type" @closePopup="closePopup" @getTransformationsData="getTransformationsData" />
+<ManageTransformations  :currentTransformation="currentTransformation" :type="type" @closePopup="closePopup" @getTransformationsData="getTransformationsData" />
     </di>
     <div v-if="detailsPopup">
-      <WebsiteDetails page="transformation" :currentDetails="currentTransformation" @closePopup="closeDetailsPopup" />
+      <WebsiteDetails :withImg="true" page="transformation" :currentDetails="currentTransformation" @closePopup="closeDetailsPopup" />
     </div>
 
     <div class="min-h-[60vh] overflow-x-auto">
@@ -14,9 +14,9 @@
         :headers="headers"
         :rows="rows"
         page="manage-transformation"
-        :withSearch=" false"
+        :withSearch="fasle"
         :withAdd="global.user.websiteManagement"
-        :addButtonTitle="t(`admin.actions.add_certification`)"
+        :addButtonTitle="t(`admin.actions.add_transformation`)"
         @openPopup="openPopup"
         @changeQuery="changeQuery"
 
@@ -83,7 +83,7 @@ const { locale, locales, setLocale, t } = useI18n();
 const currentTransformation = ref("");
 const popup = ref(false);
 const { getAllTransformations } = useRequest();
-const headers = ref(["img", "details"]);
+const headers = ref(["id" , "img", "details"]);
 (global.user.websiteManagement  ) && (headers.value = ([...headers.value , "actions"  ]))
 const rows = ref([]);
 const dataFetched = ref(false);
@@ -124,7 +124,10 @@ const getTransformationsData = async () => {
     const allTransformations = res.data?.data;
     const handledTransformation = allTransformations.map((item) => {
       return [
-  
+      {
+          id: item?.id,
+          item: item?.id,
+        },
  
         {
           id: item?.id,

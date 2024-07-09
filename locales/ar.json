@@ -40,6 +40,11 @@
     "success_edit_certification": "تم تعديل بيانات الشهادة بنجاح",
 
 
+    "success_delete_transformation": "تم حذف بيانات التحول بنجاح",
+    "success_add_transformation": "تمت إضافة بيانات التحول بنجاح",
+    "success_edit_transformation": "تم تعديل بيانات التحول بنجاح",
+
+
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
     "wrong_password":"كلمة سر غير صحيحة",
     "wrong_type":"تحديد النوع غير صحيح",
@@ -323,6 +328,11 @@
       "delete_certification": "حذف الشهادة", 
 
 
+      "add_transformation": "إضافة تحول جديد",
+      "edit_transformation": "تعديل بيانات التحول",
+      "delete_transformation": "حذف التحول", 
+      
+
       "title_ar":" العنوان بالعربية",
       "title_en":"العنوان بالانجليزية",
       "description_ar":"الوصف بالعربية",
@@ -345,6 +355,7 @@
       "delete_product_msg": "هل أنت متأكد من حذف المنتج {product} ؟  ",
       "delete_video_msg": "هل أنت متأكد من حذف الفيديو {video} ؟  ",
       "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
+      "delete_transformation_msg": "هل أنت متأكد من حذف التحول رقم {transformation} ؟  ",
 
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",
@@ -371,6 +382,7 @@
   },
   "table": {
     "headers": {
+      "id":"الرقم",
       "name": "الاسم",
       "email": "البريد الالكترونى",
       "phone":"رقم الهاتف",

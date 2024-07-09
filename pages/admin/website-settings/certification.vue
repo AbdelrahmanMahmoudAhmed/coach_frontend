@@ -1,10 +1,10 @@
 <template>
   <div class="pb-10">
     <di v-if="popup">
-<ManageCertifications :withImg="true" :currentCertifications="currentCertifications" :type="type" @closePopup="closePopup" @getCertificationData="getCertificationData" />
+<ManageCertifications :currentCertifications="currentCertifications" :type="type" @closePopup="closePopup" @getCertificationData="getCertificationData" />
     </di>
     <div v-if="detailsPopup">
-      <WebsiteDetails page="certification" :currentDetails="currentCertifications" @closePopup="closeDetailsPopup" />
+      <WebsiteDetails :withImg="true" page="certification" :currentDetails="currentCertifications" @closePopup="closeDetailsPopup" />
     </div>
 
     <div class="min-h-[60vh] overflow-x-auto">

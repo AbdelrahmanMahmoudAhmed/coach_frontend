@@ -1,7 +1,7 @@
 <template>
     <div @click.self="closePopup" class="popup-holder popup">
       <!-- <div class=" flex justify-center items-center"> -->
-      <form @submit.prevent="manageCertificationFun" class="panel-form">
+      <form @submit.prevent="manageTransformationFun" class="panel-form">
         <div
           @click="closePopup"
           :class="`${
@@ -19,17 +19,17 @@
         <h3
           class="text-center text-[20px] mb-[21px] sm:text-[22px] md:text-[28px] font-bold"
         >
-          {{ $t(`admin.actions.${type}_certification`) }}
+          {{ $t(`admin.actions.${type}_transformation`) }}
         </h3>
         <div v-if="type != 'delete'" class="flex flex-col justify-center">
           <div class="add-edit-holder" v-if="imageDisplaying">
             <div class="max-w-[200px] rounded-lg overflow-hidden">
-              <img :src="imageDisplaying" alt="certification image" />
+              <img :src="imageDisplaying" alt="transformation image" />
             </div>
           </div>
           <div class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto">
             <div class="relative">
-              <label class="px-[30px] mb-1" for="">{{ $t("auth.certification_img") }}</label>
+              <label class="px-[30px] mb-1" for="">{{ $t("auth.transformation_img") }}</label>
               <input @change="onChangeImage"
                 class="py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
                 type="file" />
@@ -44,58 +44,34 @@
           <div
             class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto"
           ></div>
-          <div class="panel-input-holder">
-            <div class="relative">
-              <input
-                v-model="state.titleAr"
-                :placeholder="$t('auth.title_ar')"
-                class="panel-input"
-                type="text"
-              />
-            </div>
-            <p v-if="errors.titleAr.state" class="panel-input-err">
-              {{ $t(`auth.errors.${errors.titleAr.message}`) }}
-            </p>
-          </div>
-          <div class="panel-input-holder">
-            <div class="relative">
-              <input
-                v-model="state.titleEn"
-                :placeholder="$t('auth.title_en')"
-                class="panel-input"
-                type="text"
-              />
-            </div>
-            <p v-if="errors.titleEn.state" class="panel-input-err">
-              {{ $t(`auth.errors.${errors.titleEn.message}`) }}
-            </p>
-          </div>
+     
+    
           <div class="panel-input-holder">
             <div class="relative">
               <textarea
-                v-model="state.contentAr"
-                :placeholder="$t('auth.content_ar')"
+                v-model="state.descriptionAr"
+                :placeholder="$t('auth.description_ar')"
                 class="panel-input h-[100px] px-6 py-2"
                 type="text"
                 autocomplete="off"
               ></textarea>
             </div>
-            <p v-if="errors.contentAr.state" class="panel-input-err">
-              {{ $t(`auth.errors.${errors.contentAr.message}`) }}
+            <p v-if="errors.descriptionAr.state" class="panel-input-err">
+              {{ $t(`auth.errors.${errors.descriptionAr.message}`) }}
             </p>
           </div>
           <div class="panel-input-holder">
             <div class="relative">
               <textarea
-                v-model="state.contentEn"
-                :placeholder="$t('auth.content_en')"
+                v-model="state.descriptionEn"
+                :placeholder="$t('auth.description_en')"
                 class="panel-input h-[100px] px-6 py-2"
                 type="text"
                 autocomplete="off"
               ></textarea>
             </div>
-            <p v-if="errors.contentEn.state" class="panel-input-err">
-              {{ $t(`auth.errors.${errors.contentEn.message}`) }}
+            <p v-if="errors.descriptionEn.state" class="panel-input-err">
+              {{ $t(`auth.errors.${errors.descriptionEn.message}`) }}
             </p>
           </div>
     
@@ -104,12 +80,7 @@
         <div v-else-if="type == 'delete'">
           <div class="text-center font-[900]">
             {{
-              $t(`admin.actions.delete_certification_msg`, {
-                  certification:
-                  locale == "ar"
-                    ? currentTransformation?.titleAr
-                    : currentTransformation?.titleEn,
-              })
+              $t(`admin.actions.delete_transformation_msg`, {transformation:currentTransformation?.id})
             }}
           </div>
         </div>
@@ -135,7 +106,7 @@
   </template>
     
     <script setup>
-  const emit = defineEmits(["closePopup", "getCertificationData"]);
+  const emit = defineEmits(["closePopup", "getTransformationsData"]);
   const props = defineProps({
     type: String,
     currentTransformation: Object,
@@ -149,33 +120,25 @@
   
   const config = useRuntimeConfig();
   const BASE_URL = config.public.base_url;
-  const { createCertification, editCertification, deleteCertification } =
+  const { createTransformation, editTransformation, deleteTransformation } =
     useRequest();
   const { locale, t } = useI18n();
   const imageDisplaying = ref("");
   
   const state = reactive({
-    titleAr: "",
-    titleEn: "",
-    contentAr: "",
-    contentEn: "",
+
+    descriptionAr: "",
+    descriptionEn: "",
     image: "",
   });
   
   const errors = reactive({
-    titleAr: {
+
+    descriptionAr: {
       state: false,
       message: "",
     },
-    titleEn: {
-      state: false,
-      message: "",
-    },
-    contentAr: {
-      state: false,
-      message: "",
-    },
-    contentEn: {
+    descriptionEn: {
       state: false,
       message: "",
     },
@@ -191,21 +154,10 @@
   
   const rules = computed(() => {
     return {
-      titleAr: {
-        required: helpers.withMessage("add_title_ar", required),
-        minLength: helpers.withMessage("at_least_three", minLength(3)),
-      },
-      titleEn: {
-        required: helpers.withMessage("add_title_en", required),
-        minLength: helpers.withMessage("at_least_three", minLength(3)),
-      },
-  
-      contentAr: {
-        required: helpers.withMessage("add_content_ar", required),
+      descriptionAr: {
         minLength: helpers.withMessage("at_least_seven", minLength(7)),
       },
-      contentEn: {
-        required: helpers.withMessage("add_content_en", required),
+      descriptionEn: {
         minLength: helpers.withMessage("at_least_seven", minLength(7)),
       },
   
@@ -243,16 +195,15 @@
     emit("closePopup");
   };
   
-  const getCertificationData = () => {
-    emit("getCertificationData");
+  const getTransformationsData = () => {
+    emit("getTransformationsData");
   };
   
-  const manageCertificationFun = async () => {
+  const manageTransformationFun = async () => {
     if (props.type != "delete") {
-      errors.titleAr.state = false;
-      errors.titleEn.state = false;
-      errors.contentAr.state = false;
-      errors.contentEn.state = false;
+
+      errors.descriptionAr.state = false;
+      errors.descriptionEn.state = false;
       errors.image.state = false;
   
       const payload = new FormData();
@@ -260,26 +211,27 @@
       const result = await v$.value.$validate();
   
       if (result) {
-        state.titleAr && payload.append("titleAr", state.titleAr);
-        state.titleEn && payload.append("titleEn", state.titleEn);
-        state.contentAr && payload.append("contentAr", state.contentAr);
-        state.contentEn && payload.append("contentEn", state.contentEn);
+
+        if(props.type == "add" && state.image) return
+
+        state.descriptionAr && payload.append("descriptionAr", state.descriptionAr);
+        state.descriptionEn && payload.append("descriptionEn", state.descriptionEn);
         state.image && payload.append("image", state.image);
         try {
           let res;
-          if (props.type == "add") res = await createCertification(payload);
+          if (props.type == "add") res = await createTransformation(payload);
           if (props.type == "edit")
-            res = await editCertification(
+            res = await editTransformation(
               props.currentTransformation?.id,
               payload
             );
   
           if (res.data.success) {
             props.type == "add" &&
-              showToast({ message: t("toast.success_add_certification") });
+              showToast({ message: t("toast.success_add_transformation") });
             props.type == "edit" &&
-              showToast({ message: t("toast.success_edit_certification") });
-            getCertificationData();
+              showToast({ message: t("toast.success_edit_transformation") });
+            getTransformationsData();
             closePopup();
           } else showToast({ type: "error", message: "err" });
         } catch (err) {
@@ -293,11 +245,11 @@
       }
     } else {
       try {
-        const res = await deleteCertification(props.currentTransformation?.id);
+        const res = await deleteTransformation(props.currentTransformation?.id);
   
         if (res.data.success) {
-          showToast({ message: t("toast.success_delete_certification") });
-          getCertificationData();
+          showToast({ message: t("toast.success_delete_transformation") });
+          getTransformationsData();
         } else showToast({ type: "error", message: "err" });
       } catch (err) {
         console.error(err);
@@ -315,10 +267,9 @@
   // hooks
   onBeforeMount(() => {
     if (props.type == "edit" && props.currentTransformation) {
-      state.titleAr = props.currentTransformation?.titleAr;
-      state.titleEn = props.currentTransformation?.titleEn;
-      state.contentAr = props.currentTransformation?.contentAr;
-      state.contentEn = props.currentTransformation?.contentEn;
+
+      state.descriptionAr = props.currentTransformation?.descriptionAr;
+      state.descriptionEn = props.currentTransformation?.descriptionEn;
       imageDisplaying.value = `${BASE_URL}${props.currentTransformation?.image}`;  
   }
   });

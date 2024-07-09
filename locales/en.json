@@ -39,6 +39,9 @@
     "success_add_certification": "the certification has been added successfully",
     "success_edit_certification": "the certification's data has been edited successfully",
 
+    "success_delete_transformation": "the transformation has been deleted successfully",
+    "success_add_transformation": "the transformation has been added successfully",
+    "success_edit_transformation": "the transformation's data has been edited successfully",
     
     "wrong_email":"This email is incorrect",
     "wrong_password":"incorrect password",
@@ -335,6 +338,10 @@
       "edit_certification": "Edit certification",
       "delete_certification": "Delete certification",
 
+      "add_transformation":"Add a transformation",
+      "edit_transformation": "Edit the transformation",
+      "delete_transformation": "Delete the transformation",
+
 
       "title_ar":"Title in Arabic",
       "title_en":"Title in English",
@@ -360,6 +367,7 @@
       "delete_product_msg": "Are you sure to delete {product} ?  ",
       "delete_video_msg": "Are you sure to delete {video} ?  ",
       "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
+      "delete_transformation_msg": "Are you sure to delete the transformation number {transformation}  ?  ",
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",
@@ -390,6 +398,7 @@
   },
   "table": {
     "headers": {
+      "id":"ID",
       "name": "Name",
       "email": "Email",
       "phone":"Phone",
