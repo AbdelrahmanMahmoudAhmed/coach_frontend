@@ -1,5 +1,6 @@
 <template>
   <div @click.self="closePopup" class="popup-holder popup">
+    
     <div class="panel-form">
       <div
         @click="closePopup"
@@ -24,6 +25,7 @@
       <div class="flex flex-col justify-center">
         <div class="mb-4">
           <div
+          v-if="currentDetails.titleAr"
             class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-center"
           >
             <span
@@ -34,6 +36,7 @@
             <span>{{ currentDetails.titleAr }}</span>
           </div>
           <div
+          v-if="currentDetails.titleEn"
             class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-center"
           >
             <span
@@ -45,7 +48,7 @@
           </div>
         </div>
         <div class="add-edit-holder mb-4">
-          <div    v-if="page == 'certification'" class="max-w-[200px] rounded-lg overflow-hidden mb-2">
+          <div    v-if="withImg" class="max-w-[200px] rounded-lg overflow-hidden mb-2">
               <img :src="`${BASE_URL}${currentDetails.image}`" alt="package image" />
           </div>
           <video
@@ -64,7 +67,7 @@
             <span
               class="font-bold text-[--main-color] dark:text-[--third-color]"
             >
-              {{page == 'video' ? $t("auth.video_link") : page == 'certification' && $t("auth.certification_img") }}
+              {{page == 'video' ? $t("auth.video_link") :( page == 'certification' )? $t("auth.certification_img") :  page == 'transformation' ? $t("auth.transformation_img") : '' }}
             </span>
             <span class="text-[14px]">{{ currentDetails.link }}</span>
           </div>
@@ -116,6 +119,7 @@ const emit = defineEmits(["closePopup"]);
 const props = defineProps({
   currentDetails: Object,
   page: String,
+  withImg:Boolean
 });
 const theme = useCookie("isDark", {
   watch: "shallow",

@@ -118,6 +118,7 @@
     "product_image":"Product Icon",
     "video_link":"Video link",
     "certification_img":"Certification Image",
+    "transformation_img":"Transformation Image",
     "role":"Role",
 
     "allow_delete":"Allow deletion",
@@ -319,6 +320,7 @@
       "details_client":"Client details",
       "details_video":"Video details",
       "details_certification":"Certification details",
+      "details_transformation":"Body shape transformation details",
       "add_product":"Add product",
       "edit_product": "Edit product",
       "delete_product": "Delete product",

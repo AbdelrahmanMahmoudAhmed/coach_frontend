@@ -149,9 +149,20 @@ const editCertification = async (id, data) => {
 const deleteCertification = async (id) => {
   return await REQUEST.delete(`/admin/website-management/certifications/${id}`, { headers });
 };
-
+//transformations
+const getAllTransformations  = async (query) => {
+  return await REQUEST.get(`/admin/website-management/transformations${getQuery(query)}`, { headers });
+};
+const createTransformation = async (data) => {
+  return await REQUEST.post(`/admin/website-management/transformations`, data, { headers });
+};
+const editTransformation = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/transformations/${id}`, data, { headers });
+};
+const deleteTransformation = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/transformations/${id}`, { headers });
+};
 /*--------------------  END WEBSITE MANAGEMENT SECTION  --------------------*/
-
 
 
   return {
@@ -187,6 +198,8 @@ deleteClient,
 
 getAllVideos,createVideo,editVideo,deleteVideo,
 getAllCertifications,createCertification,editCertification,deleteCertification,
+getAllTransformations,createTransformation,editTransformation,deleteTransformation,
+
 
 
 
