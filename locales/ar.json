@@ -45,6 +45,9 @@
     "success_edit_transformation": "تم تعديل بيانات التحول بنجاح",
 
 
+    "update_website_data":"تم تحديث بيانات الموقع بنجاح",
+
+
     "wrong_email":"هذا البريد الإلكتروني غير صحيح",
     "wrong_password":"كلمة سر غير صحيحة",
     "wrong_type":"تحديد النوع غير صحيح",
@@ -278,18 +281,18 @@
       "policy": " صفحة سياسة الخصوصية  ( بالانجليزية )",
       "policy_ar": " صفحة سياسة الخصوصية  ( بالعربية )",
       "social_media": "التواصل الاجتماعى",
-      "discord": "ديسكورد",
+      "youtube": "يوتيوب",
+      "tiktok": "تيك توك",
       "insta": "انستاجرام",
       "facebook": "فيسبوك",
       "x": "إكس",
       "email": "البريد الالكترونى",
       "phone_number": "رقم الهاتف",
-      "settings": "إعدادات العمل",
-      "telegramBotId": "معرف بوت التليجرام",
-      "telegramChannelId": "معرف قناة التليجرام",
-      "proxySellerDiscountCoupon": " كوبون خصم proxySeller",
-      "DigiProxyApiKey": "مفتاح DigiProxy Api",
-      "proxySellerApiKey": "مفتاح proxySeller Api"
+      "seo": "تحسين محركات البحث",
+      "titleSEO": "عنوان الموقع",
+      "description": "وصف الموقع",
+      "keywords": "الكلمات المفتاحية",
+      "keywords_lable":"الكلمات المفتاحية  ( اضغط على زر الإدخال 'Enter' بعد كل كلمة )"
     },
     "actions": {
       "add_admin": "إضافة مدير",

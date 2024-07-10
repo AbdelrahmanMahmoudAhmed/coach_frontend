@@ -11,6 +11,9 @@ const useRequest = () => {
     'Content-Type': 'multipart/form-data',
     'Authorization': `bearer ${global.token}`
   };
+  const auth = {
+    'Authorization': `bearer ${global.token}`
+  };
 
 
 
@@ -162,6 +165,15 @@ const editTransformation = async (id, data) => {
 const deleteTransformation = async (id) => {
   return await REQUEST.delete(`/admin/website-management/transformations/${id}`, { headers });
 };
+
+
+// website data
+const getAllSettings  = async () => {
+  return await REQUEST.get(`/admin/website-management/layout`, { headers });
+};
+const setAllSettings = async (data) => {
+  return await REQUEST.patch(`/admin/website-management/layout`, data, { headers:auth });
+};
 /*--------------------  END WEBSITE MANAGEMENT SECTION  --------------------*/
 
 
@@ -199,6 +211,7 @@ deleteClient,
 getAllVideos,createVideo,editVideo,deleteVideo,
 getAllCertifications,createCertification,editCertification,deleteCertification,
 getAllTransformations,createTransformation,editTransformation,deleteTransformation,
+getAllSettings,setAllSettings,
 
 
 

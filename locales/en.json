@@ -43,6 +43,10 @@
     "success_add_transformation": "the transformation has been added successfully",
     "success_edit_transformation": "the transformation's data has been edited successfully",
     
+    "update_website_data":"the website data has been updated successfully",
+    
+    
+    
     "wrong_email":"This email is incorrect",
     "wrong_password":"incorrect password",
     "wrong_type":"incorrect type",
@@ -290,19 +294,19 @@
       "policy": "privacy policy ( EN )",
       "policy_ar": "privacy policy ( AR )",
       "social_media": "social media",
-      "discord": "discord",
+      "youtube": "youtube",
+      "tiktok": "tiktok",
       "insta": "instagram",
       "facebook": "facebook",
       "x": "X",
       "email": "email",
       "phone_number": "phone number",
-      "settings":"work settings",
-      "telegramBotId": "telegram bot Id",
-      "telegramChannelId":"telegram channel Id",
-      "proxySellerDiscountCoupon":"proxy seller discount coupon",
-      "DigiProxyApiKey":"DigiProxy Api Key",
-      "proxySellerApiKey":"proxySeller Api Key"
-    },
+      "seo":"SEO",
+      "titleSEO":"website title",
+      "description":"website description",
+      "keywords":"keywords",
+      "keywords_lable":"keywords (Press the enter button after each word)"
+        },
     "actions": {
       "add_admin": "Add Admin",
       "edit_admin": "Edit Admin",
