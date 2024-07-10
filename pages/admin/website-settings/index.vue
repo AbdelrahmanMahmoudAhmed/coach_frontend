@@ -211,6 +211,20 @@
               type="text"
             />
           </div>
+          <div class="w-full xl:w-[49%]">
+            <label
+              class="font-bold pb-1 block text-[12px] xs:text-[14px] sm:pb-2 sm:text-[16px]"
+              for=""
+            >
+              {{ $t("admin.manage_website.whatsApp") }}</label
+            >
+            <input
+              v-model="state.whatsApp"
+              :placeholder="$t('admin.manage_website.whatsApp')"
+              class="text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#000000] flex items-center rounded-[46px] px-[25px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#94a3b8] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#1a3145] dark:text-[#fff] h-[35px] xs:text-[14px] sm:h-[50px] sm:text-[16px]"
+              type="text"
+            />
+          </div>
         </div>
       </div>
 
@@ -442,6 +456,7 @@ const state = reactive({
   keywords: "",
   facebook: "",
   x: "",
+  whatsApp:"",
   instagram: "",
   youtube: "",
   tiktok: "",
@@ -493,11 +508,11 @@ onBeforeMount(()=>{
     state.keywords = res.data?.data?.seo?.keywords
     state.facebook = res.data?.data?.socialMedia?.facebook
     state.x = res.data?.data?.socialMedia?.x
+    state.whatsApp = res.data?.data?.socialMedia?.whatsApp
     state.instagram = res.data?.data?.socialMedia?.instagram
     state.youtube = res.data?.data?.socialMedia?.youtube
     state.tiktok = res.data?.data?.socialMedia?.tiktok
     state.tiktok = res.data?.data?.socialMedia?.tiktok
-    
   })
 })
 

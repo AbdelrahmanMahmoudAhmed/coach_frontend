@@ -43,6 +43,10 @@
     "success_add_transformation": "the transformation has been added successfully",
     "success_edit_transformation": "the transformation's data has been edited successfully",
     
+    "success_delete_question": "the question has been deleted successfully",
+    "success_add_question": "the question has been added successfully",
+    "success_edit_question": "the question's data has been edited successfully",
+    
     "update_website_data":"the website data has been updated successfully",
     
     
@@ -146,6 +150,10 @@
     "package_features":"Package features",
     "package_feature_ar":"The feature in Arabic",
     "package_feature_en":"The feature in English",
+    "answer_ar":"The answer in Arabic",
+    "answer_en":"The answer in English",
+    "question_ar":"The question in Arabic",
+    "question_en":"The question in English",
 
       "errors": {
       "add_name": "Please add your name",
@@ -185,7 +193,11 @@
      "add_complete_feature":"Add at least one feature in Arabic and English ",
      "max_hundred":"Maximum number is 100",
      "add_valid_password":"Add at least eight numbers or characters",
-     "must_url":"The URL must be correct"
+     "must_url":"The URL must be correct",
+     "add_answer_ar":"Add the answer in Arabic",
+     "add_answer_en":"Add the answer in English",
+     "add_question_ar":"Add the question in Arabic",
+     "add_question_en":"Add the question in English"
 
 
 
@@ -197,6 +209,8 @@
 
 
   "global": {
+    "see_more":"See More ...",
+    "see_less":"Less ...",
     "all":"All",
     "err_msg1": "Looks like you are lost.",
     "err_msg2": "The link you followed may be broken, or the page may have been removed.",
@@ -299,6 +313,7 @@
       "insta": "instagram",
       "facebook": "facebook",
       "x": "X",
+      "whatsApp":"whatsapp",
       "email": "email",
       "phone_number": "phone number",
       "seo":"SEO",
@@ -347,6 +362,11 @@
       "delete_transformation": "Delete the transformation",
 
 
+      "add_question": "Add A Question",
+      "edit_question": "Edit The Question",
+      "delete_question": "Delete The Question", 
+
+
       "title_ar":"Title in Arabic",
       "title_en":"Title in English",
       "description_ar":"Description in Arabic",
@@ -372,6 +392,10 @@
       "delete_video_msg": "Are you sure to delete {video} ?  ",
       "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
       "delete_transformation_msg": "Are you sure to delete the transformation number {transformation}  ?  ",
+      "delete_answer_msg": "Are you sure to delete the question {answer} ?  ",
+
+
+
       "success_delete_user": "the user has been deleted successfully",
       "success_add_user": "the user has been added successfully",
       "success_edit_user": "the user's data has been edited successfully",
@@ -424,7 +448,11 @@
       "price":"Price",
       "discountPercentage":"Discount percentage",
       "shipping_price":"Shipping cost",
-      "link":"Link"
+      "link":"Link",
+      "question_ar":"Question in Arabic",
+      "question_en":"Question in English",
+      "answer_ar":"Answer in Arabic",
+      "answer_en":"Answer in English"
 
     },
     "super_admin":"Super Admin",

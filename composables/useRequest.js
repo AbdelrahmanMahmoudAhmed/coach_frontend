@@ -167,6 +167,21 @@ const deleteTransformation = async (id) => {
 };
 
 
+//quick-answers
+const getAllQuickAnswers  = async () => {
+  return await REQUEST.get(`/admin/website-management/quick-answers`, { headers });
+};
+const createQuickAnswer = async (data) => {
+  return await REQUEST.post(`/admin/website-management/quick-answers`, data, { headers });
+};
+const editQuickAnswer = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/quick-answers/${id}`, data, { headers });
+};
+const deleteQuickAnswer = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/quick-answers/${id}`, { headers });
+};
+
+
 // website data
 const getAllSettings  = async () => {
   return await REQUEST.get(`/admin/website-management/layout`, { headers });
@@ -212,7 +227,7 @@ getAllVideos,createVideo,editVideo,deleteVideo,
 getAllCertifications,createCertification,editCertification,deleteCertification,
 getAllTransformations,createTransformation,editTransformation,deleteTransformation,
 getAllSettings,setAllSettings,
-
+getAllQuickAnswers,createQuickAnswer,editQuickAnswer,deleteQuickAnswer,
 
 
 

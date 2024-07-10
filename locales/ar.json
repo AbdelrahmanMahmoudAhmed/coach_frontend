@@ -44,6 +44,10 @@
     "success_add_transformation": "تمت إضافة بيانات التحول بنجاح",
     "success_edit_transformation": "تم تعديل بيانات التحول بنجاح",
 
+    "success_delete_question": "تم حذف السؤال بنجاح",
+    "success_add_question": "تمت إضافة السؤال بنجاح",
+    "success_edit_question": "تم تعديل بيانات السؤال بنجاح",
+
 
     "update_website_data":"تم تحديث بيانات الموقع بنجاح",
 
@@ -143,6 +147,10 @@
     "package_features":"مميزات الباقة",
     "package_feature_ar":"الميزة بالعربية",
     "package_feature_en":"الميزة باالانجليزية",
+    "answer_ar":" الجواب بالعربية",
+    "answer_en":" الجواب بالانجليزية",
+    "question_ar":" السؤال بالعربية",
+    "question_en":" السؤال بالانجليزية",
   
     "errors": {
       "add_name": "من فضلك أضف اسم",
@@ -180,7 +188,11 @@
     "add_complete_feature":"أضف على الاقل ميزة واحدة باللغة العربية و الانجليزية",
     "max_hundred":"اقصى رقم 100",
     "add_valid_password":"على الاقل قمانية ارقام أو حروف",
-    "must_url":"لابد و ان يكون رابط صحيح"
+    "must_url":"لابد و ان يكون رابط صحيح",
+    "add_answer_ar":"اضف الجواب بالعربية",
+    "add_answer_en":"اضف الجواب بالانجليزية",
+    "add_question_ar":"اضف السؤال بالعربية",
+    "add_question_en":"اضف السؤال بالانجليزية"
     }
   },
 
@@ -188,6 +200,8 @@
 
 
   "global": {
+    "see_more":"شاهد المزيد...",
+    "see_less":"اقل...",
     "all": "الكل",
     "err_msg1": "يبدو أنك فقدت وجهتك !",
     "err_msg2": "قد يكون الرابط الذى اتبعته خطأ أو معطلا , أو لربما تم حذف الصفحه",
@@ -286,6 +300,7 @@
       "insta": "انستاجرام",
       "facebook": "فيسبوك",
       "x": "إكس",
+      "whatsApp":"واتس آب",
       "email": "البريد الالكترونى",
       "phone_number": "رقم الهاتف",
       "seo": "تحسين محركات البحث",
@@ -334,6 +349,11 @@
       "add_transformation": "إضافة تحول جديد",
       "edit_transformation": "تعديل بيانات التحول",
       "delete_transformation": "حذف التحول", 
+
+
+      "add_question": "إضافة سؤال",
+      "edit_question": "تعديل السؤال",
+      "delete_question": "حذف السؤال", 
       
 
       "title_ar":" العنوان بالعربية",
@@ -359,6 +379,8 @@
       "delete_video_msg": "هل أنت متأكد من حذف الفيديو {video} ؟  ",
       "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
       "delete_transformation_msg": "هل أنت متأكد من حذف التحول رقم {transformation} ؟  ",
+      "delete_answer_msg": "هل أنت متأكد من حذف السؤال {answer} ؟  ",
+
 
       "success_delete_user": "تم حذف المستخدم بنجاح",
       "success_add_user": "تمت إضافة المستخدم بنجاح",
@@ -407,7 +429,11 @@
       "price":"السعر",
       "discountPercentage":"نسبة الخصم",
       "shipping_price":"تكلفة الشحن",
-      "link":"الرابط"
+      "link":"الرابط",
+      "question_ar":"السؤال بالعربية",
+      "question_en":"السؤال بالانجليزية",
+      "answer_ar":"الجواب بالعربية",
+      "answer_en":"الجواب بالانجليزية"
 
     },
     "super_admin":"المدير الفائق",

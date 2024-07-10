@@ -104,10 +104,10 @@
                 <span class="whitespace-nowrap" v-else-if="td.withTranslate">
                   {{ t(`table.${td?.item == "admin" ? 'admin' : "super_admin"}`)}}</span
                 >
-                <span class="whitespace-nowrap" v-else-if="td.isSlot">
+                <span class="" v-else-if="td.isSlot">
                   <slot :name="td.slotName" :rowData="td" />
                   </span>
-                <span class="whitespace-nowrap" v-else>
+                <span class=" max-w-[400px] break-words " v-else>
                   {{ td?.item ? td?.item : "_" }}
                 </span>
               </div>
