@@ -132,9 +132,6 @@ const getAnswers = async () => {
           slotName:"seeMore",
           currentItem:item?.answerEn,
         },
-
-        
-        
         {
           id: item?.id,
           item: "action",

@@ -123,6 +123,18 @@ const deleteProduct = async (id) => {
 /*--------------------  END PRODUCTS SECTION  --------------------*/
 
 
+
+/*--------------------  START CONTACT US SECTION  --------------------*/
+const getAllMessages = async (query) => {
+  return await REQUEST.get(`/admin/website-management/contact-us${getQuery(query)}`, { headers });
+};
+const deleteMessage = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/contact-us/${id}`, { headers:auth });
+};
+
+/*--------------------  END CONTACT US SECTION  --------------------*/
+
+
 /*--------------------  START WEBSITE MANAGEMENT SECTION  --------------------*/
 
 // VIDEOS
@@ -228,6 +240,7 @@ getAllCertifications,createCertification,editCertification,deleteCertification,
 getAllTransformations,createTransformation,editTransformation,deleteTransformation,
 getAllSettings,setAllSettings,
 getAllQuickAnswers,createQuickAnswer,editQuickAnswer,deleteQuickAnswer,
+getAllMessages,deleteMessage,
 
 
 

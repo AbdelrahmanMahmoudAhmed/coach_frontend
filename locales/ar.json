@@ -35,6 +35,9 @@
     "success_add_video": "تمت إضافة الفيديو بنجاح",
     "success_edit_video": "تم تعديل بيانات الفيديو بنجاح",
 
+    "success_delete_message": "تم حذف الرسالة بنجاح",
+
+
     "success_delete_certification": "تم حذف الشهادة بنجاح",
     "success_add_certification": "تمت إضافة الشهادة بنجاح",
     "success_edit_certification": "تم تعديل بيانات الشهادة بنجاح",
@@ -151,6 +154,7 @@
     "answer_en":" الجواب بالانجليزية",
     "question_ar":" السؤال بالعربية",
     "question_en":" السؤال بالانجليزية",
+    "date":"التاريخ",
   
     "errors": {
       "add_name": "من فضلك أضف اسم",
@@ -335,6 +339,9 @@
       "delete_product": "حذف المنتج", 
       "search_product": "ابحث عن منتج ",
 
+      "search_message": "ابحث عن رسالة ",
+      "delete_message": "حذف الرسالة", 
+
 
       "add_video": "إضافة فيديو",
       "edit_video": "تعديل الفيديو",
@@ -354,6 +361,8 @@
       "add_question": "إضافة سؤال",
       "edit_question": "تعديل السؤال",
       "delete_question": "حذف السؤال", 
+
+      "details_message":"تفاصيل الرسالة",
       
 
       "title_ar":" العنوان بالعربية",
@@ -380,6 +389,8 @@
       "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
       "delete_transformation_msg": "هل أنت متأكد من حذف التحول رقم {transformation} ؟  ",
       "delete_answer_msg": "هل أنت متأكد من حذف السؤال {answer} ؟  ",
+      "delete_message_msg": "هل أنت متأكد من حذف رسالة {name} ؟  ",
+
 
 
       "success_delete_user": "تم حذف المستخدم بنجاح",
@@ -433,7 +444,9 @@
       "question_ar":"السؤال بالعربية",
       "question_en":"السؤال بالانجليزية",
       "answer_ar":"الجواب بالعربية",
-      "answer_en":"الجواب بالانجليزية"
+      "answer_en":"الجواب بالانجليزية",
+      "title":"العنوان",
+      "created_at":"التاريخ"
 
     },
     "super_admin":"المدير الفائق",

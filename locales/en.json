@@ -35,6 +35,8 @@
     "success_add_video": "the video has been added successfully",
     "success_edit_video": "the video's data has been edited successfully",
 
+    "success_delete_message":"the message has been deleted successfully",
+
     "success_delete_certification": "the certification has been deleted successfully",
     "success_add_certification": "the certification has been added successfully",
     "success_edit_certification": "the certification's data has been edited successfully",
@@ -154,6 +156,7 @@
     "answer_en":"The answer in English",
     "question_ar":"The question in Arabic",
     "question_en":"The question in English",
+    "date":"Date",
 
       "errors": {
       "add_name": "Please add your name",
@@ -348,6 +351,9 @@
       "delete_product": "Delete product",
       "search_product": "Search a product",
 
+      "search_message": "Search a message",
+      "delete_message": "Delete the message", 
+
       "add_video":"Add video",
       "edit_video": "Edit video",
       "delete_video": "Delete video",
@@ -365,6 +371,9 @@
       "add_question": "Add A Question",
       "edit_question": "Edit The Question",
       "delete_question": "Delete The Question", 
+
+      "details_message":"Message details",
+
 
 
       "title_ar":"Title in Arabic",
@@ -393,6 +402,9 @@
       "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
       "delete_transformation_msg": "Are you sure to delete the transformation number {transformation}  ?  ",
       "delete_answer_msg": "Are you sure to delete the question {answer} ?  ",
+
+      "delete_message_msg": "Are you sure to delete {name}'s message ?  ",
+
 
 
 
@@ -452,7 +464,9 @@
       "question_ar":"Question in Arabic",
       "question_en":"Question in English",
       "answer_ar":"Answer in Arabic",
-      "answer_en":"Answer in English"
+      "answer_en":"Answer in English",
+      "title":"Title",
+      "created_at":"Date"
 
     },
     "super_admin":"Super Admin",

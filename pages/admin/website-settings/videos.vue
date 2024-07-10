@@ -13,7 +13,7 @@
         :dataFetched="dataFetched"
         :headers="headers"
         :rows="rows"
-        page="manage-admins"
+        page="manage-videos"
         :withSearch=" false"
         :withAdd="global.user.websiteManagement"
         :searchPlaceholder="$t(`admin.actions.search_video`)"

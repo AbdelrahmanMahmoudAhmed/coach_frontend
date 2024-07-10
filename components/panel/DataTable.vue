@@ -104,10 +104,16 @@
                 <span class="whitespace-nowrap" v-else-if="td.withTranslate">
                   {{ t(`table.${td?.item == "admin" ? 'admin' : "super_admin"}`)}}</span
                 >
+                <span class="whitespace-nowrap" v-else-if="td.isDate">
+                  {{  locale == 'ar' ?  useArabicDates(td?.item) : useEnglishDates(td?.item)}}</span
+                >
+                <span class="whitespace-nowrap" v-else-if="td.isNum">
+                  {{  locale == 'ar' ?  useArabicNums(td?.item) : td?.item }}</span
+                >
                 <span class="" v-else-if="td.isSlot">
                   <slot :name="td.slotName" :rowData="td" />
                   </span>
-                <span class=" max-w-[400px] break-words " v-else>
+                <span class=" max-w-[400px] break-words text-center " v-else>
                   {{ td?.item ? td?.item : "_" }}
                 </span>
               </div>
@@ -153,6 +159,14 @@ const props = defineProps({
   withAdd: Boolean,
 });
 import Paginator from "./Paginator.vue";
+import useDateAndNums from "~/composables/useDateAndNums.js"
+
+
+const { useArabicDates , useEnglishDates , useArabicNums } = useDateAndNums();
+
+
+
+
 const route = useRoute();
 const searchInput = ref("");
 const config = useRuntimeConfig();

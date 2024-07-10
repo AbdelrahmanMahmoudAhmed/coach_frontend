@@ -13,7 +13,7 @@
         :dataFetched="dataFetched"
         :headers="headers"
         :rows="rows"
-        page="manage-admins"
+        page="manage-programs"
         :withSearch=" true"
         :withAdd="global.user.allowEdit"
         :searchPlaceholder="$t(`admin.actions.search_package`)"

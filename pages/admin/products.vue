@@ -12,7 +12,7 @@
         :dataFetched="dataFetched"
         :headers="headers"
         :rows="rows"
-        page="manage-admins"
+        page="manage-product"
         :withSearch=" true"
         :withAdd="global.user.allowEdit"
         :searchPlaceholder="$t(`admin.actions.search_product`)"
@@ -112,6 +112,7 @@ const changeQuery = (type, val) => {
 
   if (typeof type == "string" && types.includes(type)) query[type] = val;
 };
+
 const getProductData = async () => {
   dataFetched.value = false;
 
