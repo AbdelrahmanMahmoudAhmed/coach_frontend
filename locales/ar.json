@@ -35,6 +35,10 @@
     "success_add_video": "تمت إضافة الفيديو بنجاح",
     "success_edit_video": "تم تعديل بيانات الفيديو بنجاح",
 
+    "success_delete_blog": "تم حذف المدونه بنجاح",
+    "success_add_blog": "تمت إضافة المدونه بنجاح",
+    "success_edit_blog": "تم تعديل بيانات المدونه بنجاح",
+
     "success_delete_message": "تم حذف الرسالة بنجاح",
 
 
@@ -155,6 +159,7 @@
     "question_ar":" السؤال بالعربية",
     "question_en":" السؤال بالانجليزية",
     "date":"التاريخ",
+    "type":"النوع",
   
     "errors": {
       "add_name": "من فضلك أضف اسم",
@@ -196,7 +201,8 @@
     "add_answer_ar":"اضف الجواب بالعربية",
     "add_answer_en":"اضف الجواب بالانجليزية",
     "add_question_ar":"اضف السؤال بالعربية",
-    "add_question_en":"اضف السؤال بالانجليزية"
+    "add_question_en":"اضف السؤال بالانجليزية",
+    "add_type":"اضف نوع"
     }
   },
 
@@ -334,6 +340,7 @@
       "details_video":"تفاصيل الفيديو",
       "details_certification":"تفاصيل الشهادة",
       "details_transformation":"تفاصيل تحول شكل الجسم",
+      "details_blog":"تفاصيل المدونه ",
       "add_product": "إضافة منتج",
       "edit_product": "تعديل المنتج",
       "delete_product": "حذف المنتج", 
@@ -347,6 +354,10 @@
       "edit_video": "تعديل الفيديو",
       "delete_video": "حذف الفيديو", 
 
+      "add_blog": "إضافة مدونه",
+      "edit_blog": "تعديل المدونه",
+      "delete_blog": "حذف المدونه", 
+      "search_blog":"ابحث عن مدونه",
 
       "add_certification": "إضافة شهادة",
       "edit_certification": "تعديل الشهادة",
@@ -386,6 +397,7 @@
       "delete_package_msg": "هل أنت متأكد من حذف باقة {package} ؟  ",
       "delete_product_msg": "هل أنت متأكد من حذف المنتج {product} ؟  ",
       "delete_video_msg": "هل أنت متأكد من حذف الفيديو {video} ؟  ",
+      "delete_blog_msg": "هل أنت متأكد من حذف المدونه {blog} ؟  ",
       "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
       "delete_transformation_msg": "هل أنت متأكد من حذف التحول رقم {transformation} ؟  ",
       "delete_answer_msg": "هل أنت متأكد من حذف السؤال {answer} ؟  ",

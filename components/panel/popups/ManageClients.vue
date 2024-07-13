@@ -381,7 +381,6 @@ onBeforeMount(() => {
     state.weight = props.currentClient?.weight;
     imageDisplaying.value = `${BASE_URL}${props.currentClient?.image}`;
   }
-
 });
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
+    <div v-if="popup">
 <ManagePackages :currentPackage="currentPackage" :type="type" @closePopup="closePopup" @getPackagesData="getPackagesData" />
-    </di>
+    </div>
     <div v-if="detailsPopup">
       <DisplayPackageDetails page="package" :currentPackage="currentPackage" @closePopup="closeDetailsPopup" />
     </div>

@@ -1,10 +1,10 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
-<ManageVideos :currentVideos="currentVideos" :type="type" @closePopup="closePopup" @getVideoData="getVideoData" />
-    </di>
+    <div v-if="popup">
+<ManageBlogs :currentBlog="currentBlog" :type="type" @closePopup="closePopup" @getBolgsData="getBolgsData" />
+    </div>
     <div v-if="detailsPopup">
-      <WebsiteDetails page="video" :currentDetails="currentVideos" @closePopup="closeDetailsPopup" />
+      <WebsiteDetails page="blog" :withImg="true" :currentDetails="currentBlog" @closePopup="closeDetailsPopup" />
     </div>
 
     <div class="min-h-[60vh] overflow-x-auto">
@@ -14,10 +14,10 @@
         :headers="headers"
         :rows="rows"
         page="manage-blogs"
-        :withSearch=" false"
+        :withSearch="false"
         :withAdd="global.user.websiteManagement"
-        :searchPlaceholder="$t(`admin.actions.search_video`)"
-        :addButtonTitle="t(`admin.actions.add_video`)"
+        :searchPlaceholder="$t(`admin.actions.search_blog`)"
+        :addButtonTitle="t(`admin.actions.add_blog`)"
         @changeQuery="changeQuery"
         @openPopup="openPopup"
       >
@@ -65,7 +65,7 @@ definePageMeta({
 import DataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
-import ManageVideos from "~/components/panel/popups/ManageVideos";
+import ManageBlogs from "~/components/panel/popups/ManageBlogs";
 import WebsiteDetails from "~/components/panel/popups/WebsiteDetails.vue";
 
 const query = reactive({
@@ -80,10 +80,10 @@ const type = ref("");
 const detailsPopup = ref(false);
 const global = useGlobalStore();
 const { locale, locales, setLocale, t } = useI18n();
-const currentVideos = ref("");
+const currentBlog = ref("");
 const popup = ref(false);
-const { getAllVideos } = useRequest();
-const headers = ref(["title_ar", "title_en","link", "details"]);
+const { getAllBolgs } = useRequest();
+const headers = ref(["title_ar", "title_en","created_at", "details"]);
 (global.user.websiteManagement  ) && (headers.value = ([...headers.value , "actions"  ]))
 const rows = ref([]);
 const dataFetched = ref(false);
@@ -94,12 +94,12 @@ const closePopup = () => {
   global.changePopupState(false);
 };
 const openPopup = (operationType, video) => {
-  currentVideos.value = video;
+  currentBlog.value = video;
   type.value = operationType;
   popup.value = true;
 };
 const openDetailsPopup = ( progPackage) => {
-  currentVideos.value = progPackage;
+  currentBlog.value = progPackage;
   detailsPopup.value = true;
 };
 const closeDetailsPopup = ( ) => {
@@ -113,11 +113,11 @@ const changeQuery = (type, val) => {
 
   if (typeof type == "string" && types.includes(type)) query[type] = val;
 };
-const getVideoData = async () => {
+const getBolgsData = async () => {
   dataFetched.value = false;
 
   try {
-    const res = await getAllVideos(query);
+    const res = await getAllBolgs(query);
     totalRecords.value = res.data?.data?.count;
 
     query.page = res.data.pagination?.currentPage;
@@ -139,7 +139,8 @@ const getVideoData = async () => {
  
         {
           id: item?.id,
-          item: item?.link,
+          item: item?.createdAt,
+          isDate:true
         },
         {
           id: item?.id,
@@ -150,9 +151,10 @@ const getVideoData = async () => {
             id: item?.id,
             titleAr: item?.titleAr,
             titleEn: item?.titleEn,
-            descriptionAr: item?.descriptionAr,
-            descriptionEn: item?.descriptionEn,
             link: item?.link,
+            image:item?.image,
+            contentAr:item?.contentAr,
+            contentEn:item?.contentEn,
           }
         },
         {
@@ -164,9 +166,11 @@ const getVideoData = async () => {
             id: item?.id,
             titleAr: item?.titleAr,
             titleEn: item?.titleEn,
-            descriptionAr: item?.descriptionAr,
-            descriptionEn: item?.descriptionEn,
+            contentAr:item?.contentAr,
+            contentEn:item?.contentEn,
             link: item?.link,
+            image:item?.image,
+            type:item?.type,
           }
         },
       ];
@@ -181,19 +185,19 @@ const getVideoData = async () => {
 
 // hooks
 onBeforeMount(() => {
-  getVideoData();
+  getBolgsData();
 });
 
 watch(
   () => query.page,
   () => {
-    getVideoData(query);
+    getBolgsData(query);
   }
 );
 watch(
   () => query.search,
   () => {
-    getVideoData(query);
+    getBolgsData(query);
   }
 );
 </script>

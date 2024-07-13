@@ -1,8 +1,8 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
+    <div v-if="popup">
 <ManageTransformations  :currentTransformation="currentTransformation" :type="type" @closePopup="closePopup" @getTransformationsData="getTransformationsData" />
-    </di>
+    </div>
     <div v-if="detailsPopup">
       <WebsiteDetails :withImg="true" page="transformation" :currentDetails="currentTransformation" @closePopup="closeDetailsPopup" />
     </div>

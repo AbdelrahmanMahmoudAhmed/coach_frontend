@@ -1,8 +1,8 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
+    <div v-if="popup">
 <ManageVideos :currentVideos="currentVideos" :type="type" @closePopup="closePopup" @getVideoData="getVideoData" />
-    </di>
+    </div>
     <div v-if="detailsPopup">
       <WebsiteDetails page="video" :currentDetails="currentVideos" @closePopup="closeDetailsPopup" />
     </div>

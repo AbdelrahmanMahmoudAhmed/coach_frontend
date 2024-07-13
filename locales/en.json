@@ -35,6 +35,11 @@
     "success_add_video": "the video has been added successfully",
     "success_edit_video": "the video's data has been edited successfully",
 
+    
+    "success_delete_blog": "the blog has been deleted successfully",
+    "success_add_blog": "the blog has been added successfully",
+    "success_edit_blog": "the blog's data has been edited successfully",
+
     "success_delete_message":"the message has been deleted successfully",
 
     "success_delete_certification": "the certification has been deleted successfully",
@@ -157,6 +162,7 @@
     "question_ar":"The question in Arabic",
     "question_en":"The question in English",
     "date":"Date",
+    "type":"Type",
 
       "errors": {
       "add_name": "Please add your name",
@@ -200,7 +206,8 @@
      "add_answer_ar":"Add the answer in Arabic",
      "add_answer_en":"Add the answer in English",
      "add_question_ar":"Add the question in Arabic",
-     "add_question_en":"Add the question in English"
+     "add_question_en":"Add the question in English",
+     "add_type":"add a type"
 
 
 
@@ -346,6 +353,7 @@
       "details_video":"Video details",
       "details_certification":"Certification details",
       "details_transformation":"Body shape transformation details",
+      "details_blog":"Blog details",
       "add_product":"Add product",
       "edit_product": "Edit product",
       "delete_product": "Delete product",
@@ -358,6 +366,12 @@
       "edit_video": "Edit video",
       "delete_video": "Delete video",
       "search_video": "Search a video",
+
+
+      "add_blog":"Add blog",
+      "edit_blog": "Edit blog",
+      "delete_blog": "Delete blog",
+      "search_blog": "Search a blog",
 
       "add_certification":"Add certification",
       "edit_certification": "Edit certification",
@@ -399,6 +413,7 @@
       "delete_package_msg": "Are you sure to delete {package} package ?  ",
       "delete_product_msg": "Are you sure to delete {product} ?  ",
       "delete_video_msg": "Are you sure to delete {video} ?  ",
+      "delete_blog_msg": "Are you sure you want to delete the blog with the title {blog} ?  ",
       "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
       "delete_transformation_msg": "Are you sure to delete the transformation number {transformation}  ?  ",
       "delete_answer_msg": "Are you sure to delete the question {answer} ?  ",

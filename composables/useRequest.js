@@ -85,6 +85,7 @@ const useRequest = () => {
 /*--------------------  END CLIENTS SECTION  --------------------*/
 
 
+
 /*--------------------  START PROGRAMS SECTION  --------------------*/
 
 
@@ -121,6 +122,24 @@ const deleteProduct = async (id) => {
 };
 
 /*--------------------  END PRODUCTS SECTION  --------------------*/
+
+
+/*--------------------  START CLIENTS SECTION  --------------------*/
+
+const getAllBolgs = async (query) => {
+  return await REQUEST.get(`/admin/website-management/blogs${getQuery(query)}`, { headers });
+};
+const createBolg = async (data) => {
+  return await REQUEST.post(`/admin/website-management/blogs`, data, { headers });
+};
+const editBolg = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/blogs/${id}`, data, { headers });
+};
+const deleteBolg = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/blogs/${id}`, { headers });
+};
+/*--------------------  END CLIENTS SECTION  --------------------*/
+
 
 
 
@@ -241,6 +260,10 @@ getAllTransformations,createTransformation,editTransformation,deleteTransformati
 getAllSettings,setAllSettings,
 getAllQuickAnswers,createQuickAnswer,editQuickAnswer,deleteQuickAnswer,
 getAllMessages,deleteMessage,
+getAllBolgs,
+createBolg ,
+editBolg ,
+deleteBolg, 
 
 
 

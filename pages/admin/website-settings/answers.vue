@@ -1,8 +1,8 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
+    <div v-if="popup">
 <ManageAnswers :currentAnswer="currentAnswer" :type="type" @closePopup="closePopup" @getAnswers="getAnswers" />
-    </di>
+    </div>
 
 
     <div class="min-h-[60vh] overflow-x-auto">

@@ -47,12 +47,13 @@
             <span>{{ currentDetails.titleEn }}</span>
           </div>
         </div>
+        
         <div class="add-edit-holder mb-4">
-          <div    v-if="withImg" class="max-w-[200px] rounded-lg overflow-hidden mb-2">
+          <div    v-if="withImg && currentDetails.image" class="max-w-[200px] rounded-lg overflow-hidden mb-2">
               <img :src="`${BASE_URL}${currentDetails.image}`" alt="package image" />
           </div>
           <video
-          v-if="page == 'video'"
+          v-if="currentDetails.link"
             class="rounded-xl mt-2"
             width="420"
             height="315"
@@ -95,7 +96,7 @@
               <span
                 class="font-bold text-[--main-color] dark:text-[--third-color]"
               >
-                {{ $t("auth.description_en") }}
+                {{ $t("auth.content_ar") }}
               </span>
               <span v-html=" currentDetails.contentAr?.replace(/\n/g, '<br />')" class="text-[14px] text-center"></span>
             </div>
@@ -103,7 +104,7 @@
               <span
                 class="font-bold text-[--main-color] dark:text-[--third-color]"
               >
-                {{ $t("auth.description_en") }}
+                {{ $t("auth.content_en") }}
               </span>
               <span v-html=" currentDetails.contentEn?.replace(/\n/g, '<br />')" class="text-[14px] text-center"></span>
             </div>

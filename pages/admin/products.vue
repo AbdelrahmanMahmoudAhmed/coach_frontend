@@ -1,8 +1,8 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
+    <div v-if="popup">
 <ManageProducts :currentProduct="currentProduct" :type="type" @closePopup="closePopup" @getProductData="getProductData" />
-    </di>
+    </div>
     <div v-if="detailsPopup">
       <DisplayProductDetails page="product" :currentPackage="currentProduct" @closePopup="closeDetailsPopup" />
     </div>

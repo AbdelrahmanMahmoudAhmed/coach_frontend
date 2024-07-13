@@ -1,8 +1,8 @@
 <template>
   <div class="pb-10">
-    <di v-if="popup">
+    <div v-if="popup">
 <ManageContactUs :currentMessage="currentMessage"  @closePopup="closePopup" @getMessagesData="getMessagesData" />
-    </di>
+    </div>
     <div v-if="detailsPopup">
       <MessageDetails  :currentDetails="currentMessage" @closePopup="closeDetailsPopup" />
     </div>
