@@ -32,7 +32,6 @@
           </div>
           <p v-if="errors.name.state" class="panel-input-err ">
             {{ $t(`auth.errors.${errors.name.message}`) }}
-
           </p>
         </div>
 

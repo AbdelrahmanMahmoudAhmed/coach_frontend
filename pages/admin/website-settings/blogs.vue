@@ -136,7 +136,6 @@ const getBolgsData = async () => {
           id: item?.id,
           item: item?.titleEn,
         },
- 
         {
           id: item?.id,
           item: item?.createdAt,

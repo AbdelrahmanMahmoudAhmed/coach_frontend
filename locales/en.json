@@ -132,6 +132,7 @@
     "image":"Your image",
     "admin_image":"Admin Image",   
     "client_image":"Client Image",   
+    "blog_image":"Blog Image",   
     "package_image":"Package Icon",
     "product_image":"Product Icon",
     "video_link":"Video link",
@@ -176,6 +177,7 @@
       "add_real_image": "The image extension must be jpg, png or jpeg",
       "add_username":"Add the User Name",
       "choose_role":"Please Choose role",
+      "add_an_image":"Please add your image",
 
 
       "add_tall":"Please add your tall",
@@ -207,7 +209,8 @@
      "add_answer_en":"Add the answer in English",
      "add_question_ar":"Add the question in Arabic",
      "add_question_en":"Add the question in English",
-     "add_type":"add a type"
+     "add_type":"add a type",
+     "add_blog_link":"add blog link"
 
 
 

@@ -1,14 +1,17 @@
 <template>
   <div @click.self="closePopup" class="popup-holder popup">
-    <!-- <div class=" flex justify-center items-center"> -->
     <form @submit.prevent="manageBlogFun" class="panel-form">
       <div
         @click="closePopup"
-        :class="`${locale == 'ar' ? 'left-4' : 'right-4'} absolute top-4 cursor-pointer`"
+        :class="`${
+          locale == 'ar' ? 'left-4' : 'right-4'
+        } absolute top-4 cursor-pointer`"
       >
         <img
           class="w-[40px] cursor-pointer"
-          :src="isDark == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'"
+          :src="
+            isDark == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'
+          "
           alt=""
         />
       </div>
@@ -18,8 +21,8 @@
         {{ $t(`admin.actions.${type}_blog`) }}
       </h3>
       <div v-if="type != 'delete'" class="flex flex-col justify-center">
-        <div class="add-edit-holder" v-if="state.link">
-          <div class="rounded-lg overflow-hidden">
+        <div class="add-edit-holder" v-if="state.link && state.type == 'video'">
+          <div v-if="state.link" class="rounded-lg overflow-hidden">
             <video
               class="rounded-xl mt-2"
               width="420"
@@ -32,18 +35,69 @@
             </video>
           </div>
         </div>
-        <div class="panel-input-holder ">
+        <div class="panel-input-holder" v-if="state.type == 'video'">
           <div class="relative">
-            <DropDownCompVue :currentVal="state.type" :placeholder="$t('auth.type')" :options="typeOptions"
-              @changeVal="changeVal" mode="single" :locale="locale" :close="true" />
+            <input
+              v-model="state.link"
+              :placeholder="$t('auth.video_link')"
+              class="panel-input"
+              type="text"
+              autocomplete="off"
+            />
           </div>
-          <p v-if="errors.type.state" class="panel-input-err ">
-            {{ $t("auth.errors.add_type") }}
+          <p v-if="errors.link.state" class="panel-input-err">
+            {{ $t(`auth.errors.${errors.link.message}`) }}
           </p>
         </div>
         <div
+          class="add-edit-holder"
+          v-if="imageDisplaying && state.type == 'pic'"
+        >
+          <div class="max-w-[200px] rounded-lg overflow-hidden">
+            <img :src="imageDisplaying" alt="personal image" />
+          </div>
+        </div>
+        <div
+          v-if="state.type == 'pic'"
           class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto"
-        ></div>
+        >
+          <div class="relative">
+            <label class="px-[30px] mb-1" for="">{{
+              $t("auth.blog_image")
+            }}</label>
+            <input
+              @change="onChangeImage"
+              class="py-[9px] text-[12px] outline-0 w-full bg-[#FFFFFF61] text-[#c1abab] flex items-center rounded-[46px] px-[30px] mb-[5px] border border-[#B5C4C9] dark:border-transparent placeholder:text-[#00000038] focus:border-[--main-color] focus:dark:border-[--main-color] placeholder:dark:text-[#ffffff82] dark:bg-[#011F37] dark:text-[#fff] h-[50px] xs:text-[14px] sm:text-[16px]"
+              type="file"
+            />
+          </div>
+          <p v-if="errors.image.state" class="panel-input-err">
+            {{ $t("auth.errors.add_an_image") }}
+          </p>
+          <p v-if="errors.realImage.state" class="panel-input-err">
+            {{ $t("auth.errors.add_real_image") }}
+          </p>
+        </div>
+        <div class="panel-input-holder">
+          <div class="relative">
+            <DropDownCompVue
+              :currentVal="state.type"
+              :placeholder="$t('auth.type')"
+              :options="typeOptions"
+              @changeVal="changeVal"
+              mode="single"
+              :locale="locale"
+              :close="true"
+            />
+          </div>
+          <p v-if="errors.type.state" class="panel-input-err">
+            {{ $t("auth.errors.add_type") }}
+          </p>
+        </div>
+        <!-- <div
+          class="mb-[10px] w-full flex flex-col justify-center max-w-[700px] m-auto"
+        ></div> -->
+
         <div class="panel-input-holder">
           <div class="relative">
             <input
@@ -98,27 +152,14 @@
             {{ $t(`auth.errors.${errors.contentEn.message}`) }}
           </p>
         </div>
-        <div class="panel-input-holder">
-          <div class="relative">
-            <input
-              v-model="state.link"
-              :placeholder="$t('auth.video_link')"
-              class="panel-input"
-              type="text"
-              autocomplete="off"
-            />
-          </div>
-          <p v-if="errors.link.state" class="panel-input-err">
-            {{ $t(`auth.errors.${errors.link.message}`) }}
-          </p>
-        </div>
       </div>
 
       <div v-else-if="type == 'delete'">
         <div class="text-center font-[900]">
           {{
             $t(`admin.actions.delete_blog_msg`, {
-              blog: locale == "ar" ? currentBlog?.titleAr : currentBlog?.titleEn,
+              blog:
+                locale == "ar" ? currentBlog?.titleAr : currentBlog?.titleEn,
             })
           }}
         </div>
@@ -141,7 +182,6 @@
       </div>
     </form>
   </div>
-  <!-- </div> -->
 </template>
 
 <script setup>
@@ -155,20 +195,30 @@ const isDark = useCookie("isDark");
 
 import DropDownCompVue from "~/components/generic/DropDownComp.vue";
 import useVuelidate from "@vuelidate/core";
-import { required, minLength, url, helpers } from "@vuelidate/validators";
+import {
+  required,
+  minLength,
+  url,
+  helpers,
+  requiredIf,
+} from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
 import showToast from "~/composables/useToast";
 
+const config = useRuntimeConfig();
+const BASE_URL = config.public.base_url;
 const { createBolg, editBolg, deleteBolg } = useRequest();
 const { locale, t } = useI18n();
 
+const imageDisplaying = ref("");
 const state = reactive({
-  type:"",
+  type: "",
   titleAr: "",
   titleEn: "",
   contentAr: "",
   contentEn: "",
   link: "",
+  image: "",
 });
 
 const errors = reactive({
@@ -196,17 +246,52 @@ const errors = reactive({
     state: false,
     message: "",
   },
+  image: {
+    state: false,
+    message: "",
+  },
+  realImage: {
+    state: false,
+    message: "",
+  },
+  required: requiredIf(function (nestedModel) {
+    const allowedMimeTypes = ["image/jpeg", "image/jpg", "image/png"]; // Add more MIME types as needed
+    if (!state.image && props.type == "edit") {
+      errors.image.state = false;
+      errors.realImage.state = false;
+      return false;
+    }
+    if (!state.image) {
+      errors.image.state = true;
+      errors.realImage.state = false;
+      return true;
+    } else if (allowedMimeTypes.includes(nestedModel.image.type)) {
+      errors.image.state = false;
+      errors.realImage.state = false;
+      // Accept the file
+      return false;
+    } else {
+      // Reject the file
+      errors.realImage.state = true;
+      errors.image.state = false;
+      return true;
+    }
+  }),
 });
 
 const typeOptions = reactive([
-  {name_ar:"مع اضافة رابط فيديو" , name_en:"with video link" , value:"video"},
-  {name_ar:"مع اضافة صورة" , name_en:"with image" , value:"pic"},
-  {name_ar:"مقال فقط" , name_en:"just text" , value:"text"},
-
-])
+  {
+    name_ar: "مع اضافة رابط فيديو",
+    name_en: "with video link",
+    value: "video",
+  },
+  { name_ar: "مع اضافة صورة", name_en: "with image", value: "pic" },
+  { name_ar: "مقال فقط", name_en: "just text", value: "text" },
+]);
 
 const rules = computed(() => {
   return {
+    type: { required },
     titleAr: {
       required: helpers.withMessage("add_title_ar", required),
       minLength: helpers.withMessage("at_least_three", minLength(3)),
@@ -226,8 +311,46 @@ const rules = computed(() => {
     },
 
     link: {
-      required: helpers.withMessage("add_blog_link", required),
+      required: helpers.withMessage(
+        "add_blog_link",
+        requiredIf(function () {
+          return state.type == "video" && !state.link;
+        })
+      ),
       url: helpers.withMessage("must_url", url),
+    },
+
+    image: {
+      required: requiredIf(function () {
+        const allowedMimeTypes = ["image/jpeg", "image/jpg", "image/png"]; // Add more MIME types as needed
+        if (props.type == "edit") return false;
+        if (!state.image && state.type != "pic") {
+          errors.image.state = false;
+          errors.realImage.state = false;
+          return false;
+        }
+        if (!state.image && state.type == "pic") {
+          errors.image.state = true;
+          errors.realImage.state = false;
+          return true;
+        } else if (
+          allowedMimeTypes.includes(state.image?.type) &&
+          state.type == "pic"
+        ) {
+          errors.image.state = false;
+          errors.realImage.state = false;
+          // Accept the file
+          return false;
+        } else if (
+          !allowedMimeTypes.includes(state.image?.type) &&
+          state.type == "pic"
+        ) {
+          // Reject the file
+          errors.realImage.state = true;
+          errors.image.state = false;
+          return true;
+        }
+      }),
     },
   };
 });
@@ -242,32 +365,52 @@ const getBolgsData = () => {
   emit("getBolgsData");
 };
 
+const onChangeImage = (e) => {
+  const file = e.target.files[0];
+  console.log("file", file);
+  state.image = file;
+  imageDisplaying.value = URL.createObjectURL(file);
+};
+
+const changeVal = (val) => {
+  state.type = val;
+};
+
 const manageBlogFun = async () => {
   if (props.type != "delete") {
+    state.type == 'video' ? state.image = '' : state.type == 'pic' ? (state.link = '') :   (state.image = '' , state.link = '')
+
     errors.titleAr.state = false;
     errors.titleEn.state = false;
     errors.contentAr.state = false;
     errors.contentEn.state = false;
     errors.link.state = false;
+    errors.type.state = false;
 
     const payload = new FormData();
 
     const result = await v$.value.$validate();
+    console.log("v$.value.", v$.value, result);
 
     if (result) {
       state.titleAr && payload.append("titleAr", state.titleAr);
       state.titleEn && payload.append("titleEn", state.titleEn);
       state.contentAr && payload.append("contentAr", state.contentAr);
       state.contentEn && payload.append("contentEn", state.contentEn);
+      state.type && payload.append("type", state.type);
       state.link && payload.append("link", state.link);
+      state.image && payload.append("image", state.image);
       try {
         let res;
         if (props.type == "add") res = await createBolg(payload);
-        if (props.type == "edit") res = await editBolg(props.currentBlog?.id, payload);
+        if (props.type == "edit")
+          res = await editBolg(props.currentBlog?.id, payload);
 
         if (res.data.success) {
-          props.type == "add" && showToast({ message: t("toast.success_add_blog") });
-          props.type == "edit" && showToast({ message: t("toast.success_edit_blog") });
+          props.type == "add" &&
+            showToast({ message: t("toast.success_add_blog") });
+          props.type == "edit" &&
+            showToast({ message: t("toast.success_edit_blog") });
           getBolgsData();
           closePopup();
         } else showToast({ type: "error", message: "err" });
@@ -305,6 +448,7 @@ onBeforeMount(() => {
     state.contentEn = props.currentBlog?.contentEn;
     state.link = props.currentBlog?.link;
     state.type = props.currentBlog?.type;
+    imageDisplaying.value = `${BASE_URL}${props.currentBlog?.image}`;
   }
 });
 </script>
