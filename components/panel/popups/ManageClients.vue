@@ -75,12 +75,75 @@
         <div class="panel-input-holder ">
           <div class="relative">
             <DropDownCompVue :currentVal="state.goal" :placeholder="$t('auth.goal')" :options="goalOptions"
-              @changeVal="changeVal" mode="single" :locale="locale" :close="true" />
+              @changeVal="changeGoalVal" mode="single" :locale="locale" :close="true" />
           </div>
           <p v-if="errors.goal.state" class="panel-input-err ">
             {{ $t("auth.errors.add_goal") }}
           </p>
         </div>
+
+        <div class="panel-input-holder ">
+          <div class="relative">
+            <DropDownCompVue :currentVal="state.country" :placeholder="$t('auth.country')" :options="allCountries"
+              @changeVal="changeCountryVal" mode="single" :locale="locale" :close="true" inputType="withPic" :isFlag="true" :isSearchable="true" />
+          </div>
+          <p v-if="errors.country.state" class="panel-input-err ">
+            {{ $t("auth.errors.choose_country") }}
+          </p>
+        </div>
+
+        <div class="panel-input-holder ">
+            <div class="relative">
+              <textarea v-model="state.favouriteMeals" :placeholder="$t('auth.fav_meal')"
+                class="panel-input h-[100px] px-6 py-2"
+                type="text" autocomplete="off" ></textarea>
+            </div>
+            <p v-if="errors.favouriteMeals.state"
+              class="panel-input-err ">
+              {{ $t(`auth.errors.${errors.favouriteMeals.message}`) }}
+            </p>
+          </div>
+
+          <div class="panel-input-holder ">
+            <div class="relative">
+              <textarea v-model="state.unFavouriteMeals" :placeholder="$t('auth.un_fav_meal')"
+                class="panel-input h-[100px] px-6 py-2"
+                type="text" autocomplete="off" ></textarea>
+            </div>
+            <p v-if="errors.unFavouriteMeals.state"
+              class="panel-input-err ">
+              {{ $t(`auth.errors.${errors.unFavouriteMeals.message}`) }}
+            </p>
+          </div>
+          <div :class="`panel-input-holder  `">
+          <div class=" flex justify-start gap-6 items-center">
+            <label class="switch">
+                  <input
+                    type="checkbox"
+                    @click="()=>state.hasDisease = ! state.hasDisease"
+                    :checked="state.hasDisease"
+                  />
+                  <span class="slider round"></span>
+                </label>
+ 
+                <span>{{ t('auth.client_has_disease') }}</span>
+          </div>
+        </div>
+
+          <div class="panel-input-holder " v-if="state.hasDisease">
+            <div class="relative">
+              <textarea v-model="state.diseaseType" :placeholder="$t('auth.disease_type')"
+                class="panel-input h-[100px] px-6 py-2"
+                type="text" autocomplete="off" ></textarea>
+            </div>
+            <p v-if="errors.diseaseType.state"
+              class="panel-input-err ">
+              {{ $t(`auth.errors.${errors.diseaseType.message}`) }}
+            </p>
+          </div>
+          
+
+          
         <div class="panel-input-holder ">
           <div class="relative">
             <div @click="() => changeInputType('password')" :class="` ${locale == 'ar' ? ' left-5' : ' right-5'
@@ -111,12 +174,8 @@
             {{ $t("auth.errors.add_password_confirmation") }}
           </p>
         </div>
-
-
-
-
       </div>
-
+      
       <div v-else-if="type == 'delete'">
         <div class="text-center font-[900]">
           {{ $t(`admin.actions.delete_msg`) }} {{ currentClient?.name }}
@@ -144,7 +203,7 @@ const props = defineProps({
   type: String,
   currentClient: Object,
 });
-
+import {getSpecificCountry , allCountries } from "@/utils/getCountry.js"
 import useVuelidate from "@vuelidate/core";
 import {
   required,
@@ -181,11 +240,13 @@ const state = reactive({
   phone: "",
   image: "",
   goal: "",
+  country: "",
   password: "",
   passwordConfirmation: "",
-  allowEdit: true,
-  allowDelete: true,
-  websiteManagement: true,
+  favouriteMeals:"",
+  unFavouriteMeals:"",
+  diseaseType:"",
+  hasDisease:false,
 });
 const errors = reactive({
   image: {
@@ -220,6 +281,22 @@ const errors = reactive({
     state: false,
     message: "",
   },
+  country: {
+    state: false,
+    message: "",
+  },
+  favouriteMeals: {
+    state: false,
+    message: "",
+  },
+  unFavouriteMeals:{
+    state: false,
+    message: "",
+  },
+  diseaseType:{
+    state: false,
+    message: "",
+  },
   password: {
     state: false,
     isVisible: false,
@@ -242,7 +319,15 @@ const rules = computed(() => {
     phone: { required: helpers.withMessage('add_phone', required), numeric: helpers.withMessage('must_be_number', numeric) ,  minLength: helpers.withMessage('at_least_seven_num', minLength(7)) },
     tall:{ required: helpers.withMessage('add_tall', required), numeric: helpers.withMessage('must_be_number', numeric) },
     weight:{ required: helpers.withMessage('add_weight', required), numeric: helpers.withMessage('must_be_number', numeric) },
+    favouriteMeals:{ minLength: helpers.withMessage('at_least_three', minLength(3)) },
+    unFavouriteMeals:{ minLength: helpers.withMessage('at_least_three', minLength(3)) },
+    diseaseType:{ 
+      required: helpers.withMessage('add_disease', requiredIf(function (nestedModel) {
+        return state.hasDisease
+    })) , 
+      minLength: helpers.withMessage('at_least_three', minLength(3)) },
     goal: { required },
+    country: { required },
     required: requiredIf(function (nestedModel) {
       const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Add more MIME types as needed
       if (!state.image && props.type == 'edit') {
@@ -303,8 +388,13 @@ const manageClientFun = async () => {
     errors.tall.state = false;
     errors.weight.state = false;
     errors.goal.state = false;
+    errors.country.state = false;
+    errors.favouriteMeals.state = false;
+    errors.unFavouriteMeals.state = false;
+    errors.diseaseType.state =false;
     errors.password.state = false;
     errors.passwordConfirmation.state = false;
+    
     const payload = new FormData();
     const result = await v$.value.$validate();
 
@@ -316,6 +406,13 @@ const manageClientFun = async () => {
       state.tall && (payload.append("tall", state.tall));
       state.weight && (payload.append("weight", state.weight));
       state.phone && (payload.append("phone", state.phone));
+
+      state.country && (payload.append("country", state.country));
+      state.favouriteMeals && (payload.append("favouriteMeals", state.favouriteMeals));
+      state.unFavouriteMeals && (payload.append("unFavouriteMeals", state.unFavouriteMeals));
+     payload.append("hasDisease", state.hasDisease);
+      state.diseaseType && (payload.append("diseaseType", state.diseaseType));
+
       state.password && (payload.append("password", state.password));
       state.passwordConfirmation && (payload.append("passwordConfirmation", state.passwordConfirmation));
 
@@ -364,8 +461,12 @@ const onChangeImage = (e) => {
   state.image = file
   imageDisplaying.value = URL.createObjectURL(file);
 }
-const changeVal = (val) => {
+const changeGoalVal = (val) => {
   state.goal = val;
+};
+
+const changeCountryVal = (val) => {
+  state.country = val;
 };
 // hooks
 onBeforeMount(() => {
@@ -378,6 +479,11 @@ onBeforeMount(() => {
     state.goal =props.currentClient.goal;
     state.tall = props.currentClient?.tall;
     state.weight = props.currentClient?.weight;
+    state.country = props.currentClient?.country;
+    state.favouriteMeals = props.currentClient?.favouriteMeals;
+    state.unFavouriteMeals = props.currentClient?.unFavouriteMeals;
+    state.hasDisease = props.currentClient.hasDisease
+    state.diseaseType = props.currentClient.diseaseType
     imageDisplaying.value = `${BASE_URL}${props.currentClient?.image}`;
   }
 });

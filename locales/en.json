@@ -164,7 +164,13 @@
     "question_en":"The question in English",
     "date":"Date",
     "type":"Type",
-
+    "fav_meal":"Favourite food",
+    "un_fav_meal":"Un favourite food",
+    "has_disease":"Do you have an illness?",
+    "client_has_disease":"Does (he / she) has an illness?",
+    "is_disease_type":"(If any) type of disease",
+    "disease_type":" Type of disease",
+    "country":"Country",
       "errors": {
       "add_name": "Please add your name",
       "add_email": "Please add your email",
@@ -182,8 +188,10 @@
 
       "add_tall":"Please add your tall",
       "add_weight":"Please add your weight",
-      "add_goal":"Please choose your goal",
+      "add_goal":"Please choose the goal",
       "add_phone":"Please add your phone",
+      "add_country":"Choose Country",
+      "add_disease":"Add health problems",
 
       "add_title_ar":"Add the title in Arabic",
       "add_title_en":"Add the title in English",
@@ -210,7 +218,9 @@
      "add_question_ar":"Add the question in Arabic",
      "add_question_en":"Add the question in English",
      "add_type":"add a type",
-     "add_blog_link":"add blog link"
+     "add_blog_link":"add blog link",
+    "choose_country":"Choose Country"
+
 
 
 
@@ -222,6 +232,7 @@
 
 
   "global": {
+    "not_found":"Not Found",
     "see_more":"See More ...",
     "see_less":"Less ...",
     "all":"All",

@@ -26,14 +26,22 @@
           <div
             class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-center"
           >
-            <!-- <span
-              class="font-bold text-[--main-color] dark:text-[--third-color]"
-            >
-              {{ $t("auth.name") }}
-            </span> -->
             <span class=" text-[20px] sm:text-[24px]">{{ currentClient.name }}</span>
           </div>
         </div>
+        <div
+            v-if="currentClient?.country"
+            class="flex flex-col items-center mb-2 "
+          >
+
+            <span class=" mb-1"> 
+
+{{ getSpecificCountry(currentClient?.country)?.[`name_${locale}`] }}
+
+            </span>
+
+            <country-flag :country="currentClient.country" size='big'/>
+          </div>
         <div class="add-edit-holder">
           <div class="max-w-[200px] rounded-lg overflow-hidden">
             <img
@@ -96,6 +104,52 @@
                 </span>
                 <span>{{ getGoal(currentClient.goal) }}</span>
               </div>
+              <div
+                class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-between"
+              >
+                <span
+                  class="font-bold text-[--main-color] dark:text-[--third-color]"
+                >
+                  {{ $t("auth.client_has_disease") }}
+                </span>
+                <span>{{ getAnswer(currentClient.hasDisease)  }}</span>
+              </div>
+              <div
+              v-if="currentClient.diseaseType && currentClient.hasDisease  "
+                class="flex flex-col items-center mb-2 mt-4 "
+              >
+                <span
+                  class="font-bold text-[--main-color] dark:text-[--third-color]"
+                >
+                  {{ $t("auth.disease_type") }}
+                </span>
+                <span>{{ currentClient.diseaseType  }}</span>
+              </div>
+              <div
+             
+                class="flex flex-col items-center mb-2 mt-4 "
+              >
+                <span
+                  class="font-bold text-[--main-color] dark:text-[--third-color]"
+                >
+                  {{ $t("auth.fav_meal") }}
+                </span>
+                <span>{{ currentClient.favouriteMeals || t('global.not_found')  }}</span>
+              </div>
+              <div
+            
+                class="flex flex-col items-center mb-2 mt-4 "
+              >
+                <span
+                  class="font-bold text-[--main-color] dark:text-[--third-color]"
+                >
+                  {{ $t("auth.un_fav_meal") }}
+                </span>
+                <span>{{ currentClient.unFavouriteMeals || t('global.not_found') }}</span>
+              </div>
+
+              
+              
             </div>
           </div>
         </div>
@@ -105,6 +159,10 @@
 </template>
   
   <script setup>
+  import CountryFlag from 'vue-country-flag-next';
+  import {getSpecificCountry } from "@/utils/getCountry.js";
+  // import {getSpecificCountry} from "../../../utils/getCountry"
+
 const emit = defineEmits(["closePopup"]);
 const props = defineProps({
   currentClient: Object,
@@ -119,7 +177,16 @@ const closePopup = () => {
 };
 const { locale, locales, setLocale, t } = useI18n();
 
+const getAnswer = ( bool ) => {
+  if(bool && locale.value == 'ar') return "نعم";
+  if(bool && locale.value == 'en') return "Yes";
+  if(!bool && locale.value == 'ar') return "لا";
+  if(!bool && locale.value == 'en') return "No";
+}
 
+
+// console.log(" getSpecificCountry('eg')" ,  getSpecificCountry('eg'))
+console.log("getCountry" , getSpecificCountry('eg'))
 const getGoal = ( goal ) => {
     
     switch (goal) {

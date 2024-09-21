@@ -5,16 +5,22 @@
       :options="props.options"
       :label="props.locale == 'ar' ? 'name_ar' : 'name_en'"
       :placeholder="props.placeholder"
-      :mode="props.mode"
+      :mode="props.mode || 'single'"
       :close-on-select="props.close"
       :clear-on-select="false"
       @change="changeVal"
       :show-labels="true"
       :multiple="true"
       :hide-selected="false"
+      :searchable="props.isSearchable"
+
+      
     >
       <template v-if="props.inputType == 'withPic'" v-slot:option="{ option }">
-        <img class="character-option-icon w-12 p-2" :src="option?.images[0]" />
+        <div class="mx-2" v-if="isFlag">
+        <country-flag :country="option?.value"  size='small' />
+      </div>
+        <img v-else class="character-option-icon w-12 p-2" :src="option?.value" />
         {{ props.locale == "ar" ? option.name_ar : option.name_en }}
       </template>
     </Multiselect>
@@ -24,6 +30,7 @@
 <script setup>
 // import { ref, onBeforeMount } from 'vue';
 import Multiselect from "@vueform/multiselect";
+import CountryFlag from 'vue-country-flag-next';
 
 const props = defineProps([
   "options",
@@ -34,6 +41,8 @@ const props = defineProps([
   "currentCity",
   "close",
   "currentVal",
+  "isFlag",
+  "isSearchable"
 ]);
 const emit = defineEmits(["changeVal"]);
 
