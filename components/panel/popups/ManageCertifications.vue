@@ -261,7 +261,7 @@ const manageCertificationFun = async () => {
     const result = await v$.value.$validate();
 
     if (result ) {
-      if(props.type == "add" && state.image) return
+      // if(props.type == "add" && state.image) return
 
       state.titleAr && payload.append("titleAr", state.titleAr);
       state.titleEn && payload.append("titleEn", state.titleEn);

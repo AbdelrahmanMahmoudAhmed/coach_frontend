@@ -151,6 +151,8 @@ const getSectionsData = async () => {
             titleEn: item?.titleEn,
             contentAr: item?.contentAr,
             contentEn: item?.contentEn,
+            callToAction: item?.callToAction,
+            callToActionLink: item?.callToActionLink,
             image: item?.image,
           }
         },
@@ -161,10 +163,14 @@ const getSectionsData = async () => {
           hideTd:global.user?.role == 'admin',
           currentItem: {
             id: item?.id,
+            nameAr: item?.nameAr,
+            nameEn: item?.nameEn,
             titleAr: item?.titleAr,
             titleEn: item?.titleEn,
             contentAr: item?.contentAr,
             contentEn: item?.contentEn,
+            callToAction: item?.callToAction,
+            callToActionLink: item?.callToActionLink,
             image: item?.image,
           }
         },
