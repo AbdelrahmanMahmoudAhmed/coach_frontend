@@ -171,6 +171,19 @@ const deleteVideo = async (id) => {
   return await REQUEST.delete(`/admin/website-management/videos/${id}`, { headers });
 };
 // certifications
+const getAllSections  = async () => {
+  return await REQUEST.get(`/admin/website-management/sections`, { headers });
+};
+const createSection = async (data) => {
+  return await REQUEST.post(`/admin/website-management/sections`, data, { headers });
+};
+const editSection = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/sections/${id}`, data, { headers });
+};
+const deleteSection = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/sections/${id}`, { headers });
+};
+// certifications
 const getAllCertifications  = async () => {
   return await REQUEST.get(`/admin/website-management/certifications`, { headers });
 };
@@ -256,6 +269,7 @@ deleteClient,
 
 getAllVideos,createVideo,editVideo,deleteVideo,
 getAllCertifications,createCertification,editCertification,deleteCertification,
+getAllSections, createSection, editSection, deleteSection,
 getAllTransformations,createTransformation,editTransformation,deleteTransformation,
 getAllSettings,setAllSettings,
 getAllQuickAnswers,createQuickAnswer,editQuickAnswer,deleteQuickAnswer,

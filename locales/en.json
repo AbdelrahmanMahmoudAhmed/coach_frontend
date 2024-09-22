@@ -46,6 +46,10 @@
     "success_add_certification": "the certification has been added successfully",
     "success_edit_certification": "the certification's data has been edited successfully",
 
+    "success_delete_section": "the section has been deleted successfully",
+    "success_add_section": "the section has been added successfully",
+    "success_edit_section": "the section's data has been edited successfully",
+
     "success_delete_transformation": "the transformation has been deleted successfully",
     "success_add_transformation": "the transformation has been added successfully",
     "success_edit_transformation": "the transformation's data has been edited successfully",
@@ -137,6 +141,7 @@
     "product_image":"Product Icon",
     "video_link":"Video link",
     "certification_img":"Certification Image",
+    "section_img":"Section Image",
     "transformation_img":"Transformation Image",
     "role":"Role",
 
@@ -144,9 +149,13 @@
     "allow_edit":"Allow editing",
     "manage_website":"Manage website",
 
-
+    "name_ar":"Name in Arabic",
+    "name_en":"Name in English",
     "title_ar":"Title in Arabic",
     "title_en":"Title in English",
+    "call_to_action_link":"Add the call to action link",
+    "has_call_to_action":"Add button to the section",
+    "link_call_to_action":"Add a link to section's button",
     "description_ar":"Description in Arabic",
     "description_en":"Description in English",
     "content_ar":"Content in Arabic",
@@ -195,10 +204,13 @@
 
       "add_title_ar":"Add the title in Arabic",
       "add_title_en":"Add the title in English",
+      "add_name_ar":"Add the name in Arabic",
+      "add_name_en":"Add the name in English",
       "add_description_ar":"Add the description in Arabic",
       "add_description_en":"Add the description in English",
       "add_content_ar":"Add the content in Arabic",
       "add_content_en":"Add the content in English",
+      "add_link":"Add the call to actoin link",
       "add_price":"Add the price",
       "add_video_link":"Add video link",
       "add_period":"Add the package duration ( in weeks )",
@@ -206,6 +218,7 @@
       "add_discount_percentage":"Add the discount percentage",
       "at_least_three":"At least three characters",
       "at_least_seven":"At least seven characters",
+      "max_length":"You may not add more than 255 characters",
       "at_least_seven_num":"At least seven Numbers",
       "at_least_eight":"At least eight characters",
       "must_be_number":"The field must contain numbers only.",
@@ -219,7 +232,8 @@
      "add_question_en":"Add the question in English",
      "add_type":"add a type",
      "add_blog_link":"add blog link",
-    "choose_country":"Choose Country"
+    "choose_country":"Choose Country",
+    "required":"this field is required"
 
 
 
@@ -391,6 +405,11 @@
       "edit_certification": "Edit certification",
       "delete_certification": "Delete certification",
 
+
+      "add_section":"Add section",
+      "edit_section": "Edit section",
+      "delete_section": "Delete section",
+
       "add_transformation":"Add a transformation",
       "edit_transformation": "Edit the transformation",
       "delete_transformation": "Delete the transformation",
@@ -429,6 +448,7 @@
       "delete_video_msg": "Are you sure to delete {video} ?  ",
       "delete_blog_msg": "Are you sure you want to delete the blog with the title {blog} ?  ",
       "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
+      "delete_section_msg": "Are you sure to delete {section} section ?  ",
       "delete_transformation_msg": "Are you sure to delete the transformation number {transformation}  ?  ",
       "delete_answer_msg": "Are you sure to delete the question {answer} ?  ",
 
@@ -476,9 +496,11 @@
       "delete": "Delete",
       "title_en": "Title in English",
       "title_ar": "Title in Arabic",
+      "name_ar":"Name in Arabic",
+      "name_en":"Name in English",
       "content_en": "Content in English",
       "content_ar": "Content in Arabic",
-      "img": " Image",
+      "img": "Image",
       "allow_delete":"Allow deletion",
       "allow_edit":"Allow editing",
       "client_product":"Products",

@@ -46,6 +46,10 @@
     "success_add_certification": "تمت إضافة الشهادة بنجاح",
     "success_edit_certification": "تم تعديل بيانات الشهادة بنجاح",
 
+    "success_delete_section": "تم حذف القسم بنجاح",
+    "success_add_section": "تمت إضافة القسم بنجاح",
+    "success_edit_section": "تم تعديل بيانات القسم بنجاح",
+
 
     "success_delete_transformation": "تم حذف بيانات التحول بنجاح",
     "success_add_transformation": "تمت إضافة بيانات التحول بنجاح",
@@ -136,14 +140,19 @@
     "product_image":"ايقونة المنتج",
     "video_link":"رابط الفيديو",
     "certification_img":"صورة الشهادة",
+    "section_img":"صورة القسم",
     "transformation_img":"صورة التحول",
     "role":"الدور",
     "allow_delete":"السماح بالحذف",
     "allow_edit":"السماح بالتعديل",
     "manage_website":"السماح بادارة الموقع",
-
+"call_to_action_link":"اضف الرابط الخاص بالزر",
     "title_ar":" العنوان بالعربية",
     "title_en":"العنوان بالانجليزية",
+    "name_ar":"الاسم بالعربية",
+    "name_en":"الاسم بالانجليزية",
+    "has_call_to_action":"اضافة زر للقسم",
+    "link_call_to_action":"اضافة رابط لقسم لزر القسم",
     "description_ar":"الوصف بالعربية",
     "description_en":"الوصف بالانجليزية",
     "content_ar":"المحتوى بالعربية",
@@ -191,10 +200,13 @@
 
     "add_title_ar":"اضف العنوان بالعربية",
     "add_title_en":"اضف العنوان بالانجليزية",
+    "add_name_ar":"اضف الاسم بالعربية",
+    "add_name_en":"اضف الاسم بالانجليزية",
     "add_description_ar":"اضف الوصف بالعربية",
     "add_description_en":"اضف الوصف بالانجليزية",
     "add_content_ar":"اضف المحتوى بالعربية",
     "add_content_en":"اضف المحتوى بالانجليزية",
+    "add_link":"اضف رابط المضاف الى الزر",
     "add_price":"اضف السعر",
     "add_video_link":"أضف رابط الفيديو ",
     "add_period":"اضف مدة الباقة (بالاسبوع)",
@@ -202,6 +214,7 @@
     "add_discount_percentage":"اضف نسبة الخصم",
     "at_least_three":"على الاقل ثلاثة أحرف",
     "at_least_seven":"على الاقل سبعة أحرف",
+    "max_length":"لا يجوز اضافة أكثر من 255 حرف",
     "at_least_seven_num":"على الاقل سبعة أرقام",
     "at_least_eight":"على الاقل ثمانية أحرف",
     "must_be_number":"لابد و أن يحتوى الحقل على ارقام فقط",
@@ -215,7 +228,8 @@
     "add_question_en":"اضف السؤال بالانجليزية",
     "add_type":"اضف نوع",
     "add_blog_link":"اضف رابط المقال",
-    "choose_country":"أختر بلد"
+    "choose_country":"أختر بلد",
+    "required":"هذا الحقل مطلوب"
     }
   },
 
@@ -377,6 +391,10 @@
       "edit_certification": "تعديل الشهادة",
       "delete_certification": "حذف الشهادة", 
 
+      "add_section": "إضافة قسم",
+      "edit_section": "تعديل القسم",
+      "delete_section": "حذف القسم", 
+
 
       "add_transformation": "إضافة تحول جديد",
       "edit_transformation": "تعديل بيانات التحول",
@@ -413,6 +431,7 @@
       "delete_video_msg": "هل أنت متأكد من حذف الفيديو {video} ؟  ",
       "delete_blog_msg": "هل أنت متأكد من حذف المدونه {blog} ؟  ",
       "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
+      "delete_section_msg": "هل أنت متأكد من حذف القسم {section} ؟  ",
       "delete_transformation_msg": "هل أنت متأكد من حذف التحول رقم {transformation} ؟  ",
       "delete_answer_msg": "هل أنت متأكد من حذف السؤال {answer} ؟  ",
       "delete_message_msg": "هل أنت متأكد من حذف رسالة {name} ؟  ",
@@ -453,6 +472,8 @@
       "delete": "مسح",
       "title_en": "العنوان بالانجليزية",
       "title_ar": " العنوان بالعربية",
+      "name_ar":"الاسم بالعربية",
+      "name_en":"الاسم بالانجليزية",
       "content_en": "المحتوى بالانجليزية",
       "content_ar": "المحتوى بالعربية",
       "img": " الصورة",

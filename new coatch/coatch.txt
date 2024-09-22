@@ -1,0 +1,250 @@
+the user story of the project 
+
+ _________ OWNER ____________
+ 
+ 1- title ( creating a new GYM  )
+ 
+As an owner, I need to create a new gym so that I can use all the features of the gym-manager-app.
+
+ * conditions of satisfaction:_
+ 
+ 
+ ++++ create a new account on the gym-manager-app:_ ++++
+ 
+- The user should have the ability to fill out a form on the gym-manager-app to make a subscription to the app, that subscription allows the user to get the benefit of the app's features.
+- That form contains ( name - email - phone - password - birth date - gender - upload personal image - address - ID number ).
+- All inputs are required and the ID number , phone number  and email must be unique.
+- A permission request will be sent to the app administrator after the validation is done. 
+- The admin administrator can accept or refuse the request, If the administrator accepts the request, the user will have an account on the app website which can manage the configuration of his gym app. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  2- title ( login and control of the user system config )
+  
+  As an owner, I need to login to my account on the gym manager website, so that I can manage my subscription, and manage my system's configurations and permissions.
+  
+   * conditions of satisfaction:_
+
+  ++ login and Manage the gym configration. ++ 
+  
+ -The subscription allows the user to log in to his account on the gym-manager-website to add and edit the configuration of his app
+-The user account contains one page witch divided into three sections 
+* section number one about gym information: 
+=>The user can add and update ( gym name - must be unique -,  gym logo )
+=> button to download the app on more than one device
+=> about specific permissions for his app and these permissions are:_
+1-Allow to divide the subscription price into installments ( true & false );
+ 2-Determine a general percentage as a commission for service providers (nutritionist and personal trainer) (true & false) if it true display an input to add a percentage number.
+3-Allow to repeat invitations for the same person ( Boolean ).
+4-Allow clients to use any branch ( Boolean ).
+5-Allow to employees to sign in any branch ( Boolean ).
+*section number two about user subscription state on the app:_ 
+=>in this section will display:_ 
+1- the start day of the subscription. 2- the start day of the last subscription, 3- the duration of the user subscription, 4- the date of the end of the subscription.
+=>and in this section will display a form to renew the user subscription on the app, this form contains of dropdown list about the app duration with price, and a button to send the request to the admin of the gym manager app.
+*section number three is about pre-prepared features:_ In this section the user can add pre-prepared services 
+
+
+  3- title ( login on the app )
+  
+  As an owner, I need to login to my account on the system, so that I can manage the gym on the app.
+  
+   * conditions of satisfaction:_
+
+  ++ Login on the app. ++ 
+  
+ - After downloading the app on the device or getting the link of the panel from the user ( owner ) account from the GYM manager website, and the user does not authenticate, the app will navigate to the choosing gym page, it contains of input type text and submit button, this input is accepting a unique gym name to navigate to the login page.
+
+- After this step, the app will navigate to the login page with a form containing:_
+1- input for an email
+2- drop-down list of roles
+3-input for password
+- After the validation and request success, the app will navigate to the dedicated dashboard.
+
+
+  4- title ( services );
+
+  As an owner, I need to add, edit, and delete services, so that I can control the services in my system.
+
+ * conditions of satisfaction:_
+  ++  Service table.  ++ 
+=> On the services section on the owner panel display a table containing three columns ( name, price of session, and actions)  
+=> On the action column display two buttons, one for delete and the other for update.
+=> On the top of the table display an add service button.
+=> Each button to click on it displays a popup that has a form containing two inputs one for the title and the other for the price of the session.
+=> NOTE THAT:_ The service is not allowed to be deleted if it is used on any gym package or service package.
+
+  5- title (gym  packages );
+
+  As an owner, I need to add, edit, and delete gym packages, so that I can control and update the packages in my system.
+
+ * conditions of satisfaction:_
+  ++  gym packages.  ++ 
+=> On the "gym packages" section on the owner panel display a table containing eleven columns ( name, basic price, discount percentage, current price, duration in days, duration in months, max freeze days, max freeze times, services, invitations, and actions)  
+=> On the column of services display a button, on clicking on it, display a popup describing the services added to this package. display for each service the name of this service and the for free times allowed to use.
+Too, add a quick edit for the gym package services to this popup.
+=> On the column of invitations display a button, on clicking on it, display a popup describing the invitations added to this package, 1- number of the invitations on this package, 2- if it has authority to use services or not
+Too, add a quick edit to this popup.
+=>On the action column display two buttons, one for edit and the other one for delete, and the last one for stop using it in the active gym packages.
+=> Add on the top of the table a button to add a new gym package.
+=> NOTE THAT:_ The gym package is not allowed to be deleted if it is used by any client.
+
+ 
+
+   6- title (service  packages );
+
+  As an owner, I need to add, edit, and delete service packages, so that I can control and update the packages in my system.
+
+ * conditions of satisfaction:_
+  ++  service packages.  ++ 
+=> On the "service  packages" section on the owner panel display a table containing three columns ( name,  price, service_name, duration_by_days, and actions)  
+
+=> The duration_by_days column has the duration in days and the user can make it unlimited.
+
+=>On the action column display three buttons, one for edit, the other one for delete, and the last one for stop using it in the active service packages.
+=> Add on the top of the table a button to add a new service package.
+=> NOTE THAT:_ The gym package is not allowed to be deleted if it is used by any client.
+ 
+ 
+  7- title (manage client );
+
+  As an owner, I need to add, edit, and block clients, so that I can control and update my customers in my system.
+
+ * conditions of satisfaction:_
+  ++  Manage clients.  ++ 
+=> On the "my clients" section on the owner panel display a table containing six columns ( name,  pic, phone, subscription expiry date, details, and actions) 
+
+=> Make sure the table is paginated, searchable with name, email, national ID, and phone number, and filtered by current clients, blocked clients, frozen clients,  and all clients who have paid services.
+=> Add a new client button on the top of the table, on clicking on it displays a popup with a form has:_
+1- name 
+2-email
+3-phone
+4- national ID
+5-image,
+6-birth date,
+7-gender
+8-drop-down list for gym packages
+9-input for the paid amount
+10-button for adding a barcode number
+11-start date of the gym package,
+12- payment method was used
+NOTICE:_ all inputs are required but the image field.
+
+=>On the action column each cell has a drop-down list of buttons ( edit, refund, and block or unblock )
+A- the edit button:-
+   ___  on clicking on it displays a popup has a form with filled inputs by the client data the inputs are:_
+ 1- name 
+2-email
+3-phone
+4- national ID
+5-image,
+6-birth date,
+7-gender
+
+B_ The block or unblock button:_ 
+  ___ This button is toggling the state of the client with a confirmation popup.
+
+C_ Refund button:_
+   ___ The refund action is for stopping the client's subscription and refunding the remaining amount, This action is allowed just to ( the owners and moderators )
+ When the user clicks on this button, a new popup will displayed with a form to confirm the suggested remaining amount to refund and the user can edit it as he wishes. and a radio button to choose if the refund is related to the gym package or the service package, if it is about the service package display a drop-down list of the current services the client has, to choose from. 
+_The suggested remaining amount is calculated from the backend.  
+
+
+=> The details column contains a button, on clicking on it will navigate the user to the single client page.
+=> The single client page has all of the client info ( 
+1-image, 
+2-name, 
+3-birth date, 
+4-gender, 
+5-national ID, 
+6-the number of the subscription and change the barcode of the client button. 
+7-the last subscription start day, 
+8-subscription expiry date, 
+9-the last gym package name, 
+10-the last subscription of each service package name with the number of used sessions and the name of the service provider,
+11-Freezed days of the last subscription with date, and the number of using the freeze feature times.
+12-the number of using the invitation feature with a button displays a popup with the name of the invitee, and if the invitation is with a service or not, and the name of the service.
+13- A button displays a popup for all packages the client subscribed to with details (name of the gym package, start date, end date, number of invitations with invitees, start and end date of the freeze feature, and times of using it, amount was paid) 
+14- A button displays a popup with all of the service packages used ( package name, the amount paid, start date, the number of used sessions with the date of each one, and the service provider of each session),
+15- A button for adding a new gym package, on clicking on it displays a popup containing a form with a drop-down list of all gym packages with a price and an input for the paid amount,
+16- A button for adding a new service package, on clicking on it displays a popup containing a form with a drop-down list of all services  on the gym, a drop-down list of the services packages with a price according to the service type, a drop-down list of the service providers and an input for the paid amount,
+17- A button to stop the last service with a refund, and another one for the gym package
+   ) 
+18- A paginated table displays the attendance days for the client with the date and the time 
+19- A block or an unblock button to change the client status.
+20-Refund button:_
+   ___ The refund action is for stopping the client's subscription and refunding the remaining amount, This action is allowed just to ( the owners and moderators )
+ When the user clicks on this button, a new popup will displayed with a form to confirm the suggested remaining amount to refund and the user can edit it as he wishes. and a radio button to choose if the refund is related to the gym package or the service package, if it is about the service package display a drop-down list of the current services the client has, to choose from. 
+_The suggested remaining amount is calculated from the backend.  
+
+***the client can be a potential client or a client in several GYMs
+
+
+
+
+   8- title (manage potential clients );
+
+  As an owner, I need to add, edit, and remove potential clients, so that I can control and update the potential clients in my system.
+
+ * conditions of satisfaction:_
+  ++  Manage potential clients.  ++ 
+=> On the "potential clients" section on the owner panel display a table containing five columns ( name, pic, phone,  details, and actions) 
+
+=> Make sure the table is paginated, searchable with name, email, national ID, and phone number.
+=> Add a new potential clients button on the top of the table, on clicking on it displays a popup with a form has:_
+1- name 
+2-email
+3-phone
+4- national ID
+5-image,
+6-birth date,
+7-gender
+NOTICE:_ all inputs are required but the image field.
+
+
+
+=> On the details column displays a button when clicking on it displays a popup has information about the potential client, this information about:_
+1- potential client visit date. 
+2- the inviter who makes the invitations.
+3-is the invitation is a gym invitation, or service invitation, or both
+
+
+=>On the action column each cell has a drop-down list of buttons ( edit, subscribe, and delete)
+
+
+A- the edit button:-
+   ___  on clicking on it displays a popup has a form with filled inputs by the client data the inputs are:_
+ 1- name 
+2-email
+3-phone
+4- national ID
+5-image,
+6-birth date,
+7-gender
+
+B- The subscribe button:_
+   ___  on clicking on it displays a popup has a form with inputs:_
+ 
+1-drop-down list for gym packages
+2-input for the paid amount
+3-button for adding a barcode number
+4-start date of the gym package,
+5- payment method was used
+
+
+=> The details column contains a button, on clicking on it will navigate the user to the single potential clients page.
+=> The single client page has all of the client info ( 
+1-image, 
+2-name, 
+3-birth date, 
+4-gender, 
+5-national ID, 
+
+C- Delete button:_
+on clicking on it displays a popup that has a confirmation message to delete the potential client.
+
+*** the potential client can be a potential client or a client in several GYMs

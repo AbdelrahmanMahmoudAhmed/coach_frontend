@@ -155,6 +155,7 @@
     required,
     maxValue,
     minLength,
+    maxLength,
     numeric,
     requiredIf,
     helpers
@@ -226,8 +227,8 @@
       titleAr: { required: helpers.withMessage('add_title_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(3))  },
       titleEn: { required: helpers.withMessage('add_title_en', required), minLength:  helpers.withMessage('at_least_three', minLength(3))  },
      
-      descriptionAr: { required: helpers.withMessage('add_description_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(7))  },
-      descriptionEn: { required: helpers.withMessage('add_description_en', required), minLength:  helpers.withMessage('at_least_seven', minLength(7))  },
+      descriptionAr: { required: helpers.withMessage('add_description_ar', required), minLength:  helpers.withMessage('at_least_three', minLength(7)) ,maxLength: helpers.withMessage("max_length", maxLength(255)),  },
+      descriptionEn: { required: helpers.withMessage('add_description_en', required), minLength:  helpers.withMessage('at_least_seven', minLength(7)) ,maxLength: helpers.withMessage("max_length", maxLength(255)), },
   
       price: { required: helpers.withMessage('add_price', required), numeric: helpers.withMessage('must_be_number', numeric) },
       discountPercentage: { required: helpers.withMessage('add_discount_percentage', required), numeric: helpers.withMessage('must_be_number', numeric) , maxValue: helpers.withMessage('max_hundred', maxValue(100)) },

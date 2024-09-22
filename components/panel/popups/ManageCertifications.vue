@@ -143,7 +143,7 @@ const props = defineProps({
 const isDark = useCookie("isDark");
 
 import useVuelidate from "@vuelidate/core";
-import { required, minLength, requiredIf, helpers } from "@vuelidate/validators";
+import { required, minLength, maxLength, requiredIf, helpers } from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
 import showToast from "~/composables/useToast";
 
@@ -199,14 +199,15 @@ const rules = computed(() => {
       required: helpers.withMessage("add_title_en", required),
       minLength: helpers.withMessage("at_least_three", minLength(3)),
     },
-
     contentAr: {
       required: helpers.withMessage("add_content_ar", required),
       minLength: helpers.withMessage("at_least_seven", minLength(7)),
+      maxLength: helpers.withMessage("max_length", maxLength(255)), 
     },
     contentEn: {
       required: helpers.withMessage("add_content_en", required),
       minLength: helpers.withMessage("at_least_seven", minLength(7)),
+      maxLength: helpers.withMessage("max_length", maxLength(255)), 
     },
 
     required: requiredIf(function (nestedModel) {

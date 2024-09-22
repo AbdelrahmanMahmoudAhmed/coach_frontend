@@ -114,7 +114,7 @@
   const isDark = useCookie("isDark");
   
   import useVuelidate from "@vuelidate/core";
-  import { required, minLength, requiredIf, helpers } from "@vuelidate/validators";
+  import { required, maxLength, minLength, requiredIf, helpers } from "@vuelidate/validators";
   import useRequest from "~/composables/useRequest";
   import showToast from "~/composables/useToast";
   
@@ -155,11 +155,15 @@
   const rules = computed(() => {
     return {
       descriptionAr: {
+        required:helpers.withMessage("required",required),
         minLength: helpers.withMessage("at_least_seven", minLength(7)),
+        maxLength: helpers.withMessage("max_length", maxLength(255)),
       },
       descriptionEn: {
+        required:helpers.withMessage("required",required),
         minLength: helpers.withMessage("at_least_seven", minLength(7)),
-      },
+        maxLength: helpers.withMessage("max_length", maxLength(255)),     
+       },
   
       required: requiredIf(function (nestedModel) {
         const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Add more MIME types as needed

@@ -1,0 +1,71 @@
+the user story of the project 
+
+ _________ OWNER ____________
+ 
+ 1- title ( creating a new GYM  )
+ 
+As an owner, I need to create a new gym system so that I can use all the features of the gym-manager-app.
+
+ * conditions of satisfaction:_
+ 
+ 
+ ++++ Create a new account on the gym-manager-app:_ ++++
+ 
+- The user should have the ability to fill out a form on the gym-manager-app to make a subscription to the app, that subscription allows the user to get the benefit of the app's features.
+- That form contains ( name - email - phone - password - birth date - gender - upload personal image - address - ID number ).
+- All inputs are required and the ID number , phone number  and email must be unique.
+- A permission request will be sent to the app administrator after the validation is done. 
+- The admin administrator can accept or refuse the request, If the administrator accepts the request, the user will have an account on the app website which can manage the configuration of his gym app. 
+
+
+
+///////////////////////////////////////////////////////
+
+
+
+  2- title ( login and control of the user system config )
+  
+  As an owner, I need to log in to my account on the gym manager website, so that I can manage my subscription, and manage my system's configurations, create new branches, and permissions.
+  
+   * conditions of satisfaction:_
+
+  ++ login and Manage the gym configration. ++ 
+  
+ -The subscription allows the user to log in to his account on the gym-manager-website to add and edit the configuration of his app
+-The user account contains one page witch divided into three sections 
+* section number one about gym information: 
+=>The user can add and update ( gym name - must be unique -,  gym logo )
+=> button to download the app on more than one device
+=> about specific permissions for his app and these permissions are:_
+1-Allow to divide the subscription price into installments ( true & false );
+ 2-Determine a general percentage as a commission for service providers (nutritionist and personal trainer) (true & false) if it is true display an input to add a percentage number.
+3-Allow to repeat invitations for the same person ( Boolean ).
+4-Allow clients to use any branch ( Boolean ).
+5-Allow to employees to sign in any branch ( Boolean ).
+*section number two about user subscription state on the app:_ 
+=>in this section will display:_ 
+1- the start day of the subscription. 2- the start day of the last subscription, 3- the duration of the user subscription, 4- the date of the end of the subscription.
+=>and in this section will display a form to renew the user subscription on the app, this form contains of dropdown list about the app duration with price, and a button to send the request to the admin of the gym manager app.
+*section number three is about pre-prepared features:_ In this section the user can add, edit, and remove the gym branch.
+The owner must add at least one branch to use the app.
+
+
+
+////////////////////////////////////////////////////////////////////
+
+
+3- title ( login on the app )
+  
+  As an owner, I need to login to my account on the system, and determine the branch that I will use, so that I can manage the gym on the app.
+  
+   * conditions of satisfaction:_
+
+  ++ Login on the app. ++ 
+  
+ - After downloading the app on the device or getting the link of the panel from the user ( owner ) account from the GYM manager website, and the user does not authenticate, the app will navigate to the choosing gym page, it contains of input type text and submit button, this input is accepting a unique gym name then choosing the branch, to navigate to the login page.
+
+- After this step, the app will navigate to the login page with a form containing:_
+1- input for an email
+2- drop-down list of roles
+3-input for password
+- After the validation and request success, the app will navigate to the dedicated dashboard.

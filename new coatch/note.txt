@@ -1,0 +1,161 @@
+users
+    id
+    card_id
+    name
+    email
+    phone
+    type --> customer employee owner
+    password_hash
+    birth_date 
+    gender male female 
+    pic
+    created_at
+
+employees  
+    id
+    userId
+    role --> trainer reception moderator
+    salary
+    is_approved
+    approved_by
+    leaves
+    permissions
+    permission_hour
+    work_start_at
+    work_end_at
+
+attendance
+    id
+    employee_id
+    check_in_time
+    check_out_time
+    has_permission
+    date
+    status --> present absent late leave
+    created_at
+
+leave
+    id
+    employee_id
+    from_date
+    to_date
+    status --> pending accepted rejected
+    leave_type --> sick paid not_paid gift 
+    created_at
+
+permissions
+    id
+    employee_id
+    from_time
+    to_time
+    permission_date
+    status --> pending accepted rejected
+    created_at
+    updated_at
+
+    
+penality
+    id
+    user_id
+    reason
+    created_by
+    created_at
+
+
+salaries
+    id
+    employee_id
+    unpaid_leave
+    penality
+    status done pending
+    created_at
+
+customer
+    id
+    userId
+    is_active
+    created_at
+    
+package
+    id
+    title
+    price
+    services = array of object has servies_id with repeatation
+    max_freeze_times
+    max_freeze_days
+    duration
+    invitations_services = array of object has servies_id with repeatation
+    created_at
+
+
+services  
+    id
+    title
+    price
+    created_at
+
+
+subscriber_packages 
+    id
+    customer_id
+    start_date
+    end_date
+    freeze_times_used
+    is_frozen
+    freeze_days_used
+    freaze_id
+    special_offer
+    created_at
+
+freazing
+    id
+    customer_id
+    package_id
+    action_type --> freaze unfreaze
+
+
+customer_visits
+    id
+    customer_id
+    visit_date -- single package invitation
+    service_type[]
+    service_id
+
+
+
+invitations
+    id
+    invitation_owner
+    invited
+    package_id
+    service_id[]
+    status removed ready done
+
+
+cost 
+    title
+    discription
+    amount
+    created_at
+    created_by
+
+    
+payment 
+    id
+    customer_id
+    amount
+    payment_for_type = session , membership
+    payment_for_id
+    payment_method = card , cash
+    payment_Date
+    status = full part
+
+
+notifications
+    id
+    user_id
+    message
+    read
+    created_at
+
+
