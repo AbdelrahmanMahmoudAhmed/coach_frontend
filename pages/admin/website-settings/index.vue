@@ -1,10 +1,8 @@
 <template>
   <div class="pb-14 px-4 pt-8">
-    <h1
-      class="text-center font-bold text-[18px] mb-6 sm:text-[26px] lg:text-[32px]"
-    >
-      {{ $t("admin.manage_website.title") }}
-    </h1>
+
+    <Title title="website_settings" />
+
 
     <form class="" @submit.prevent="updateWebsiteSettings">
       <div class="p-6 mb-8 rounded-lg bg-[#2FA3F726] dark:bg-[--third-color]">
@@ -426,6 +424,7 @@ definePageMeta({
 
 import useRequest from "~/composables/useRequest";
 import showToast from "~/composables/useToast";
+import Title from "~/components/panel/Title.vue"
 
 const { getAllSettings, setAllSettings } = useRequest();
 const { locale, locales, setLocale, t } = useI18n();

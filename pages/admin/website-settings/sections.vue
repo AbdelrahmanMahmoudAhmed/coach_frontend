@@ -4,9 +4,9 @@
 <ManageSections :currentSection="currentSection" :type="type" @closePopup="closePopup" @getSectionsData="getSectionsData" />
     </div>
     <div v-if="detailsPopup">
-      <WebsiteDetails :withImg="true" page="certification" :currentDetails="currentSection" @closePopup="closeDetailsPopup" />
+      <WebsiteDetails :withImg="true" page="sections" :currentDetails="currentSection" @closePopup="closeDetailsPopup" />
     </div>
-
+<Title title="sections" />
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
         :pagination="pagination"
@@ -63,7 +63,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageSections from "~/components/panel/popups/ManageSections";
 import WebsiteDetails from "~/components/panel/popups/WebsiteDetails.vue";
-
+import Title from "~/components/panel/Title.vue"
 
 const pagination = reactive({
   perPage: "",

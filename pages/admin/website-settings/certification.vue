@@ -6,6 +6,7 @@
     <div v-if="detailsPopup">
       <WebsiteDetails :withImg="true" page="certification" :currentDetails="currentCertifications" @closePopup="closeDetailsPopup" />
     </div>
+    <Title title="certification" />
 
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
@@ -63,6 +64,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageCertifications from "~/components/panel/popups/ManageCertifications";
 import WebsiteDetails from "~/components/panel/popups/WebsiteDetails.vue";
+import Title from "~/components/panel/Title.vue"
 
 
 const pagination = reactive({

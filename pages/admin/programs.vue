@@ -6,6 +6,7 @@
     <div v-if="detailsPopup">
       <DisplayPackageDetails page="package" :currentPackage="currentPackage" @closePopup="closeDetailsPopup" />
     </div>
+    <Title title="service" />
 
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
@@ -68,6 +69,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManagePackages from "~/components/panel/popups/ManagePackages";
 import DisplayPackageDetails from "~/components/panel/popups/DisplayDetails.vue";
+import Title from "~/components/panel/Title.vue"
 
 const query = reactive({
   page: 1,

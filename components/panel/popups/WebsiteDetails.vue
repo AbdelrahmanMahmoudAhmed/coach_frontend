@@ -25,6 +25,28 @@
       <div class="flex flex-col justify-center">
         <div class="mb-4">
           <div
+          v-if="currentDetails.nameAr"
+            class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-center"
+          >
+            <span
+              class="font-bold text-[--main-color] dark:text-[--third-color]"
+            >
+              {{ $t("auth.name_ar") }}
+            </span>
+            <span>{{ currentDetails.nameAr }}</span>
+          </div>
+          <div
+          v-if="currentDetails.nameEn"
+            class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-center"
+          >
+            <span
+              class="font-bold text-[--main-color] dark:text-[--third-color]"
+            >
+              {{ $t("auth.name_en") }}
+            </span>
+            <span>{{ currentDetails.nameEn }}</span>
+          </div>
+          <div
           v-if="currentDetails.titleAr"
             class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-center"
           >
@@ -46,6 +68,7 @@
             </span>
             <span>{{ currentDetails.titleEn }}</span>
           </div>
+          
         </div>
         
         <div class="add-edit-holder mb-4">
@@ -68,7 +91,7 @@
             <span
               class="font-bold text-[--main-color] dark:text-[--third-color]"
             >
-              {{page == 'video' ? $t("auth.video_link") :( page == 'certification' )? $t("auth.certification_img") :  page == 'transformation' ? $t("auth.transformation_img") : '' }}
+              {{page == 'video' ? $t("auth.video_link") :( page == 'certification' )? $t("auth.certification_img") :  page == 'transformation' ? $t("auth.transformation_img") :  page == 'sections' ? $t("auth.section_img") : '' }}
             </span>
             <span class="text-[14px]">{{ currentDetails.link }}</span>
           </div>
@@ -76,6 +99,14 @@
 
         <div class="mb-[10px] w-full flex flex-col justify-center m-auto">
           <div class="relative">
+            <div class="flex flex-col items-center" v-if="currentDetails.callToAction && currentDetails.callToActionLink">
+              <span
+                class="font-bold text-[--main-color] dark:text-[--third-color]"
+              >
+                {{ $t("auth.call_to_action") }}
+              </span>
+              <a  class="text-[14px] text-center hover:text-[--main-color]" target="_blank" :href="currentDetails.callToActionLink" >{{ $t("auth.click_here") }}</a>
+            </div>
             <div class="flex flex-col items-center" v-if="currentDetails.descriptionAr">
               <span
                 class="font-bold text-[--main-color] dark:text-[--third-color]"

@@ -147,6 +147,8 @@
     "allow_edit":"السماح بالتعديل",
     "manage_website":"السماح بادارة الموقع",
 "call_to_action_link":"اضف الرابط الخاص بالزر",
+"call_to_action":" الرابط الخاص بالزر",
+"click_here":" اضغط هنا",
     "title_ar":" العنوان بالعربية",
     "title_en":"العنوان بالانجليزية",
     "name_ar":"الاسم بالعربية",
@@ -311,6 +313,7 @@
 
 
   "admin": {
+
     "manage_website": {
       "title": "إعدادات الموقع",
       "clear":"مسح",
@@ -369,6 +372,7 @@
       "details_certification":"تفاصيل الشهادة",
       "details_transformation":"تفاصيل تحول شكل الجسم",
       "details_blog":"تفاصيل المدونه ",
+      "details_sections":"تفاصيل القسم ",
       "add_product": "إضافة منتج",
       "edit_product": "تعديل المنتج",
       "delete_product": "حذف المنتج", 

@@ -6,6 +6,7 @@
     <div v-if="detailsPopup">
       <WebsiteDetails page="blog" :withImg="true" :currentDetails="currentBlog" @closePopup="closeDetailsPopup" />
     </div>
+    <Title title="blogs" />
 
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
@@ -67,6 +68,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageBlogs from "~/components/panel/popups/ManageBlogs";
 import WebsiteDetails from "~/components/panel/popups/WebsiteDetails.vue";
+import Title from "~/components/panel/Title.vue"
 
 const query = reactive({
   page: 1,

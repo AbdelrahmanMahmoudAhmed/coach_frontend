@@ -6,6 +6,8 @@
     <div v-if="detailsPopup">
       <DisplayProductDetails page="product" :currentPackage="currentProduct" @closePopup="closeDetailsPopup" />
     </div>
+    <Title title="products" />
+
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
         :pagination="pagination"
@@ -66,6 +68,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageProducts from "~/components/panel/popups/ManageProducts";
 import DisplayProductDetails from "~/components/panel/popups/DisplayDetails.vue";
+import Title from "~/components/panel/Title.vue"
 
 const query = reactive({
   page: 1,

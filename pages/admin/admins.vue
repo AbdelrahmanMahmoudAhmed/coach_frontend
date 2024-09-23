@@ -3,6 +3,7 @@
     <div v-if="popup">
 <ManageAdmins :currentAdmin="currentAdmin" :type="type" @closePopup="closePopup" @getAdminsData="getAdminsData" />
     </div>
+    <Title title="admins_management" />
 
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
@@ -51,6 +52,7 @@ import DataTable from "~/components/panel/DataTable.vue";
 import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageAdmins from "~/components/panel/popups/ManageAdmins"
+import Title from "~/components/panel/Title.vue"
 
 const query = reactive({
   page: 1,

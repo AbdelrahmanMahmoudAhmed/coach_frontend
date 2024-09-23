@@ -6,6 +6,7 @@
     <div v-if="detailsPopup">
       <MessageDetails  :currentDetails="currentMessage" @closePopup="closeDetailsPopup" />
     </div>
+    <Title title="contact" />
 
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
@@ -61,6 +62,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageContactUs from "~/components/panel/popups/ManageContactUs";
 import MessageDetails from "~/components/panel/popups/MessageDetails.vue";
+import Title from "~/components/panel/Title.vue"
 
 const query = reactive({
   page: 1,

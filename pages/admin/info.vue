@@ -5,11 +5,9 @@
         class="flex flex-col justify-center items-center gap-8 lg:mt-[50px] lg:gap-16"
       >
         <div class="w-full">
-          <h1
-            class="text-center font-bold text-[18px] mb-6 sm:text-[26px] lg:text-[32px]"
-          >
-            {{ $t("auth.change_info") }}
-          </h1>
+
+    <Title title="manage_info" />
+
 
           <form @submit.prevent="updateAdminData" class="w-full">
             <div
@@ -218,6 +216,7 @@ definePageMeta({
   layout: "panel",
   middleware: "admin-guard",
 });
+import Title from "~/components/panel/Title.vue"
 import useVuelidate from "@vuelidate/core";
 import {
   required,

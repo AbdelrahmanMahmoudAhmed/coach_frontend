@@ -7,6 +7,7 @@
       <UsersDetails  :currentClient="currentClient" @closePopup="closeDetailsPopup" />
     </div>
 
+    <Title title="users_management" />
 
     <div class="min-h-[60vh] overflow-x-auto">
       <DataTable
@@ -93,6 +94,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageClients from "~/components/panel/popups/ManageClients"
 import UsersDetails from "~/components/panel/popups/UsersDetails"
+import Title from "~/components/panel/Title.vue"
 
 const query = reactive({
   page: 1,

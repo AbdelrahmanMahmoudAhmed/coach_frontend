@@ -3,6 +3,7 @@
     <div v-if="popup">
 <ManageAnswers :currentAnswer="currentAnswer" :type="type" @closePopup="closePopup" @getAnswers="getAnswers" />
     </div>
+    <Title title="quick_answer" />
 
 
     <div class="min-h-[60vh] overflow-x-auto">
@@ -58,6 +59,7 @@ import useRequest from "~/composables/useRequest";
 import { useGlobalStore } from "~/stores/global";
 import ManageAnswers from "~/components/panel/popups/ManageAnswers";
 import SeeMore from "~/components/generic/SeeMore.vue";
+import Title from "~/components/panel/Title.vue"
 
 
 const pagination = reactive({
