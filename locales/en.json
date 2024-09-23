@@ -57,6 +57,7 @@
     "success_delete_question": "the question has been deleted successfully",
     "success_add_question": "the question has been added successfully",
     "success_edit_question": "the question's data has been edited successfully",
+
     
     "update_website_data":"the website data has been updated successfully",
     
@@ -93,7 +94,10 @@
     "success_regester":"Your regester has been successeed",
     "success_reset":"Your password has been reset successfully",
     "success_forget":"success! check your Email",
-    "info_updated":"The data has been updated successfully"
+    "info_updated":"The data has been updated successfully",
+
+
+    "success_contact":"Your message has been sent successfully"
 
   },
 

@@ -7,7 +7,7 @@
         :title="`${locale == 'ar' ? '!' : ''} ${$t('header.feedback')} ${
           locale == 'en' ? '!' : ''
         } `"
-        :isColord="false"
+        :isColored="false"
       />
     </div>
     <div class="app-container">

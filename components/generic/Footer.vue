@@ -27,7 +27,7 @@
             </a>
           </li>
         </ul>
-        <p v-html=" locale == 'ar' ?  data?.data?.footer?.ar.replace(/(?:\r\n|\r|\n)/g, '<br>') : data?.data?.footer?.en.replace(/(?:\r\n|\r|\n)/g, '<br>') " class="text-center text-[#DCE4EB] text-[16px] max-w-[710px] md:text-[19px]">
+        <p v-html=" global.footerDescription?.[locale]?.replace(/(?:\r\n|\r|\n)/g, '<br>') " class="text-center text-[#DCE4EB] text-[16px] max-w-[710px] md:text-[19px]">
        
         </p>
       </div>
@@ -37,16 +37,18 @@
           <h5 class="text-[22px] mb-[20px] md:text-[28px] lg:text-[35px]">{{ $t('footer.get_in_touch') }}</h5>
           <ul class="mb-[45px]">
             <li class="mb-[10px]">
-              <div class="flex gap-[10px]">
-               <a class="w-[32px]"><img class="w-[32px]" src="../../assets/imgs/email.svg" alt=""></a>
-               <span class="text-[18px] break-all md:break-normal md:text-[20px] lg:text-[24px]">{{ data?.data?.contactEmail }}</span>
-              </div>
+              <a :href="`mailto:${global.socialMedia?.email}`" class="flex gap-[10px]">
+               <img class="w-[32px]" src="../../assets/imgs/email.svg" alt="">
+               <span class="text-[18px] break-all md:break-normal md:text-[20px] lg:text-[24px]">{{global.socialMedia?.email }}</span>
+              </a>
             </li>
             <li>
-              <div class="flex gap-[10px]">
+           
+
+              <a :href="`https://wa.me/${global.socialMedia?.whatsApp}`" target="_blank" class="flex gap-[10px]">
                <a class=" w-[32px]"><img src="../../assets/imgs/whatsapp.svg" alt=""></a>
-               <span class="text-[18px] md:text-[20px] lg:text-[24px]">{{ data?.data?.contactPhone }}</span>
-              </div>
+               <span class="text-[18px] md:text-[20px] lg:text-[24px]">{{ global.socialMedia?.whatsApp }}</span>
+              </a>
             </li>
             
           </ul>
@@ -77,9 +79,10 @@
             <!-- <li>
               <NuxtLink to="/terms"> {{ $t("footer.terms") }} </NuxtLink>
             </li> -->
-            <li class="text-center text-[16px] md:text-[18px] lg:text-[20px]">
-              © {{ currentYear }} FoxProxy
-              {{ $t("footer.foot") }}
+            <li class="text-center text-[16px] flex items-center md:text-[18px] lg:text-[20px]">
+              <span class="pb-1"> {{ $t("footer.foot") }}</span> 
+              <a href="https://www.heptaserv.com/" target="_blanck"><img class="w-[100px]" src="../../assets/imgs/heptaserv.png" alt=""></a>
+             <span class="pb-1"> © {{ currentYear }}</span>
             </li>
             <!-- <li>
               <NuxtLink to="/privacy"> {{ $t("footer.privacy") }} </NuxtLink>
@@ -102,7 +105,9 @@ const { locale, locales, setLocale } = useI18n();
 
 const { data , error} = await layout()
 
-
+import { useGlobalStore } from "~/stores/global";
+const global = useGlobalStore();
+console.log("global>>>" , global.footerDescription)
 
 // layout
 // to make the  ( year ) dynamic value

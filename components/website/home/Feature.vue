@@ -1,7 +1,7 @@
 <template>
     <div class=" mb-[30px] lg:mb-[80px] ">
       <div>
-        <SectionTitle :title="`${$t('header.feature')}`" :isColord="true" />
+        <SectionTitle :title="`${$t('header.feature')}`" :isColored="true" />
       </div>
       <div class="app-container pt-[25px] lg:pt-[40px]">
             <div class=" grid grid-cols-1 gap-[10px] md:grid-cols-2 justify-center lg:grid-cols-3 2xl:gap-[23px] 2xl:grid-cols-4">

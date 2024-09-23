@@ -20,6 +20,8 @@ const useServerRequest = () => {
     const aboutUs = async () => {
 
         return useFetch('/layout?section=about', {
+            // return useFetch('/layout?section=layout', {
+            
             baseURL,
             method: "GET",
         })

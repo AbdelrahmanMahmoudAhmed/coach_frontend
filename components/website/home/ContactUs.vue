@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[--third-color] pb-16">
     <div>
-      <SectionTitle :title="$t('header.contact_us')" :isColord="false" />
+      <SectionTitle :title="$t('header.contact_us')" :isColored="false" />
     </div>
     <div class="app-container">
       <div
@@ -26,19 +26,33 @@
               </div>
               <div class="w-full mb-2 xl:mb-3">
                 <input
-                  v-model="state.email"
+                  v-model="state.phone"
                   class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
-                  type="email"
-                  :placeholder="$t('auth.email')"
+                  type="text"
+                  :placeholder="$t('auth.phone')"
                   autocomplete="off" 
                 />
                 <p
-                  v-if="errors.email.state"
+                  v-if="errors.phone.state"
                   class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px]"
                 >
-                  {{ $t("auth.errors.add_email") }}
+                  {{ $t("auth.errors.add_phone") }}
                 </p>
               </div>
+            </div>
+            <div class="mb-2 xl:mb-3">
+              <input
+                v-model="state.email"
+                class="placeholder:text-[#ffffff82] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                type="email"
+                :placeholder="$t('auth.email')"
+              />
+              <p
+                v-if="errors.email.state"
+                class="mb-[10px] text-center font-bold text-[14px] text-red-600 xs:text-[14px] sm:text-[16px]"
+              >
+                {{ $t("auth.errors.add_email") }}
+              </p>
             </div>
             <div class="mb-2 xl:mb-3">
               <input
@@ -89,20 +103,27 @@
 <script setup>
 import SectionTitle from "../home/SectionTitle.vue";
 import useVuelidate from "@vuelidate/core";
-import { required, email, maxLength, minLength } from "@vuelidate/validators";
+import { required, email, maxLength, minLength , numeric} from "@vuelidate/validators";
 import useRequest from "~/composables/useRequest";
-const { locale, locales, setLocale , t } = useI18n();
+import { useGlobalStore } from "~/stores/global";
+import showToast from "~/composables/useToast";
 
-const { contact } = useRequest();
+const { locale, locales, setLocale , t } = useI18n();
+const global = useGlobalStore()
+const { contactUs } = useRequest();
 
 const state = reactive({
   name: "",
   email: "",
+  phone:"",
   title: "",
   message: "",
 });
 const errors = reactive({
   name: {
+    state: false,
+  },
+  phone: {
     state: false,
   },
   email: {
@@ -118,6 +139,7 @@ const errors = reactive({
 const rules = computed(() => {
   return {
     name: { required },
+    phone: { required , numeric , minLength:minLength(7) },
     email: { required, email },
     title: { required },
     message: { required },
@@ -126,7 +148,11 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, state);
 
 const sendMessageFun = async () => {
+
+
+
   errors.name.state = false;
+  errors.phone.state = false;
   errors.email.state = false;
   errors.title.state = false;
   errors.message.state = false;
@@ -134,25 +160,41 @@ const sendMessageFun = async () => {
   const result = await v$.value.$validate();
 
   if (result) {
+  global.turnLoaderOn();
+
     const payload = {
-      fullName: state.name,
+      name: state.name,
+      phone: state.phone,
       email: state.email,
       title: state.title,
       message: state.message,
     };
-    contact(payload)
+    contactUs(payload)
       .then((res) => {
+        if(res.data.success){
+          showToast({ message: t("toast.success_contact") })
 
+        }else{
+        showToast({ type: "error", message: t("toast.something_wrong") });
+
+        }
       })
-      .catch((err) => {})
+      .catch((err) => {
+        console.error(err)
+        showToast({ type: "error", message: t("toast.something_wrong") });
+      })
       .finally(() => {
+        global.turnLoaderOff();
+
         state.name = "";
+        state.phone = "";
         state.email = "";
         state.title = "";
         state.message = "";
       });
   } else {
     errors.name.state = v$.value.name.$error;
+    errors.phone.state = v$.value.phone.$error;
     errors.email.state = v$.value.email.$error;
     errors.title.state = v$.value.title.$error;
     errors.message.state = v$.value.message.$error;
@@ -161,4 +203,4 @@ const sendMessageFun = async () => {
 </script>
 
 <style>
-</style>~/composables/useRequest
+</style>

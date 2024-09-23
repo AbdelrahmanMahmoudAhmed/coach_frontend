@@ -59,7 +59,7 @@
     "success_add_question": "تمت إضافة السؤال بنجاح",
     "success_edit_question": "تم تعديل بيانات السؤال بنجاح",
 
-
+    
     "update_website_data":"تم تحديث بيانات الموقع بنجاح",
 
 
@@ -92,7 +92,9 @@
     "success_regester":"لقد تم تسجيلك بنجاح",
     "success_reset":"تم تغيير كلمة المرور بنجاح",
     "success_forget":"تم! تحقق من بريدك الالكتروني",
-    "info_updated":"تم تحديث البيانات بنجاح"
+    "info_updated":"تم تحديث البيانات بنجاح",
+
+    "success_contact":"لقد تم ارسال رسالتك بنجاح"
   },
 
   "popups":{

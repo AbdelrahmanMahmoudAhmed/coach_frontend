@@ -236,6 +236,18 @@ const setAllSettings = async (data) => {
 /*--------------------  END WEBSITE MANAGEMENT SECTION  --------------------*/
 
 
+
+
+/*--------------------  START WEBSITE APIS  --------------------*/
+
+const contactUs = async (data) => {
+  return await REQUEST.post(`/contact-us`, data, { headers:auth });
+};
+
+/*--------------------  END WEBSITE APIS  --------------------*/
+
+
+
   return {
     register,
     login,
@@ -280,7 +292,8 @@ editBolg ,
 deleteBolg, 
 
 
-
+// start website APIs
+contactUs,
   };
 };
 export default useRequest;

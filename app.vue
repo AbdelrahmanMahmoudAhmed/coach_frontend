@@ -30,9 +30,9 @@ const { layout } = useServerRequist()
 
   const { data , error} = await layout();
   const payload = {
-    socialMedia: data.value?.data?.socialMedia,
-    mainDescription:{ar:data.value?.data?.data?.mainDescAr , en: data.value?.data?.data?.mainDescEn},
-    footerDescription:{ar:data.value?.data?.data?.footerDescAr , en: data.value?.data?.data?.footerDescEn},
+    socialMedia: {... data.value?.data?.socialMedia , email:data.value?.data?.desc?.email , phone:data.value?.data?.desc?.phone },
+    mainDescription:{ar:data.value?.data?.desc?.mainDescAr , en: data.value?.data?.desc?.mainDescEn},
+    footerDescription:{ar:data.value?.data?.desc?.footerDescAr , en: data.value?.data?.desc?.footerDescEn},
   }
 global.setMainData(payload)
 
