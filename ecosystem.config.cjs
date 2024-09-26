@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: "fox-proxy-website",
+    name: "hustle-nation-website",
     script: './.output/server/index.mjs',
     instances: "max",
     max_memory_restart: "1G",

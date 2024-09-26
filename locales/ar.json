@@ -4,8 +4,10 @@
     "about": "من نحن",
     "feature": "المميزات",
     "feedback": "التعليقات",
+     "transformation":"انجازات العملاء",
     "contact_us": "تواصل معنا",
     "create": "إنشاء حساب",
+    "Q&A":"الاسئلة الشائعة",
     "my_account": "حسابى",
     "login": "دخول",
     "logout": "خروج",
@@ -54,6 +56,10 @@
     "success_delete_transformation": "تم حذف بيانات التحول بنجاح",
     "success_add_transformation": "تمت إضافة بيانات التحول بنجاح",
     "success_edit_transformation": "تم تعديل بيانات التحول بنجاح",
+
+    "success_delete_testimonial": "تم حذف بيانات شهادة العميل بنجاح",
+    "success_add_testimonial": "تمت إضافة بيانات شهادة العميل بنجاح",
+    "success_edit_testimonial": "تم تعديل بيانات شهادة العميل بنجاح",
 
     "success_delete_question": "تم حذف السؤال بنجاح",
     "success_add_question": "تمت إضافة السؤال بنجاح",
@@ -144,6 +150,7 @@
     "certification_img":"صورة الشهادة",
     "section_img":"صورة القسم",
     "transformation_img":"صورة التحول",
+    "testimonial_img":"صورة الشهادة",
     "role":"الدور",
     "allow_delete":"السماح بالحذف",
     "allow_edit":"السماح بالتعديل",
@@ -290,6 +297,7 @@
 
       "videos":"إدارة مقاطع الفيديو",
       "transformation":"إدارة التحول",
+      "testimonial":"إدارة شهادات العملاء",
       "certification":"إدارة الشهادات",
       "blogs":"إدارة المدونات",
       "contact":"اتصل بنا",
@@ -373,6 +381,7 @@
       "details_video":"تفاصيل الفيديو",
       "details_certification":"تفاصيل الشهادة",
       "details_transformation":"تفاصيل تحول شكل الجسم",
+      "details_testimonial":"تفاصيل شهادة العميل",
       "details_blog":"تفاصيل المدونه ",
       "details_sections":"تفاصيل القسم ",
       "add_product": "إضافة منتج",
@@ -405,6 +414,10 @@
       "add_transformation": "إضافة تحول جديد",
       "edit_transformation": "تعديل بيانات التحول",
       "delete_transformation": "حذف التحول", 
+
+      "add_testimonial": "إضافة شهادة عميل جديدة",
+      "edit_testimonial": "تعديل بيانات شهادة العميل",
+      "delete_testimonial": "حذف شهادة العميل", 
 
 
       "add_question": "إضافة سؤال",
@@ -439,6 +452,7 @@
       "delete_certification_msg": "هل أنت متأكد من حذف الشهادة {certification} ؟  ",
       "delete_section_msg": "هل أنت متأكد من حذف القسم {section} ؟  ",
       "delete_transformation_msg": "هل أنت متأكد من حذف التحول رقم {transformation} ؟  ",
+      "delete_testimonial_msg": "هل أنت متأكد من حذف شهادة العميل رقم {testimonial} ؟  ",
       "delete_answer_msg": "هل أنت متأكد من حذف السؤال {answer} ؟  ",
       "delete_message_msg": "هل أنت متأكد من حذف رسالة {name} ؟  ",
 

@@ -1,4 +1,4 @@
-# fox-proxy-frontend
+# hustle-nation-frontend
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.hmaserv.online/abdelrahman.mahmoud/fox-proxy-frontend.git
+git remote add origin 
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.hmaserv.online/abdelrahman.mahmoud/fox-proxy-frontend/-/settings/integrations)
+- [ ] [Set up project integrations](/-/settings/integrations)
 
 ## Collaborate with your team
 

@@ -4,8 +4,10 @@
     "about": "About us",
     "feature": "Feature",
     "feedback": "Feedback",
+    "transformation": "Transformation",
     "contact_us": "Contact us",
     "create": "Create account",
+    "Q&A": "Questions and Answers",
     "my_account": "My account",
     "login": "LOGIN",
     "logout": "logout",
@@ -53,6 +55,10 @@
     "success_delete_transformation": "the transformation has been deleted successfully",
     "success_add_transformation": "the transformation has been added successfully",
     "success_edit_transformation": "the transformation's data has been edited successfully",
+
+    "success_delete_testimonial": "the testimonial has been deleted successfully",
+    "success_add_testimonial": "the testimonial has been added successfully",
+    "success_edit_testimonial": "the testimonial's data has been edited successfully",
     
     "success_delete_question": "the question has been deleted successfully",
     "success_add_question": "the question has been added successfully",
@@ -147,6 +153,7 @@
     "certification_img":"Certification Image",
     "section_img":"Section Image",
     "transformation_img":"Transformation Image",
+    "testimonial_img":"Testimonial Image",
     "role":"Role",
 
     "allow_delete":"Allow deletion",
@@ -302,6 +309,7 @@
 
       "videos":"Videos management",
       "transformation":"Transformation",
+      "testimonial":"Testimonials",
       "certification":"Certification management",
       "blogs":"Blogs management",
       "contact":"Contact us",
@@ -387,6 +395,7 @@
       "details_video":"Video details",
       "details_certification":"Certification details",
       "details_transformation":"Body shape transformation details",
+      "details_testimonial":"Testimonial details",
       "details_blog":"Blog details",
       "details_sections":"Section details",
       "add_product":"Add product",
@@ -420,6 +429,10 @@
       "add_transformation":"Add a transformation",
       "edit_transformation": "Edit the transformation",
       "delete_transformation": "Delete the transformation",
+
+      "add_testimonial":"Add a testimonial",
+      "edit_testimonial": "Edit the testimonial",
+      "delete_testimonial": "Delete the testimonial",
 
 
       "add_question": "Add A Question",
@@ -457,6 +470,7 @@
       "delete_certification_msg": "Are you sure to delete {certification} certification ?  ",
       "delete_section_msg": "Are you sure to delete {section} section ?  ",
       "delete_transformation_msg": "Are you sure to delete the transformation number {transformation}  ?  ",
+      "delete_testimonial_msg": "Are you sure to delete the testimonial number {testimonial}  ?  ",
       "delete_answer_msg": "Are you sure to delete the question {answer} ?  ",
 
       "delete_message_msg": "Are you sure to delete {name}'s message ?  ",

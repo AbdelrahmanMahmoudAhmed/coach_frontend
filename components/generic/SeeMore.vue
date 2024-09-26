@@ -44,7 +44,6 @@ const showMore = ref(false);
 
 const toggleShowMore = () => {
   showMore.value = !showMore.value;
-  console.log("formatedText", formatedText.value);
 };
 
 const isExceed = computed(() => {

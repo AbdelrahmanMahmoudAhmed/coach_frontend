@@ -74,7 +74,7 @@ useHead({
     dir: computed(() => currentLang.value == 'ar' ? 'rtl' : 'ltr' ),
 
   },
-  link: [{ rel: "icon", type: "image/png", href: "/logo.svg" }],
+  // link: [{ rel: "icon", type: "image/png", href: "/logo.svg" }],
   meta: [
     { name: 'description', content: seo.description },
     { name: 'title', content: seo.title },
@@ -82,18 +82,18 @@ useHead({
     // Open Graph tags
     { property: 'og:title', content: seo.title },
     { property: 'og:description', content: seo.description },
-    { property: 'og:image', content: '/logo.png' },
-    { property: 'og:url', content: '/logo.png' },
+    // { property: 'og:image', content: '/logo.png' },
+    // { property: 'og:url', content: '/logo.png' },
     { property: 'og:type', content: 'website' },
     // Twitter Card tags
     { name: 'twitter:card', content: seo.title },
     { name: 'twitter:title', content: seo.title },
     { name: 'twitter:description', content: seo.description },
-    { name: 'twitter:image', content: '/logo.png' },
+    // { name: 'twitter:image', content: '/logo.png' },
     // Google / Schema.org tags
     { itemprop: 'name', content: seo.title },
     { itemprop: 'description', content: seo.description },
-    { itemprop: 'image', content: '/logo.png' },
+    // { itemprop: 'image', content: '/logo.png' },
     // Pinterest Rich Pins
     { name: seo.title, content: 'true' }
   ]

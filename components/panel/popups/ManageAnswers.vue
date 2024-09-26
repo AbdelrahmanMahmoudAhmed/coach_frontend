@@ -214,7 +214,6 @@
   // hooks
   onBeforeMount(() => {
     if (props.type == "edit" &&  props.currentAnswer) {
-console.log("props.currentAnswer" ,props.currentAnswer)
     state.questionAr = props.currentAnswer?.questionAr;
     state.questionEn = props.currentAnswer?.questionEn;
     state.answerAr = props.currentAnswer?.answerAr;

@@ -26,7 +26,6 @@ export const useGlobalStore = defineStore('global', {
   actions: {
 
     setMainData(payload){
-      console.log("payload => " , payload)
       this.socialMedia = payload.socialMedia;
       this.footerDescription = payload.footerDescription;
       this.mainDescription = payload.mainDescription;

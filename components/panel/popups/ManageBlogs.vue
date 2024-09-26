@@ -367,7 +367,6 @@ const getBolgsData = () => {
 
 const onChangeImage = (e) => {
   const file = e.target.files[0];
-  console.log("file", file);
   state.image = file;
   imageDisplaying.value = URL.createObjectURL(file);
 };
@@ -390,7 +389,6 @@ const manageBlogFun = async () => {
     const payload = new FormData();
 
     const result = await v$.value.$validate();
-    console.log("v$.value.", v$.value, result);
 
     if (result) {
       state.titleAr && payload.append("titleAr", state.titleAr);

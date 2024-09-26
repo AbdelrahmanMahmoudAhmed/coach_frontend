@@ -471,8 +471,7 @@ const changeCountryVal = (val) => {
 // hooks
 onBeforeMount(() => {
   if (props.type == "edit") {
-    console.log(" props.currentClient?.gaol" ,  props.currentClient.goal
-)
+
     state.name = props.currentClient?.name;
     state.email = props.currentClient?.email;
     state.phone = props.currentClient?.phone;

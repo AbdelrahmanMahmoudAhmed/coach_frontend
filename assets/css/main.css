@@ -12,10 +12,13 @@
   --ms-radius: 46px;
 
   /* variables */
-  --main-color: #3498db;
+  /* --main-color: #3498db; */
+  --main-color: #00c2f7;
+  --main-color-opacity: #00C2F729;
   /* --main-color: #2fa3f7; */
   --footer-color: #05131e;
   --third-color: #001d34;
+  --third-color-opacity: #001d34d2;
   --secondary-color: #153853;
   --trans-color: #d6f5fe;
   --rows-color:#0F426B;

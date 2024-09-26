@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "FOX PROXY",
+      title: "HUSTLE NATION",
       // link: [{ rel: 'icon', type: 'image/png', href: "/Flag.png" }]
       // link: [{ rel: "icon", type: "image/png", href: "/logo.png" }],
 

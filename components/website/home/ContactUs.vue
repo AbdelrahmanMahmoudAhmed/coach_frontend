@@ -1,19 +1,24 @@
 <template>
-  <div class="bg-[--third-color] pb-16">
-    <div>
+  <div class="bg-[--third-color] pb-16 relative h-fit ">
+    <div class=" absolute top-0 left-0 h-full w-full z-10">
+      <img class="block h-full w-full object-cover" src="/imgs/contact.jpg" alt="">
+    </div>
+    <div class=" absolute top-0 left-0 h-full w-full bg-[--third-color-opacity] z-20"></div>
+<div class="relative z-20">
+  <div>
       <SectionTitle :title="$t('header.contact_us')" :isColored="false" />
     </div>
     <div class="app-container">
       <div
         class="flex flex-col-reverse justify-center items-center mt-[40px] gap-8 lg:mt-[70px] lg:flex-row lg:gap-16 xl:items-start"
       >
-        <div class="w-full lg:w-[65%] 2xl:w-[45%]">
+        <div class="w-full lg:w-[75%] ">
           <form class="w-full" @submit.prevent="sendMessageFun">
             <div class="flex flex-col md:gap-2 md:flex-row xl:gap-3">
               <div class="w-full mb-2 xl:mb-3">
                 <input
                   v-model="state.name"
-                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border border-[--main-color] text-[16px] sm:text-[18px] md:text-[20px] focus:border-[3px] "
                   type="text"
                   :placeholder="$t('auth.name')"
                 />
@@ -27,8 +32,7 @@
               <div class="w-full mb-2 xl:mb-3">
                 <input
                   v-model="state.phone"
-                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
-                  type="text"
+                  class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border border-[--main-color] text-[16px] sm:text-[18px] md:text-[20px] focus:border-[3px] "                  type="text"
                   :placeholder="$t('auth.phone')"
                   autocomplete="off" 
                 />
@@ -43,7 +47,7 @@
             <div class="mb-2 xl:mb-3">
               <input
                 v-model="state.email"
-                class="placeholder:text-[#ffffff82] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border border-[--main-color] text-[16px] sm:text-[18px] md:text-[20px] focus:border-[3px] " 
                 type="email"
                 :placeholder="$t('auth.email')"
               />
@@ -57,7 +61,7 @@
             <div class="mb-2 xl:mb-3">
               <input
                 v-model="state.title"
-                class="placeholder:text-[#ffffff82] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                class="w-full placeholder:text-[#ffffff82] px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border border-[--main-color] text-[16px] sm:text-[18px] md:text-[20px] focus:border-[3px] " 
                 type="text"
                 :placeholder="$t('auth.title')"
               />
@@ -71,7 +75,7 @@
             <div class="mb-2 xl:mb-3">
               <textarea
                 v-model="state.message"
-                class="placeholder:text-[#ffffff82] min-h-[240px] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border-[2px] border-transparent text-[16px] sm:text-[18px] md:text-[20px] focus:border-[--main-color]"
+                class="placeholder:text-[#ffffff82] min-h-[240px] w-full px-[20px] py-[12px] text-[#fff] outline-none bg-[--secondary-color] rounded-md border border-[--main-color] text-[16px] sm:text-[18px] md:text-[20px] focus:border-[3px] "
                 type="text"
                 :placeholder="$t('auth.message')"
               ></textarea>
@@ -92,11 +96,10 @@
             </div>
           </form>
         </div>
-        <div>
-          <img src="../../../assets/imgs/Mail-rafiki.png" alt="" />
-        </div>
+   
       </div>
     </div>
+</div>
   </div>
 </template>
 

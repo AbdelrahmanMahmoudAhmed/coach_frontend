@@ -209,6 +209,19 @@ const editTransformation = async (id, data) => {
 const deleteTransformation = async (id) => {
   return await REQUEST.delete(`/admin/website-management/transformations/${id}`, { headers });
 };
+//testimonials
+const getAllTestimonials  = async (query) => {
+  return await REQUEST.get(`/admin/website-management/testimonials${getQuery(query)}`, { headers });
+};
+const createTestimonial = async (data) => {
+  return await REQUEST.post(`/admin/website-management/testimonials`, data, { headers });
+};
+const editTestimonial = async (id, data) => {
+  return await REQUEST.patch(`/admin/website-management/testimonials/${id}`, data, { headers });
+};
+const deleteTestimonial = async (id) => {
+  return await REQUEST.delete(`/admin/website-management/testimonials/${id}`, { headers });
+};
 
 
 //quick-answers
@@ -283,6 +296,7 @@ getAllVideos,createVideo,editVideo,deleteVideo,
 getAllCertifications,createCertification,editCertification,deleteCertification,
 getAllSections, createSection, editSection, deleteSection,
 getAllTransformations,createTransformation,editTransformation,deleteTransformation,
+getAllTestimonials,createTestimonial,editTestimonial,deleteTestimonial,
 getAllSettings,setAllSettings,
 getAllQuickAnswers,createQuickAnswer,editQuickAnswer,deleteQuickAnswer,
 getAllMessages,deleteMessage,

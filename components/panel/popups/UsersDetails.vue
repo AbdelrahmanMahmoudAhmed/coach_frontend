@@ -185,8 +185,6 @@ const getAnswer = ( bool ) => {
 }
 
 
-// console.log(" getSpecificCountry('eg')" ,  getSpecificCountry('eg'))
-console.log("getCountry" , getSpecificCountry('eg'))
 const getGoal = ( goal ) => {
     
     switch (goal) {

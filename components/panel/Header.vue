@@ -52,25 +52,19 @@
               <img v-else src="../../assets/imgs/lightmode.png" alt="" />
             </button>
             
+           
             <div
               @click="changeLang"
-              class="flex items-center gap-[5px] text-[20px] font-[400] cursor-pointer"
+              class="bg-[#fff] w-[30px] h-[30px] flex items-center justify-center rounded-[4px] cursor-pointer p-[1px]"
             >
-
               <img
-                v-if="locale == 'en'"
-                class="w-[48px] h-[30px]"
-                src="../../assets/imgs/arabic.png"
+               
+                class="w-[48px] h-[30px] inline-block"
+                src="../../assets/imgs/language.svg"
                 alt=""
               />
-              <img
-                v-else
-                class="w-[48px] h-[30px]"
-                src="../../assets/imgs/english.png"
-                alt=""
-              />
-              <span class="hidden items-center sm:inline-block"> {{ $t("header.lang") }}</span>
-            </div> 
+        
+            </div>
           </div>
         </div>
       </div>
@@ -327,6 +321,12 @@ const links = computed(() => {
         img: "transformation.svg",
         title: "transformation",
         link: "/admin/website-settings/transformation",
+        isMulti: false,
+      },
+      {
+        img: "testimonial.svg",
+        title: "testimonial",
+        link: "/admin/website-settings/testimonials",
         isMulti: false,
       },
       {

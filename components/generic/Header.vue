@@ -3,45 +3,61 @@
     <LogoutPopup @closePopup="closePopup" />
   </div>
   <header id="app-header" :class="`fixed top-0 left-0 w-full z-30  `">
-    <div
-      class="app-container h-full bg-[--third-color] text-[#fff] shadow-3xl relative"
-    >
+    <div class="app-container h-full text-[#fff] relative">
       <div class="h-[86px] flex items-center lg:h-[108px]">
         <div class="h-full w-full flex justify-between items-center">
           <div class="flex items-center gap-[50px]">
-            <div @click="() => navToSection('home', 'home-page')" class="cursor-pointer">
-              <img src="../../assets/imgs/logo.svg" alt="" />
+            <div
+              @click="() => navToSection('home', 'home-page')"
+              class="cursor-pointer"
+            >
+            <div dir="ltr" class=" font-bold text-[20px] whitespace-nowrap">
+            
+            <span>HUSTLE </span>
+            <span>NATION</span>
+            </div>
+              <!-- <img src="../../assets/imgs/logo.svg" alt="" /> -->
             </div>
             <ul
               class="hidden gap-[20px] text-[16px] text-[#FFFFFF66] xl:text-[17px] xl:gap-[30px] 2xl:text-[20px] lg:flex"
             >
               <li
                 @click="() => navToSection('home', 'home-page')"
-                :class="`${activeState.home ? 'active-nav' : ''} cursor-pointer`"
+                :class="`${
+                  activeState.home ? 'active-nav' : ''
+                } cursor-pointer`"
               >
                 {{ $t("header.home") }}
               </li>
               <li
                 @click="() => navToSection('about', 'about-section')"
-                :class="`${activeState.about ? 'active-nav' : ''} cursor-pointer`"
+                :class="`${
+                  activeState.about ? 'active-nav' : ''
+                } cursor-pointer`"
               >
                 {{ $t("header.about") }}
               </li>
               <li
                 @click="() => navToSection('feature', 'feature-section')"
-                :class="`${activeState.feature ? 'active-nav' : ''} cursor-pointer`"
+                :class="`${
+                  activeState.feature ? 'active-nav' : ''
+                } cursor-pointer`"
               >
                 {{ $t("header.feature") }}
               </li>
               <li
                 @click="() => navToSection('feedback', 'feedback-section')"
-                :class="`${activeState.feedback ? 'active-nav' : ''} cursor-pointer`"
+                :class="`${
+                  activeState.feedback ? 'active-nav' : ''
+                } cursor-pointer`"
               >
                 {{ $t("header.feedback") }}
               </li>
               <li
                 @click="() => navToSection('contactUs', 'contact-us-section')"
-                :class="`${activeState.contactUs ? 'active-nav' : ''} cursor-pointer`"
+                :class="`${
+                  activeState.contactUs ? 'active-nav' : ''
+                } cursor-pointer`"
               >
                 {{ $t("header.contact_us") }}
               </li>
@@ -92,7 +108,9 @@
             </NuxtLink>
             <button
               :class="` ${
-                locale == 'en' ? 'mr-[10px] 2xl:mr-[30px]' : 'ml-[10px] 2xl:ml-[30px]'
+                locale == 'en'
+                  ? 'mr-[10px] 2xl:mr-[30px]'
+                  : 'ml-[10px] 2xl:ml-[30px]'
               } bg-[#fff] w-[30px] h-[30px] flex items-center justify-center rounded-[4px] lg:hidden`"
               @click="openSidebar"
             >
@@ -100,41 +118,42 @@
             </button>
             <button
               :class="` ${
-                locale == 'en' ? 'mr-[10px] 2xl:mr-[30px]' : 'ml-[10px] 2xl:ml-[30px]'
+                locale == 'en'
+                  ? 'mr-[10px] 2xl:mr-[30px]'
+                  : 'ml-[10px] 2xl:ml-[30px]'
               } bg-[#fff] w-[30px] h-[30px] flex items-center justify-center rounded-[4px]`"
               @click="changeMode"
             >
-              <img v-if="isDark == 'light'" src="../../assets/imgs/darkmode.svg" alt="" />
+              <img
+                v-if="isDark == 'light'"
+                src="../../assets/imgs/darkmode.svg"
+                alt=""
+              />
               <img v-else src="../../assets/imgs/lightmode.png" alt="" />
             </button>
 
             <div
               @click="changeLang"
-              class="flex items-center gap-[5px] text-[20px] font-[400] cursor-pointer"
+              class="bg-[#fff] w-[30px] h-[30px] flex items-center justify-center rounded-[4px] cursor-pointer p-[1px]"
             >
               <img
-                v-if="locale == 'en'"
-                class="hidden w-[48px] h-[30px] sm:inline-block"
-                src="../../assets/imgs/arabic.png"
+               
+                class="w-[48px] h-[30px] inline-block"
+                src="../../assets/imgs/language.svg"
                 alt=""
               />
-              <img
-                v-else
-                class="hidden w-[48px] h-[30px] sm:inline-block"
-                src="../../assets/imgs/english.png"
-                alt=""
-              />
-              <span class="flex items-center"> {{ $t("header.lang") }}</span>
+        
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div
+    <Teleport to="body">
+<div class=" relative z-40">
+  <div
       @click="closeSidebar"
       v-if="toggleSidebar"
-      class="fixed top-0 left-0 blur-sm z-10 w-[100vw] h-[100vh] backdrop-blur-[2px]"
+      class="fixed top-0 left-0 blur-sm z-100 w-[100vw] h-[100vh] backdrop-blur-[20px]"
     ></div>
     <div
       :class="`${
@@ -148,7 +167,9 @@
           <img src="../../assets/imgs/logo.svg" alt="" />
         </div>
 
-        <ul class="mb-[60px] text-[16px] text-[#FFFFFF66] xl:text-[17px] 2xl:text-[20px]">
+        <ul
+          class="mb-[60px] text-[16px] text-[#FFFFFF66] xl:text-[17px] 2xl:text-[20px]"
+        >
           <li
             @click="() => navToSection('home', 'home-page')"
             :class="`${
@@ -238,6 +259,10 @@
         </span>
       </div>
     </div>
+
+
+</div>
+</Teleport>
   </header>
 </template>
 
@@ -314,54 +339,92 @@ const addActiveOnScroll = () => {
   const contactUsSec = document.getElementById("contact-us-section");
 
   const header = document.getElementById("app-header");
+  // Helper function to set the active state
+  const setActiveState = (activeSection) => {
+    Object.keys(activeState).forEach((item) => {
+      activeState[item] = item === activeSection;
+    });
+  };
 
-  if (route.fullPath == "/") {
-    if (height > contactUsSec.offsetTop - (header.offsetHeight + 150)) {
-      // change active class
-      Object.keys(activeState).forEach((item) => {
-        if (item == "contactUs") {
-          activeState[item] = true;
-        } else {
-          activeState[item] = false;
-        }
-      });
-    } else if (height > feedbackSec.offsetTop - (header.offsetHeight + 150)) {
-      // change active class
-      Object.keys(activeState).forEach((item) => {
-        if (item == "feedback") {
-          activeState[item] = true;
-        } else {
-          activeState[item] = false;
-        }
-      });
-    } else if (height > featureSec.offsetTop - (header.offsetHeight + 150)) {
-      // change active class
-      Object.keys(activeState).forEach((item) => {
-        if (item == "feature") {
-          activeState[item] = true;
-        } else {
-          activeState[item] = false;
-        }
-      });
-    } else if (height > aboutSec.offsetTop - (header.offsetHeight + 150)) {
-      // change active class
-      Object.keys(activeState).forEach((item) => {
-        if (item == "about") {
-          activeState[item] = true;
-        } else {
-          activeState[item] = false;
-        }
-      });
+
+  if (height > 200 || route.fullPath !== "/") {
+    // Add the necessary classes
+    header.classList.add('bg-[--third-color-opacity]', 'shadow-3xl' , "backdrop-blur-sm");
+  } else {
+    // Remove the classes when scrolling back up
+    header.classList.remove('bg-[--third-color-opacity]', 'shadow-3xl', "backdrop-blur-sm");
+  }
+  
+  // Only apply logic when the fullPath is "/"
+  if (route.fullPath === "/") {
+    const sections = [
+      { name: "contactUs", offset: contactUsSec.offsetTop },
+      { name: "feedback", offset: feedbackSec.offsetTop },
+      { name: "feature", offset: featureSec.offsetTop },
+      { name: "about", offset: aboutSec.offsetTop },
+      { name: "home", offset: 0 },
+    ];
+
+    // Find the active section based on scroll height
+    const activeSection = sections.find(
+      (section) => height > section.offset - (header.offsetHeight + 150)
+    );
+
+    // If an active section is found, update the state
+    if (activeSection) {
+      setActiveState(activeSection.name);
     } else {
-      Object.keys(activeState).forEach((item) => {
-        if (item == "home") {
-          activeState[item] = true;
-        } else {
-          activeState[item] = false;
-        }
-      });
+      setActiveState("home");
     }
   }
+
+  // if (route.fullPath == "/") {
+  //   if (height > contactUsSec.offsetTop - (header.offsetHeight + 150)) {
+  //     // change active class
+  //     Object.keys(activeState).forEach((item) => {
+  //       if (item == "contactUs") {
+  //         activeState[item] = true;
+  //       } else {
+  //         activeState[item] = false;
+  //       }
+  //     });
+  //   } else if (height > feedbackSec.offsetTop - (header.offsetHeight + 150)) {
+  //     // change active class
+  //     Object.keys(activeState).forEach((item) => {
+  //       if (item == "feedback") {
+  //         activeState[item] = true;
+  //       } else {
+  //         activeState[item] = false;
+  //       }
+  //     });
+  //   } else if (height > featureSec.offsetTop - (header.offsetHeight + 150)) {
+  //     // change active class
+  //     Object.keys(activeState).forEach((item) => {
+  //       if (item == "feature") {
+  //         activeState[item] = true;
+  //       } else {
+  //         activeState[item] = false;
+  //       }
+  //     });
+  //   } else if (height > aboutSec.offsetTop - (header.offsetHeight + 150)) {
+  //     // change active class
+  //     Object.keys(activeState).forEach((item) => {
+  //       if (item == "about") {
+  //         activeState[item] = true;
+  //       } else {
+  //         activeState[item] = false;
+  //       }
+  //     });
+  //   } else {
+  //     Object.keys(activeState).forEach((item) => {
+  //       if (item == "home") {
+  //         activeState[item] = true;
+  //       } else {
+  //         activeState[item] = false;
+  //       }
+  //     });
+  //   }
+  // }
 };
 
 const openSidebar = () => {
@@ -405,8 +468,14 @@ const changeLang = () => {
 
 //hooks
 onMounted(() => {
+  addActiveOnScroll()
+
   document.addEventListener("scroll", addActiveOnScroll);
 });
+onUpdated(()=>{
+  addActiveOnScroll()
+
+})
 
 watch(
   () => route.fullPath,

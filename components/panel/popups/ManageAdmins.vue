@@ -479,7 +479,6 @@ const changeVal = (val) => {
 // hooks
 onBeforeMount(() => {
   if (props.type == "edit") {
-    console.log("props.currentAdmin?.role" , props.currentAdmin?.role)
     state.name = props.currentAdmin?.name;
     state.email = props.currentAdmin?.email;
     state.phone = props.currentAdmin?.phone;

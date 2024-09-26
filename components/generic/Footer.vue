@@ -2,8 +2,9 @@
   <footer>
     <div class="app-container bg-[#05131E] flex flex-col py-[40px] justify-between gap-[40px] xl:flex-row" >
       <div class="flex flex-col items-center flex-1">
-        <div class="mb-[16px]">
-          <img src="../../assets/imgs/logo2.svg" alt="">
+        <div class="text-white mb-[16px] font-bold text-[32px] md:text-[48px] xl:text[54px]">
+          <!-- <img src="../../assets/imgs/logo2.svg" alt=""> -->
+           HUSTLE NATION
         </div>
         <ul class="flex gap-[8px] mb-[25px]">
           <li>
@@ -107,7 +108,6 @@ const { data , error} = await layout()
 
 import { useGlobalStore } from "~/stores/global";
 const global = useGlobalStore();
-console.log("global>>>" , global.footerDescription)
 
 // layout
 // to make the  ( year ) dynamic value

@@ -351,8 +351,7 @@ const manageSectionFun = async () => {
 
     const result = await v$.value.$validate();
 
-    console.log("result", result);
-    console.log("state.image", state.image);
+
 
     if (result) {
       // if (props.type == "add" && state.image) return;

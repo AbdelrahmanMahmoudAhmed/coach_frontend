@@ -468,7 +468,6 @@ const updateWebsiteSettings = async() => {
 
   try{
     const res = await setAllSettings(state);
-    console.log('res.success' , res.data)
 
    if(res.data?.success) showToast({ message: t("toast.update_website_data") });
 
@@ -485,7 +484,6 @@ const updateWebsiteSettings = async() => {
 //hooks
 onBeforeMount(()=>{
   getAllSettings().then((res)=>{
-    console.log(res.data)
     state.aboutEn = res.data?.data?.pages?.aboutEn
     state.aboutAr = res.data?.data?.pages?.aboutAr
     state.policyEn = res.data?.data?.pages?.policyEn

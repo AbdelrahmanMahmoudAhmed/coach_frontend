@@ -12,7 +12,7 @@ const useServerRequest = () => {
         })
     };
     const home = async () => {
-        return useFetch('/layout', {
+        return useFetch('/layout?section=home', {
             baseURL,
             method: "GET",
         })
@@ -41,11 +41,35 @@ const useServerRequest = () => {
         })
     };
 
+    const testimonials = async () => {
+
+        return useFetch('/testimonials', {
+            baseURL,
+            method: "GET",
+        })
+    };
+    const quickAnswer = async () => {
+
+        return useFetch('/quick-answers', {
+            baseURL,
+            method: "GET",
+        })
+    };
+    const transformations = async () => {
+
+        return useFetch('/transformations?notPagenated=1', {
+            baseURL,
+            method: "GET",
+        })
+    };
+    
+    
+
 
 
 
     return {
-        layout, aboutUs, terms, policy, home
+        layout, aboutUs, terms, policy, home ,testimonials, quickAnswer , transformations
     };
 };
 export default useServerRequest;
