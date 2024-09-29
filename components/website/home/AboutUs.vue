@@ -1,5 +1,5 @@
 <template>
-  <div id="about-section"  class=" mb-[28px] lg:mb-[70px]">
+  <div id="about-section"  class="">
     <div class="relative">
       <!-- dark:bg-gradient-to-t dark:from-[--main-color] dark:to-[#105B91] -->
       <div class="pt-[17px] bg-[--main-color-opacity] pb-[50px] dark:bg-gradient-to-t dark:from-[#105B91] dark:to-[--main-color]   ">

@@ -38,12 +38,12 @@
                 {{ $t("header.about") }}
               </li>
               <li
-                @click="() => navToSection('feature', 'feature-section')"
+                @click="() => navToSection('package', 'package-section')"
                 :class="`${
-                  activeState.feature ? 'active-nav' : ''
+                  activeState.package ? 'active-nav' : ''
                 } cursor-pointer`"
               >
-                {{ $t("header.feature") }}
+                {{ $t("header.package") }}
               </li>
               <li
                 @click="() => navToSection('feedback', 'feedback-section')"
@@ -187,12 +187,12 @@
             {{ $t("header.about") }}
           </li>
           <li
-            @click="() => navToSection('feature', 'feature-section')"
+            @click="() => navToSection('package', 'package-section')"
             :class="`${
-              activeState.feature ? 'active-nav' : ''
+              activeState.package ? 'active-nav' : ''
             } cursor-pointer mb-3 transition-all duration-300 hover:px-2`"
           >
-            {{ $t("header.feature") }}
+            {{ $t("header.package") }}
           </li>
           <li
             @click="() => navToSection('feedback', 'feedback-section')"
@@ -287,7 +287,7 @@ const toggleSidebar = ref(false);
 const activeState = reactive({
   home: false,
   about: false,
-  feature: false,
+  package: false,
   feedback: false,
   contactUs: false,
 });
@@ -334,7 +334,7 @@ const addActiveOnScroll = () => {
 
   const firstSec = document.getElementById("home-page");
   const aboutSec = document.getElementById("about-section");
-  const featureSec = document.getElementById("feature-section");
+  const packageSec = document.getElementById("package-section");
   const feedbackSec = document.getElementById("feedback-section");
   const contactUsSec = document.getElementById("contact-us-section");
 
@@ -360,7 +360,7 @@ const addActiveOnScroll = () => {
     const sections = [
       { name: "contactUs", offset: contactUsSec.offsetTop },
       { name: "feedback", offset: feedbackSec.offsetTop },
-      { name: "feature", offset: featureSec.offsetTop },
+      { name: "package", offset: packageSec.offsetTop },
       { name: "about", offset: aboutSec.offsetTop },
       { name: "home", offset: 0 },
     ];
@@ -397,10 +397,10 @@ const addActiveOnScroll = () => {
   //         activeState[item] = false;
   //       }
   //     });
-  //   } else if (height > featureSec.offsetTop - (header.offsetHeight + 150)) {
+  //   } else if (height > packageSec.offsetTop - (header.offsetHeight + 150)) {
   //     // change active class
   //     Object.keys(activeState).forEach((item) => {
-  //       if (item == "feature") {
+  //       if (item == "package") {
   //         activeState[item] = true;
   //       } else {
   //         activeState[item] = false;

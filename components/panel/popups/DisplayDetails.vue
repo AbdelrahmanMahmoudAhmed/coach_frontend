@@ -82,23 +82,23 @@
             </div>
 
             <div v-if="page == 'package'" class="my-6">
-              <h5 class="text-center font-bold text-[20px] mb-3 sm:text-[22px]">{{ $t("auth.package_features") }}</h5>
-              <div class=" mx-auto my-2" v-if="currentPackage.PackageFeatures">
+              <h5 class="text-center font-bold text-[20px] mb-3 sm:text-[22px]">{{ $t("auth.package_packages") }}</h5>
+              <div class=" mx-auto my-2" v-if="currentPackage.PackagePackages">
                 <div class=" border rounded-lg mb-2 w-full px-2 py-1"
-                  v-for="(feature, idx) in currentPackage.PackageFeatures"
+                  v-for="(package, idx) in currentPackage.PackagePackages"
                   :key="idx"
                 >
                   <div  class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-between">
                     <span class="font-bold text-[--main-color] dark:text-[--third-color]">
-                      {{ $t("auth.package_feature_ar") }}
+                      {{ $t("auth.package_package_ar") }}
                     </span>
-                    <span>{{ feature.featureAr }}</span>
+                    <span>{{ package.packageAr }}</span>
                   </div>
                   <div  class="flex flex-col items-center mb-2 xs:mb-0 xs:flex-row xs:gap-4 xs:justify-between">
                     <span class="font-bold text-[--main-color] dark:text-[--third-color]">
-                      {{ $t("auth.package_feature_en") }}
+                      {{ $t("auth.package_package_en") }}
                     </span>
-                    <span>{{ feature.featureEn }}</span>
+                    <span>{{ package.packageEn }}</span>
                   </div>
                 </div>
               </div>

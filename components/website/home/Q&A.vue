@@ -1,12 +1,14 @@
 <template>
-  <div class="mb-[30px] lg:mb-[80px]">
+  <div 
+  
+  class="mb-[30px] lg:mb-[80px]">
     <div>
       <SectionTitle :title="`${$t('header.Q&A')}`" :isColored="true" />
     </div>
     <div class="app-container pt-[25px] lg:pt-[40px]">
       <div class="m-auto w-full lg:w-[80%] xl:w-[65%]">
         <div
-          class="cursor-pointer border border-[--main-color] mb-2 p-2 rounded-lg bg-[--secondary-color]"
+          class="cursor-pointer border text-white border-[--main-color] mb-2 p-2 rounded-lg bg-[--secondary-color]"
           v-for="(item, idx) in questions"
           :key="idx"
           @click="() => toggleQuestion(item?.id)"
@@ -49,7 +51,7 @@
   <script setup>
 import SectionTitle from "../home/SectionTitle.vue";
 const props = defineProps({
-  features: Array,
+  packages: Array,
 });
 import useServerRequist from "~/composables/useServerRequist";
 const { quickAnswer } = useServerRequist();
@@ -75,49 +77,7 @@ const baseURL =
     : config.public.dev_base;
 const { locale, locales, setLocale } = useI18n();
 
-const allFeatures = ref([
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
 
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-  {
-    title: "Feature 1",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  },
-]);
 </script>
   
   <style>

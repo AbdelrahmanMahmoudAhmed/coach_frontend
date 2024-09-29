@@ -169,7 +169,7 @@ const getPackagesData = async () => {
             discountPercentage: item?.discountPercentage,
             image:item.image,
             price: item?.price,
-            PackageFeatures:item.PackageFeatures
+            PackagePackages:item.PackagePackages
           }
         },
         {
@@ -187,7 +187,7 @@ const getPackagesData = async () => {
             period: item?.period,
             descriptionAr: item?.descriptionAr,
             descriptionEn: item?.descriptionEn,
-            PackageFeatures:item.PackageFeatures
+            PackagePackages:item.PackagePackages
 
           }
         },

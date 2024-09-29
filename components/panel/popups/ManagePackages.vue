@@ -120,28 +120,28 @@
 
         <div class="panel-input-holder ">
           <div class="flex justify-between mb-2">
-            <span class="px-[30px] mb-1">{{ $t("auth.package_features") }}</span>
-            <span class="px-[30px] mb-1" @click="addFeature">
+            <span class="px-[30px] mb-1">{{ $t("auth.package_packages") }}</span>
+            <span class="px-[30px] mb-1" @click="addPackage">
               <img class="w-[25px] cursor-pointer" :src="isDark == 'light' ? '/imgs/add_dark.svg' : '/imgs/add_light.svg'" alt="">
             </span>
           </div>
-          <div v-for="(feature, idx) in state.packageFeatures" :key="idx" :id="feature.id"
+          <div v-for="(item, idx) in state.packagePackages" :key="idx" :id="item.id"
             class="relative px-3 pt-8 pb-3 rounded-lg border mb-2">
-            <span @click="() => removeFeature(feature.id)" :class="` absolute top-1 cursor-pointer ${locale == 'ar' ? 'left-3' : 'right-3'
+            <span @click="() => removePackage(item.id)" :class="` absolute top-1 cursor-pointer ${locale == 'ar' ? 'left-3' : 'right-3'
     } `">
     <img class="w-[25px] cursor-pointer" :src="isDark == 'light' ? '/imgs/close_dark.svg' : '/imgs/close_light.svg'" alt="">
 </span>
 
-            <input v-model="feature.featureAr" :placeholder="$t('auth.package_feature_ar')"
+            <input v-model="item.packageAr" :placeholder="$t('auth.package_package_ar')"
               class="panel-input"
               type="text" autocomplete="off" />
-            <input v-model="feature.featureEn" :placeholder="$t('auth.package_feature_en')"
+            <input v-model="item.packageEn" :placeholder="$t('auth.package_package_en')"
               class="panel-input"
               type="text" autocomplete="off" />
           </div>
-          <p v-if="errors.packageFeatures.state"
+          <p v-if="errors.packagePackages.state"
             class="panel-input-err ">
-            {{ $t("auth.errors.add_complete_feature") }}
+            {{ $t("auth.errors.add_complete_package") }}
           </p>
         </div>
       </div>
@@ -206,7 +206,7 @@ const state = reactive({
   period: "",
   price: "",
   discountPercentage: "",
-  packageFeatures: [{ id: "feature_1", featureAr: "", featureEn: "" }],
+  packagePackages: [{ id: "package_1", packageAr: "", packageEn: "" }],
 });
 const errors = reactive({
   image: {
@@ -245,7 +245,7 @@ const errors = reactive({
     state: false,
     message:"",
   },
-  packageFeatures: {
+  packagePackages: {
     state: false,
     message:"",
   },
@@ -263,18 +263,18 @@ const rules = computed(() => {
     price: { required: helpers.withMessage('add_price', required), numeric: helpers.withMessage('must_be_number', numeric) },
     discountPercentage: { required: helpers.withMessage('add_discount_percentage', required), numeric: helpers.withMessage('must_be_number', numeric) , maxValue: helpers.withMessage('max_hundred', maxValue(100)) },
     
-    packageFeatures: {
+    packagePackages: {
       required: requiredIf(function (nestedModel) {
 
-        const completedFeatures = [];
+        const completedPackages = [];
 
         nestedModel.forEach((item) => {
-          if (item.featureAr && item.featureEn) completedFeatures.push(item);
+          if (item.packageAr && item.packageEn) completedPackages.push(item);
         });
 
-        completedFeatures.length && (state.packageFeatures = completedFeatures);
-        errors.packageFeatures.state = completedFeatures.length === 0;
-        return completedFeatures.length === 0;
+        completedPackages.length && (state.packagePackages = completedPackages);
+        errors.packagePackages.state = completedPackages.length === 0;
+        return completedPackages.length === 0;
       }),
     },
 
@@ -326,13 +326,13 @@ const managePackageFun = async () => {
     errors.period.state = false;
     errors.price.state = false;
     errors.discountPercentage.state = false;
-    errors.packageFeatures.state = false;
+    errors.packagePackages.state = false;
 
     const payload = new FormData();
 
     const result = await v$.value.$validate();
 
-    if (result && !errors.image.state && !errors.packageFeatures.state) {
+    if (result && !errors.image.state && !errors.packagePackages.state) {
       state.image && payload.append("image", state.image);
       state.titleAr && payload.append("titleAr", state.titleAr);
       state.titleEn && payload.append("titleEn", state.titleEn);
@@ -343,10 +343,10 @@ const managePackageFun = async () => {
       state.discountPercentage &&
         payload.append("discountPercentage", state.discountPercentage);
 
-      state.packageFeatures.forEach((item, idx) => {
-        // packageFeatures[0][featureEn]
-        payload.append(`packageFeatures[${idx}][featureEn]`, item.featureEn);
-        payload.append(`packageFeatures[${idx}][featureAr]`, item.featureAr);
+      state.packagePackages.forEach((item, idx) => {
+        // packagePackages[0][packageEn]
+        payload.append(`packagePackages[${idx}][packageEn]`, item.packageEn);
+        payload.append(`packagePackages[${idx}][packageAr]`, item.packageAr);
       });
 
       try {
@@ -391,18 +391,18 @@ const onChangeImage = (e) => {
   imageDisplaying.value = URL.createObjectURL(file);
 };
 
-const addFeature = () => {
-  const id = `feature_${Date.now()}`;
-  state.packageFeatures.push({
+const addPackage = () => {
+  const id = `package_${Date.now()}`;
+  state.packagePackages.push({
     id,
-    featureAr: "",
-    featureEn: "",
+    packageAr: "",
+    packageEn: "",
   });
 };
-const removeFeature = (id) => {
-  if (state.packageFeatures.length < 2) return;
-  const updatedFeatures = state.packageFeatures.filter((item) => item.id != id);
-  state.packageFeatures = updatedFeatures;
+const removePackage = (id) => {
+  if (state.packagePackages.length < 2) return;
+  const updatedPackages = state.packagePackages.filter((item) => item.id != id);
+  state.packagePackages = updatedPackages;
 };
 
 // hooks
@@ -410,7 +410,7 @@ onBeforeMount(() => {
   if (props.type == "edit" &&  props.currentPackage) {
 
 
-  // packageFeatures: [{ id: "feature_1", featureAr: "", featureEn: "" }],
+  // packagePackages: [{ id: "package_1", packageAr: "", packageEn: "" }],
   imageDisplaying.value = `${BASE_URL}${props.currentPackage?.image}`
   state.titleAr = props.currentPackage?.titleAr;
   state.titleEn = props.currentPackage?.titleEn;
@@ -419,8 +419,8 @@ onBeforeMount(() => {
   state.period = props.currentPackage?.period;
   state.price = props.currentPackage?.price;
   state.discountPercentage = props.currentPackage?.discountPercentage;
-  state.packageFeatures = props.currentPackage?.PackageFeatures?.map((feature , i)=>{
-      return { id: `feature_${i}`, featureAr: feature.featureAr, featureEn: feature.featureEn }
+  state.packagePackages = props.currentPackage?.PackagePackages?.map((item , i)=>{
+      return { id: `package_${i}`, packageAr: item.packageAr, packageEn: item.packageEn }
   })
 
   }

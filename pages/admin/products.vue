@@ -173,7 +173,7 @@ const getProductData = async () => {
             period: item?.period,
             descriptionAr: item?.descriptionAr,
             descriptionEn: item?.descriptionEn,
-            PackageFeatures:item.PackageFeatures,
+            PackagePackages:item.PackagePackages,
             shippingPrice:item.shippingPrice
           }
         },
@@ -192,7 +192,7 @@ const getProductData = async () => {
             period: item?.period,
             descriptionAr: item?.descriptionAr,
             descriptionEn: item?.descriptionEn,
-            PackageFeatures:item.PackageFeatures,
+            PackagePackages:item.PackagePackages,
             shippingPrice:item.shippingPrice
             
 

@@ -62,6 +62,20 @@ const useServerRequest = () => {
             method: "GET",
         })
     };
+    const getAllPackages = async () => {
+
+        return useFetch('/packages', {
+            baseURL,
+            method: "GET",
+        })
+    };
+    const getAllProducts = async () => {
+
+        return useFetch('/products?notPagenated=1', {
+            baseURL,
+            method: "GET",
+        })
+    };
     
     
 
@@ -69,7 +83,7 @@ const useServerRequest = () => {
 
 
     return {
-        layout, aboutUs, terms, policy, home ,testimonials, quickAnswer , transformations
+        layout, aboutUs, terms, policy, home ,testimonials, quickAnswer , transformations , getAllPackages , getAllProducts
     };
 };
 export default useServerRequest;

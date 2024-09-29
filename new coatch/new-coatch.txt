@@ -4,14 +4,14 @@ the user story of the project
  
  1- title ( creating a new GYM  )
  
-As an owner, I need to create a new gym system so that I can use all the features of the gym-manager-app.
+As an owner, I need to create a new gym system so that I can use all the packages of the gym-manager-app.
 
  * conditions of satisfaction:_
  
  
  ++++ Create a new account on the gym-manager-app:_ ++++
  
-- The user should have the ability to fill out a form on the gym-manager-app to make a subscription to the app, that subscription allows the user to get the benefit of the app's features.
+- The user should have the ability to fill out a form on the gym-manager-app to make a subscription to the app, that subscription allows the user to get the benefit of the app's packages.
 - That form contains ( name - email - phone - password - birth date - gender - upload personal image - address - ID number ).
 - All inputs are required and the ID number , phone number  and email must be unique.
 - A permission request will be sent to the app administrator after the validation is done. 
@@ -46,7 +46,7 @@ As an owner, I need to create a new gym system so that I can use all the feature
 =>in this section will display:_ 
 1- the start day of the subscription. 2- the start day of the last subscription, 3- the duration of the user subscription, 4- the date of the end of the subscription.
 =>and in this section will display a form to renew the user subscription on the app, this form contains of dropdown list about the app duration with price, and a button to send the request to the admin of the gym manager app.
-*section number three is about pre-prepared features:_ In this section the user can add, edit, and remove the gym branch.
+*section number three is about pre-prepared packages:_ In this section the user can add, edit, and remove the gym branch.
 The owner must add at least one branch to use the app.
 
 

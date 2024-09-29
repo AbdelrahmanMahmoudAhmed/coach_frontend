@@ -13,17 +13,19 @@
 
 <AboutUsVue  :aboutData="aboutData"/>
 
-
-
-
-  
-  <div id="feature-section">
-    <Feature :features="data?.data?.features" />
-  </div>
-
 <div>
 <Transformation />
 </div>
+
+<div>
+  <Products />
+</div>
+  
+  <div id="package-section">
+    <Package :packages="data?.data?.packages" />
+  </div>
+
+
 
 <section>
   <QA />
@@ -52,7 +54,7 @@
 
 import ContactUs from "~/components/website/home/ContactUs.vue";
 import Feedback from "~/components/website/home/Feedback.vue";
-import Feature from "~/components/website/home/Feature.vue";
+import Package from "~/components/website/home/Package.vue";
 import useServerRequist from "~/composables/useServerRequist";
 import { useGlobalStore } from "../stores/global"
 import Loader from "~/components/generic/Loader.vue";
@@ -60,6 +62,8 @@ import Vedio from "~/components/website/home/Vedio.vue";
 import AboutUsVue from "~/components/website/home/AboutUs.vue";
 import QA from "~/components/website/home/Q&A.vue";
 import Transformation from "~/components/website/home/Transformation.vue";
+import Products from "~/components/website/home/Products.vue";
+
 const { locale, locales, setLocale } = useI18n();
 const isDark = useCookie("isDark");
 const global = useGlobalStore();
